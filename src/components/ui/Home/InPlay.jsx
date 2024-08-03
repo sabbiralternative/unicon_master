@@ -1,14 +1,11 @@
-
-
-const InPlay = () => {
-    return (
-<>
-<div className="inplay-popular-header inplay-header-color">
+const InPlay = ({ data }) => {
+  console.log(data);
+  return (
+    <>
+      <div className="inplay-popular-header inplay-header-color">
         <div className="inplay-popular-header__logo">
           <i className="inplay-popular-header__logo-icon inplay-header-icon"></i>
-          <span className="inplay-popular-header__logo-text">
-            In Play
-          </span>
+          <span className="inplay-popular-header__logo-text">In Play</span>
         </div>
       </div>
 
@@ -219,8 +216,8 @@ const InPlay = () => {
           </div>
         </ion-item>
       </ion-list>
-</>
-    );
+    </>
+  );
 };
 
 export default InPlay;

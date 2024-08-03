@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Sidebar from "../../components/shared/Sidebar/Sidebar";
 import Banner from "../../components/ui/Home/Banner";
 import BetSlip from "../../components/ui/Home/BetSlip";
@@ -7,10 +8,13 @@ import InPlay from "../../components/ui/Home/InPlay";
 import PopularGames from "../../components/ui/Home/PopularGames";
 import UpcomingEvents from "../../components/ui/Home/UpcomingEvents";
 import { useGetAllGroupEventsQuery } from "../../redux/features/home/homeApi";
+import isRefetchGroupData from "../../function/home/isRefetchGroupData";
 
 const Home = () => {
-  const {data}  = useGetAllGroupEventsQuery()
-  console.log(data);
+  const [sports, setSports] = useState(4);
+  const { data } = useGetAllGroupEventsQuery(sports, {
+    // pollingInterval: isRefetchGroupData(sports) ? 1000 : null,
+  });
 
   return (
     <div>
@@ -24,7 +28,7 @@ const Home = () => {
                 className="inplay-content md item-group-md item hydrated"
                 role="group"
               >
-                <InPlay />
+                <InPlay data={data} />
 
                 <IndianCardGames />
 
