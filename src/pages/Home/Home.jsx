@@ -28,7 +28,7 @@ const Home = () => {
                 className="inplay-content md item-group-md item hydrated"
                 role="group"
               >
-                <InPlay data={data} />
+                {data && <InPlay data={data} />}
 
                 <IndianCardGames />
 

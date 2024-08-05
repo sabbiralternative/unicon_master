@@ -2,15 +2,16 @@ const InPlay = ({ data }) => {
   console.log(data);
   return (
     <>
-      <div className="inplay-popular-header inplay-header-color">
+         <div className="inplay-popular-header inplay-header-color">
         <div className="inplay-popular-header__logo">
           <i className="inplay-popular-header__logo-icon inplay-header-icon"></i>
           <span className="inplay-popular-header__logo-text">In Play</span>
         </div>
       </div>
 
-      <ion-list className="inplay-item-list md list-md hydrated">
-        <ion-list-header className="inplay-item-list__header md hydrated">
+
+      <div className="inplay-item-list md list-md hydrated">
+        <div className="inplay-item-list__header md hydrated">
           <div className="inplay-item-list__header-content">
             <div className="inplay-item-list__header-logo">
               <i className="inplay-content__logo-icon inplay-content__logo-icon--cricket inplay-color-icon"></i>
@@ -22,64 +23,82 @@ const InPlay = ({ data }) => {
               <span>2</span>
             </div>
           </div>
-        </ion-list-header>
+        </div>
 
-        <ion-item className="inplay-item item md in-list hydrated">
-          <img loading="lazy" />
-          <div className="inplay-item__content">
-            <div className="inplay-item__row">
-              <div className="inplay-item__desktop">
-                <div className="inplay-item__players">
-                  <span className="inplay-item__player">
-                    <span>Rajasthan Royals SRL</span>
-                  </span>
-                  <span className="inplay-item__player">
-                    <span>Delhi Capitals SRL</span>
-                  </span>
-                </div>
+     {
+      data && Object.values(data).length > 0 && Object.keys(data)
+      .sort((keyA, keyB) => data[keyA].sort - data[keyB].sort)
+      .map((keys, index) => {
+       return (
+        <div key={index} className="inplay-item item md in-list hydrated">
+        <img loading="lazy" />
+        <div className="inplay-item__content">
+          <div className="inplay-item__row">
+            <div className="inplay-item__desktop">
+              <div className="inplay-item__players">
+                <span className="inplay-item__player">
+                  <span>{data[keys]?.eventName}</span>
+                </span>
+                {/* <span className="inplay-item__player">
+                  <span>Delhi Capitals SRL</span>
+                </span> */}
               </div>
-              <div className="inplay-item__back">
-                <div className="inplay-item__back-inner">
-                  <div className="inplay-item__back-inner inplay-item__back-inner-left">
-                    <span className="odd-button back-color     ">
-                      <span className="odd-button__inner odd-button__inner--centered ">
-                        <div className="odd-button__price">2.9</div>
-                      </span>
+            </div>
+            {/* {
+              data[keys]?.status === "OPEN" && data[keys][0] ?(
+
+              ):(
+
+              )
+            } */}
+            <div className="inplay-item__back">
+              <div className="inplay-item__back-inner">
+                <div className="inplay-item__back-inner inplay-item__back-inner-left">
+                  <span className="odd-button back-color     ">
+                    <span className="odd-button__inner odd-button__inner--centered ">
+                      <div className="odd-button__price">2.9</div>
                     </span>
-                    <span className="odd-button lay-color     ">
-                      <span className="odd-button__inner odd-button__inner--centered ">
-                        <div className="odd-button__price">-</div>
-                      </span>
+                  </span>
+                  <span className="odd-button lay-color     ">
+                    <span className="odd-button__inner odd-button__inner--centered ">
+                      <div className="odd-button__price">-</div>
                     </span>
-                    <span className="odd-button back-color     ">
-                      <span className="odd-button__inner odd-button__inner--centered ">
-                        <div className="odd-button__price">-</div>
-                      </span>
+                  </span>
+                  <span className="odd-button back-color     ">
+                    <span className="odd-button__inner odd-button__inner--centered ">
+                      <div className="odd-button__price">-</div>
                     </span>
-                    <span className="odd-button lay-color     ">
-                      <span className="odd-button__inner odd-button__inner--centered ">
-                        <div className="odd-button__price">-</div>
-                      </span>
+                  </span>
+                  <span className="odd-button lay-color     ">
+                    <span className="odd-button__inner odd-button__inner--centered ">
+                      <div className="odd-button__price">-</div>
                     </span>
-                    <span className="odd-button back-color     ">
-                      <span className="odd-button__inner odd-button__inner--centered ">
-                        <div className="odd-button__price">1.4</div>
-                      </span>
+                  </span>
+                  <span className="odd-button back-color     ">
+                    <span className="odd-button__inner odd-button__inner--centered ">
+                      <div className="odd-button__price">1.4</div>
                     </span>
-                    <span className="odd-button lay-color     ">
-                      <span className="odd-button__inner odd-button__inner--centered ">
-                        <div className="odd-button__price">-</div>
-                      </span>
+                  </span>
+                  <span className="odd-button lay-color     ">
+                    <span className="odd-button__inner odd-button__inner--centered ">
+                      <div className="odd-button__price">-</div>
                     </span>
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-        </ion-item>
-      </ion-list>
-      <ion-list className="inplay-item-list md list-md hydrated">
-        <ion-list-header className="inplay-item-list__header md hydrated">
+        </div>
+      </div>
+       )
+      })
+
+    }
+ 
+     
+      </div>
+      <div className="inplay-item-list md list-md hydrated">
+        <div className="inplay-item-list__header md hydrated">
           <div className="inplay-item-list__header-content">
             <div className="inplay-item-list__header-logo">
               <i className="inplay-content__logo-icon inplay-content__logo-icon--tennis inplay-color-icon"></i>
@@ -90,8 +109,8 @@ const InPlay = ({ data }) => {
               <span>2</span>
             </div>
           </div>
-        </ion-list-header>
-        <ion-item className="inplay-item item md in-list hydrated">
+        </div>
+        <div className="inplay-item item md in-list hydrated">
           <img loading="lazy" />
           <div className="inplay-item__content">
             <div className="inplay-item__row">
@@ -152,8 +171,8 @@ const InPlay = ({ data }) => {
               </div>
             </div>
           </div>
-        </ion-item>
-        <ion-item className="inplay-item item md in-list hydrated">
+        </div>
+        <div className="inplay-item item md in-list hydrated">
           <img loading="lazy" />
           <div className="inplay-item__content">
             <div className="inplay-item__row">
@@ -214,8 +233,8 @@ const InPlay = ({ data }) => {
               </div>
             </div>
           </div>
-        </ion-item>
-      </ion-list>
+        </div>
+      </div>
     </>
   );
 };
