@@ -9,8 +9,9 @@ import sportsBook from './images/sportsbook-icon.8a583066.svg'
 import liveCasino from './images/sideBarLivecasino.ddfa583c.svg'
 import blastOff from './images/blastoff-icon.d101a1c0.svg'
 import slotGames from './images/sideBarSlotsgames.d6cdb627.svg'
+import inPlay from './images/inplay-logo-iconSport.bb6548ae.svg'
 
 
 export default {
-    favorite,cricket,football,tennis,horseRacing,greyhound,cardGames,sportsBook,liveCasino,blastOff,slotGames
+    favorite,cricket,football,tennis,horseRacing,greyhound,cardGames,sportsBook,liveCasino,blastOff,slotGames,inPlay
 }
