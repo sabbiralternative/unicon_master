@@ -128,21 +128,30 @@ const Header = () => {
             </div>
             <div
               style={{ color: `${group === 4 ? "#c95c54" : ""}` }}
-              onClick={() => dispatch(setGroupType(4))}
+              onClick={() => {
+                navigate('/')
+                dispatch(setGroupType(4))
+              }}
               className="list-item"
             >
               Cricket
             </div>
             <div
               style={{ color: `${group === 1 ? "#c95c54" : ""}` }}
-              onClick={() => dispatch(setGroupType(1))}
+              onClick={() => {
+                navigate('/')
+                dispatch(setGroupType(1))
+              }}
               className="list-item"
             >
               Football
             </div>
             <div
               style={{ color: `${group === 2 ? "#c95c54" : ""}` }}
-              onClick={() => dispatch(setGroupType(2))}
+              onClick={() => {
+                navigate('/')
+                dispatch(setGroupType(2))
+              }}
               className="list-item"
             >
               Tennis

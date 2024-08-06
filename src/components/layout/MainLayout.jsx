@@ -4,13 +4,10 @@ import Footer from "../shared/Footer/Footer";
 
 const MainLayout = () => {
   return (
-    <div
-      className="hideSesPopover md ion-page hydrated 
- "
-    >
+    <div className="hideSesPopover md ion-page hydrated">
       <Header />
-      <Outlet/>
-      <Footer/>
+      <Outlet />
+      <Footer />
     </div>
   );
 };

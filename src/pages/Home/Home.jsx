@@ -8,7 +8,7 @@ import InPlay from "../../components/ui/Home/InPlay";
 import PopularGames from "../../components/ui/Home/PopularGames";
 import UpcomingEvents from "../../components/ui/Home/UpcomingEvents";
 import isRefetchGroupData from "../../function/home/isRefetchGroupData";
-import { useGetAllGroupEventsQuery } from "../../redux/features/home/homeApi";
+import { useGetAllGroupEventsQuery } from "../../redux/features/events/events";
 import { useSelector } from "react-redux";
 
 const Home = () => {
