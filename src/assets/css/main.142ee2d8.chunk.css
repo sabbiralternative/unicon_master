@@ -1572,7 +1572,7 @@ ion-popover {
 .headerDeskNav-content__list .list-item:first-child,
 .headerDeskNav-content__list .list-item:nth-child(8),
 .headerDeskNav-content__list .list-item:nth-child(9) {
-    color: #c95c54
+    /* color: #c95c54 */
 }
 
 .menuAccount {
@@ -7812,7 +7812,7 @@ ion-item {
 }
 
 .landing-footer-social-button.instagram {
-    background-image: url(/static/media/instagramGray.20f307d4.svg)
+    background-image: url('/src/assets/images/instagramGray.20f307d4.svg')
 }
 
 .landing-footer-social-button.youtube {
@@ -7832,7 +7832,7 @@ ion-item {
 }
 
 .landing-footer-social-button.telegram {
-    background-image: url(/static/media/telegramGray.fded7f58.svg)
+    background-image: url('/src/assets/images/telegramGray.fded7f58.svg')
 }
 
 .landing-footer-social-button.telegram:hover span {
@@ -7883,14 +7883,14 @@ ion-item {
 .android-button {
     height: 50px;
     width: 135px;
-    background: url(/static/media/downloadAndroid.6003da68.svg);
+    background: url('/src/assets/images/downloadAndroid.6003da68.svg');
     background-repeat: no-repeat
 }
 
 .android-button-2 {
     height: 50px;
     width: 135px;
-    background: url(/static/media/downloadScore.f6f11635.svg);
+    background: url('/src/assets/images/downloadScore.f6f11635.svg');
     background-repeat: no-repeat
 }
 

@@ -1,3 +1,5 @@
+import assets from "../../../assets";
+
 const Footer = () => {
   return (
     <div className="landing-footer-desktop">
@@ -29,7 +31,7 @@ const Footer = () => {
             <a>
               <img
                 loading="lazy"
-                src="static/media/gaming-1.49592c7f.png"
+                src={assets.gaming1}
                 alt="gaming"
               />
             </a>
@@ -47,32 +49,32 @@ const Footer = () => {
           <div className="landing-footer-desktop__companies-logos-row">
             <img
               loading="lazy"
-              src="static/media/upi.b1dbf1b2.svg"
+              src={assets.upi}
               alt="gaming"
             />
             <img
               loading="lazy"
-              src="static/media/bankTransfer.ec47485a.svg"
+              src={assets.bankTransfer}
               alt="gaming"
             />
             <img
               loading="lazy"
-              src="static/media/BeGamble.bde9544d.svg"
+              src={assets.BeGamble}
               alt="gaming"
             />
             <img
               loading="lazy"
-              src="static/media/gamblingCom.1cb194a5.svg"
+              src={assets.gamblingCom}
               alt="gaming"
             />
             <img
               loading="lazy"
-              src="static/media/corga2.985668f6.svg"
+              src={assets.corga2}
               alt="gaming"
             />
             <img
               loading="lazy"
-              src="static/media/mga.d077581b.svg"
+              src={assets.mga}
               alt="gaming"
             />
           </div>

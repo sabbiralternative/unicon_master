@@ -390,7 +390,7 @@ const Banner = () => {
         </div>
       </div>
       <div className="sport-buttons">
-        <ion-button
+        <div
           mode="md"
           className="sport-button md button button-solid ion-activatable ion-focusable hydrated"
           id="undefined"
@@ -409,8 +409,8 @@ const Banner = () => {
               <span>cricket</span>
             </div>
           </div>
-        </ion-button>
-        <ion-button
+        </div>
+        <div
           mode="md"
           className="sport-button md button button-solid ion-activatable ion-focusable hydrated"
           id="undefined"
@@ -429,8 +429,8 @@ const Banner = () => {
               <span>Football</span>
             </div>
           </div>
-        </ion-button>
-        <ion-button
+        </div>
+        <div
           mode="md"
           className="sport-button md button button-solid ion-activatable ion-focusable hydrated"
           id="undefined"
@@ -449,8 +449,8 @@ const Banner = () => {
               <span>Tennis</span>
             </div>
           </div>
-        </ion-button>
-        <ion-button
+        </div>
+        <div
           mode="md"
           className="sport-button md button button-solid ion-activatable ion-focusable hydrated"
           id="undefined"
@@ -469,8 +469,8 @@ const Banner = () => {
               <span>Horse</span>
             </div>
           </div>
-        </ion-button>
-        <ion-button
+        </div>
+        <div
           mode="md"
           className="sport-button md button button-solid ion-activatable ion-focusable hydrated"
           id="undefined"
@@ -489,10 +489,10 @@ const Banner = () => {
               <span>Greyhound</span>
             </div>
           </div>
-        </ion-button>
+        </div>
       </div>
       <div className="promotion-buttons">
-        <ion-button
+        <div
           mode="md"
           id="tower"
           className="promotion-button scrollItem md button button-solid ion-activatable ion-focusable hydrated"
@@ -501,20 +501,20 @@ const Banner = () => {
             className="promotion-button__content"
             style={{
               backgroundImage:
-                "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                "url('https://promomaterial.imgix.net/quickButtons/TowerLegends-1722000145463')",
             }}
           >
             <div
               className="promotion-button__icon"
               style={{
                 backgroundImage:
-                  "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                  "url('https://promomaterial.imgix.net/quickButtons/TowerLegends-1722000145474')",
               }}
             ></div>
             Tower Legends
           </div>
-        </ion-button>
-        <ion-button
+        </div>
+        <div
           mode="md"
           id="jili-204"
           className="promotion-button scrollItem md button button-solid ion-activatable ion-focusable hydrated"
@@ -523,20 +523,20 @@ const Banner = () => {
             className="promotion-button__content"
             style={{
               backgroundImage:
-                "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                "url('https://promomaterial.imgix.net/quickButtons/ColorGame-1718191763420')",
             }}
           >
             <div
               className="promotion-button__icon"
               style={{
                 backgroundImage:
-                  "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                  "url('https://promomaterial.imgix.net/quickButtons/ColorGame-1718191763431')",
               }}
             ></div>
             Color Game
           </div>
-        </ion-button>
-        <ion-button
+        </div>
+        <div
           mode="md"
           id="6"
           className="promotion-button scrollItem md button button-solid ion-activatable ion-focusable hydrated"
@@ -545,20 +545,20 @@ const Banner = () => {
             className="promotion-button__content"
             style={{
               backgroundImage:
-                "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Limbo.webp')",
             }}
           >
             <div
               className="promotion-button__icon"
               style={{
                 backgroundImage:
-                  "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                  "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Aviator-1705911963125')",
               }}
             ></div>
             Limbo
           </div>
-        </ion-button>
-        <ion-button
+        </div>
+        <div
           mode="md"
           id="6"
           className="promotion-button scrollItem md button button-solid ion-activatable ion-focusable hydrated"
@@ -567,20 +567,20 @@ const Banner = () => {
             className="promotion-button__content"
             style={{
               backgroundImage:
-                "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Mines.webp')",
             }}
           >
             <div
               className="promotion-button__icon"
               style={{
                 backgroundImage:
-                  "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                  "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/diamond_icon.png')",
               }}
             ></div>
             Mines
           </div>
-        </ion-button>
-        <ion-button
+        </div>
+        <div
           mode="md"
           id="77hj"
           className="promotion-button scrollItem md button button-solid ion-activatable ion-focusable hydrated"
@@ -589,20 +589,20 @@ const Banner = () => {
             className="promotion-button__content"
             style={{
               backgroundImage:
-                "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Aura-1705912199645')",
             }}
           >
             <div
               className="promotion-button__icon"
               style={{
                 backgroundImage:
-                  "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                  "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Aura-1705912199647')",
               }}
             ></div>
             Aura
           </div>
-        </ion-button>
-        <ion-button
+        </div>
+        <div
           mode="md"
           id="6"
           className="promotion-button scrollItem md button button-solid ion-activatable ion-focusable hydrated"
@@ -611,19 +611,19 @@ const Banner = () => {
             className="promotion-button__content"
             style={{
               backgroundImage:
-                "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Aviator-1705911963116')",
             }}
           >
             <div
               className="promotion-button__icon"
               style={{
                 backgroundImage:
-                  "url('https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863')",
+                  "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Aviator-1705911963125')",
               }}
             ></div>
             Aviator
           </div>
-        </ion-button>
+        </div>
         <ion-button
           mode="md"
           id="1"

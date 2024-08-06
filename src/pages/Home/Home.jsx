@@ -23,26 +23,32 @@ const Home = () => {
         <Sidebar />
         <div className="main_container-center   11111 ">
           <div style={{ height: "100%" }}>
-            <div className="default-page__content">
-              <Banner />
-              <ion-item-group
-                className="inplay-content md item-group-md item hydrated"
-                role="group"
-              >
-                {data && group === 0 && <InPlay data={data} /> }
-                {data && group !== 0 && <Group data={data} /> }
+            {group === 0 ? (
+              <div className="default-page__content">
+                <Banner />
+                <div
+                  className="inplay-content md item-group-md item hydrated"
+                  role="group"
+                >
+                  {data && <InPlay data={data} />}
 
-                <IndianCardGames />
-
-                <PopularGames />
-                <Casino />
-                <ion-list className="inplay-item-list md list-md hydrated"></ion-list>
-                <ion-list className="inplay-item-list md list-md hydrated"></ion-list>
-                <ion-list className="inplay-item-list md list-md hydrated"></ion-list>
-              </ion-item-group>
-
-              <UpcomingEvents />
-            </div>
+                  <IndianCardGames />
+                  <PopularGames />
+                  <Casino />
+                </div>
+                <UpcomingEvents />
+              </div>
+            ) : (
+              <div className="default-page__content">
+                <div
+                  className="inplay-content md item-group-md item hydrated"
+                  role="group"
+                >
+                  {data && <Group data={data} />}
+                  <Banner />
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <BetSlip />

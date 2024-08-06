@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import assets from "../../../assets";
 import { setGroupType } from "../../../redux/features/stateSlice";
-//sgfgfddsfdsfsdf
+
 const Sidebar = () => {
   const dispatch = useDispatch();
   return (
