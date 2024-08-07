@@ -643,9 +643,9 @@ ion-popover {
 .user-profile-btnLog,
 .user-profile-deposit {
     --border-radius: 2px;
-    height: 40px;
+    /* height: 40px; */
     width: 69px;
-    --background: var(--login-button-color);
+    --background: var(--login-button-color) !important;
     --color: var(--login-button-text)
 }
 
@@ -657,7 +657,7 @@ ion-popover {
 .user-profile-btn-sign-up {
     margin: 0 2px !important;
     --border-radius: 2px;
-    height: 40px;
+    /* height: 40px; */
     width: 69px;
     --background: var(--signUp-button-color);
     --color: var(--signUp-button-text)

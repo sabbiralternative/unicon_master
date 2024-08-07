@@ -1,3 +1,11 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+  width: 100%;
+}
+
 .qJTHM {
   -webkit-user-select: none;
   color: #202124;
