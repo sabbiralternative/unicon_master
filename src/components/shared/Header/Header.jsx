@@ -1,12 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setGroupType } from "../../../redux/features/stateSlice";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Login from "../../modal/Login";
 
 const Header = () => {
+  const [showLoginModal,setShowLoginModal] = useState(false)
   const { group } = useSelector((state) => state?.state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
+  <>
+  {
+    showLoginModal && (
+      <Login setShowLoginModal={setShowLoginModal} />
+    )
+  }
     <header
       role="banner"
       className="md header-md header-collapse-none hydrated"
@@ -104,7 +113,7 @@ const Header = () => {
             </div>
           </div>
           <div className="headerDesktop-content__account">
-            <div className="text not-auth">
+            <div onClick={()=> setShowLoginModal(true)} className="text not-auth">
               <div className="login-icon-desktop">
                 <img src="static/media/login.ff1fb28a.svg" alt="login" />
               </div>
@@ -165,6 +174,7 @@ const Header = () => {
         </div>
       </div>
     </header>
+  </>
   );
 };
 

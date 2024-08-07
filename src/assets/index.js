@@ -18,9 +18,11 @@ import gamblingCom from './images/gamblingCom.1cb194a5.svg'
 import corga2 from './images/corga2.985668f6.svg'
 import mga from './images/mga.d077581b.svg'
 import home from './images/detailedHomepage.056e77cb.svg'
+import whatsApp from './images/whatsup-icon1.0b2c9c60.svg'
+import google from './images/google-icon.42b2a0ea.svg'
 
 
 
 export default {
-    favorite,cricket,football,tennis,horseRacing,greyhound,cardGames,sportsBook,liveCasino,blastOff,slotGames,inPlay,gaming1,upi,bankTransfer,BeGamble,gamblingCom,corga2,mga,home
+    favorite,cricket,football,tennis,horseRacing,greyhound,cardGames,sportsBook,liveCasino,blastOff,slotGames,inPlay,gaming1,upi,bankTransfer,BeGamble,gamblingCom,corga2,mga,home,whatsApp,google
 }

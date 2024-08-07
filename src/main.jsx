@@ -5,14 +5,19 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/router.jsx";
 import ApiProvider from "./context/ApiProvider.jsx";
 import { Provider } from "react-redux";
-import { store } from "./redux/store.js";
+import { persistor, store } from "./redux/store.js";
+import { Toaster } from "react-hot-toast";
+import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ApiProvider>
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
       </Provider>
     </ApiProvider>
+    <Toaster />
   </React.StrictMode>
 );
