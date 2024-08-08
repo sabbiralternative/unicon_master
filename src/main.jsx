@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./routes/router.jsx";
+import MainRouter from "./routes/MainRouter.jsx";
 import ApiProvider from "./context/ApiProvider.jsx";
 import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store.js";
@@ -14,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ApiProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <RouterProvider router={router} />
+          <MainRouter />
         </PersistGate>
       </Provider>
     </ApiProvider>
