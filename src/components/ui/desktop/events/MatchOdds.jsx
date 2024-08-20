@@ -1,4 +1,4 @@
-import runnerStatus from "../../../../utils/runnerStatus";
+
 
 const MatchOdds = ({ match_odds }) => {
   return (
@@ -64,7 +64,7 @@ const MatchOdds = ({ match_odds }) => {
                                       ? "secondary"
                                       : ""
                                   } ${i === 1 ? "secondary" : ""} 
-                                   ${runnerStatus(runner)}`}
+                                  `}
                               >
                                 <span className="odd-button__inner odd-button__inner--centered ">
                                   <div className="odd-button__price">
@@ -86,9 +86,7 @@ const MatchOdds = ({ match_odds }) => {
                               key={i}
                               className={`odd-button lay-color   ${
                                 i === 1 ? "secondary" : ""
-                              } ${i === 2 ? "secondary" : ""}  ${runnerStatus(
-                                runner
-                              )} `}
+                              } ${i === 2 ? "secondary" : ""}   `}
                             >
                               <span className="odd-button__inner odd-button__inner--centered ">
                                 <div className="odd-button__price">

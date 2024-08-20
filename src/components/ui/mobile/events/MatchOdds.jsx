@@ -1,4 +1,4 @@
-import runnerStatus from "../../../../utils/runnerStatus";
+
 
 const MatchOdds = ({ match_odds }) => {
   return (
@@ -36,7 +36,7 @@ const MatchOdds = ({ match_odds }) => {
                         </div>
                       </div>
                       <span
-                        className={`odd-button back-color  ${runnerStatus(runner)}`}
+                        className={`odd-button back-color  `}
                       >
                         <span className="odd-button__inner odd-button__inner--centered">
                           <div className="odd-button__price">
@@ -48,7 +48,7 @@ const MatchOdds = ({ match_odds }) => {
                         </span>
                       </span>
                       <span
-                        className={`odd-button lay-color ${runnerStatus(runner)}`}
+                        className={`odd-button lay-color `}
                       >
                         <span className="odd-button__inner odd-button__inner--centered">
                           <div className="odd-button__price">

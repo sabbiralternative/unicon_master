@@ -1,4 +1,4 @@
-import runnerStatus from "../../../../utils/runnerStatus";
+
 
 const Fancy = ({ fancy }) => {
   return (
@@ -54,7 +54,7 @@ const Fancy = ({ fancy }) => {
                             return (
                               <span
                                 key={i}
-                                className={`odd-button lay-color  ${runnerStatus(games)}`}
+                                className={`odd-button lay-color  `}
                               >
                                 <span className="odd-button__inner odd-button__inner--centered ">
                                   <div className="odd-button__price">
@@ -74,7 +74,7 @@ const Fancy = ({ fancy }) => {
                             return (
                               <span
                                 key={i}
-                                className={`odd-button back-color  ${runnerStatus(games)}`}
+                                className={`odd-button back-color  `}
                               >
                                 <span className="odd-button__inner odd-button__inner--centered ">
                                   <div className="odd-button__price">

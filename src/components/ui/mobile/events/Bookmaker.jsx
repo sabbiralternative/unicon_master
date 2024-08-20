@@ -1,4 +1,4 @@
-import runnerStatus from "../../../../utils/runnerStatus";
+
 
 const Bookmaker = ({ bookmaker }) => {
   return (
@@ -30,9 +30,7 @@ const Bookmaker = ({ bookmaker }) => {
                         </div>
                       </div>
                       <span
-                        className={`odd-button back-color  ${
-                       runnerStatus(runner)
-                        }`}
+                        className={`odd-button back-color  `}
                       >
                         <span className="odd-button__inner odd-button__inner--centered">
                           <div className="odd-button__price">
@@ -45,9 +43,7 @@ const Bookmaker = ({ bookmaker }) => {
                         </span>
                       </span>
                       <span
-                        className={`odd-button lay-color ${
-                       runnerStatus(runner)
-                        }`}
+                        className={`odd-button lay-color `}
                       >
                         <span className="odd-button__inner odd-button__inner--centered">
                           <div className="odd-button__price">

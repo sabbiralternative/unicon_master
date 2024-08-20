@@ -16,8 +16,7 @@ const App = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  return <div>
-    {windowWidth > 1023 ? <DesktopLayout /> : <MobileLayout />}</div>;
+  return <div>{windowWidth > 1023 ? <MobileLayout /> : <MobileLayout />}</div>;
 };
 
 export default App;

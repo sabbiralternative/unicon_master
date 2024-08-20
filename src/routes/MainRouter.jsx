@@ -7,7 +7,7 @@ import { mobileRoutes } from "./mobileRoutes.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
-  const routes = windowWidth > 1024 ? desktopRoutes : mobileRoutes;
+  const routes = windowWidth > 1024 ? mobileRoutes : mobileRoutes;
 
   const router = createBrowserRouter([
     {

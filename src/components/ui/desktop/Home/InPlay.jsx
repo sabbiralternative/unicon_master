@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import runnerStatus from "../../../../utils/runnerStatus";
+
 
 const InPlay = ({ data }) => {
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ const InPlay = ({ data }) => {
                           <div className="inplay-item__back-inner inplay-item__back-inner-left">
                             {data[keys][0] && (
                               <>
-                                <span className={`odd-button back-color ${runnerStatus(data?.[keys])}`}>
+                                <span className={`odd-button back-color `}>
                                   <span className="odd-button__inner odd-button__inner--centered ">
                                     <div className="odd-button__price">
                                       {
@@ -85,7 +85,7 @@ const InPlay = ({ data }) => {
 
                             { data[keys][2] && (
                               <>
-                                <span className={`odd-button back-color ${runnerStatus(data?.[keys])}`}>
+                                <span className={`odd-button back-color `}>
                                   <span className="odd-button__inner odd-button__inner--centered ">
                                     <div className="odd-button__price">
                                       {
@@ -124,7 +124,7 @@ const InPlay = ({ data }) => {
 
                             { data[keys][1] && (
                               <>
-                                <span className={`odd-button back-color ${runnerStatus(data?.[keys])}`}>
+                                <span className={`odd-button back-color `}>
                                   <span className="odd-button__inner odd-button__inner--centered ">
                                     <div className="odd-button__price">
                                       {

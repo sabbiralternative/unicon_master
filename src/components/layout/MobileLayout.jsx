@@ -6,24 +6,10 @@ const MobileLayout = () => {
   const location = useLocation();
   return (
     <>
-      <div className="hideSesPopover md ion-page hydrated ">
-        <div
-          id="LeftSide"
-          mode="md"
-          className="rou222ter-outlet menu-content menu-content-push hydrated"
-        >
-          <div className="ion-page" style={{ zIndex: 101 }}>
-            <Header />
-            <div
-              className="default-page__content md hydrated"
-              style={{ "--offset-top": "0px", "--offset-bottom": "0px" }}
-            >
-              <Outlet />
-
-              {!location?.pathname?.includes("game-details") && <Footer />}
-            </div>
-          </div>
-        </div>
+      <div className="w-full flex flex-col app-bg h-[100dvh] overflow-x-hidden overflow-y-auto">
+        <Header />
+        <Outlet />
+        {!location?.pathname?.includes("game-details") && <Footer />}
       </div>
     </>
   );
