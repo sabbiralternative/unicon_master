@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Footer from "../shared/desktop/Footer/Footer";
-import Header from "../shared/mobile/Header/Header";
+import Footer from "../shared/Footer/Footer";
+import Header from "../shared/Header/Header";
 
 const MobileLayout = () => {
   // overflow-x-hidden overflow-y-auto

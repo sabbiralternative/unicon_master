@@ -8,7 +8,6 @@ const InPlay = ({ data }) => {
     navigate(`/game-details/${data[keys]?.eventTypeId}/${keys}`);
   };
 
-
   return (
     <>
       <div title="In Play" className="py-1 px-[6px] w-full">
@@ -77,7 +76,7 @@ const InPlay = ({ data }) => {
                   </svg>
                 </span>
                 <div className="text-text_Ternary md:text-[18px] text-base font-semibold leading-3 tracking-wide text-center">
-                 In Play
+                  In Play
                 </div>
               </div>
 
@@ -100,7 +99,10 @@ const InPlay = ({ data }) => {
                   .map((keys) => {
                     return (
                       <>
-                        <div   onClick={() => navigateGameList(keys)} className="col-span-6 h-12 lg:col-span-5 grid grid-cols-7 border-t border-borderColorOfMarket">
+                        <div
+                          onClick={() => navigateGameList(keys)}
+                          className="col-span-6 h-12 lg:col-span-5 grid grid-cols-7 border-t border-borderColorOfMarket"
+                        >
                           <span
                             id="inPlayTime"
                             className="flex text-selection-none items-center justify-center flex-col col-span-2 pl-[2px] pr-[2px] min-h-9 active:scale-[94%] transition-all ease-in-out duration-100"
@@ -159,7 +161,10 @@ const InPlay = ({ data }) => {
                         {isOddSuspended(data[keys]) ? (
                           <SuspendedOdd />
                         ) : (
-                          <span   onClick={() => navigateGameList(keys)} className="col-span-6 h-12 lg:col-span-7 w-full overflow-auto border-t border-borderColorOfMarket">
+                          <span
+                            onClick={() => navigateGameList(keys)}
+                            className="col-span-6 h-12 lg:col-span-7 w-full overflow-auto border-t border-borderColorOfMarket"
+                          >
                             <div
                               className="w-full overflow-x-auto flex h-full sm:px-[2px]"
                               id="hideScrollBar"
@@ -261,8 +266,8 @@ const InPlay = ({ data }) => {
                                         className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
                                       >
                                         {
-                                          data[keys]?.[0]?.ex
-                                            ?.availableToLay[0]?.price
+                                          data[keys]?.[0]?.ex?.availableToLay[0]
+                                            ?.price
                                         }
                                       </span>
                                       <span
@@ -270,10 +275,10 @@ const InPlay = ({ data }) => {
                                         className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-[10px] text-text_OddValue leading-3 text-center whitespace-normal font-normal"
                                       >
                                         <span className="w-max break-all truncate">
-                                        {
-                                          data[keys]?.[0]?.ex
-                                            ?.availableToLay[0]?.size
-                                        }
+                                          {
+                                            data[keys]?.[0]?.ex
+                                              ?.availableToLay[0]?.size
+                                          }
                                         </span>
                                       </span>
                                     </div>
@@ -286,9 +291,9 @@ const InPlay = ({ data }) => {
                                         id="oddBtnPrice"
                                         className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
                                       >
-                                      {
-                                          data[keys]?.[2]?.ex
-                                            ?.availableToLay[0]?.price
+                                        {
+                                          data[keys]?.[2]?.ex?.availableToLay[0]
+                                            ?.price
                                         }
                                       </span>
                                       <span
@@ -296,10 +301,10 @@ const InPlay = ({ data }) => {
                                         className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-[10px] text-text_OddValue leading-3 text-center whitespace-normal font-normal"
                                       >
                                         <span className="w-max break-all truncate">
-                                        {
-                                          data[keys]?.[2]?.ex
-                                            ?.availableToLay[0]?.size
-                                        }
+                                          {
+                                            data[keys]?.[2]?.ex
+                                              ?.availableToLay[0]?.size
+                                          }
                                         </span>
                                       </span>
                                     </div>
@@ -312,9 +317,9 @@ const InPlay = ({ data }) => {
                                         id="oddBtnPrice"
                                         className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
                                       >
-                                      {
-                                          data[keys]?.[1]?.ex
-                                            ?.availableToLay[0]?.price
+                                        {
+                                          data[keys]?.[1]?.ex?.availableToLay[0]
+                                            ?.price
                                         }
                                       </span>
                                       <span
@@ -322,10 +327,10 @@ const InPlay = ({ data }) => {
                                         className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-[10px] text-text_OddValue leading-3 text-center whitespace-normal font-normal"
                                       >
                                         <span className="w-max break-all truncate">
-                                        {
-                                          data[keys]?.[1]?.ex
-                                            ?.availableToLay[0]?.size
-                                        }
+                                          {
+                                            data[keys]?.[1]?.ex
+                                              ?.availableToLay[0]?.size
+                                          }
                                         </span>
                                       </span>
                                     </div>

@@ -83,9 +83,11 @@ const MatchOdds = ({ match_odds }) => {
                       </span>
                       <span className="hidden md:block text-center min-h-12">
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
-                          <div className={`${isPriceAvailable(
+                          <div
+                            className={`${isPriceAvailable(
                               runner?.back?.[1]?.price
-                            )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}>
+                            )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
+                          >
                             <span
                               id="oddBtnPrice"
                               className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
@@ -105,9 +107,11 @@ const MatchOdds = ({ match_odds }) => {
                       </span>
                       <span className="text-center min-h-12">
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
-                          <div className={`${isPriceAvailable(
+                          <div
+                            className={`${isPriceAvailable(
                               runner?.back?.[0]?.price
-                            )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}>
+                            )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
+                          >
                             <span
                               id="oddBtnPrice"
                               className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
@@ -127,9 +131,11 @@ const MatchOdds = ({ match_odds }) => {
                       </span>
                       <span className="text-center min-h-12">
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
-                          <div className={`${isPriceAvailable(
+                          <div
+                            className={`${isPriceAvailable(
                               runner?.lay?.[0]?.price
-                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}>
+                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
+                          >
                             <span
                               id="oddBtnPrice"
                               className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
@@ -149,9 +155,11 @@ const MatchOdds = ({ match_odds }) => {
                       </span>
                       <span className="hidden md:block text-center min-h-12">
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
-                          <div className={`${isPriceAvailable(
+                          <div
+                            className={`${isPriceAvailable(
                               runner?.lay?.[1]?.price
-                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}>
+                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
+                          >
                             <span
                               id="oddBtnPrice"
                               className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
@@ -171,9 +179,11 @@ const MatchOdds = ({ match_odds }) => {
                       </span>
                       <span className="hidden md:block text-center min-h-12">
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
-                          <div className={`${isPriceAvailable(
+                          <div
+                            className={`${isPriceAvailable(
                               runner?.lay?.[2]?.price
-                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}>
+                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
+                          >
                             <span
                               id="oddBtnPrice"
                               className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"

@@ -1,16 +1,19 @@
-
 import { useSelector } from "react-redux";
 import { useGetAllGroupEventsQuery } from "../../../redux/features/events/events";
-import isRefetchGroupData from "../../../function/home/isRefetchGroupData";
-import Sidebar from "../../../components/shared/desktop/Sidebar/Sidebar";
+
+import RightDeskSidebar from "../../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import Banner from "../../../components/ui/desktop/Home/Banner";
+import Originals from "../../../components/ui/desktop/Home/Originals";
 import InPlay from "../../../components/ui/desktop/Home/InPlay";
+import Casino from "../../../components/ui/desktop/Home/Casino";
 import IndianCardGames from "../../../components/ui/desktop/Home/IndianCardGames";
 import PopularGames from "../../../components/ui/desktop/Home/PopularGames";
-import Casino from "../../../components/ui/desktop/Home/Casino";
 import UpcomingEvents from "../../../components/ui/desktop/Home/UpcomingEvents";
-import Group from "../../../components/ui/desktop/Home/Group";
-import BetSlip from "../../../components/ui/desktop/Home/BetSlip";
+import FAQ from "../../../components/ui/desktop/Home/FAQ";
+import WhatsApp from "../../../components/ui/desktop/Home/WhatsApp";
+import WithdrawAndDepositButton from "../../../components/ui/desktop/Home/WithdrawAndDepositButton";
+import LeftDeskSidebar from "../../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
+import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 
 const Home = () => {
   const { group } = useSelector((state) => state.state);
@@ -19,42 +22,34 @@ const Home = () => {
   });
 
   return (
-    <div>
-      <div className="main_container ">
-        <Sidebar />
-        <div className="main_container-center   11111 ">
-          <div style={{ height: "100%" }}>
-            {group === 0 ? (
-              <div className="default-page__content">
-                <Banner />
-                <div
-                  className="inplay-content md item-group-md item hydrated"
-                  role="group"
-                >
-                  {data && <InPlay data={data} />}
-
-                  <IndianCardGames />
-                  <PopularGames />
-                  <Casino />
-                </div>
-                <UpcomingEvents />
-              </div>
-            ) : (
-              <div className="default-page__content">
-                <div
-                  className="inplay-content md item-group-md item hydrated"
-                  role="group"
-                >
-                  {data && <Group data={data} />}
-                  <Banner />
-                </div>
-              </div>
-            )}
+    <>
+      <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
+        <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
+          <LeftDeskSidebar />
+          <div
+            className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
+            style={{ minHeight: "calc(-54px + 100dvh)" }}
+          >
+            <WhatsApp />
+            <div
+              id="home"
+              className="py-1 flex flex-col items-start justify-start"
+            >
+              <Banner />
+              <Originals />
+              <WithdrawAndDepositButton />
+              {data && <InPlay data={data} />}
+              <Casino />
+              <IndianCardGames />
+              <PopularGames />
+              <UpcomingEvents />
+            </div>
+            <FAQ />
           </div>
+          <RightDeskSidebar />
         </div>
-        <BetSlip />
       </div>
-    </div>
+    </>
   );
 };
 

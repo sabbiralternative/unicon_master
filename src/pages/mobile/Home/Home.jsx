@@ -5,10 +5,11 @@ import IndianCardGames from "../../../components/ui/mobile/home/IndianCardGames"
 import InPlay from "../../../components/ui/mobile/home/InPlay";
 import PopularGames from "../../../components/ui/mobile/home/PopularGames";
 import UpcomingEvents from "../../../components/ui/mobile/home/UpcomingEvents";
-import isRefetchGroupData from "../../../function/home/isRefetchGroupData";
+
 import { useGetAllGroupEventsQuery } from "../../../redux/features/events/events";
 import FAQForOnlineCricketBetting from "../../../components/ui/mobile/home/FAQForOnlineCricketBetting";
 import WithdrawDepositButton from "../../../components/ui/mobile/home/WithdrawDepositButton";
+import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 
 const Home = () => {
   const { group } = useSelector((state) => state.state);

@@ -1,7 +1,10 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setGroupType } from "../../../redux/features/stateSlice";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <div
       id="header"
@@ -41,7 +44,10 @@ cursor-pointer
                   </button>
                 </div>
                 <div
-                  onClick={() => navigate("/")}
+                  onClick={() => {
+                    navigate("/");
+                    dispatch(setGroupType(0));
+                  }}
                   className=" ml-[2px] md:ml-[0px]  flex items-center"
                 >
                   <div className="   cursor-pointer">
@@ -399,16 +405,34 @@ cursor-pointer
                 <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
                   <span className="font font-lato text-[12px]">SportsBook</span>
                 </button>
-                <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
+                <button
+                  onClick={() => {
+                    navigate("/");
+                    dispatch(setGroupType(4));
+                  }}
+                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                >
                   <span className="font font-lato text-[12px]">Cricket</span>
                 </button>
-                <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
+                <button
+                  onClick={() => {
+                    navigate("/");
+                    dispatch(setGroupType(1));
+                  }}
+                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                >
                   <span className="font font-lato text-[12px]">Football</span>
                 </button>
                 <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
                   <span className="font font-lato text-[12px]">Election</span>
                 </button>
-                <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
+                <button
+                  onClick={() => {
+                    navigate("/");
+                    dispatch(setGroupType(2));
+                  }}
+                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                >
                   <span className="font font-lato text-[12px]">Tennis</span>
                 </button>
                 <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">

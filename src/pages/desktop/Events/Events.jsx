@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { settings } from "../../../api";
-import Sidebar from "../../../components/shared/desktop/Sidebar/Sidebar";
+import LeftDeskSidebar from "../../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
 import Bookmaker from "../../../components/ui/desktop/events/Bookmaker";
 import Fancy from "../../../components/ui/desktop/events/Fancy";
 import MatchOdds from "../../../components/ui/desktop/events/MatchOdds";
-import BetSlip from "../../../components/ui/desktop/Home/BetSlip";
 import { useGetAllOddsEventsQuery } from "../../../redux/features/events/events";
-
+import RightDeskSidebar from "../../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
+import EventHeader from "../../../components/ui/desktop/events/EventHeader";
 
 const Events = () => {
   const { eventTypeId, eventId } = useParams();
@@ -17,10 +17,10 @@ const Events = () => {
   };
   const [match_odds, setMatch_odds] = useState([]);
   const [bookmaker, setBookmaker] = useState([]);
-  const [bookmaker2, setBookmaker2] = useState([]);
+  // const [bookmaker2, setBookmaker2] = useState([]);
   const [fancy, setFancy] = useState([]);
-  const [fancy1, setFancy1] = useState([]);
-  const [overByOver, setOverByOver] = useState([]);
+  // const [fancy1, setFancy1] = useState([]);
+  // const [overByOver, setOverByOver] = useState([]);
   const { data } = useGetAllOddsEventsQuery(payload, {
     pollingInterval: settings.interval,
   });
@@ -41,89 +41,113 @@ const Events = () => {
       );
       setBookmaker(bookmarkerFilter);
 
-      const filterBookmarker2 = events?.filter(
-        (bookmarker2) => bookmarker2.btype === "BOOKMAKER2"
-      );
-      setBookmaker2(filterBookmarker2);
+      // const filterBookmarker2 = events?.filter(
+      //   (bookmarker2) => bookmarker2.btype === "BOOKMAKER2"
+      // );
+      // setBookmaker2(filterBookmarker2);
 
       const normalFilter = events?.filter(
         (normal) => normal.btype === "FANCY" && normal.tabGroupName === "Normal"
       );
       setFancy(normalFilter);
 
-      const fancy1Filter = events?.filter(
-        (fancy1) => fancy1.btype === "ODDS" && fancy1.tabGroupName === "Fancy1"
-      );
-      setFancy1(fancy1Filter);
+      // const fancy1Filter = events?.filter(
+      //   (fancy1) => fancy1.btype === "ODDS" && fancy1.tabGroupName === "Fancy1"
+      // );
+      // setFancy1(fancy1Filter);
 
-      const overByOverFilter = events?.filter(
-        (overByOver) =>
-          overByOver.btype === "FANCY" &&
-          overByOver.tabGroupName === "Over By Over"
-      );
-      setOverByOver(overByOverFilter);
+      // const overByOverFilter = events?.filter(
+      //   (overByOver) =>
+      //     overByOver.btype === "FANCY" &&
+      //     overByOver.tabGroupName === "Over By Over"
+      // );
+      // setOverByOver(overByOverFilter);
     }
   }, [data]);
 
   return (
-    <div className="main_container ">
-      <Sidebar />
-      <div className="main_container-center   11111 ">
-        <div className="EventPage">
-          <div
-            className="favourites-header   "
-            style={{ marginBottom: "15px" }}
-          >
-            <div className="favourites-header__inner-wrapper">
-              <h1 style={{ marginLeft: "12px" }}>
-                {data?.result?.length > 0 && data?.result?.[0]?.eventName}
-              </h1>
-              <div className="sportsPage-headerBet">
-                <span>
-                  {" "}
-                  {data?.result?.length > 0 && data?.result?.[0]?.openDate}{" "}
-                </span>
-              </div>
-            </div>
-          </div>
+    <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
+      <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
+        <LeftDeskSidebar />
+        <div
+          className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
+          style={{ minHeight: "calc(-54px + 100dvh)" }}
+        >
+          <div className="no-scrollbar min-h-[calc(100dvh-56px)] md:mb-3">
+            <EventHeader data={data} />
 
-          <div className="SportEvent">
-            <div className="favourites-header__rules-button-wrapper">
-              <div className="favourites-header__rules-button">
-                <div className="favourites-header__rules-button-icon">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7 0C3.1402 0 0 3.14024 0 7.00004C0 10.8598 3.1402 14 7 14C10.8598 14 14 10.8598 14 7.00004C14 3.14024 10.8598 0 7 0ZM7 12.7273C3.84194 12.7273 1.27273 10.1581 1.27273 7.00004C1.27273 3.84202 3.84194 1.27273 7 1.27273C10.1581 1.27273 12.7273 3.84202 12.7273 7.00004C12.7273 10.1581 10.158 12.7273 7 12.7273Z"
-                      fill="black"
-                    ></path>
-                    <path
-                      d="M7.00017 2.96875C6.5324 2.96875 6.15186 3.34955 6.15186 3.81762C6.15186 4.28526 6.5324 4.66572 7.00017 4.66572C7.46794 4.66572 7.84849 4.28526 7.84849 3.81762C7.84849 3.34955 7.46794 2.96875 7.00017 2.96875Z"
-                      fill="black"
-                    ></path>
-                    <path
-                      d="M7.00013 5.93945C6.64869 5.93945 6.36377 6.22437 6.36377 6.57582V10.394C6.36377 10.7454 6.64869 11.0304 7.00013 11.0304C7.35158 11.0304 7.6365 10.7454 7.6365 10.394V6.57582C7.6365 6.22437 7.35158 5.93945 7.00013 5.93945Z"
-                      fill="black"
-                    ></path>
-                  </svg>
+            {/* <div title="Open Bets" className="hidden">
+              <div className="flex items-start justify-start flex-col w-full px-2 py-1">
+                <div
+                  id="unmatched_0"
+                  className="w-full flex items-center justify-between bg-bg_Secondary transition-all ease-in-out my-1 py-1 rounded-[6px] origin-center active:opacity-95"
+                >
+                  <div className="head pl-2">
+                    <span className="text-text_Quaternary font-lato-bold">
+                      Unmatched Bets
+                    </span>
+                  </div>
+                  <div className="cursor-pointer mr-2 transform transition-transform ease-in-out flex items-center justify-center w-max origin-center active:scale-90 active:opacity-85">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      transform="rotate(180)"
+                      viewBox="0 0 512 512"
+                      height="16"
+                      width="16"
+                      fill="var(--color-quaternary)"
+                    >
+                      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+                    </svg>
+                  </div>
                 </div>
-                <span className="favourites-header__rules-button-text">
-                  Rules
-                </span>
+                <div className="BetSections w-full origin-top scaleVerticalOpen">
+                  <div className="w-full text-start font-lato font-medium text-sm bg-bg_Quaternary rounded-md mb-1 px-4 py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); text-text_Ternary">
+                    You have no Unmatched Bets.
+                  </div>
+                </div>
+                <div
+                  id="matched_1"
+                  className="w-full flex items-center justify-between bg-bg_Secondary transition-all ease-in-out my-1 py-1 rounded-[6px] origin-center active:opacity-95"
+                >
+                  <div className="head pl-2">
+                    <span className="text-text_Quaternary font-lato-bold">
+                      Matched Bets
+                    </span>
+                  </div>
+                  <div className="cursor-pointer mr-2 transform transition-transform ease-in-out flex items-center justify-center w-max origin-center active:scale-90 active:opacity-85">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      transform="rotate(180)"
+                      viewBox="0 0 512 512"
+                      height="16"
+                      width="16"
+                      fill="var(--color-quaternary)"
+                    >
+                      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div className="BetSections w-full origin-top scaleVerticalOpen">
+                  <div className="w-full text-start font-lato font-medium text-sm bg-bg_Quaternary rounded-md mb-1 px-4 py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); text-text_Ternary">
+                    You have no Matched Bets.
+                  </div>
+                </div>
+              </div>
+            </div> */}
+            <div className="w-full text-selection-none pb-3 lg:pb-0">
+              <div className="px-2 font-helvetica-neue">
+                {match_odds?.length > 0 && (
+                  <MatchOdds match_odds={match_odds} />
+                )}
+                {bookmaker?.length > 0 && <Bookmaker bookmaker={bookmaker} />}
+
+                {fancy?.length > 0 && <Fancy fancy={fancy} />}
               </div>
             </div>
-            {match_odds?.length > 0 && <MatchOdds match_odds={match_odds} />}
-            {bookmaker?.length > 0 && <Bookmaker bookmaker={bookmaker} />}
-            {fancy?.length > 0 && <Fancy fancy={fancy} />}
           </div>
         </div>
+        <RightDeskSidebar />
       </div>
-      <BetSlip />
     </div>
   );
 };

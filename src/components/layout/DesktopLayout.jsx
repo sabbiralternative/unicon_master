@@ -1,11 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Header from "../shared/desktop/Header/Header";
-import Footer from "../shared/desktop/Footer/Footer";
-
+import Header from "../shared/Header/Header";
+import Footer from "../shared/Footer/Footer";
 
 const MainLayout = () => {
   return (
-    <div className="hideSesPopover md ion-page hydrated">
+    <div className="w-full flex flex-col app-bg h-[100dvh] ">
       <Header />
       <Outlet />
       <Footer />
