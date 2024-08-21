@@ -3,7 +3,7 @@ import App from "../App.jsx";
 import useWindowWidth from "../hooks/useWindowWidth.jsx";
 import { desktopRoutes } from "./desktopRoutes.jsx";
 import { mobileRoutes } from "./mobileRoutes.jsx";
-
+import ScrollToTop from "../components/shared/ScrollToTop.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -12,7 +12,12 @@ const MainRouter = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <App />,
+      element: (
+        <>
+          <ScrollToTop />
+          <App />
+        </>
+      ),
       children: routes,
     },
   ]);

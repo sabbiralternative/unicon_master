@@ -22,9 +22,7 @@ const Events = () => {
   const { data } = useGetAllOddsEventsQuery(payload, {
     pollingInterval: settings.interval,
   });
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top when component mounts
-  }, []);
+
   /* Filtered all the game  */
   useEffect(() => {
     if (data?.result) {

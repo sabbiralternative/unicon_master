@@ -22,7 +22,6 @@ const Header = () => {
               >
                 <div className=" flex items-center w-[40px] md:w-fit justify-center  lg:hidden ">
                   <button
-                    onClick={() => navigate("/")}
                     className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-none border-none h-full flex items-center justify-center active:scale-150  w-[100%] shadow-none px-1  
 cursor-pointer
 "
@@ -41,7 +40,10 @@ cursor-pointer
                     </span>
                   </button>
                 </div>
-                <div className=" ml-[2px] md:ml-[0px]  flex items-center">
+                <div
+                  onClick={() => navigate("/")}
+                  className=" ml-[2px] md:ml-[0px]  flex items-center"
+                >
                   <div className="   cursor-pointer">
                     <svg
                       width="3778"
