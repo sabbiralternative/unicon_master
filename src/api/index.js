@@ -49,4 +49,7 @@ export const settings = {
   disabledDevtool: "",
   casinoCurrency: "",
   interval: "",
+  logoFormat:"",
+  logoHeight:"",
+  logoWidth:""
 };

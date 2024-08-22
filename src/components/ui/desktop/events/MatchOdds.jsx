@@ -1,4 +1,6 @@
+import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
+import SuspendedOdd from "../../mobile/home/SuspendedOdd";
 
 const MatchOdds = ({ match_odds }) => {
   return (
@@ -28,6 +30,7 @@ const MatchOdds = ({ match_odds }) => {
             </div>
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
               {games?.runners?.map((runner, idx) => {
+                console.log(runner);
                 return (
                   <div
                     key={runner?.id}
@@ -49,7 +52,8 @@ const MatchOdds = ({ match_odds }) => {
                         <span className="text-[12px] font-bold text-text_Success"></span>
                       </div>
                     </div>
-                    <div className="col-span-5 md:col-span-7 h-12 grid grid-cols-2 md:grid-cols-6 relative">
+                    {
+                      isOddSuspended(runner) ? <SuspendedOdd /> :     <div className="col-span-5 md:col-span-7 h-12 grid grid-cols-2 md:grid-cols-6 relative">
                       <span className="hidden md:block text-center min-h-12">
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                           <div
@@ -195,6 +199,8 @@ const MatchOdds = ({ match_odds }) => {
                         </span>
                       </span>
                     </div>
+                    }
+               
                     <div className="col-span-12 h-max"></div>
                   </div>
                 );

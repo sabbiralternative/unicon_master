@@ -56,6 +56,9 @@ export const getSetApis = (setNoticeLoaded) => {
         settings.disabledDevtool = setting?.disabledDevtool;
         settings.casinoCurrency = setting?.casinoCurrency;
         settings.interval = setting?.interval;
+        settings.logoFormat = setting?.logo?.format;
+        settings.logoHeight = setting?.logo?.height;
+        settings.logoWidth = setting?.logo?.width;
         setNoticeLoaded(true);
       }
     })

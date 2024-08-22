@@ -16,7 +16,12 @@
       "withdraw": true,
       "disabledDevtool": false,
       "casinoCurrency": "AED",
-      "balanceApiLoop": false
+      "balanceApiLoop": false,
+      "logo": {
+        "height": 55,
+        "width": 125,
+        "format": "png"
+      }
     },
 
     "endpoint": {

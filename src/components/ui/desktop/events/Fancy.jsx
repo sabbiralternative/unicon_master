@@ -1,3 +1,4 @@
+import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 
 const Fancy = ({ fancy }) => {
@@ -197,56 +198,67 @@ const Fancy = ({ fancy }) => {
                   </span>
                 </div>
                 <div className="col-span-5 md:col-span-6 h-12 grid grid-cols-2 md:grid-cols-6 relative">
-                  <span className="text-center min-h-12 cols-span-1 md:col-span-2">
-                    <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
-                      <div
-                        className={`${isPriceAvailable(
-                          games?.runners?.[0]?.back?.[0]?.line
-                        )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
-                      >
-                        <span
-                          id="oddBtnPrice"
-                          className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
-                        >
-                          {games?.runners?.[0]?.back?.[0]?.line || "-"}
-                        </span>
-                        <span
-                          id="oddBtnSize"
-                          className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-[10px] text-text_OddValue leading-3 text-center whitespace-normal font-normal"
-                        >
-                          <span className="w-max break-all truncate">
-                            {" "}
-                            {games?.runners?.[0]?.back?.[0]?.price}
-                          </span>
-                        </span>
-                      </div>
+                  {isOddSuspended(games?.runners?.[0]) ? (
+                    <span className="col-span-4 text-center min-h-12 py-[1px] px-[1px]">
+                      <span className="text-center bg-bg_ballRunning cursor-not-allowed w-full h-full rounded-sm flex text-xs flex-col items-center justify-center">
+                        Suspended
+                      </span>
                     </span>
-                  </span>
-                  <span className="text-center min-h-12 cols-span-1 md:col-span-2">
-                    <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
-                      <div
-                        className={`${isPriceAvailable(
-                          games?.runners?.[0]?.lay?.[0]?.line
-                        )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
-                      >
-                        <span
-                          id="oddBtnPrice"
-                          className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
-                        >
-                          {games?.runners?.[0]?.lay?.[0]?.line}
+                  ) : (
+                    <>
+                      <span className="text-center min-h-12 cols-span-1 md:col-span-2">
+                        <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
+                          <div
+                            className={`${isPriceAvailable(
+                              games?.runners?.[0]?.back?.[0]?.line
+                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
+                          >
+                            <span
+                              id="oddBtnPrice"
+                              className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
+                            >
+                              {games?.runners?.[0]?.back?.[0]?.line || "-"}
+                            </span>
+                            <span
+                              id="oddBtnSize"
+                              className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-[10px] text-text_OddValue leading-3 text-center whitespace-normal font-normal"
+                            >
+                              <span className="w-max break-all truncate">
+                                {" "}
+                                {games?.runners?.[0]?.back?.[0]?.price}
+                              </span>
+                            </span>
+                          </div>
                         </span>
-                        <span
-                          id="oddBtnSize"
-                          className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-[10px] text-text_OddValue leading-3 text-center whitespace-normal font-normal"
-                        >
-                          <span className="w-max break-all truncate">
-                            {" "}
-                            {games?.runners?.[0]?.lay?.[0]?.price}
-                          </span>
+                      </span>
+                      <span className="text-center min-h-12 cols-span-1 md:col-span-2">
+                        <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
+                          <div
+                            className={`${isPriceAvailable(
+                              games?.runners?.[0]?.lay?.[0]?.line
+                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
+                          >
+                            <span
+                              id="oddBtnPrice"
+                              className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
+                            >
+                              {games?.runners?.[0]?.lay?.[0]?.line}
+                            </span>
+                            <span
+                              id="oddBtnSize"
+                              className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-[10px] text-text_OddValue leading-3 text-center whitespace-normal font-normal"
+                            >
+                              <span className="w-max break-all truncate">
+                                {" "}
+                                {games?.runners?.[0]?.lay?.[0]?.price}
+                              </span>
+                            </span>
+                          </div>
                         </span>
-                      </div>
-                    </span>
-                  </span>
+                      </span>
+                    </>
+                  )}
+
                   <span className="hidden md:block col-span-2 text-center min-h-12">
                     <div className="flex flex-col gap-y-1 items-center h-full w-full justify-center px-1">
                       <div className="flex items-center justify-center">
@@ -268,7 +280,6 @@ const Fancy = ({ fancy }) => {
                     </div>
                   </span>
                 </div>
-                <div className="col-span-12 h-max"></div>
               </div>
             </div>
           </div>

@@ -1,4 +1,6 @@
+import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
+import SuspendedOdd from "../home/SuspendedOdd";
 
 const Bookmaker = ({ bookmaker }) => {
   return (
@@ -56,7 +58,7 @@ const Bookmaker = ({ bookmaker }) => {
                         <span className="text-[12px] font-bold text-text_Success"></span>
                       </div>
                     </div>
-                    <div className="col-span-5 md:col-span-7 h-12 grid grid-cols-2 md:grid-cols-6 relative">
+                    {isOddSuspended(runner) ? <SuspendedOdd colSpan={5}/>:    <div className="col-span-5 md:col-span-7 h-12 grid grid-cols-2 md:grid-cols-6 relative">
                       <span className="hidden md:block text-center min-h-12">
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                           <div
@@ -201,7 +203,8 @@ const Bookmaker = ({ bookmaker }) => {
                           </div>
                         </span>
                       </span>
-                    </div>
+                    </div>}
+                
                     <div className="col-span-12 h-max"></div>
                   </div>
                 );

@@ -159,7 +159,7 @@ const InPlay = ({ data }) => {
                           </span>
                         </div>
                         {isOddSuspended(data[keys]) ? (
-                          <SuspendedOdd />
+                          <SuspendedOdd  colSpan={6}/>
                         ) : (
                           <span
                             onClick={() => navigateGameList(keys)}

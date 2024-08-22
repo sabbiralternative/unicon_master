@@ -101,6 +101,7 @@ const InPlay = ({ data }) => {
                 Object.keys(data)
                   .sort((keyA, keyB) => data[keyA].sort - data[keyB].sort)
                   .map((keys) => {
+                    console.log(data[keys]);
                     return (
                       <>
                         <div
@@ -163,7 +164,7 @@ const InPlay = ({ data }) => {
                           </span>
                         </div>
                         {isOddSuspended(data[keys]) ? (
-                          <SuspendedOdd />
+                          <SuspendedOdd colSpan={6} />
                         ) : (
                           <span
                             onClick={() => navigateGameList(keys)}

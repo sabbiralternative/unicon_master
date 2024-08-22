@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   group: 0,
+  siteLogo: "",
 };
 
 const stateSlice = createSlice({
@@ -11,9 +12,12 @@ const stateSlice = createSlice({
     setGroupType: (state, action) => {
       state.group = action.payload;
     },
+    setSiteLogo: (state, action) => {
+      state.siteLogo = action.payload;
+    },
   },
 });
 
-export const { setGroupType } = stateSlice.actions;
+export const { setGroupType,setSiteLogo } = stateSlice.actions;
 
 export default stateSlice.reducer;

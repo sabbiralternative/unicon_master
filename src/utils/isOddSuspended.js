@@ -1,8 +1,9 @@
 const isOddSuspended = (runner) => {
-  if (runner?.status !== "OPEN" || runner?.status !== "ACTIVE") {
-    return false;
+  console.log(runner.status);
+  if (runner?.status !== "OPEN" && runner?.status !== "ACTIVE") {
+    return true;
   }else{
-    return true
+    return false
   }
 };
 
