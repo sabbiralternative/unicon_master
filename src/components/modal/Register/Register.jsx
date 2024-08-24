@@ -77,9 +77,10 @@ const Register = () => {
     const result = await handleRegister(encryptedData).unwrap();
     if (result.success) {
       const token = result?.result?.token;
+      const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
       const game = result?.result?.buttonValue?.game;
-      dispatch(setUser({ user, token }));
+      dispatch(setUser({ user, token, bonusToken }));
       localStorage.setItem("buttonValue", JSON.stringify(game));
       if (token && user) {
         dispatch(setShowRegisterModal(false));

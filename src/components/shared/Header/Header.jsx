@@ -1,11 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setGroupType } from "../../../redux/features/stateSlice";
+import {
+  setGroupType,
+  setShowLeftSidebar,
+} from "../../../redux/features/stateSlice";
 import useContextState from "../../../hooks/useContextState";
 import LoggedIn from "./LoggedIn";
 import UnAuthorized from "./UnAuthorized";
 import { userToken } from "../../../redux/features/auth/authSlice";
 import useBalance from "../../../hooks/useBalance";
+import LeftDeskSidebar from "../mobile/LeftDeskSidebar/LeftDeskSidebar";
+import RightDeskSidebar from "../mobile/RightDeskSidebar/RightDeskSidebar";
 
 const Header = () => {
   const { balance } = useBalance();
@@ -32,7 +37,10 @@ const Header = () => {
                 id="logoContainer"
                 className="logo flex   w-full h-full md:w-fit "
               >
-                <div className=" flex items-center w-[40px] md:w-fit justify-center  lg:hidden ">
+                <div
+                  onClick={() => dispatch(setShowLeftSidebar(true))}
+                  className=" flex items-center w-[40px] md:w-fit justify-center  lg:hidden "
+                >
                   <button
                     className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-none border-none h-full flex items-center justify-center active:scale-150  w-[100%] shadow-none px-1  
 cursor-pointer
@@ -229,6 +237,9 @@ cursor-pointer
               </div>
             </div>
           </div>
+
+          <LeftDeskSidebar />
+          <RightDeskSidebar />
         </div>
       </header>
     </div>

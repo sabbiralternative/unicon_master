@@ -4,6 +4,9 @@ const initialState = {
   group: 0,
   showLoginModal: false,
   showRegisterModal: false,
+  showLeftSidebar: false,
+  showRightSidebar: false,
+  showForgetModal: false,
 };
 
 const stateSlice = createSlice({
@@ -24,6 +27,15 @@ const stateSlice = createSlice({
       state.showLoginModal = action.payload;
       state.showRegisterModal = false;
     },
+    setShowLeftSidebar: (state, action) => {
+      state.showLeftSidebar = action.payload;
+    },
+    setShowRightSidebar: (state, action) => {
+      state.showRightSidebar = action.payload;
+    },
+    setShowForgetModal: (state, action) => {
+      state.showForgetModal = action.payload;
+    },
   },
 });
 
@@ -32,6 +44,9 @@ export const {
   setSiteLogo,
   setShowLoginModal,
   setShowRegisterModal,
+  setShowLeftSidebar,
+  setShowRightSidebar,
+  setShowForgetModal
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

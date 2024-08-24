@@ -34,6 +34,7 @@ export const API = {
   slotsWolf: "",
   withdrawIframe: "",
   assets: "",
+  forgotPassword:""
 };
 
 export const settings = {

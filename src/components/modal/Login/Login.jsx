@@ -11,6 +11,7 @@ import { setUser } from "../../../redux/features/auth/authSlice";
 import useContextState from "../../../hooks/useContextState";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import {
+  setShowForgetModal,
   setShowLoginModal,
   setShowRegisterModal,
 } from "../../../redux/features/stateSlice";
@@ -42,12 +43,13 @@ const Login = () => {
     };
     const encryptedData = handleEncryptData(loginData);
     const result = await handleLogin(encryptedData).unwrap();
-    console.log(result);
+
     if (result.success) {
       const token = result?.result?.token;
+      const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
       const game = result?.result?.buttonValue?.game;
-      dispatch(setUser({ user, token }));
+      dispatch(setUser({ user, token, bonusToken }));
       localStorage.setItem("buttonValue", JSON.stringify(game));
       if (token && user) {
         dispatch(setShowLoginModal(false));
@@ -192,6 +194,10 @@ const Login = () => {
                   </div>
                 </div>
                 <div
+                  onClick={() => {
+                    dispatch(setShowLoginModal(false));
+                    dispatch(setShowForgetModal(true));
+                  }}
                   title="forgotPassword"
                   className="w-full text-start text-xs cursor-pointer underline text-text_Primary font-lato md:text-xs lg:text-sm"
                 >

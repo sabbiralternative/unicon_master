@@ -40,6 +40,7 @@ export const getSetApis = (setNoticeLoaded) => {
         API.liveCasinoWolf = endPoints?.liveCasinoWolf;
         API.exposure = endPoints?.exposure;
         API.odds = endPoints?.odds;
+        API.forgotPassword = endPoints?.forgotPassword;
         API.virtualCasino = endPoints?.virtualCasino;
         API.slotsWolf = endPoints?.slotsWolf;
         API.withdrawIframe = endPoints?.withdrawIframe;

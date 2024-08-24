@@ -5,9 +5,10 @@ import {
   setShowLoginModal,
   setShowRegisterModal,
 } from "../../../redux/features/stateSlice";
+import ForgetPassword from "../../modal/ForgetPassword/ForgetPassword";
 
 const UnAuthorized = () => {
-  const { showLoginModal, showRegisterModal } = useSelector(
+  const { showLoginModal, showRegisterModal, showForgetModal } = useSelector(
     (state) => state.state
   );
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const UnAuthorized = () => {
     <>
       {showLoginModal && <Login />}
       {showRegisterModal && <Register />}
+      {showForgetModal && <ForgetPassword />}
       <div className="w-max flex items-center justify-center">
         <div
           id="mobileSearchIcon"

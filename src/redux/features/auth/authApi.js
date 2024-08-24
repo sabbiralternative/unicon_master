@@ -30,8 +30,21 @@ export const authApi = baseApi.injectEndpoints({
         };
       },
     }),
+    forgotPassword: builder.mutation({
+      query: (payload) => {
+        return {
+          url: `${API.forgotPassword}`,
+          method: "POST",
+          body: payload,
+        };
+      },
+    }),
   }),
 });
 
-export const { useLoginMutation, useGetOtpMutation, useRegisterMutation } =
-  authApi;
+export const {
+  useLoginMutation,
+  useGetOtpMutation,
+  useRegisterMutation,
+  useForgotPasswordMutation,
+} = authApi;

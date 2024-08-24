@@ -81,7 +81,8 @@
       "myMarket": "https://api7.live/api/exchange/diamond/myMarket",
       "liveCasinoWolf": "https://api7.live/api/exchange/diamond/liveCasinoWolf",
       "slotsWolf": "https://api7.live/api/exchange/diamond/slotsWolf",
-      "latestEvents": "https://api7.live/api/exchange/diamond/latestEvents"
+      "latestEvents": "https://api7.live/api/exchange/diamond/latestEvents",
+      "forgotPassword": "https://api7.live/api/exchange/diamond/forgotPassword"
     }
   },
   "success": true

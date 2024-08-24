@@ -101,7 +101,7 @@ const InPlay = ({ data }) => {
                 Object.keys(data)
                   .sort((keyA, keyB) => data[keyA].sort - data[keyB].sort)
                   .map((keys) => {
-                    console.log(data[keys]);
+         
                     return (
                       <>
                         <div

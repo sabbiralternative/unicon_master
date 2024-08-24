@@ -30,7 +30,7 @@ const MatchOdds = ({ match_odds }) => {
             </div>
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
               {games?.runners?.map((runner, idx) => {
-                console.log(runner);
+      
                 return (
                   <div
                     key={runner?.id}

@@ -6116,7 +6116,7 @@ input::placeholder {
     animation: openDrawerFromRight .25s ease-in-out
 }
 
-.closeDraerFromRight {
+.closeDrawerFromRight {
     animation: closeDrawerFromRight .3s ease-in-out
 }
 
