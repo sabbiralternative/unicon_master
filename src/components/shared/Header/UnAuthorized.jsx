@@ -1,11 +1,21 @@
-import { useState } from "react";
-import Login from "../../modal/desktop/Login";
+import Login from "../../modal/Login/Login";
+import Register from "../../modal/Register/Register";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setShowLoginModal,
+  setShowRegisterModal,
+} from "../../../redux/features/stateSlice";
 
 const UnAuthorized = () => {
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  const { showLoginModal, showRegisterModal } = useSelector(
+    (state) => state.state
+  );
+  const dispatch = useDispatch();
+
   return (
     <>
-      {showLoginModal && <Login setShowLoginModal={setShowLoginModal} />}
+      {showLoginModal && <Login />}
+      {showRegisterModal && <Register />}
       <div className="w-max flex items-center justify-center">
         <div
           id="mobileSearchIcon"
@@ -28,7 +38,7 @@ const UnAuthorized = () => {
         </div>
         <div className="w-max hidden items-center justify-center gap-1 rounded-full lg:flex">
           <button
-            onClick={() => setShowLoginModal(true)}
+            onClick={() => dispatch(setShowLoginModal(true))}
             className="relative flex rounded-full gap-1 border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-bg_Secondary"
           >
             <span className="w-max text-text_LoginTextColor hidden md:block">
@@ -53,7 +63,10 @@ const UnAuthorized = () => {
               Log In
             </span>
           </button>
-          <button className="flex rounded-full border border-secondary gap-1 hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-bg_Quaternary">
+          <button
+            onClick={() => dispatch(setShowRegisterModal(true))}
+            className="flex rounded-full border border-secondary gap-1 hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-bg_Quaternary"
+          >
             <span className="w-max hidden md:block">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +93,7 @@ const UnAuthorized = () => {
         </div>
         <div className="w-max flex items-center gap-1 justify-center rounded lg:hidden">
           <button
-            onClick={() => setShowLoginModal(true)}
+            onClick={() => dispatch(setShowLoginModal(true))}
             id="loginButton"
             className="flex rounded-full border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Secondary"
           >
@@ -88,7 +101,10 @@ const UnAuthorized = () => {
               Log In
             </span>
           </button>
-          <button className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Quaternary">
+          <button
+            onClick={() => dispatch(setShowRegisterModal(true))}
+            className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Quaternary"
+          >
             <span className="text-x text-text_Primary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
               Sign Up
             </span>

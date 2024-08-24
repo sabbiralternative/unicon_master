@@ -37,6 +37,7 @@ export const API = {
 };
 
 export const settings = {
+  otp:"",
   casino: "",
   siteTitle: "",
   forceLogin: "",

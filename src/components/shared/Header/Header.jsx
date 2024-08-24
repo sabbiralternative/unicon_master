@@ -5,8 +5,10 @@ import useContextState from "../../../hooks/useContextState";
 import LoggedIn from "./LoggedIn";
 import UnAuthorized from "./UnAuthorized";
 import { userToken } from "../../../redux/features/auth/authSlice";
+import useBalance from "../../../hooks/useBalance";
 
 const Header = () => {
+  const { balance } = useBalance();
   const { logo } = useContextState();
   const token = useSelector(userToken);
   const navigate = useNavigate();
@@ -164,7 +166,7 @@ cursor-pointer
                   </span>
                 </div>
               </div>
-              {token ? <LoggedIn /> : <UnAuthorized />}
+              {token ? <LoggedIn balance={balance} /> : <UnAuthorized />}
             </div>
             <div className=" hidden lg:block">
               <div className="flex w-full overflow-y-auto no-scrollbar gap-0.5 bg-bg_Quaternary items-center p-1 justify-center ">

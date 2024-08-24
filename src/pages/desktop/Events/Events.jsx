@@ -8,8 +8,10 @@ import MatchOdds from "../../../components/ui/desktop/events/MatchOdds";
 import { useGetAllOddsEventsQuery } from "../../../redux/features/events/events";
 import RightDeskSidebar from "../../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import EventHeader from "../../../components/ui/desktop/events/EventHeader";
+import useBalance from "../../../hooks/useBalance";
 
 const Events = () => {
+  const { refetchBalance } = useBalance();
   const { eventTypeId, eventId } = useParams();
   const payload = {
     eventTypeId,
@@ -25,8 +27,9 @@ const Events = () => {
     pollingInterval: settings.interval,
   });
   useEffect(() => {
+    refetchBalance();
     window.scrollTo(0, 0); // Scroll to top when component mounts
-  }, []);
+  }, [refetchBalance]);
   /* Filtered all the game  */
   useEffect(() => {
     if (data?.result) {

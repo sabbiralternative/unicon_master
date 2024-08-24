@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import isOddSuspended from "../../../../utils/isOddSuspended";
-import SuspendedOdd from "../../mobile/home/SuspendedOdd";
+import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import { useSelector } from "react-redux";
 import { groupTitle } from "../../../../const";

@@ -1,22 +1,26 @@
-const LoggedIn = () => {
+import { useSelector } from "react-redux";
+import { currentUser } from "../../../redux/features/auth/authSlice";
+
+const LoggedIn = ({balance}) => {
+  const user = useSelector(currentUser)
   return (
     <>
       <div
         id="loginName"
-        className=" text-text_Quaternary text-[10px] lg:text-[12px] xl:flex flex-col px-2 hidden"
+        className=" text-text_Quaternary text-[10px] lg:text-[12px] xl:flex flex-col px-2 "
       >
         <div className="flex gap-0.5 text-white/80  text-nowrap whitespace-nowrap">
           Login as{" "}
           <span className="font-medium text-text_Quaternary">
-            +91-8291023297
+            {user}
           </span>
         </div>
-        <div className="flex  gap-0.5 text-white/80  text-nowrap whitespace-nowrap">
+        {/* <div className="flex  gap-0.5 text-white/80  text-nowrap whitespace-nowrap">
           Last logged in
           <span className="font-medium text-text_Quaternary">
             8/15/2024, 7:24:09 PM
           </span>
-        </div>
+        </div> */}
       </div>
       <div
         id="loginName"
@@ -24,7 +28,7 @@ const LoggedIn = () => {
       >
         <div className="flex gap-0.5 text-white/80  xl:text-nowrap whitespace-nowrap">
           Available balance:{" "}
-          <span className="font-medium text-text_Quaternary">₹ 1,374.46</span>
+          <span className="font-medium text-text_Quaternary">₹ {balance?.availBalance}</span>
         </div>
       </div>
       <div
@@ -213,7 +217,7 @@ cursor-pointer
             type="button"
           >
             <span className="text-xs sm:text-base font-semibold bg-transparent">
-              ₹1,374.46
+              ₹{balance?.availBalance}
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

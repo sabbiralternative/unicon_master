@@ -10,15 +10,19 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/features/auth/authSlice";
 import useContextState from "../../../hooks/useContextState";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import {
+  setShowLoginModal,
+  setShowRegisterModal,
+} from "../../../redux/features/stateSlice";
 
-const Login = ({ setShowLoginModal }) => {
+const Login = () => {
   const [passwordType, setPasswordType] = useState(true);
   const { logo } = useContextState();
   const dispatch = useDispatch();
   const [handleLogin] = useLoginMutation();
   const loginRef = useRef();
   useCloseModalClickOutside(loginRef, () => {
-    setShowLoginModal(false);
+    dispatch(setShowLoginModal(false));
   });
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -46,7 +50,7 @@ const Login = ({ setShowLoginModal }) => {
       dispatch(setUser({ user, token }));
       localStorage.setItem("buttonValue", JSON.stringify(game));
       if (token && user) {
-        setShowLoginModal(false);
+        dispatch(setShowLoginModal(false));
         toast.success("Login successful");
       }
     } else {
@@ -63,7 +67,7 @@ const Login = ({ setShowLoginModal }) => {
         className="z-2 popUpBoxShadow popUpOpenAnimation absolute w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-bg_Quaternary p-2 xs:p-5 rounded-md"
       >
         <div
-          onClick={() => setShowLoginModal(false)}
+          onClick={() => dispatch(setShowLoginModal(false))}
           className="transition-all mb-2 ease-in-out duration-200 hover:scale-105 absolute top-2 right-2"
         >
           <svg
@@ -211,7 +215,13 @@ const Login = ({ setShowLoginModal }) => {
             >
               <div>
                 New User?
-                <span className="text-text_Primary cursor-pointer">
+                <span
+                  onClick={() => {
+                    dispatch(setShowLoginModal(false));
+                    dispatch(setShowRegisterModal(true));
+                  }}
+                  className="text-text_Primary cursor-pointer"
+                >
                   Create an account
                 </span>
               </div>

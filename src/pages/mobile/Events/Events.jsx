@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 import { settings } from "../../../api";
 import { useGetAllOddsEventsQuery } from "../../../redux/features/events/events";
 import EventHeader from "../../../components/ui/mobile/events/EventHeader";
+import useBalance from "../../../hooks/useBalance";
 
 const Events = () => {
+  const { refetchBalance } = useBalance();
   const { eventTypeId, eventId } = useParams();
   const payload = {
     eventTypeId,
@@ -23,6 +25,9 @@ const Events = () => {
     pollingInterval: settings.interval,
   });
 
+  useEffect(() => {
+    refetchBalance();
+  }, []);
   /* Filtered all the game  */
   useEffect(() => {
     if (data?.result) {

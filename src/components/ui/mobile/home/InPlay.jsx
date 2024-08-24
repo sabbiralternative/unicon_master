@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import isOddSuspended from "../../../../utils/isOddSuspended";
-import SuspendedOdd from "./SuspendedOdd";
+import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 
 const InPlay = ({ data }) => {
   const navigate = useNavigate();
@@ -159,7 +159,7 @@ const InPlay = ({ data }) => {
                           </span>
                         </div>
                         {isOddSuspended(data[keys]) ? (
-                          <SuspendedOdd  colSpan={6}/>
+                          <SuspendedOdd colSpan={6} />
                         ) : (
                           <span
                             onClick={() => navigateGameList(keys)}

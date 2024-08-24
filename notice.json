@@ -5,8 +5,9 @@
   },
   "result": {
     "settings": {
-      "siteTitle": "4rabets",
-      "siteUrl": "4rabets.com",
+      "otp": true,
+      "siteTitle": "a23money",
+      "siteUrl": "a23money.com",
       "interval": "600",
       "casino": "aura",
       "registration": true,

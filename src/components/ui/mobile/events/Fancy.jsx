@@ -1,6 +1,6 @@
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
-import SuspendedOdd from "../home/SuspendedOdd";
+import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 
 const Fancy = ({ fancy }) => {
   return (
