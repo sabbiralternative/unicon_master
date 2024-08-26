@@ -28,6 +28,7 @@ const LeftDeskSidebar = () => {
   const navigateAviatorCasinoVideo = () => {
     if (token) {
       if (settings.casinoCurrency !== "AED") {
+        dispatch(setShowLeftSidebar(false));
         navigate(`/casino/aviator/201206`);
       } else {
         // setShowModal(true);
