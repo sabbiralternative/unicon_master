@@ -4,10 +4,16 @@ import { useRef } from "react";
 import {
   setGroupType,
   setShowLeftSidebar,
+  setShowLoginModal,
 } from "../../../../redux/features/stateSlice";
+import { userToken } from "../../../../redux/features/auth/authSlice";
+import { settings } from "../../../../api";
+import { useNavigate } from "react-router-dom";
 
 const LeftDeskSidebar = () => {
+  const navigate = useNavigate();
   const { showLeftSidebar } = useSelector((state) => state.state);
+  const token = useSelector(userToken);
   const leftSidebarRef = useRef();
   const dispatch = useDispatch();
   useCloseModalClickOutside(leftSidebarRef, () => {
@@ -16,7 +22,24 @@ const LeftDeskSidebar = () => {
 
   const handleNavigate = (group) => {
     dispatch(setGroupType(group));
-    dispatch(setShowLeftSidebar(false))
+    dispatch(setShowLeftSidebar(false));
+  };
+
+  const navigateAviatorCasinoVideo = () => {
+    if (token) {
+      if (settings.casinoCurrency !== "AED") {
+        navigate(`/casino/aviator/201206`);
+      } else {
+        // setShowModal(true);
+        // setCasinoInfo({
+        //   provider_name: "aviator",
+        //   game_id: "201206",
+        //   base: "casino",
+        // });
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
   };
   return (
     <aside>
@@ -32,7 +55,10 @@ const LeftDeskSidebar = () => {
             }  origin-left top-0 left-0  z-50 w-[70%] max-w-sm h-full overflow-y-auto bg-bg_Quaternary shadow-lg`}
           >
             <ul className="overflow-y-auto h-max divide-y">
-              <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
+              <li
+                onClick={navigateAviatorCasinoVideo}
+                className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
+              >
                 <span className="w-3 h-auto xs:w-4">
                   <svg
                     width="20"

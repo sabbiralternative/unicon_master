@@ -1,10 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setGroupType } from "../../../../redux/features/stateSlice";
+import {
+  setGroupType,
+  setShowLoginModal,
+} from "../../../../redux/features/stateSlice";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { groupTitle } from "../../../../const";
 import { useGetAllOddsEventsQuery } from "../../../../redux/features/events/events";
+import { settings } from "../../../../api";
+import { userToken } from "../../../../redux/features/auth/authSlice";
 
 const LeftDeskSidebar = () => {
+  const token = useSelector(userToken);
   const { group } = useSelector((state) => state.state);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -15,6 +21,24 @@ const LeftDeskSidebar = () => {
     eventId,
   };
   const { data } = useGetAllOddsEventsQuery(payload);
+
+  const navigateAviatorCasinoVideo = () => {
+    if (token) {
+      if (settings.casinoCurrency !== "AED") {
+        navigate(`/casino/aviator/201206`);
+      } else {
+        // setShowModal(true);
+        // setCasinoInfo({
+        //   provider_name: "aviator",
+        //   game_id: "201206",
+        //   base: "casino",
+        // });
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
+
   return (
     <div
       title="Menu"
@@ -330,7 +354,10 @@ const LeftDeskSidebar = () => {
             </span>
           </span>
         </li>
-        <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
+        <li
+          onClick={navigateAviatorCasinoVideo}
+          className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
+        >
           <span className="flex w-full items-center h-full px-6 justify-start gap-3">
             <svg
               width="20"

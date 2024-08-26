@@ -34,7 +34,8 @@ export const API = {
   slotsWolf: "",
   withdrawIframe: "",
   assets: "",
-  forgotPassword:""
+  forgotPassword:"",
+  liveCasinoIFrame:""
 };
 
 export const settings = {

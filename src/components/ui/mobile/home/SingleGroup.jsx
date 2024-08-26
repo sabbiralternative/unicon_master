@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
+import { formatDate } from "../../../../utils/formateDate";
 
 const SingleGroup = ({ data, filterData, title }) => {
   const navigate = useNavigate();
@@ -98,7 +99,7 @@ const SingleGroup = ({ data, filterData, title }) => {
                                 className="flex items-center justify-center flex-col pl-[1px] pr-[1px]"
                               >
                                 <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium text-ellipsis overflow-hidden w-full text-center">
-                                  {data?.[keys]?.date}
+                                {formatDate(data,keys)}
                                 </span>
                                 <span className="text-text_InPlayEventsScoreAndTime text-[6px] xs:text-[9px] font-medium w-full text-center">
                                   {/* Tgt 145 */}

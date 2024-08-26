@@ -9,7 +9,7 @@ export const getSetApis = (setNoticeLoaded) => {
       if (data?.result?.endpoint) {
         const endPoints = data?.result?.endpoint;
         const setting = data?.result?.settings;
-        API.liveCasinoIframe = endPoints?.liveCasinoIframe;
+        API.liveCasinoIFrame = endPoints?.liveCasinoIFrame;
         API.accessToken = endPoints?.accessToken;
         API.notification = endPoints?.notification;
         API.buttonValue = endPoints?.buttonValue;

@@ -2,16 +2,18 @@ import { useNavigate } from "react-router-dom";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
+import { formatDate } from "../../../../utils/formateDate";
 
-const SingleGroup = ({ data, filterData, title,margin }) => {
+const SingleGroup = ({ data, filterData, title, margin }) => {
   const navigate = useNavigate();
   const navigateGameList = (keys) => {
     navigate(`/game-details/${data[keys]?.eventTypeId}/${keys}`);
   };
+
   return (
     <div className="w-full md:mt-[0px] lg:overflow-auto">
       <div className="w-full h-full">
-        <div className={`w-full ${margin ?" mt-[15px]" : ""} px-2`}>
+        <div className={`w-full ${margin ? " mt-[15px]" : ""} px-2`}>
           <div title="In Play" className="w-full">
             <div className="w-full font-helvetica-neue">
               <div className="w-full flex items-center justify-between rounded-t-[3px] py-1.5 px-[7px] bg-competetionInPlayUpComingBg">
@@ -121,7 +123,7 @@ const SingleGroup = ({ data, filterData, title,margin }) => {
                                 className="flex items-center justify-center flex-col pl-[1px] pr-[1px]"
                               >
                                 <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium text-ellipsis overflow-hidden w-full text-center">
-                                  {data?.[keys]?.date}
+                                 {formatDate(data,keys)}
                                 </span>
                                 <span className="text-text_InPlayEventsScoreAndTime text-[6px] xs:text-[9px] font-medium w-full text-center">
                                   {/* Tgt 145 */}
