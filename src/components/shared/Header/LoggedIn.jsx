@@ -11,7 +11,7 @@ const LoggedIn = ({ balance }) => {
         id="loginName"
         className=" text-text_Quaternary text-[10px] lg:text-[12px] xl:flex flex-col px-2 "
       >
-        <div className="flex gap-0.5 text-white/80  text-nowrap whitespace-nowrap">
+        <div className="flex gap-0.5 text-white/80  text-nowrap whitespace-nowrap hidden lg:block">
           Login as{" "}
           <span className="font-medium text-text_Quaternary">{user}</span>
         </div>
