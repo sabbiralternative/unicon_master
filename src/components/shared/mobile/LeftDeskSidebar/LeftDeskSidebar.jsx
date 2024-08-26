@@ -80,7 +80,7 @@ const LeftDeskSidebar = () => {
                   Aviator
                 </span>
               </li>
-              <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
+              {/* <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
                 <span className="w-3 h-auto xs:w-4">
                   <svg
                     width="20"
@@ -98,7 +98,7 @@ const LeftDeskSidebar = () => {
                 <span className="font-medium text-sm xs:text-base">
                   Election
                 </span>
-              </li>
+              </li> */}
               <li
                 onClick={() => handleNavigate(4)}
                 className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
@@ -218,7 +218,7 @@ const LeftDeskSidebar = () => {
                 </span>
                 <span className="font-medium text-sm xs:text-base">Tennis</span>
               </li>
-              <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
+              {/* <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
                 <span className="w-3 h-auto xs:w-4">
                   <svg
                     width="18"
@@ -236,8 +236,8 @@ const LeftDeskSidebar = () => {
                 <span className="font-medium text-sm xs:text-base">
                   Horse Racing
                 </span>
-              </li>
-              <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
+              </li> */}
+              {/* <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
                 <span className="w-3 h-auto xs:w-4">
                   <svg
                     width="21"
@@ -255,7 +255,7 @@ const LeftDeskSidebar = () => {
                 <span className="font-medium text-sm xs:text-base">
                   Greyhound Racing
                 </span>
-              </li>
+              </li> */}
               <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
                 <span className="w-3 h-auto xs:w-4">
                   <svg
@@ -275,7 +275,7 @@ const LeftDeskSidebar = () => {
                   Indian Card Games
                 </span>
               </li>
-              <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
+              {/* <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
                 <span className="w-3 h-auto xs:w-4">
                   <svg
                     width="17"
@@ -305,7 +305,7 @@ const LeftDeskSidebar = () => {
                 <span className="font-medium text-sm xs:text-base">
                   Sportsbook(80+)
                 </span>
-              </li>
+              </li> */}
               <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
                 <span className="w-3 h-auto xs:w-4">
                   <svg

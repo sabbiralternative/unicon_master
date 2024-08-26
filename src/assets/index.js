@@ -25,6 +25,7 @@ import appIcon from "./images/apk_icon_white.73474760.svg";
 import search from "./images/toolbar-search-icon.b64bd6a7.svg";
 import inplay from "./images/inplay.svg";
 import upcoming from "./images/upcoming.svg";
+// import football from "./images/football.svg";
 
 export default {
   favorite,
@@ -54,4 +55,5 @@ export default {
   search,
   inplay,
   upcoming,
+
 };
