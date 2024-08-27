@@ -1,8 +1,36 @@
+import { useDispatch, useSelector } from "react-redux";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
+import {
+  setPlaceBetValues,
+  setPosition,
+  setShowComponent,
+} from "../../../../redux/features/events/eventSlice";
+import { handleBetSlip } from "../../../../utils/handleBetSlip";
+import { useParams } from "react-router-dom";
+import useExposer from "../../../../hooks/useExposure";
 
 const Bookmaker = ({ bookmaker }) => {
+  const { eventId } = useParams();
+  const { exposer } = useExposer(eventId);
+  const { showComponent } = useSelector((state) => state?.event);
+  const dispatch = useDispatch();
+
+  const handleOpenBetSlip = (event, betType, games, runner) => {
+    handleBetSlip(
+      event,
+      betType,
+      games,
+      runner,
+      exposer,
+      dispatch,
+      setPlaceBetValues,
+      setShowComponent,
+      showComponent,
+      setPosition
+    );
+  };
   return (
     <>
       {bookmaker?.map((games, i) => {
@@ -110,7 +138,12 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span className="text-center min-h-12">
+                        <span
+                          onClick={(e) =>
+                            handleOpenBetSlip(e, "back", games, runner)
+                          }
+                          className="text-center min-h-12"
+                        >
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -134,7 +167,12 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span className="text-center min-h-12">
+                        <span
+                            onClick={(e) =>
+                              handleOpenBetSlip(e, "lay", games, runner)
+                            }
+                          className="text-center min-h-12"
+                        >
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(

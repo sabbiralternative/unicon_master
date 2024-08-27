@@ -1,8 +1,34 @@
+import { useParams } from "react-router-dom";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
+import useExposer from "../../../../hooks/useExposure";
+import { useDispatch, useSelector } from "react-redux";
+import { handleDesktopBetSlip } from "../../../../utils/handleDesktopBetSlip";
+import {
+  setPlaceBetValues,
+  setShowComponent,
+} from "../../../../redux/features/events/eventSlice";
 
 const Bookmaker = ({ bookmaker }) => {
+  const { eventId } = useParams();
+  const { exposer } = useExposer(eventId);
+  const { showComponent } = useSelector((state) => state?.event);
+  const dispatch = useDispatch();
+
+  const handleOpenBetSlip = (betType, games, runner, price) => {
+    handleDesktopBetSlip(
+      betType,
+      games,
+      runner,
+      exposer,
+      dispatch,
+      setPlaceBetValues,
+      setShowComponent,
+      showComponent,
+      price
+    );
+  };
   return (
     <>
       {bookmaker?.map((games, i) => {
@@ -55,7 +81,14 @@ const Bookmaker = ({ bookmaker }) => {
                       <SuspendedOdd />
                     ) : (
                       <div className="col-span-5 md:col-span-7 h-12 grid grid-cols-2 md:grid-cols-6 relative">
-                        <span className="hidden md:block text-center min-h-12">
+                        <span     onClick={() =>
+                            handleOpenBetSlip(
+                              "back",
+                              games,
+                              runner,
+                              runner?.back?.[2]?.price
+                            )
+                          } className="hidden md:block text-center min-h-12">
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -79,7 +112,14 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span className="hidden md:block text-center min-h-12">
+                        <span     onClick={() =>
+                            handleOpenBetSlip(
+                              "back",
+                              games,
+                              runner,
+                              runner?.back?.[1]?.price
+                            )
+                          } className="hidden md:block text-center min-h-12">
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -103,7 +143,14 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span className="text-center min-h-12">
+                        <span     onClick={() =>
+                            handleOpenBetSlip(
+                              "back",
+                              games,
+                              runner,
+                              runner?.back?.[0]?.price
+                            )
+                          } className="text-center min-h-12">
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -127,7 +174,14 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span className="text-center min-h-12">
+                        <span     onClick={() =>
+                            handleOpenBetSlip(
+                              "lay",
+                              games,
+                              runner,
+                              runner?.lay?.[0]?.price
+                            )
+                          } className="text-center min-h-12">
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -151,7 +205,14 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span className="hidden md:block text-center min-h-12">
+                        <span  onClick={() =>
+                            handleOpenBetSlip(
+                              "lay",
+                              games,
+                              runner,
+                              runner?.lay?.[1]?.price
+                            )
+                          }  className="hidden md:block text-center min-h-12">
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -175,7 +236,14 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span className="hidden md:block text-center min-h-12">
+                        <span  onClick={() =>
+                            handleOpenBetSlip(
+                              "lay",
+                              games,
+                              runner,
+                              runner?.lay?.[2]?.price
+                            )
+                          }  className="hidden md:block text-center min-h-12">
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(

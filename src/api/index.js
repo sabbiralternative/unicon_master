@@ -35,7 +35,8 @@ export const API = {
   withdrawIframe: "",
   assets: "",
   forgotPassword:"",
-  liveCasinoIFrame:""
+  liveCasinoIFrame:"",
+
 };
 
 export const settings = {
@@ -54,5 +55,6 @@ export const settings = {
   interval: "",
   logoFormat:"",
   logoHeight:"",
-  logoWidth:""
+  logoWidth:"",
+  apkLink:""
 };

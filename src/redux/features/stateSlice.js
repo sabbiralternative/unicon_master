@@ -46,7 +46,7 @@ export const {
   setShowRegisterModal,
   setShowLeftSidebar,
   setShowRightSidebar,
-  setShowForgetModal
+  setShowForgetModal,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

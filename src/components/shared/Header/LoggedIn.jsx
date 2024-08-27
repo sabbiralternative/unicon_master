@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { currentUser } from "../../../redux/features/auth/authSlice";
 import { setShowRightSidebar } from "../../../redux/features/stateSlice";
 
-const LoggedIn = ({ balance }) => {
+const LoggedIn = ({ balance,bonusBalance }) => {
+  const {user,bonusToken} = useSelector((state) => state.auth)
   const dispatch = useDispatch();
-  const user = useSelector(currentUser);
+
   return (
     <>
       <div
@@ -29,7 +30,7 @@ const LoggedIn = ({ balance }) => {
         <div className="flex gap-0.5 text-white/80  xl:text-nowrap whitespace-nowrap">
           Available balance:{" "}
           <span className="font-medium text-text_Quaternary">
-            ₹ {balance?.availBalance}
+            ₹ {bonusToken ? bonusBalance?.availBalance : balance?.availBalance}
           </span>
         </div>
       </div>
@@ -223,7 +224,7 @@ cursor-pointer
             type="button"
           >
             <span className="text-xs sm:text-base font-semibold bg-transparent">
-              ₹{balance?.availBalance}
+              ₹{bonusToken ? bonusBalance?.availBalance : balance?.availBalance}
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

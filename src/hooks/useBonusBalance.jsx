@@ -4,11 +4,11 @@ import { API, settings } from "../api";
 import handleRandomToken from "../utils/handleRandomToken";
 import handleEncryptData from "../utils/handleEncryptData";
 import { logout } from "../redux/features/auth/authSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const useBonusBalance = () => {
   const dispatch = useDispatch();
-  const { bonusToken } = useSelector((state) => state.auth);
+  const bonusToken = localStorage.getItem("bonusToken");
   const { data: bonusBalance = {}, refetch: refetchBonusBalance } = useQuery({
     queryKey: ["bonusBalance"],
     enabled: bonusToken ? true : false,

@@ -14,6 +14,7 @@
       "forceLogin": false,
       "demoLogin": true,
       "deposit": true,
+      "apkLink": "https://a23money.com/site.apk",
       "withdraw": true,
       "disabledDevtool": false,
       "casinoCurrency": "AEDD",
@@ -84,6 +85,7 @@
       "latestEvents": "https://api7.live/api/exchange/diamond/latestEvents",
       "forgotPassword": "https://api7.live/api/exchange/diamond/forgotPassword",
       "liveCasinoIFrame": " https://api7.live/api/livecasino/iframe"
+ 
     }
   },
   "success": true

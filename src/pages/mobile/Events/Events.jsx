@@ -7,8 +7,11 @@ import { settings } from "../../../api";
 import { useGetAllOddsEventsQuery } from "../../../redux/features/events/events";
 import EventHeader from "../../../components/ui/mobile/events/EventHeader";
 import useBalance from "../../../hooks/useBalance";
+import BetSlip from "../../../components/shared/mobile/BetSlip/BetSlip";
+import { useSelector } from "react-redux";
 
 const Events = () => {
+  const { showComponent, position } = useSelector((state) => state?.event);
   const { refetchBalance } = useBalance();
   const { eventTypeId, eventId } = useParams();
   const payload = {
@@ -136,6 +139,7 @@ const Events = () => {
             </div> */}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
+                {showComponent && <BetSlip position={position} />}
                 {match_odds?.length > 0 && (
                   <MatchOdds match_odds={match_odds} />
                 )}
@@ -144,57 +148,6 @@ const Events = () => {
               </div>
             </div>
           </div>
-          {/* <div
-            data-sitekey="6LdTTM0UAAAAAELLYim4P-yClP7aRFBdCrTk1ktS"
-            style={{ display: "none" }}
-            data-widgetid="0"
-          >
-            <div
-              className="grecaptcha-badge"
-              style={{
-                width: "256px",
-                height: "60px",
-                display: "block",
-                transition: "right 0.3s",
-                position: "fixed",
-                bottom: "14px",
-                right: "-186px",
-                boxShadow: "gray 0px 0px 5px",
-                borderRadius: "2px",
-                overflow: "hidden",
-              }}
-            >
-              <div className="grecaptcha-logo">
-                <iframe
-                  title="reCAPTCHA"
-                  width="256"
-                  height="60"
-                  role="presentation"
-                  name="a-ukp7dacktwdl"
-                  frameBorder="0"
-                  scrolling="no"
-                  sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"
-                  src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdTTM0UAAAAAELLYim4P-yClP7aRFBdCrTk1ktS&amp;co=aHR0cHM6Ly91bmljb24zNjUuY29tOjQ0Mw..&amp;hl=en&amp;v=hfUfsXWZFeg83qqxrK27GB8P&amp;size=invisible&amp;cb=mdppz554w6w5"
-                ></iframe>
-              </div>
-              <div className="grecaptcha-error"></div>
-              <textarea
-                id="g-recaptcha-response"
-                name="g-recaptcha-response"
-                className="g-recaptcha-response"
-                style={{
-                  width: "250px",
-                  height: "40px",
-                  border: "1px solid rgb(193, 193, 193)",
-                  margin: "10px 25px",
-                  padding: "0px",
-                  resize: "none",
-                  display: "none",
-                }}
-              ></textarea>
-            </div>
-            <iframe style={{ display: "none" }}></iframe>
-          </div> */}
         </div>
       </div>
     </div>

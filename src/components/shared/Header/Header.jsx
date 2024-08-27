@@ -11,9 +11,11 @@ import { userToken } from "../../../redux/features/auth/authSlice";
 import useBalance from "../../../hooks/useBalance";
 import LeftDeskSidebar from "../mobile/LeftDeskSidebar/LeftDeskSidebar";
 import RightDeskSidebar from "../mobile/RightDeskSidebar/RightDeskSidebar";
+import useBonusBalance from "../../../hooks/useBonusBalance";
 
 const Header = () => {
   const { balance } = useBalance();
+  const {bonusBalance} = useBonusBalance()
   const { logo } = useContextState();
   const token = useSelector(userToken);
   const navigate = useNavigate();
@@ -174,7 +176,7 @@ cursor-pointer
                   </span>
                 </div>
               </div>
-              {token ? <LoggedIn balance={balance} /> : <UnAuthorized />}
+              {token ? <LoggedIn balance={balance} bonusBalance={bonusBalance} /> : <UnAuthorized />}
             </div>
             <div className=" hidden lg:block">
               <div className="flex w-full overflow-y-auto no-scrollbar gap-0.5 bg-bg_Quaternary items-center p-1 justify-center ">

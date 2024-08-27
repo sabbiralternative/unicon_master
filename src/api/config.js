@@ -61,6 +61,7 @@ export const getSetApis = (setNoticeLoaded) => {
         settings.logoFormat = setting?.logo?.format;
         settings.logoHeight = setting?.logo?.height;
         settings.logoWidth = setting?.logo?.width;
+        settings.apkLink = setting?.apkLink;
         setNoticeLoaded(true);
       }
     })

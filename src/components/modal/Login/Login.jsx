@@ -49,8 +49,9 @@ const Login = () => {
       const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
       const game = result?.result?.buttonValue?.game;
-      dispatch(setUser({ user, token, bonusToken }));
+      dispatch(setUser({ user, token }));
       localStorage.setItem("buttonValue", JSON.stringify(game));
+      localStorage.setItem("bonusToken", bonusToken);
       if (token && user) {
         dispatch(setShowLoginModal(false));
         toast.success("Login successful");
