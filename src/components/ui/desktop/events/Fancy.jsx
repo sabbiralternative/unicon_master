@@ -14,7 +14,11 @@ const Fancy = ({ fancy }) => {
   const { exposer } = useExposer(eventId);
   const { showComponent } = useSelector((state) => state?.event);
   const dispatch = useDispatch();
-
+  let pnlBySelection;
+  if (exposer?.pnlBySelection) {
+    const obj = exposer?.pnlBySelection;
+    pnlBySelection = Object?.values(obj);
+  }
   const handleOpenBetSlip = (betType, games, runner, price) => {
     handleDesktopBetSlip(
       betType,
@@ -148,6 +152,8 @@ const Fancy = ({ fancy }) => {
         </div>
       </div> */}
       {fancy?.map((games) => {
+         const pnl =
+         pnlBySelection?.filter((pnl) => pnl?.MarketId === games?.id) || [];
         return (
           <div key={games?.id} className="py-1.5">
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
@@ -159,7 +165,25 @@ const Fancy = ({ fancy }) => {
                         {games?.name}
                       </span>
                     </div>
-                    <span className="text-[12px] font-bold text-text_Success"></span>
+                    {/* <span className="text-[12px] font-bold text-text_Success"></span> */}
+                    {
+                        pnl && pnl?.map(({pnl},i) => {
+                          return (
+                            <span key={i} className="w-full whitespace-nowrap">
+                            <span className={`text-[12px] font-bold  whitespace-nowrap ${
+                                      pnl > 0
+                                        ? "text-text_Success"
+                                        : "text-text_Danger"
+                                    }`}>
+                            {pnl || ""}
+                            </span>
+                            {/* <span className="text-[12px] font-bold text-text_Success">
+                              &gt;&gt; 96
+                            </span> */}
+                          </span>
+                          )
+                        })
+                       }
                   </div>
                   <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center gap-x-[2px]">
                     <svg

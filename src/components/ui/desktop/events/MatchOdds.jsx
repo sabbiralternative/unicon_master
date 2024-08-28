@@ -16,6 +16,12 @@ const MatchOdds = ({ match_odds }) => {
   const { showComponent } = useSelector((state) => state?.event);
   const dispatch = useDispatch();
 
+  let pnlBySelection;
+  if (exposer?.pnlBySelection) {
+    const obj = exposer?.pnlBySelection;
+    pnlBySelection = Object?.values(obj);
+  }
+
   const handleOpenBetSlip = (betType, games, runner, price) => {
     handleDesktopBetSlip(
       betType,
@@ -40,6 +46,19 @@ const MatchOdds = ({ match_odds }) => {
                 <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
                   {games?.name}
                 </span>
+                <button
+                  type="button"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_lossGrd rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-max max-w-[74%] mr-1 cursor-pointer"
+                >
+                  <div className="text-[10px] md:text-sm text-text_Quaternary whitespace-nowrap font-semibold">
+                    Cashout
+                  </div>
+                  <div className="capitalize text-[10px] md:text-sm ml-1 text-text_Quaternary whitespace-nowrap font-semibold">
+                    <span> : </span>
+                    <span className="font-roboto">₹ </span>
+                    <span>-199.6</span>
+                  </div>
+                </button>
               </div>
               <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">
                 <span className="hidden md:flex col-span-1 text-center font-semibold h-full items-end justify-center"></span>
@@ -56,6 +75,10 @@ const MatchOdds = ({ match_odds }) => {
             </div>
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
               {games?.runners?.map((runner, idx) => {
+                const pnl =
+                  pnlBySelection?.filter(
+                    (pnl) => pnl?.RunnerId === runner?.id
+                  ) || [];
                 return (
                   <div
                     key={runner?.id}
@@ -74,7 +97,24 @@ const MatchOdds = ({ match_odds }) => {
                             {runner?.name}
                           </span>
                         </div>
-                        <span className="text-[12px] font-bold text-text_Success"></span>
+                       {
+                        pnl && pnl?.map(({pnl},i) => {
+                          return (
+                            <span key={i} className="w-full whitespace-nowrap">
+                            <span className={`text-[12px] font-bold  whitespace-nowrap ${
+                                      pnl > 0
+                                        ? "text-text_Success"
+                                        : "text-text_Danger"
+                                    }`}>
+                            {pnl || ""}
+                            </span>
+                            <span className="text-[12px] font-bold text-text_Success">
+                              &gt;&gt; 96
+                            </span>
+                          </span>
+                          )
+                        })
+                       }
                       </div>
                     </div>
                     {isOddSuspended(runner) ? (
@@ -186,7 +226,6 @@ const MatchOdds = ({ match_odds }) => {
                         <span
                           onClick={() =>
                             handleOpenBetSlip(
-                          
                               "lay",
                               games,
                               runner,
