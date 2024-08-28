@@ -1,14 +1,12 @@
 export const handleBetSlip = (
-  event,
+  setRunnerId,
   betType,
   games,
   runner,
   exposer,
   dispatch,
   setPlaceBetValues,
-  setShowComponent,
-  showComponent,
-  setPosition
+
 ) => {
   if (betType === "back" && !runner?.back[0].price) {
     return;
@@ -52,15 +50,7 @@ export const handleBetSlip = (
     marketName: games?.name,
     eventId: games?.eventId,
   };
-
+  setRunnerId(runner?.id);
   dispatch(setPlaceBetValues(betData));
-  dispatch(setShowComponent(!showComponent));
 
-  const rect = event.target.getBoundingClientRect();
-  dispatch(
-    setPosition({
-      top: rect.bottom + window.scrollY,
-      left: rect.left + window.scrollX,
-    })
-  );
 };

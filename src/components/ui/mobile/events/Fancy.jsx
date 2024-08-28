@@ -1,34 +1,29 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
-import {
-  setPlaceBetValues,
-  setPosition,
-  setShowComponent,
-} from "../../../../redux/features/events/eventSlice";
+import { setPlaceBetValues } from "../../../../redux/features/events/eventSlice";
 import { useParams } from "react-router-dom";
 import useExposer from "../../../../hooks/useExposure";
 import { handleBetSlip } from "../../../../utils/handleBetSlip";
+import { useState } from "react";
+import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
 
 const Fancy = ({ fancy }) => {
+  const [runnerId, setRunnerId] = useState("");
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
-  const { showComponent } = useSelector((state) => state?.event);
   const dispatch = useDispatch();
 
-  const handleOpenBetSlip = (event, betType, games, runner) => {
+  const handleOpenBetSlip = (betType, games, runner) => {
     handleBetSlip(
-      event,
+      setRunnerId,
       betType,
       games,
       runner,
       exposer,
       dispatch,
-      setPlaceBetValues,
-      setShowComponent,
-      showComponent,
-      setPosition
+      setPlaceBetValues
     );
   };
   return (
@@ -128,8 +123,8 @@ const Fancy = ({ fancy }) => {
                 ) : (
                   <div className="col-span-5 md:col-span-6 h-12 grid grid-cols-2 md:grid-cols-6 relative">
                     <span
-                      onClick={(e) =>
-                        handleOpenBetSlip(e, "back", games, games?.runners?.[0])
+                      onClick={() =>
+                        handleOpenBetSlip("back", games, games?.runners?.[0])
                       }
                       className="text-center min-h-12 cols-span-1 md:col-span-2"
                     >
@@ -158,8 +153,8 @@ const Fancy = ({ fancy }) => {
                       </span>
                     </span>
                     <span
-                      onClick={(e) =>
-                        handleOpenBetSlip(e, "back", games, games?.runners?.[0])
+                      onClick={() =>
+                        handleOpenBetSlip("back", games, games?.runners?.[0])
                       }
                       className="text-center min-h-12 cols-span-1 md:col-span-2"
                     >
@@ -211,6 +206,9 @@ const Fancy = ({ fancy }) => {
                 )}
 
                 <div className="col-span-12 h-max"></div>
+                {games?.runners?.[0]?.id === runnerId && (
+                  <BetSlip setRunnerId={setRunnerId} />
+                )}
               </div>
             </div>
           </div>

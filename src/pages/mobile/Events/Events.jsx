@@ -7,11 +7,9 @@ import { settings } from "../../../api";
 import { useGetAllOddsEventsQuery } from "../../../redux/features/events/events";
 import EventHeader from "../../../components/ui/mobile/events/EventHeader";
 import useBalance from "../../../hooks/useBalance";
-import BetSlip from "../../../components/shared/mobile/BetSlip/BetSlip";
-import { useSelector } from "react-redux";
+
 
 const Events = () => {
-  const { showComponent, position } = useSelector((state) => state?.event);
   const { refetchBalance } = useBalance();
   const { eventTypeId, eventId } = useParams();
   const payload = {
@@ -139,7 +137,6 @@ const Events = () => {
             </div> */}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
-                {showComponent && <BetSlip position={position} />}
                 {match_odds?.length > 0 && (
                   <MatchOdds match_odds={match_odds} />
                 )}

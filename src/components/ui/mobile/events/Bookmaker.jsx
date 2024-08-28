@@ -1,34 +1,30 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
-import {
-  setPlaceBetValues,
-  setPosition,
-  setShowComponent,
-} from "../../../../redux/features/events/eventSlice";
+import { setPlaceBetValues } from "../../../../redux/features/events/eventSlice";
 import { handleBetSlip } from "../../../../utils/handleBetSlip";
 import { useParams } from "react-router-dom";
 import useExposer from "../../../../hooks/useExposure";
+import { useState } from "react";
+import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
 
 const Bookmaker = ({ bookmaker }) => {
+  const [runnerId, setRunnerId] = useState("");
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
-  const { showComponent } = useSelector((state) => state?.event);
+
   const dispatch = useDispatch();
 
-  const handleOpenBetSlip = (event, betType, games, runner) => {
+  const handleOpenBetSlip = (betType, games, runner) => {
     handleBetSlip(
-      event,
+      setRunnerId,
       betType,
       games,
       runner,
       exposer,
       dispatch,
-      setPlaceBetValues,
-      setShowComponent,
-      showComponent,
-      setPosition
+      setPlaceBetValues
     );
   };
   return (
@@ -139,8 +135,8 @@ const Bookmaker = ({ bookmaker }) => {
                           </span>
                         </span>
                         <span
-                          onClick={(e) =>
-                            handleOpenBetSlip(e, "back", games, runner)
+                          onClick={() =>
+                            handleOpenBetSlip("back", games, runner)
                           }
                           className="text-center min-h-12"
                         >
@@ -168,9 +164,9 @@ const Bookmaker = ({ bookmaker }) => {
                           </span>
                         </span>
                         <span
-                            onClick={(e) =>
-                              handleOpenBetSlip(e, "lay", games, runner)
-                            }
+                          onClick={() =>
+                            handleOpenBetSlip("lay", games, runner)
+                          }
                           className="text-center min-h-12"
                         >
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
@@ -248,6 +244,7 @@ const Bookmaker = ({ bookmaker }) => {
                     )}
 
                     <div className="col-span-12 h-max"></div>
+                    {runner?.id === runnerId && <BetSlip setRunnerId={setRunnerId} />}
                   </div>
                 );
               })}

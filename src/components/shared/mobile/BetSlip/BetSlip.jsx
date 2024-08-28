@@ -1,5 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setShowComponent } from "../../../../redux/features/events/eventSlice";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import handleRandomToken from "../../../../utils/handleRandomToken";
 import handleEncryptData from "../../../../utils/handleEncryptData";
@@ -11,12 +10,11 @@ import useBalance from "../../../../hooks/useBalance";
 import toast from "react-hot-toast";
 import BetLoading from "./BetLoading";
 
-const BetSlip = ({ position }) => {
+const BetSlip = ({setRunnerId}) => {
   const { eventId } = useParams();
   const { refetchBalance } = useBalance();
   const { refetchExposure } = useExposer(eventId);
   const { placeBetValues } = useSelector((state) => state?.event);
-  const dispatch = useDispatch();
   const [createOrder] = useOrderMutation();
   const buttonValues = localStorage.getItem("buttonValue");
   let parseButtonValues = [];
@@ -106,14 +104,7 @@ const BetSlip = ({ position }) => {
         <BetLoading betDelay={betDelay} setBetDelay={setBetDelay} />
       )}
       <div
-        style={{
-          position: "absolute",
-          top: `${position.top - 35}px`,
-          // left: `${position.left}px`,
-          background: "red",
-          zIndex: "100",
-          width: "100%",
-        }}
+ 
         className="col-span-12 h-max"
       >
         <span className="col-span-12 h-max w-full">
@@ -218,7 +209,7 @@ const BetSlip = ({ position }) => {
             </div>
             <div className="flex items-center justify-center gap-x-[13px] pt-3.5 w-full">
               <button
-                onClick={() => dispatch(setShowComponent(false))}
+                onClick={() => setRunnerId('')}
                 type="button"
                 className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent text-text_BetSlipCancelBtnColor font-medium border border-danger rounded-md cursor-pointer"
               >
