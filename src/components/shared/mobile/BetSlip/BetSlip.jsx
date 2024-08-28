@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import handleRandomToken from "../../../../utils/handleRandomToken";
 import handleEncryptData from "../../../../utils/handleEncryptData";
@@ -9,26 +9,30 @@ import { useParams } from "react-router-dom";
 import useBalance from "../../../../hooks/useBalance";
 import toast from "react-hot-toast";
 import BetLoading from "./BetLoading";
+import {
+  setPrice,
+  setStake,
+} from "../../../../redux/features/events/eventSlice";
 
-const BetSlip = ({setRunnerId}) => {
+const BetSlip = ({ setRunnerId }) => {
+  const dispatch = useDispatch();
   const { eventId } = useParams();
   const { refetchBalance } = useBalance();
   const { refetchExposure } = useExposer(eventId);
-  const { placeBetValues } = useSelector((state) => state?.event);
+  const { placeBetValues, price, stake } = useSelector((state) => state?.event);
   const [createOrder] = useOrderMutation();
   const buttonValues = localStorage.getItem("buttonValue");
   let parseButtonValues = [];
   if (buttonValues) {
     parseButtonValues = JSON.parse(buttonValues);
   }
-  const [stake, setStake] = useState("");
-  const [price, setPrice] = useState("");
+
   const [betDelay, setBetDelay] = useState("");
 
   useEffect(() => {
-    setPrice(placeBetValues?.price);
-    setStake(placeBetValues?.totalSize?.toFixed(2));
-  }, [placeBetValues]);
+    dispatch(setPrice(placeBetValues?.price));
+    dispatch(setStake(placeBetValues?.totalSize?.toFixed(2)));
+  }, [placeBetValues,dispatch]);
 
   let payload = {};
   if (price) {
@@ -97,16 +101,12 @@ const BetSlip = ({setRunnerId}) => {
     }
   };
 
-
   return (
     <>
       {betDelay > 0 && (
         <BetLoading betDelay={betDelay} setBetDelay={setBetDelay} />
       )}
-      <div
- 
-        className="col-span-12 h-max"
-      >
+      <div className="col-span-12 h-max">
         <span className="col-span-12 h-max w-full">
           <div
             title="Bet Slip"
@@ -134,7 +134,7 @@ const BetSlip = ({setRunnerId}) => {
                 <div className="grid grid-cols-12 min-h-[35px]">
                   <span className="col-span-12 h-full pr-1 overflow-hidden">
                     <input
-                      onChange={(e) => setPrice(e.target.value)}
+                      onChange={(e) => dispatch(setPrice(e.target.value))}
                       id="oddInput"
                       className="focus:outline-none text-sm w-full h-full text-center py-1 flex items-center justify-center border-[0.25px] text-text_Ternary border-oddInputBorder focus:border-oddInputBorderActive active:border-oddInputBorderActive"
                       type="number"
@@ -162,7 +162,7 @@ const BetSlip = ({setRunnerId}) => {
                 {parseButtonValues?.map((button, i) => {
                   return (
                     <button
-                      onClick={() => setStake(button?.value)}
+                      onClick={() => dispatch(setStake(button?.value))}
                       key={i}
                       className="inline-block leading-normal relative  transition duration-150 ease-in-out col-span-4 w-full overflow-hidden border border-primary text-[12px] font-semibold rounded-[4px] bg-bg_Primary text-text_Quaternary text-center py-1.5 cursor-pointer"
                       type="button"
@@ -174,7 +174,7 @@ const BetSlip = ({setRunnerId}) => {
               </div>
               <div className="grid grid-cols-12 gap-x-1 gap-y-1 pt-[15px]">
                 <button
-                  onClick={() => setStake(100)}
+                  onClick={() => dispatch(setStake(100))}
                   className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] min-h-[26px] font-semibold rounded-[4px] bg-minBtnGrd text-text_Quaternary py-2 cursor-pointer"
                   type="button"
                 >
@@ -182,9 +182,9 @@ const BetSlip = ({setRunnerId}) => {
                 </button>
                 <button
                   onClick={() =>
-                    setStake(
-                      parseButtonValues[parseButtonValues?.length - 1]?.value
-                    )
+                 dispatch(   setStake(
+                  parseButtonValues[parseButtonValues?.length - 1]?.value
+                ))
                   }
                   className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-maxBtnGrd text-text_Quaternary py-2 cursor-pointer"
                   type="button"
@@ -198,7 +198,7 @@ const BetSlip = ({setRunnerId}) => {
                   EDIT STAKES
                 </button>
                 <button
-                  onClick={() => setStake("")}
+                  onClick={() => dispatch(setStake(null))}
                   className="inline-block  relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-clearBtnGrd text-text_Quaternary leading-4 py-2 cursor-pointer"
                   id="clearBtn"
                   type="button"
@@ -209,7 +209,7 @@ const BetSlip = ({setRunnerId}) => {
             </div>
             <div className="flex items-center justify-center gap-x-[13px] pt-3.5 w-full">
               <button
-                onClick={() => setRunnerId('')}
+                onClick={() => setRunnerId("")}
                 type="button"
                 className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent text-text_BetSlipCancelBtnColor font-medium border border-danger rounded-md cursor-pointer"
               >

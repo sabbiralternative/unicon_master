@@ -13,7 +13,9 @@ import { handleDesktopBetSlip } from "../../../../utils/handleDesktopBetSlip";
 const MatchOdds = ({ match_odds }) => {
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
-  const { showComponent } = useSelector((state) => state?.event);
+  const { showComponent, predictOdd, stake } = useSelector(
+    (state) => state?.event
+  );
   const dispatch = useDispatch();
 
   let pnlBySelection;
@@ -35,6 +37,8 @@ const MatchOdds = ({ match_odds }) => {
       price
     );
   };
+
+ 
   return (
     <>
       {match_odds?.map((games, i) => {
@@ -79,6 +83,10 @@ const MatchOdds = ({ match_odds }) => {
                   pnlBySelection?.filter(
                     (pnl) => pnl?.RunnerId === runner?.id
                   ) || [];
+                const predictOddValues = predictOdd?.filter(
+                  (val) => val?.id === runner?.id
+                );
+                console.log(predictOddValues);
                 return (
                   <div
                     key={runner?.id}
@@ -97,24 +105,44 @@ const MatchOdds = ({ match_odds }) => {
                             {runner?.name}
                           </span>
                         </div>
-                       {
-                        pnl && pnl?.map(({pnl},i) => {
-                          return (
-                            <span key={i} className="w-full whitespace-nowrap">
-                            <span className={`text-[12px] font-bold  whitespace-nowrap ${
-                                      pnl > 0
-                                        ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}>
-                            {pnl || ""}
-                            </span>
-                            <span className="text-[12px] font-bold text-text_Success">
+                        {pnl &&
+                          pnl?.map(({ pnl }, i) => {
+                            return (
+                              <span
+                                key={i}
+                                className="w-full whitespace-nowrap"
+                              >
+                                <span
+                                  className={`text-[12px] font-bold  whitespace-nowrap ${
+                                    pnl > 0
+                                      ? "text-text_Success"
+                                      : "text-text_Danger"
+                                  }`}
+                                >
+                                  {pnl || ""}
+                                </span>
+                                {/* <span className="text-[12px] font-bold text-text_Success">
                               &gt;&gt; 96
-                            </span>
-                          </span>
-                          )
-                        })
-                       }
+
+                            </span> */}{" "}
+                                {stake &&
+                                  predictOddValues?.map(({ odd, id }) => {
+                                    return (
+                                      <span
+                                        key={id}
+                                        className={`text-[12px] font-bold ${
+                                          odd > 0
+                                            ? "text-text_Success"
+                                            : "text-text_Danger"
+                                        }`}
+                                      >
+                                        &gt;&gt; {stake && odd}
+                                      </span>
+                                    );
+                                  })}
+                              </span>
+                            );
+                          })}
                       </div>
                     </div>
                     {isOddSuspended(runner) ? (

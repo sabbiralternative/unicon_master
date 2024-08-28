@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { currentUser } from "../../../redux/features/auth/authSlice";
 import { setShowRightSidebar } from "../../../redux/features/stateSlice";
 
-const LoggedIn = ({ balance,bonusBalance }) => {
-  const {user,bonusToken} = useSelector((state) => state.auth)
+const LoggedIn = ({ balance, bonusBalance }) => {
+  const { user, bonusToken } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   return (

@@ -13,14 +13,14 @@ import {
 const Bookmaker = ({ bookmaker }) => {
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
-  const { showComponent } = useSelector((state) => state?.event);
+  const { showComponent, predictOdd, stake } = useSelector(
+    (state) => state?.event
+  );
   const dispatch = useDispatch();
   let pnlBySelection;
   if (exposer?.pnlBySelection) {
     const obj = exposer?.pnlBySelection;
     pnlBySelection = Object?.values(obj);
-    console.log(obj);
-
   }
 
   const handleOpenBetSlip = (betType, games, runner, price) => {
@@ -63,9 +63,13 @@ const Bookmaker = ({ bookmaker }) => {
             </div>
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
               {games?.runners?.map((runner, idx) => {
-                  const pnl =
-                  pnlBySelection?.filter((pnl) => pnl?.RunnerId === runner?.id) ||
-                  [];
+                const pnl =
+                  pnlBySelection?.filter(
+                    (pnl) => pnl?.RunnerId === runner?.id
+                  ) || [];
+                const predictOddValues = predictOdd?.filter(
+                  (val) => val?.id === runner?.id
+                );
                 return (
                   <div
                     key={runner?.id}
@@ -84,38 +88,61 @@ const Bookmaker = ({ bookmaker }) => {
                             {runner?.name}
                           </span>
                         </div>
-                        {
-                        pnl && pnl?.map(({pnl},i) => {
-                          return (
-                            <span key={i} className="w-full whitespace-nowrap">
-                            <span className={`text-[12px] font-bold  whitespace-nowrap ${
-                                      pnl > 0
-                                        ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}>
-                            {pnl || ""}
-                            </span>
-                            {/* <span className="text-[12px] font-bold text-text_Success">
+                        {pnl &&
+                          pnl?.map(({ pnl }, i) => {
+                            return (
+                              <span
+                                key={i}
+                                className="w-full whitespace-nowrap"
+                              >
+                                <span
+                                  className={`text-[12px] font-bold  whitespace-nowrap ${
+                                    pnl > 0
+                                      ? "text-text_Success"
+                                      : "text-text_Danger"
+                                  }`}
+                                >
+                                  {pnl || ""}
+                                </span>
+                                {/* <span className="text-[12px] font-bold text-text_Success">
                               &gt;&gt; 96
-                            </span> */}
-                          </span>
-                          )
-                        })
-                       }
+
+                            </span> */}{" "}
+                                {stake &&
+                                  predictOddValues?.map(({ odd, id }) => {
+                                    return (
+                                      <span
+                                        key={id}
+                                        className={`text-[12px] font-bold ${
+                                          odd > 0
+                                            ? "text-text_Success"
+                                            : "text-text_Danger"
+                                        }`}
+                                      >
+                                        &gt;&gt; {stake && odd}
+                                      </span>
+                                    );
+                                  })}
+                              </span>
+                            );
+                          })}
                       </div>
                     </div>
                     {isOddSuspended(runner) ? (
                       <SuspendedOdd />
                     ) : (
                       <div className="col-span-5 md:col-span-7 h-12 grid grid-cols-2 md:grid-cols-6 relative">
-                        <span     onClick={() =>
+                        <span
+                          onClick={() =>
                             handleOpenBetSlip(
                               "back",
                               games,
                               runner,
                               runner?.back?.[2]?.price
                             )
-                          } className="hidden md:block text-center min-h-12">
+                          }
+                          className="hidden md:block text-center min-h-12"
+                        >
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -139,14 +166,17 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span     onClick={() =>
+                        <span
+                          onClick={() =>
                             handleOpenBetSlip(
                               "back",
                               games,
                               runner,
                               runner?.back?.[1]?.price
                             )
-                          } className="hidden md:block text-center min-h-12">
+                          }
+                          className="hidden md:block text-center min-h-12"
+                        >
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -170,14 +200,17 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span     onClick={() =>
+                        <span
+                          onClick={() =>
                             handleOpenBetSlip(
                               "back",
                               games,
                               runner,
                               runner?.back?.[0]?.price
                             )
-                          } className="text-center min-h-12">
+                          }
+                          className="text-center min-h-12"
+                        >
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -201,14 +234,17 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span     onClick={() =>
+                        <span
+                          onClick={() =>
                             handleOpenBetSlip(
                               "lay",
                               games,
                               runner,
                               runner?.lay?.[0]?.price
                             )
-                          } className="text-center min-h-12">
+                          }
+                          className="text-center min-h-12"
+                        >
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -232,14 +268,17 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span  onClick={() =>
+                        <span
+                          onClick={() =>
                             handleOpenBetSlip(
                               "lay",
                               games,
                               runner,
                               runner?.lay?.[1]?.price
                             )
-                          }  className="hidden md:block text-center min-h-12">
+                          }
+                          className="hidden md:block text-center min-h-12"
+                        >
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
@@ -263,14 +302,17 @@ const Bookmaker = ({ bookmaker }) => {
                             </div>
                           </span>
                         </span>
-                        <span  onClick={() =>
+                        <span
+                          onClick={() =>
                             handleOpenBetSlip(
                               "lay",
                               games,
                               runner,
                               runner?.lay?.[2]?.price
                             )
-                          }  className="hidden md:block text-center min-h-12">
+                          }
+                          className="hidden md:block text-center min-h-12"
+                        >
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(

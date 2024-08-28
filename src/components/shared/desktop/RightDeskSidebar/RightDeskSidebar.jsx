@@ -9,13 +9,13 @@ import handleRandomToken from "../../../../utils/handleRandomToken";
 import { settings } from "../../../../api";
 import toast from "react-hot-toast";
 import BetLoading from "../../mobile/BetSlip/BetLoading";
-import { setShowComponent } from "../../../../redux/features/events/eventSlice";
+import { setPredictOdd, setPrice, setShowComponent, setStake } from "../../../../redux/features/events/eventSlice";
 
 const RightDeskSidebar = () => {
   const dispatch = useDispatch();
-  const { showComponent } = useSelector((state) => state.event);
+  const { showComponent,price,stake } = useSelector((state) => state.event);
   const { eventId } = useParams();
-  const { refetchBalance } = useBalance();
+  const { refetchBalance,balance } = useBalance();
   const { refetchExposure } = useExposer(eventId);
   const { placeBetValues } = useSelector((state) => state?.event);
 
@@ -25,17 +25,17 @@ const RightDeskSidebar = () => {
   if (buttonValues) {
     parseButtonValues = JSON.parse(buttonValues);
   }
-  const [stake, setStake] = useState("");
-  const [price, setPrice] = useState("");
+  
   const [betDelay, setBetDelay] = useState(null);
 
   useEffect(() => {
     if (betDelay <= 0) {
       setBetDelay(null);
     }
-    setPrice(placeBetValues?.price);
-    setStake(placeBetValues?.totalSize?.toFixed(2));
-  }, [placeBetValues, betDelay]);
+  dispatch(  setPrice(placeBetValues?.price))
+  dispatch(setStake(placeBetValues?.totalSize?.toFixed(2)))
+    
+  }, [placeBetValues, betDelay,dispatch]);
 
   let payload = {};
   if (price) {
@@ -126,7 +126,7 @@ const RightDeskSidebar = () => {
                   Available Credit
                 </span>
                 <span className="text-text_Quaternary font-lato text-sm">
-                  ₹ 1,374.46
+                  ₹ {balance?.availBalance}
                 </span>
               </div>
               <div className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer mr-2 flex items-center justify-center autoAnimate -rotate-180">
@@ -194,7 +194,7 @@ const RightDeskSidebar = () => {
                       <div className="grid grid-cols-12 min-h-[35px]">
                         <span className="col-span-12 h-full pr-1 overflow-hidden">
                           <input
-                            onChange={(e) => setPrice(e.target.value)}
+                            onChange={(e) => dispatch(setPrice(e.target.value))}
                             id="oddInput"
                             className="focus:outline-none text-sm w-full h-full text-center py-1 flex items-center justify-center border-[0.25px] text-text_Ternary border-oddInputBorder focus:border-oddInputBorderActive active:border-oddInputBorderActive"
                             disabled=""
@@ -227,7 +227,7 @@ const RightDeskSidebar = () => {
                         return (
                           <button
                             key={i}
-                            onClick={() => setStake(button?.value)}
+                            onClick={() => dispatch(setStake(button?.value))}
                             className="inline-block leading-normal relative  transition duration-150 ease-in-out col-span-4 w-full overflow-hidden border border-primary text-[12px] font-semibold rounded-[4px] bg-bg_Primary text-text_Quaternary text-center py-1.5 cursor-pointer"
                             type="button"
                           >
@@ -238,7 +238,7 @@ const RightDeskSidebar = () => {
                     </div>
                     <div className="grid grid-cols-12 gap-x-1 gap-y-1 pt-[15px]">
                       <button
-                        onClick={() => setStake(100)}
+                        onClick={() => dispatch(setStake(100))}
                         className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] min-h-[26px] font-semibold rounded-[4px] bg-minBtnGrd text-text_Quaternary py-2 cursor-pointer"
                         type="button"
                       >
@@ -246,10 +246,10 @@ const RightDeskSidebar = () => {
                       </button>
                       <button
                         onClick={() =>
-                          setStake(
-                            parseButtonValues[parseButtonValues?.length - 1]
-                              ?.value
-                          )
+                         dispatch( setStake(
+                          parseButtonValues[parseButtonValues?.length - 1]
+                            ?.value
+                        ))
                         }
                         className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-maxBtnGrd text-text_Quaternary py-2 cursor-pointer"
                         type="button"
@@ -263,7 +263,7 @@ const RightDeskSidebar = () => {
                         EDIT STAKES
                       </button>
                       <button
-                        onClick={() => setStake("")}
+                        onClick={() => dispatch(setStake(null))}
                         className="inline-block relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-clearBtnGrd text-text_Quaternary leading-4 py-2 cursor-pointer"
                         id="clearBtn"
                         type="button"
@@ -275,7 +275,10 @@ const RightDeskSidebar = () => {
 
                   <div className="flex items-center justify-center gap-x-[13px] pt-3.5 w-full">
                     <button
-                      onClick={() => dispatch(setShowComponent(false))}
+                      onClick={() => {
+                        dispatch(setPredictOdd([]))
+                        dispatch(setShowComponent(false))
+                      }}
                       type="button"
                       className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent  text-text_BetSlipCancelBtnColor font-medium border border-danger rounded-md cursor-pointer"
                     >

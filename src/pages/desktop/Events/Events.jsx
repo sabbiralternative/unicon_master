@@ -9,8 +9,17 @@ import { useGetAllOddsEventsQuery } from "../../../redux/features/events/events"
 import RightDeskSidebar from "../../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import EventHeader from "../../../components/ui/desktop/events/EventHeader";
 import useBalance from "../../../hooks/useBalance";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setFirstOdd,
+  setPredictOdd,
+  setSecondOdd,
+  setThirdOdd,
+} from "../../../redux/features/events/eventSlice";
 
 const Events = () => {
+  const dispatch = useDispatch();
+  const { placeBetValues, price, stake } = useSelector((state) => state.event);
   const { refetchBalance } = useBalance();
   const { eventTypeId, eventId } = useParams();
   const payload = {
@@ -67,6 +76,175 @@ const Events = () => {
       // setOverByOver(overByOverFilter);
     }
   }, [data]);
+// console.log(placeBetValues);
+  /* Place bet calculate */
+  const pnl1 =
+    placeBetValues?.pnl && placeBetValues?.pnl[0] ? placeBetValues?.pnl[0] : 0;
+  const pnl2 =
+    placeBetValues?.pnl && placeBetValues?.pnl[1] ? placeBetValues?.pnl[1] : 0;
+  const pnl3 =
+    placeBetValues?.pnl && placeBetValues?.pnl[2] ? placeBetValues?.pnl[2] : 0;
+  const selectionId = placeBetValues?.selectionId?.toString();
+
+  useEffect(() => {
+    if (
+      placeBetValues?.btype === "MATCH_ODDS" ||
+      placeBetValues?.btype === "BOOKMAKER"
+    ) {
+      if (placeBetValues?.back) {
+        let total;
+
+        if (placeBetValues?.btype === "MATCH_ODDS") {
+          total = price * stake - stake;
+        }
+        if (placeBetValues?.btype === "BOOKMAKER") {
+          const bookmaker = 1 + price / 100;
+          total = bookmaker * stake - stake;
+        }
+
+        if (selectionId && selectionId.includes(".1")) {
+          dispatch(setFirstOdd(formatNumber(total + pnl1)));
+          dispatch(setSecondOdd(formatNumber(pnl2 + -1 * stake)));
+          dispatch(setThirdOdd(formatNumber(pnl3 + -1 * stake)));
+
+          dispatch(
+            setPredictOdd([
+              {
+                odd: formatNumber(total + pnl1),
+                id: placeBetValues?.runnerId[0],
+              },
+              {
+                odd: formatNumber(pnl2 + -1 * stake),
+                id: placeBetValues?.runnerId[1],
+              },
+              {
+                odd: formatNumber(pnl3 + -1 * stake),
+                id: placeBetValues?.runnerId[2],
+              },
+            ])
+          );
+        } else if (selectionId && selectionId.includes(".2")) {
+          dispatch(setFirstOdd(formatNumber(total + pnl2)));
+          dispatch(setSecondOdd(formatNumber(pnl3 + -1 * stake)));
+          dispatch(setThirdOdd(formatNumber(pnl2 + -1 * stake)));
+          dispatch(
+            setPredictOdd([
+              {
+                odd: formatNumber(pnl2 + -1 * stake),
+                id: placeBetValues?.runnerId[2],
+              },
+              {
+                odd: formatNumber(total + pnl2),
+                id: placeBetValues?.runnerId[1],
+              },
+              {
+                odd: formatNumber(pnl3 + -1 * stake),
+                id: placeBetValues?.runnerId[0],
+              },
+            ])
+          );
+        } else {
+          dispatch(setFirstOdd(formatNumber(total + pnl3)));
+          dispatch(setSecondOdd(formatNumber(pnl1 + -1 * stake)));
+          dispatch(setThirdOdd(formatNumber(pnl2 + -1 * stake)));
+          dispatch(
+            setPredictOdd([
+              {
+                odd: formatNumber(pnl1 + -1 * stake),
+                id: placeBetValues?.runnerId[0],
+              },
+              {
+                odd: formatNumber(pnl2 + -1 * stake),
+                id: placeBetValues?.runnerId[1],
+              },
+              {
+                odd: formatNumber(total + pnl3),
+                id: placeBetValues?.runnerId[2],
+              },
+            ])
+          );
+        }
+      } else if (placeBetValues?.lay) {
+        let total;
+        if (placeBetValues?.btype === "MATCH_ODDS") {
+          total = -1 * (price * stake - stake);
+        }
+        if (placeBetValues?.btype === "BOOKMAKER") {
+          const bookmaker = 1 + price / 100;
+          total = -1 * (bookmaker * stake - stake);
+        }
+
+        if (selectionId && selectionId.includes(".1")) {
+          dispatch(setFirstOdd(formatNumber(total + pnl1)));
+          dispatch(setSecondOdd(formatNumber(1 * pnl2 + 1 * stake)));
+          dispatch(setThirdOdd(formatNumber(1 * pnl3 + 1 * stake)));
+          dispatch(
+            setPredictOdd([
+              {
+                odd: formatNumber(total + pnl1),
+                id: placeBetValues?.runnerId[0],
+              },
+              {
+                odd: formatNumber(formatNumber(1 * pnl2 + 1 * stake)),
+                id: placeBetValues?.runnerId[1],
+              },
+              {
+                odd: formatNumber(formatNumber(1 * pnl3 + 1 * stake)),
+                id: placeBetValues?.runnerId[2],
+              },
+            ])
+          );
+        } else if (selectionId && selectionId.includes(".2")) {
+          dispatch(setFirstOdd(formatNumber(total + pnl2)));
+          dispatch(setSecondOdd(formatNumber(1 * pnl3 + 1 * stake)));
+          dispatch(setThirdOdd(formatNumber(1 * pnl1 + 1 * stake)));
+          dispatch(
+            setPredictOdd([
+              {
+                odd: formatNumber(formatNumber(1 * pnl1 + 1 * stake)),
+                id: placeBetValues?.runnerId[2],
+              },
+              {
+                odd: formatNumber(total + pnl2),
+                id: placeBetValues?.runnerId[1],
+              },
+              {
+                odd: formatNumber(formatNumber(1 * pnl3 + 1 * stake)),
+                id: placeBetValues?.runnerId[0],
+              },
+            ])
+          );
+        } else {
+          dispatch(setFirstOdd(formatNumber(total + pnl3)));
+          dispatch(setSecondOdd(formatNumber(1 * pnl1 + 1 * stake)));
+          dispatch(setThirdOdd(formatNumber(1 * pnl2 + 1 * stake)));
+          dispatch(
+            setPredictOdd([
+              {
+                odd: formatNumber(formatNumber(1 * pnl1 + 1 * stake)),
+                id: placeBetValues?.runnerId[0],
+              },
+              {
+                odd: formatNumber(formatNumber(1 * pnl2 + 1 * stake)),
+                id: placeBetValues?.runnerId[1],
+              },
+              {
+                odd: formatNumber(total + pnl3),
+                id: placeBetValues?.runnerId[2],
+              },
+            ])
+          );
+        }
+      }
+    }
+  }, [price, stake, placeBetValues, pnl1, pnl2, pnl3, selectionId, dispatch]);
+
+  /* Format number */
+  const formatNumber = (value) => {
+    const hasDecimal = value % 1 !== 0;
+    // value?.toFixed(2)
+    return hasDecimal ? value : value;
+  };
 
   return (
     <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">

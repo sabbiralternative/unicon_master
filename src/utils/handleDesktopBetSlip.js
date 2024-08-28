@@ -48,7 +48,7 @@ export const handleDesktopBetSlip = (
     };
   
     dispatch(setPlaceBetValues(betData));
-    dispatch(setShowComponent(!showComponent));
+    dispatch(setShowComponent(true));
   
 
   };
