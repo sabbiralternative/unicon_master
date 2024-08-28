@@ -34,7 +34,6 @@ const IFrame = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = res?.data;
-        console.log(data);
         setIFrame(data?.gameUrl);
         setLoading(false);
       } catch (error) {

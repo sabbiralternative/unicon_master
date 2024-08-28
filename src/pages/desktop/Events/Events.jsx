@@ -76,7 +76,7 @@ const Events = () => {
       // setOverByOver(overByOverFilter);
     }
   }, [data]);
-// console.log(placeBetValues);
+
   /* Place bet calculate */
   const pnl1 =
     placeBetValues?.pnl && placeBetValues?.pnl[0] ? placeBetValues?.pnl[0] : 0;

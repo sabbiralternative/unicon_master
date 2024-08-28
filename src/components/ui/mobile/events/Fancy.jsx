@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
@@ -10,11 +10,16 @@ import { useState } from "react";
 import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
 
 const Fancy = ({ fancy }) => {
+  const { predictOdd, stake } = useSelector((state) => state?.event);
   const [runnerId, setRunnerId] = useState("");
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
   const dispatch = useDispatch();
-
+  let pnlBySelection;
+  if (exposer?.pnlBySelection) {
+    const obj = exposer?.pnlBySelection;
+    pnlBySelection = Object?.values(obj);
+  }
   const handleOpenBetSlip = (betType, games, runner) => {
     handleBetSlip(
       setRunnerId,
@@ -43,6 +48,11 @@ const Fancy = ({ fancy }) => {
         </ul>
       </div>
       {fancy?.map((games) => {
+        const pnl =
+          pnlBySelection?.filter((pnl) => pnl?.MarketId === games?.id) || [];
+        const predictOddValues = predictOdd?.filter(
+          (val) => val?.id === games?.runners?.[0]
+        );
         return (
           <div key={games?.id} className="py-1.5">
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
@@ -54,7 +64,41 @@ const Fancy = ({ fancy }) => {
                         {games?.name}
                       </span>
                     </div>
-                    <span className="text-[12px] font-bold text-text_Success"></span>
+                    {pnl &&
+                      pnl?.map(({ pnl }, i) => {
+                        return (
+                          <span key={i} className="w-full whitespace-nowrap">
+                            <span
+                              className={`text-[12px] font-bold  whitespace-nowrap ${
+                                pnl > 0
+                                  ? "text-text_Success"
+                                  : "text-text_Danger"
+                              }`}
+                            >
+                              {pnl || ""}
+                            </span>
+                            {/* <span className="text-[12px] font-bold text-text_Success">
+                              &gt;&gt; 96
+
+                            </span> */}{" "}
+                            {stake &&
+                              predictOddValues?.map(({ odd, id }) => {
+                                return (
+                                  <span
+                                    key={id}
+                                    className={`text-[12px] font-bold ${
+                                      odd > 0
+                                        ? "text-text_Success"
+                                        : "text-text_Danger"
+                                    }`}
+                                  >
+                                    &gt;&gt; {stake && odd}
+                                  </span>
+                                );
+                              })}
+                          </span>
+                        );
+                      })}
                   </div>
                   <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center gap-x-[2px]">
                     <svg

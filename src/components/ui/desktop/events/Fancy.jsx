@@ -10,6 +10,7 @@ import {
 } from "../../../../redux/features/events/eventSlice";
 
 const Fancy = ({ fancy }) => {
+  const { predictOdd, stake } = useSelector((state) => state?.event);
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
   const { showComponent } = useSelector((state) => state?.event);
@@ -152,8 +153,13 @@ const Fancy = ({ fancy }) => {
         </div>
       </div> */}
       {fancy?.map((games) => {
-         const pnl =
-         pnlBySelection?.filter((pnl) => pnl?.MarketId === games?.id) || [];
+        console.log(games);
+        const pnl =
+          pnlBySelection?.filter((pnl) => pnl?.MarketId === games?.id) || [];
+        const predictOddValues = predictOdd?.filter(
+          (val) => val?.id === games?.id
+        );
+      
         return (
           <div key={games?.id} className="py-1.5">
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
@@ -166,24 +172,41 @@ const Fancy = ({ fancy }) => {
                       </span>
                     </div>
                     {/* <span className="text-[12px] font-bold text-text_Success"></span> */}
-                    {
-                        pnl && pnl?.map(({pnl},i) => {
-                          return (
-                            <span key={i} className="w-full whitespace-nowrap">
-                            <span className={`text-[12px] font-bold  whitespace-nowrap ${
-                                      pnl > 0
-                                        ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}>
-                            {pnl || ""}
+                    {pnl &&
+                      pnl?.map(({ pnl }, i) => {
+                        return (
+                          <span key={i} className="w-full whitespace-nowrap">
+                            <span
+                              className={`text-[12px] font-bold  whitespace-nowrap ${
+                                pnl > 0
+                                  ? "text-text_Success"
+                                  : "text-text_Danger"
+                              }`}
+                            >
+                              {pnl || ""}
                             </span>
                             {/* <span className="text-[12px] font-bold text-text_Success">
                               &gt;&gt; 96
-                            </span> */}
+
+                            </span> */}{" "}
+                            {stake &&
+                              predictOddValues?.map(({ odd, id }) => {
+                                return (
+                                  <span
+                                    key={id}
+                                    className={`text-[12px] font-bold ${
+                                      odd > 0
+                                        ? "text-text_Success"
+                                        : "text-text_Danger"
+                                    }`}
+                                  >
+                                    &gt;&gt; {stake && odd}
+                                  </span>
+                                );
+                              })}
                           </span>
-                          )
-                        })
-                       }
+                        );
+                      })}
                   </div>
                   <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center gap-x-[2px]">
                     <svg
@@ -248,7 +271,7 @@ const Fancy = ({ fancy }) => {
                   </span>
                 </div>
                 <div className="col-span-5 md:col-span-6 h-12 grid grid-cols-2 md:grid-cols-6 relative">
-                  {isOddSuspended(games?.runners?.[0]) ? (
+                  {isOddSuspended(games) ? (
                     <span className="col-span-4 text-center min-h-12 py-[1px] px-[1px]">
                       <span className="text-center bg-bg_ballRunning cursor-not-allowed w-full h-full rounded-sm flex text-xs flex-col items-center justify-center">
                         Suspended
@@ -256,14 +279,17 @@ const Fancy = ({ fancy }) => {
                     </span>
                   ) : (
                     <>
-                      <span      onClick={() =>
-                            handleOpenBetSlip(
-                              "back",
-                              games,
-                              games?.runners?.[0],
-                              games?.runners?.[0]?.back?.[0]?.line
-                            )
-                          } className="text-center min-h-12 cols-span-1 md:col-span-2">
+                      <span
+                        onClick={() =>
+                          handleOpenBetSlip(
+                            "back",
+                            games,
+                            games?.runners?.[0],
+                            games?.runners?.[0]?.back?.[0]?.line
+                          )
+                        }
+                        className="text-center min-h-12 cols-span-1 md:col-span-2"
+                      >
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                           <div
                             className={`${isPriceAvailable(
@@ -288,14 +314,17 @@ const Fancy = ({ fancy }) => {
                           </div>
                         </span>
                       </span>
-                      <span  onClick={() =>
-                            handleOpenBetSlip(
-                              "back",
-                              games,
-                              games?.runners?.[0],
-                              games?.runners?.[0]?.lay?.[0]?.line
-                            )
-                          } className="text-center min-h-12 cols-span-1 md:col-span-2">
+                      <span
+                        onClick={() =>
+                          handleOpenBetSlip(
+                            "back",
+                            games,
+                            games?.runners?.[0],
+                            games?.runners?.[0]?.lay?.[0]?.line
+                          )
+                        }
+                        className="text-center min-h-12 cols-span-1 md:col-span-2"
+                      >
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                           <div
                             className={`${isPriceAvailable(

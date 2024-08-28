@@ -9,13 +9,21 @@ import handleRandomToken from "../../../../utils/handleRandomToken";
 import { settings } from "../../../../api";
 import toast from "react-hot-toast";
 import BetLoading from "../../mobile/BetSlip/BetLoading";
-import { setPredictOdd, setPrice, setShowComponent, setStake } from "../../../../redux/features/events/eventSlice";
+import {
+  setPredictOdd,
+  setPrice,
+  setShowComponent,
+  setStake,
+} from "../../../../redux/features/events/eventSlice";
+import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icons/md";
 
 const RightDeskSidebar = () => {
+  const [unMarchedBet, setUnmatchedBet] = useState(true);
+  const [marchedBet, setMatchedBet] = useState(true);
   const dispatch = useDispatch();
-  const { showComponent,price,stake } = useSelector((state) => state.event);
+  const { showComponent, price, stake } = useSelector((state) => state.event);
   const { eventId } = useParams();
-  const { refetchBalance,balance } = useBalance();
+  const { refetchBalance, balance } = useBalance();
   const { refetchExposure } = useExposer(eventId);
   const { placeBetValues } = useSelector((state) => state?.event);
 
@@ -25,17 +33,23 @@ const RightDeskSidebar = () => {
   if (buttonValues) {
     parseButtonValues = JSON.parse(buttonValues);
   }
-  
+
   const [betDelay, setBetDelay] = useState(null);
 
   useEffect(() => {
     if (betDelay <= 0) {
       setBetDelay(null);
     }
-  dispatch(  setPrice(placeBetValues?.price))
-  dispatch(setStake(placeBetValues?.totalSize?.toFixed(2)))
     
-  }, [placeBetValues, betDelay,dispatch]);
+    dispatch(setPrice(placeBetValues?.price));
+    dispatch(setStake(placeBetValues?.totalSize?.toFixed(2)));
+  }, [placeBetValues, betDelay, dispatch]);
+
+  useEffect(() => {
+  dispatch(setPredictOdd([]))
+  }, [placeBetValues,dispatch]);
+
+
 
   let payload = {};
   if (price) {
@@ -85,7 +99,7 @@ const RightDeskSidebar = () => {
     ]);
     setBetDelay(placeBetValues?.betDelay);
     const res = await createOrder(encryptedData).unwrap();
-    console.log(res);
+
     if (res?.success) {
       refetchExposure();
       refetchBalance();
@@ -246,10 +260,12 @@ const RightDeskSidebar = () => {
                       </button>
                       <button
                         onClick={() =>
-                         dispatch( setStake(
-                          parseButtonValues[parseButtonValues?.length - 1]
-                            ?.value
-                        ))
+                          dispatch(
+                            setStake(
+                              parseButtonValues[parseButtonValues?.length - 1]
+                                ?.value
+                            )
+                          )
                         }
                         className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-maxBtnGrd text-text_Quaternary py-2 cursor-pointer"
                         type="button"
@@ -276,8 +292,8 @@ const RightDeskSidebar = () => {
                   <div className="flex items-center justify-center gap-x-[13px] pt-3.5 w-full">
                     <button
                       onClick={() => {
-                        dispatch(setPredictOdd([]))
-                        dispatch(setShowComponent(false))
+                        dispatch(setPredictOdd([]));
+                        dispatch(setShowComponent(false));
                       }}
                       type="button"
                       className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent  text-text_BetSlipCancelBtnColor font-medium border border-danger rounded-md cursor-pointer"
@@ -297,12 +313,12 @@ const RightDeskSidebar = () => {
                           <span className="font-bold text-xs sm:text-sm">
                             Place Bet
                           </span>
-                          <span className="font-semibold text-[10px] sm:text-xs">
+                          {/* <span className="font-semibold text-[10px] sm:text-xs">
                             <div>
                               <span>Profit : </span>
                               <span>1,600</span>
                             </div>
-                          </span>
+                          </span> */}
                         </div>
                         <span className="text-[10px] flex items-center justify-center gap-x-[1px]">
                           <span>
@@ -341,64 +357,73 @@ const RightDeskSidebar = () => {
               </div>
             )}
 
-          {
-            !showComponent && (
+            {!showComponent && (
               <div id="openBetsRightSide" title="Open Bets">
-            <div className=" flex flex-col w-full  gap-1">
-              <div
-                id="unmatched_0"
-                className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-bg_Secondary rounded "
-              >
-                <span className=" text-text_Quaternary text-xs">
-                  Unmatched Bets
-                </span>
-                <div className=" flex items-center justify-center autoAnimate ">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    transform="rotate(180)"
-                    viewBox="0 0 512 512"
-                    height="12"
-                    width="12"
-                    fill="var(--color-quaternary)"
+                <div className=" flex flex-col w-full  gap-1">
+                  <div
+                  onClick={()=> setUnmatchedBet((prev) => !prev)}
+                    id="unmatched_0"
+                    className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-bg_Secondary rounded "
                   >
-                    <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
-                  </svg>
-                </div>
-              </div>
-              <div className="w-full origin-top scaleVerticalOpen">
-                <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary ">
-                  You have no Unmatched Bets.
-                </div>
-              </div>
-              <div
-                id="matched_1"
-                className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-bg_Secondary rounded "
-              >
-                <span className=" text-text_Quaternary text-xs">
-                  Matched Bets
-                </span>
-                <div className=" flex items-center justify-center autoAnimate ">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    transform="rotate(180)"
-                    viewBox="0 0 512 512"
-                    height="12"
-                    width="12"
-                    fill="var(--color-quaternary)"
+                    <span className=" text-text_Quaternary text-xs">
+                      Unmatched Bets
+                    </span>
+                    <div className=" flex items-center justify-center autoAnimate ">
+                      {
+                        unMarchedBet ?    <MdOutlineKeyboardArrowUp size={20} color='#fff'/>:  <MdOutlineKeyboardArrowDown size={20} color='#fff'/>
+                      }
+                    
+                   
+
+                      {/* <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        transform="rotate(180)"
+                        viewBox="0 0 512 512"
+                        height="12"
+                        width="12"
+                        fill="var(--color-quaternary)"
+                      >
+                        <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+                      </svg> */}
+                    </div>
+                  </div>
+                  <div className={`w-full origin-top scaleVerticalOpen ${unMarchedBet ? 'hidden':''}`}>
+                    <div className={`w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary `}>
+                      You have no Unmatched Bets.
+                    </div>
+                  </div>
+                  <div
+                      onClick={()=> setMatchedBet((prev) => !prev)}
+                    id="matched_1"
+                    className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-bg_Secondary rounded "
                   >
-                    <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
-                  </svg>
+                    <span className=" text-text_Quaternary text-xs">
+                      Matched Bets
+                    </span>
+                    <div className=" flex items-center justify-center autoAnimate ">
+                      {/* <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        transform="rotate(180)"
+                        viewBox="0 0 512 512"
+                        height="12"
+                        width="12"
+                        fill="var(--color-quaternary)"
+                      >
+                        <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+                      </svg> */}
+                          {
+                        marchedBet ?    <MdOutlineKeyboardArrowUp size={20} color='#fff'/>:  <MdOutlineKeyboardArrowDown size={20} color='#fff'/>
+                      }
+                    </div>
+                  </div>
+                  <div className={`w-full origin-top scaleVerticalOpen ${marchedBet ? 'hidden':''}`}>
+                    <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary ">
+                      You have no Matched Bets.
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="w-full origin-top scaleVerticalOpen">
-                <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary ">
-                  You have no Matched Bets.
-                </div>
-              </div>
-            </div>
-          </div>
-            )
-          }
+            )}
           </div>
         </div>
       </div>

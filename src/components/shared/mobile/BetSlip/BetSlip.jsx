@@ -10,6 +10,7 @@ import useBalance from "../../../../hooks/useBalance";
 import toast from "react-hot-toast";
 import BetLoading from "./BetLoading";
 import {
+  setPredictOdd,
   setPrice,
   setStake,
 } from "../../../../redux/features/events/eventSlice";
@@ -82,7 +83,7 @@ const BetSlip = ({ setRunnerId }) => {
     ]);
     setBetDelay(placeBetValues?.betDelay);
     const res = await createOrder(encryptedData).unwrap();
-    console.log(res);
+  
     if (res?.success) {
       refetchExposure();
       refetchBalance();
@@ -209,7 +210,10 @@ const BetSlip = ({ setRunnerId }) => {
             </div>
             <div className="flex items-center justify-center gap-x-[13px] pt-3.5 w-full">
               <button
-                onClick={() => setRunnerId("")}
+                onClick={() => {
+                  dispatch(setPredictOdd([]))
+                  setRunnerId("")
+                }}
                 type="button"
                 className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent text-text_BetSlipCancelBtnColor font-medium border border-danger rounded-md cursor-pointer"
               >
@@ -228,12 +232,12 @@ const BetSlip = ({ setRunnerId }) => {
                     <span className="font-bold text-xs sm:text-sm">
                       Place Bet
                     </span>
-                    <span className="font-semibold text-[10px] sm:text-xs">
+                    {/* <span className="font-semibold text-[10px] sm:text-xs">
                       <div>
                         <span>Profit : </span>
                         <span>0.00</span>
                       </div>
-                    </span>
+                    </span> */}
                   </div>
                   <span className="text-[10px] flex items-center justify-center gap-x-[1px]">
                     <span>

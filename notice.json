@@ -19,6 +19,7 @@
       "disabledDevtool": false,
       "casinoCurrency": "AEDD",
       "balanceApiLoop": false,
+      "betFairCashOut": true,
       "logo": {
         "height": 55,
         "width": 125,

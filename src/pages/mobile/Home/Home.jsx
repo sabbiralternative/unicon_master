@@ -19,7 +19,7 @@ const Home = () => {
   const { data } = useGetAllGroupEventsQuery(group, {
     pollingInterval: isRefetchGroupData(group) ? 1000 : null,
   });
-  console.log(group);
+ 
 
   const openWhatsapp = () => {
     if (socialLink?.whatsapplink) {

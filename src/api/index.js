@@ -56,5 +56,6 @@ export const settings = {
   logoFormat:"",
   logoHeight:"",
   logoWidth:"",
-  apkLink:""
+  apkLink:"",
+  betFairCashOut:""
 };
