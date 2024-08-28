@@ -15,7 +15,10 @@ import {
   setShowComponent,
   setStake,
 } from "../../../../redux/features/events/eventSlice";
-import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icons/md";
+import {
+  MdOutlineKeyboardArrowDown,
+  MdOutlineKeyboardArrowUp,
+} from "react-icons/md";
 
 const RightDeskSidebar = () => {
   const [unMarchedBet, setUnmatchedBet] = useState(true);
@@ -40,16 +43,14 @@ const RightDeskSidebar = () => {
     if (betDelay <= 0) {
       setBetDelay(null);
     }
-    
+
     dispatch(setPrice(placeBetValues?.price));
     dispatch(setStake(placeBetValues?.totalSize?.toFixed(2)));
   }, [placeBetValues, betDelay, dispatch]);
 
   useEffect(() => {
-  dispatch(setPredictOdd([]))
-  }, [placeBetValues,dispatch]);
-
-
+    dispatch(setPredictOdd([]));
+  }, [placeBetValues, dispatch]);
 
   let payload = {};
   if (price) {
@@ -120,19 +121,20 @@ const RightDeskSidebar = () => {
 
   return (
     <>
-      {betDelay > 0 && (
-        <BetLoading
-          betDelay={betDelay}
-          setBetDelay={setBetDelay}
-          right={true}
-        />
-      )}
       <div
         title="Menu 2"
         id="rightDeskSideBar"
         className="hidden lg:flex p-2 overflow-y-auto no-scrollbar z-10 w-[26%] h-[calc(100dvh-120px)] sticky top-[54px] lg:top-[110px]"
       >
         <div className="flex p-2 overflow-x-hidden relative no-scrollbar border flex-col w-full rounded-lg bg-bg_Quaternary">
+          {betDelay > 0 && (
+            <BetLoading
+              absolute={true}
+              betDelay={betDelay}
+              setBetDelay={setBetDelay}
+            
+            />
+          )}
           <div className="flex flex-col w-full gap-1 select-none">
             <div className="w-full flex px-3 gap-x-1 py-2 relative cursor-pointer rounded bg-bg_Secondary">
               <div className="flex flex-col items-start">
@@ -361,7 +363,7 @@ const RightDeskSidebar = () => {
               <div id="openBetsRightSide" title="Open Bets">
                 <div className=" flex flex-col w-full  gap-1">
                   <div
-                  onClick={()=> setUnmatchedBet((prev) => !prev)}
+                    onClick={() => setUnmatchedBet((prev) => !prev)}
                     id="unmatched_0"
                     className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-bg_Secondary rounded "
                   >
@@ -369,11 +371,11 @@ const RightDeskSidebar = () => {
                       Unmatched Bets
                     </span>
                     <div className=" flex items-center justify-center autoAnimate ">
-                      {
-                        unMarchedBet ?    <MdOutlineKeyboardArrowUp size={20} color='#fff'/>:  <MdOutlineKeyboardArrowDown size={20} color='#fff'/>
-                      }
-                    
-                   
+                      {unMarchedBet ? (
+                        <MdOutlineKeyboardArrowUp size={20} color="#fff" />
+                      ) : (
+                        <MdOutlineKeyboardArrowDown size={20} color="#fff" />
+                      )}
 
                       {/* <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -387,13 +389,19 @@ const RightDeskSidebar = () => {
                       </svg> */}
                     </div>
                   </div>
-                  <div className={`w-full origin-top scaleVerticalOpen ${unMarchedBet ? 'hidden':''}`}>
-                    <div className={`w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary `}>
+                  <div
+                    className={`w-full origin-top scaleVerticalOpen ${
+                      unMarchedBet ? "hidden" : ""
+                    }`}
+                  >
+                    <div
+                      className={`w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary `}
+                    >
                       You have no Unmatched Bets.
                     </div>
                   </div>
                   <div
-                      onClick={()=> setMatchedBet((prev) => !prev)}
+                    onClick={() => setMatchedBet((prev) => !prev)}
                     id="matched_1"
                     className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-bg_Secondary rounded "
                   >
@@ -411,12 +419,18 @@ const RightDeskSidebar = () => {
                       >
                         <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
                       </svg> */}
-                          {
-                        marchedBet ?    <MdOutlineKeyboardArrowUp size={20} color='#fff'/>:  <MdOutlineKeyboardArrowDown size={20} color='#fff'/>
-                      }
+                      {marchedBet ? (
+                        <MdOutlineKeyboardArrowUp size={20} color="#fff" />
+                      ) : (
+                        <MdOutlineKeyboardArrowDown size={20} color="#fff" />
+                      )}
                     </div>
                   </div>
-                  <div className={`w-full origin-top scaleVerticalOpen ${marchedBet ? 'hidden':''}`}>
+                  <div
+                    className={`w-full origin-top scaleVerticalOpen ${
+                      marchedBet ? "hidden" : ""
+                    }`}
+                  >
                     <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary ">
                       You have no Matched Bets.
                     </div>

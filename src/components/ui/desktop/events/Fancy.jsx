@@ -282,6 +282,41 @@ const Fancy = ({ fancy }) => {
                       <span
                         onClick={() =>
                           handleOpenBetSlip(
+                            "lay",
+                            games,
+                            games?.runners?.[0],
+                            games?.runners?.[0]?.back?.[0]?.line
+                          )
+                        }
+                        className="text-center min-h-12 cols-span-1 md:col-span-2"
+                      >
+                        <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
+                          <div
+                            className={`${isPriceAvailable(
+                              games?.runners?.[0]?.lay?.[0]?.line
+                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
+                          >
+                            <span
+                              id="oddBtnPrice"
+                              className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
+                            >
+                              {games?.runners?.[0]?.lay?.[0]?.line || "-"}
+                            </span>
+                            <span
+                              id="oddBtnSize"
+                              className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-[10px] text-text_OddValue leading-3 text-center whitespace-normal font-normal"
+                            >
+                              <span className="w-max break-all truncate">
+                                {" "}
+                                {games?.runners?.[0]?.lay?.[0]?.price}
+                              </span>
+                            </span>
+                          </div>
+                        </span>
+                      </span>
+                      <span
+                        onClick={() =>
+                          handleOpenBetSlip(
                             "back",
                             games,
                             games?.runners?.[0],
@@ -294,13 +329,13 @@ const Fancy = ({ fancy }) => {
                           <div
                             className={`${isPriceAvailable(
                               games?.runners?.[0]?.back?.[0]?.line
-                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
+                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                           >
                             <span
                               id="oddBtnPrice"
                               className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
                             >
-                              {games?.runners?.[0]?.back?.[0]?.line || "-"}
+                              {games?.runners?.[0]?.back?.[0]?.line}
                             </span>
                             <span
                               id="oddBtnSize"
@@ -309,41 +344,6 @@ const Fancy = ({ fancy }) => {
                               <span className="w-max break-all truncate">
                                 {" "}
                                 {games?.runners?.[0]?.back?.[0]?.price}
-                              </span>
-                            </span>
-                          </div>
-                        </span>
-                      </span>
-                      <span
-                        onClick={() =>
-                          handleOpenBetSlip(
-                            "back",
-                            games,
-                            games?.runners?.[0],
-                            games?.runners?.[0]?.lay?.[0]?.line
-                          )
-                        }
-                        className="text-center min-h-12 cols-span-1 md:col-span-2"
-                      >
-                        <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
-                          <div
-                            className={`${isPriceAvailable(
-                              games?.runners?.[0]?.lay?.[0]?.line
-                            )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
-                          >
-                            <span
-                              id="oddBtnPrice"
-                              className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
-                            >
-                              {games?.runners?.[0]?.lay?.[0]?.line}
-                            </span>
-                            <span
-                              id="oddBtnSize"
-                              className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-[10px] text-text_OddValue leading-3 text-center whitespace-normal font-normal"
-                            >
-                              <span className="w-max break-all truncate">
-                                {" "}
-                                {games?.runners?.[0]?.lay?.[0]?.price}
                               </span>
                             </span>
                           </div>

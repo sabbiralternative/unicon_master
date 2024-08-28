@@ -28,6 +28,15 @@ export const eventsApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getLadder: builder.mutation({
+      query: (payload) => {
+        return {
+          url: `${API.ladder}/${payload.marketId}`,
+          method: "POST",
+          body: payload.data,
+        };
+      },
+    }),
   }),
 });
 
@@ -35,4 +44,5 @@ export const {
   useGetAllGroupEventsQuery,
   useGetAllOddsEventsQuery,
   useOrderMutation,
+  useGetLadderMutation
 } = eventsApi;

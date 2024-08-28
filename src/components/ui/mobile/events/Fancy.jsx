@@ -8,9 +8,15 @@ import useExposer from "../../../../hooks/useExposure";
 import { handleBetSlip } from "../../../../utils/handleBetSlip";
 import { useState } from "react";
 import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
+import { useGetLadderMutation } from "../../../../redux/features/events/events";
+import handleRandomToken from "../../../../utils/handleRandomToken";
+import handleEncryptData from "../../../../utils/handleEncryptData";
+import { settings } from "../../../../api";
 
 const Fancy = ({ fancy }) => {
-  const { predictOdd, stake } = useSelector((state) => state?.event);
+  const [ladderData, setLadderData] = useState([]);
+  const [getLadder] = useGetLadderMutation();
+  const { predictOdd, stake,placeBetValues } = useSelector((state) => state?.event);
   const [runnerId, setRunnerId] = useState("");
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
@@ -31,6 +37,24 @@ const Fancy = ({ fancy }) => {
       setPlaceBetValues
     );
   };
+
+  const handleGetLadder = async (marketId) => {
+    const generatedToken = handleRandomToken();
+    const encryptedData = handleEncryptData({
+      token: generatedToken,
+      site: settings.siteUrl,
+    });
+    const payload = {
+      marketId,
+      data: encryptedData,
+    };
+    const res = await getLadder(payload).unwrap();
+    if (res.success) {
+      setLadderData(res.result);
+    }
+  };
+
+  // console.log(predictOdd);
   return (
     <>
       <div className="text-base font-medium text-center py-1.5">
@@ -48,11 +72,13 @@ const Fancy = ({ fancy }) => {
         </ul>
       </div>
       {fancy?.map((games) => {
+
         const pnl =
           pnlBySelection?.filter((pnl) => pnl?.MarketId === games?.id) || [];
         const predictOddValues = predictOdd?.filter(
-          (val) => val?.id === games?.runners?.[0]
+          (val) => val?.id === games?.runners?.[0]?.id
         );
+    
         return (
           <div key={games?.id} className="py-1.5">
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
@@ -122,67 +148,118 @@ const Fancy = ({ fancy }) => {
                       2s
                     </span>
                   </span>
-                  <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center">
-                    <div className="opacity-50 cursor-not-allowed">
-                      <svg
-                        height="18"
-                        width="18"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g id="63d691358b4e4026f6539708_stairs 1">
-                          <path
-                            id="Vector"
-                            d="M5.21875 3.13672V13.1367"
-                            stroke="var(--color-ternary4)"
-                          ></path>
-                          <path
-                            id="Vector_2"
-                            d="M5.21875 5.48047H10.5312"
-                            stroke="var(--color-ternary4)"
-                          ></path>
-                          <path
-                            id="Vector_3"
-                            d="M5.21875 8.13672H10.5312"
-                            stroke="var(--color-ternary4)"
-                          ></path>
-                          <path
-                            id="Vector_4"
-                            d="M5.21875 11.1055H10.5312"
-                            stroke="var(--color-ternary4)"
-                          ></path>
-                          <path
-                            id="Vector_5"
-                            d="M10.5312 3.13672V13.1367"
-                            stroke="var(--color-ternary4)"
-                          ></path>
-                        </g>
-                      </svg>
-                    </div>
-                  </span>
+
+                  {pnl?.length > 0 ? (
+                    pnl?.map(({ MarketId }, i) => {
+                      return (
+                        <span
+                          key={i}
+                          onClick={() => handleGetLadder(MarketId)}
+                          className="col-span-2 md:col-span-1 flex flex-row items-center justify-center"
+                        >
+                          <div className="opacity-100 cursor-pointer">
+                            <svg
+                              height="18"
+                              width="18"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <g id="63d691358b4e4026f6539708_stairs 1">
+                                <path
+                                  id="Vector"
+                                  d="M5.21875 3.13672V13.1367"
+                                  stroke="var(--color-ternary4)"
+                                ></path>
+                                <path
+                                  id="Vector_2"
+                                  d="M5.21875 5.48047H10.5312"
+                                  stroke="var(--color-ternary4)"
+                                ></path>
+                                <path
+                                  id="Vector_3"
+                                  d="M5.21875 8.13672H10.5312"
+                                  stroke="var(--color-ternary4)"
+                                ></path>
+                                <path
+                                  id="Vector_4"
+                                  d="M5.21875 11.1055H10.5312"
+                                  stroke="var(--color-ternary4)"
+                                ></path>
+                                <path
+                                  id="Vector_5"
+                                  d="M10.5312 3.13672V13.1367"
+                                  stroke="var(--color-ternary4)"
+                                ></path>
+                              </g>
+                            </svg>
+                          </div>
+                        </span>
+                      );
+                    })
+                  ) : (
+                    <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center">
+                      <div className="opacity-50 cursor-not-allowed">
+                        <svg
+                          height="18"
+                          width="18"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g id="63d691358b4e4026f6539708_stairs 1">
+                            <path
+                              id="Vector"
+                              d="M5.21875 3.13672V13.1367"
+                              stroke="var(--color-ternary4)"
+                            ></path>
+                            <path
+                              id="Vector_2"
+                              d="M5.21875 5.48047H10.5312"
+                              stroke="var(--color-ternary4)"
+                            ></path>
+                            <path
+                              id="Vector_3"
+                              d="M5.21875 8.13672H10.5312"
+                              stroke="var(--color-ternary4)"
+                            ></path>
+                            <path
+                              id="Vector_4"
+                              d="M5.21875 11.1055H10.5312"
+                              stroke="var(--color-ternary4)"
+                            ></path>
+                            <path
+                              id="Vector_5"
+                              d="M10.5312 3.13672V13.1367"
+                              stroke="var(--color-ternary4)"
+                            ></path>
+                          </g>
+                        </svg>
+                      </div>
+                    </span>
+                  )}
                 </div>
-                {isOddSuspended(games?.runners?.[0]) ? (
+                {isOddSuspended(games) ? (
                   <SuspendedOdd colSpan={5} />
                 ) : (
                   <div className="col-span-5 md:col-span-6 h-12 grid grid-cols-2 md:grid-cols-6 relative">
                     <span
                       onClick={() =>
-                        handleOpenBetSlip("back", games, games?.runners?.[0])
+                        handleOpenBetSlip("lay", games, games?.runners?.[0])
                       }
                       className="text-center min-h-12 cols-span-1 md:col-span-2"
                     >
                       <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                         <div
                           className={`${isPriceAvailable(
-                            games?.runners?.[0]?.back?.[0]?.line
+                            games?.runners?.[0]?.lay?.[0]?.line
                           )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                         >
                           <span
                             id="oddBtnPrice"
                             className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
                           >
-                            {games?.runners?.[0]?.back?.[0]?.line || "-"}
+                            {games?.runners?.[0]?.lay?.[0]?.line || "-"}
                           </span>
                           <span
                             id="oddBtnSize"
@@ -190,7 +267,7 @@ const Fancy = ({ fancy }) => {
                           >
                             <span className="w-max break-all truncate">
                               {" "}
-                              {games?.runners?.[0]?.back?.[0]?.price}
+                              {games?.runners?.[0]?.lay?.[0]?.price}
                             </span>
                           </span>
                         </div>
@@ -205,14 +282,14 @@ const Fancy = ({ fancy }) => {
                       <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                         <div
                           className={`${isPriceAvailable(
-                            games?.runners?.[0]?.lay?.[0]?.line
+                            games?.runners?.[0]?.back?.[0]?.line
                           )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                         >
                           <span
                             id="oddBtnPrice"
                             className="relative z-10 transition-all ease-in-out duration-300 origin-center flex items-center justify-center w-full text-text_OddValue leading-5 text-sm md:text-[15px] font-semibold"
                           >
-                            {games?.runners?.[0]?.lay?.[0]?.line}
+                            {games?.runners?.[0]?.back?.[0]?.line}
                           </span>
                           <span
                             id="oddBtnSize"
@@ -220,7 +297,7 @@ const Fancy = ({ fancy }) => {
                           >
                             <span className="w-max break-all truncate">
                               {" "}
-                              {games?.runners?.[0]?.lay?.[0]?.price}
+                              {games?.runners?.[0]?.back?.[0]?.price}
                             </span>
                           </span>
                         </div>
@@ -250,7 +327,7 @@ const Fancy = ({ fancy }) => {
                 )}
 
                 <div className="col-span-12 h-max"></div>
-                {games?.runners?.[0]?.id === runnerId && (
+                {games?.id === runnerId && (
                   <BetSlip setRunnerId={setRunnerId} />
                 )}
               </div>

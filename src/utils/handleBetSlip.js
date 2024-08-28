@@ -32,7 +32,7 @@ export const handleBetSlip = (
   const betData = {
     price: betType === "back" ? runner?.back[0].price : runner?.lay[0].price,
     side: betType === "back" ? 0 : 1,
-    selectionId: runner?.id,
+    selectionId: games?.id,
     btype: games?.btype,
     eventTypeId: games?.eventTypeId,
     betDelay: games?.betDelay,
@@ -50,7 +50,12 @@ export const handleBetSlip = (
     marketName: games?.name,
     eventId: games?.eventId,
   };
-  setRunnerId(runner?.id);
+  if(games?.btype == 'FANCY'){
+    setRunnerId(games?.id);
+  }else{
+    setRunnerId(runner?.id);
+  }
+
   dispatch(setPlaceBetValues(betData));
 
 };

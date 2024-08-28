@@ -33,7 +33,7 @@ const BetSlip = ({ setRunnerId }) => {
   useEffect(() => {
     dispatch(setPrice(placeBetValues?.price));
     dispatch(setStake(placeBetValues?.totalSize?.toFixed(2)));
-  }, [placeBetValues,dispatch]);
+  }, [placeBetValues, dispatch]);
 
   let payload = {};
   if (price) {
@@ -83,7 +83,7 @@ const BetSlip = ({ setRunnerId }) => {
     ]);
     setBetDelay(placeBetValues?.betDelay);
     const res = await createOrder(encryptedData).unwrap();
-  
+
     if (res?.success) {
       refetchExposure();
       refetchBalance();
@@ -183,9 +183,11 @@ const BetSlip = ({ setRunnerId }) => {
                 </button>
                 <button
                   onClick={() =>
-                 dispatch(   setStake(
-                  parseButtonValues[parseButtonValues?.length - 1]?.value
-                ))
+                    dispatch(
+                      setStake(
+                        parseButtonValues[parseButtonValues?.length - 1]?.value
+                      )
+                    )
                   }
                   className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-maxBtnGrd text-text_Quaternary py-2 cursor-pointer"
                   type="button"
@@ -211,8 +213,8 @@ const BetSlip = ({ setRunnerId }) => {
             <div className="flex items-center justify-center gap-x-[13px] pt-3.5 w-full">
               <button
                 onClick={() => {
-                  dispatch(setPredictOdd([]))
-                  setRunnerId("")
+                  dispatch(setPredictOdd([]));
+                  setRunnerId("");
                 }}
                 type="button"
                 className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent text-text_BetSlipCancelBtnColor font-medium border border-danger rounded-md cursor-pointer"
@@ -225,19 +227,23 @@ const BetSlip = ({ setRunnerId }) => {
                 <button
                   onClick={handleOrderBets}
                   disabled={!stake || betDelay > 0}
+                
                   type="button"
-                  className=" leading-normal relative overflow-hidden transition duration-150 ease-in-out py-1  w-full flex min-h-[46px] px-2.5 rounded-md font-medium border flex-row items-center justify-between bg-bg_InActivePlaceBtnColor text-text_Ternary 5 border-inActivePlaceBtnColor cursor-pointer"
+                  className={` leading-normal relative overflow-hidden  transition duration-150 ease-in-out py-1 w-full flex  min-h-[46px] px-2.5 rounded-md  font-medium border  flex-row items-center justify-between  
+                   text-text_Ternary 5     text-text_Quaternary  
+               cursor-pointer ${
+        !stake || betDelay > 0
+          ? " bg-bg_InActivePlaceBtnColor border-inActivePlaceBtnColor cursor-not-allowed"
+          : "bg-placeBetBtnGrd border-primary cursor-pointer"
+      }`}
                 >
-                  <div className="flex items-start justify-start flex-col">
-                    <span className="font-bold text-xs sm:text-sm">
+                  <div className=" flex items-start justify-start flex-col">
+                    <span className="  font-bold text-xs sm:text-sm">
                       Place Bet
                     </span>
-                    {/* <span className="font-semibold text-[10px] sm:text-xs">
-                      <div>
-                        <span>Profit : </span>
-                        <span>0.00</span>
-                      </div>
-                    </span> */}
+                    <span className="font-semibold text-[10px] sm:text-xs">
+                      <div></div>
+                    </span>
                   </div>
                   <span className="text-[10px] flex items-center justify-center gap-x-[1px]">
                     <span>
@@ -251,7 +257,11 @@ const BetSlip = ({ setRunnerId }) => {
                         <g clipPath="url(#clip0_2144_3162)">
                           <path
                             d="M9.91095 3.68857L10.3814 3.21808C10.5643 3.03525 10.5643 2.7388 10.3814 2.55606C10.1986 2.37323 9.90225 2.37323 9.71942 2.55606L9.24893 3.02655C8.45956 2.36884 7.50037 1.9715 6.47717 1.87848V0.93631H6.92972C7.18826 0.93631 7.39783 0.726654 7.39783 0.468109C7.39783 0.209564 7.18826 0 6.92972 0H5.08832C4.82977 0 4.62021 0.209564 4.62021 0.468109C4.62021 0.726654 4.82977 0.93631 5.08832 0.93631H5.54086V1.87848C2.97958 2.11139 0.9375 4.26306 0.9375 6.92844C0.9375 9.73141 3.20572 12 6.00906 12C8.81195 12 11.0805 9.73178 11.0805 6.92844C11.0805 5.73111 10.6682 4.59723 9.91095 3.68857ZM6.00897 11.0637C3.72885 11.0637 1.87372 9.20865 1.87372 6.92844C1.87372 4.64832 3.72885 2.79327 6.00897 2.79327C8.28918 2.79327 10.1442 4.64832 10.1442 6.92844C10.1442 9.20865 8.28918 11.0637 6.00897 11.0637ZM8.1785 4.759C8.36133 4.94183 8.36133 5.23828 8.1785 5.42102L6.34003 7.25949C6.1572 7.44232 5.86075 7.44232 5.67801 7.25949C5.49518 7.07666 5.49518 6.78021 5.67801 6.59747L7.51639 4.759C7.69922 4.57617 7.99567 4.57617 8.1785 4.759Z"
-                            fill="var(--color-betSlipStopWatchIconColor)"
+                            fill={`${
+                              !stake || betDelay > 0
+                                ? "var(--color-betSlipStopWatchIconColor)"
+                                : "var(--color-quaternary)"
+                            } `}
                           ></path>
                         </g>
                         <defs>
@@ -261,8 +271,12 @@ const BetSlip = ({ setRunnerId }) => {
                         </defs>
                       </svg>
                     </span>
-                    <span className="font-normal text-text_Ternary5">
-                      {placeBetValues?.betDelay}s
+                    <span
+                      className={`font-normal ${
+                        !stake || betDelay > 0 ? "" : "text-text_Quaternary"
+                      }  `}
+                    >
+                      {placeBetValues?.betDelay}ss
                     </span>
                   </span>
                 </button>

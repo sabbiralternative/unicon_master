@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const EventHeader = ({ data }) => {
+const EventHeader = ({ data, setBetsType,betType }) => {
   const navigate = useNavigate();
   return (
     <div
@@ -144,10 +144,11 @@ const EventHeader = ({ data }) => {
       >
         <div
           id="step-selectMode"
-          className="relative flex w-[100%] rounded-lg border shadow bg-bg_Quaternary overflow-clip rounded-none bg-bg_Quaternary w-full border-none shadow-none overflow-clip gap-x-2.5"
+          className="relative flex  rounded-lg border shadow bg-bg_Quaternary  bg-bg_Quaternary w-full border-none overflow-clip gap-x-2.5"
         >
           <button
-            className="flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3 text-sm font-semibold text-text_Primary text-text_Primary font-bold font-lato text-xs"
+          onClick={()=> setBetsType('live')}
+            className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3    font-bold font-lato text-xs ${betType === 'live' ? 'text-text_Primary':'text-text_Quinary '}`}
             style={{ zIndex: 10 }}
           >
             <span>
@@ -156,7 +157,8 @@ const EventHeader = ({ data }) => {
             LIVE
           </button>
           <button
-            className="flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3 text-sm font-semibold text-text_Quinary text-text_Quaternary font-lato font-bold text-xs"
+          onClick={()=> setBetsType('openBet')}
+            className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3  font-lato font-bold text-xs ${betType === 'openBet' ? 'text-text_Primary':'text-text_Quinary '}`}
             style={{ zIndex: 10 }}
           >
             OPEN BETS
@@ -165,11 +167,11 @@ const EventHeader = ({ data }) => {
             </span>
           </button>
           <div
-            className="w-[48%] absolute z-10 transition-all ease-in-out bg-bg_Primary rounded-lg h-[2px]"
+            className={`w-[48%] absolute z-10 transition-all ease-in-out bg-bg_Primary rounded-lg h-[2px] ${betType === 'live' ? 'left-0' :'right-0'}`}
             style={{
               zIndex: 9,
               width: "50%",
-              left: "0%",
+              
               bottom: "0px",
             }}
           ></div>

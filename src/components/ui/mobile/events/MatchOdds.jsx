@@ -135,7 +135,7 @@ const MatchOdds = ({ match_odds }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [match_odds, eventId, exposer]);
 
-
+console.log(match_odds);
   return (
     <>
       {match_odds?.map((games, i) => {
@@ -143,6 +143,7 @@ const MatchOdds = ({ match_odds }) => {
             (profit) =>
               profit?.gameId === games?.id && profit?.isOnePositiveExposure
           );
+         
         return (
           <div key={i} className="py-1.5">
             <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] mb-1.5">
