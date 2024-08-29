@@ -23,9 +23,9 @@ const OpenBets = () => {
           <span className=" text-text_Quaternary text-xs">Matched Bets</span>
           <div className=" flex items-center justify-center autoAnimate ">
             {openBets ? (
-              <MdOutlineKeyboardArrowDown size={20} color="#fff" />
-            ) : (
               <MdOutlineKeyboardArrowUp size={20} color="#fff" />
+            ) : (
+              <MdOutlineKeyboardArrowDown size={20} color="#fff" />
             )}
           </div>
         </div>
@@ -43,16 +43,21 @@ const OpenBets = () => {
                 <span className="col-span-1 text-center text-text_Ternary">
                   Stake
                 </span>
-                <span className="col-span-2 text-center text-text_Ternary">
+                {/* <span className="col-span-2 text-center text-text_Ternary">
                   P/L
-                </span>
+                </span> */}
               </div>
               <div className="flex w-full flex-col gap-0.5">
                 {orderedBets?.map((bet, i) => {
+                  console.log(bet);
                   return (
                     <div
                       key={i}
-                      className="grid grid-cols-6 font-semibold px-2 py-1 cursor-pointer rounded w-full text-xs capitalize bg-bg_BackBtnBg"
+                      className={`grid grid-cols-6 font-semibold px-2 py-1 cursor-pointer rounded w-full text-xs capitalize   ${
+                        bet?.betType === "Back"
+                          ? "bg-bg_BackBtnBg"
+                          : "bg-bg_LayBtnBg"
+                      }`}
                     >
                       <span className="col-span-2">{bet?.nation}</span>
                       <span className="col-span-1 text-center">
@@ -61,28 +66,13 @@ const OpenBets = () => {
                       <span className="col-span-1 text-center">
                         {bet?.amount}
                       </span>
-                      <span className="col-span-2 text-center">
+                      {/* <span className="col-span-2 text-center">
                         {bet?.amount}
-                      </span>
+                      </span> */}
                     </div>
                   );
                 })}
               </div>
-
-              {/* <div className="flex w-full flex-col gap-0.5">
-                        <div className="grid grid-cols-6 font-semibold px-2 py-1 cursor-pointer rounded w-full text-xs capitalize bg-bg_BackBtnBg">
-                          <span className="col-span-2">1st Wicket SL</span>
-                          <span className="col-span-1 text-center">90</span>
-                          <span className="col-span-1 text-center">100</span>
-                          <span className="col-span-2 text-center">90</span>
-                        </div>
-                        <div className="grid grid-cols-6 font-semibold px-2 py-1 cursor-pointer rounded w-full text-xs capitalize bg-bg_LayBtnBg">
-                          <span className="col-span-2">1st Wicket SL</span>
-                          <span className="col-span-1 text-center">120</span>
-                          <span className="col-span-1 text-center">100</span>
-                          <span className="col-span-2 text-center">-120</span>
-                        </div>
-                      </div> */}
             </div>
           </div>
         )}
