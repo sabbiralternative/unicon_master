@@ -235,6 +235,24 @@ const Events = () => {
             ])
           );
         }
+      }else {
+        let total = price * stake - stake;
+        dispatch(
+          setPredictOdd([
+            {
+              odd: formatNumber(total + pnl1),
+              id: placeBetValues?.runnerId[0],
+            },
+            {
+              odd: formatNumber(pnl2 + -1 * stake),
+              id: placeBetValues?.runnerId[1],
+            },
+            {
+              odd: formatNumber(pnl3 + -1 * stake),
+              id: placeBetValues?.runnerId[2],
+            },
+          ])
+        );
       }
     }
   }, [price, stake, placeBetValues, pnl1, pnl2, pnl3, selectionId, dispatch]);

@@ -14,9 +14,7 @@ import { handleCashoutBetDesktop } from "../../../../utils/handleCashoutBetDeskt
 const MatchOdds = ({ match_odds }) => {
   const [teamProfit, setTeamProfit] = useState([]);
   const [runnerId, setRunnerId] = useState("");
-  const {  predictOdd, stake } = useSelector(
-    (state) => state?.event
-  );
+  const { predictOdd, stake } = useSelector((state) => state?.event);
   const { token } = useSelector((state) => state?.auth);
   const navigate = useNavigate();
   const { eventId } = useParams();
@@ -135,15 +133,15 @@ const MatchOdds = ({ match_odds }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [match_odds, eventId, exposer]);
 
-console.log(match_odds);
+
   return (
     <>
       {match_odds?.map((games, i) => {
-          const teamProfitForGame = teamProfit?.find(
-            (profit) =>
-              profit?.gameId === games?.id && profit?.isOnePositiveExposure
-          );
-         
+        const teamProfitForGame = teamProfit?.find(
+          (profit) =>
+            profit?.gameId === games?.id && profit?.isOnePositiveExposure
+        );
+
         return (
           <div key={i} className="py-1.5">
             <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] mb-1.5">
@@ -159,7 +157,7 @@ console.log(match_odds);
                     Cashout
                   </div>
                 </button> */}
-                  {settings.betFairCashOut && games?.runners?.length !== 3 && (
+                {settings.betFairCashOut && games?.runners?.length !== 3 && (
                   <button
                     onClick={() =>
                       handleCashoutBetDesktop(
@@ -216,14 +214,14 @@ console.log(match_odds);
             </div>
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
               {games?.runners?.map((runner, idx) => {
-                    const pnl =
-                    pnlBySelection?.filter(
-                      (pnl) => pnl?.RunnerId === runner?.id
-                    ) || [];
-                  const predictOddValues = predictOdd?.filter(
-                    (val) => val?.id === runner?.id
-                  );
-           
+                const pnl =
+                  pnlBySelection?.filter(
+                    (pnl) => pnl?.RunnerId === runner?.id
+                  ) || [];
+                const predictOddValues = predictOdd?.filter(
+                  (val) => val?.id === runner?.id
+                );
+
                 return (
                   <>
                     <div
@@ -243,44 +241,40 @@ console.log(match_odds);
                               {runner?.name}
                             </span>
                           </div>
-                          {pnl &&
-                          pnl?.map(({ pnl }, i) => {
-                            return (
-                              <span
-                                key={i}
-                                className="w-full whitespace-nowrap"
-                              >
-                                <span
-                                  className={`text-[12px] font-bold  whitespace-nowrap ${
-                                    pnl > 0
-                                      ? "text-text_Success"
-                                      : "text-text_Danger"
-                                  }`}
-                                >
-                                  {pnl || ""}
-                                </span>
-                                {/* <span className="text-[12px] font-bold text-text_Success">
-                              &gt;&gt; 96
 
-                            </span> */}{" "}
-                                {stake &&
-                                  predictOddValues?.map(({ odd, id }) => {
-                                    return (
-                                      <span
-                                        key={id}
-                                        className={`text-[12px] font-bold ${
-                                          odd > 0
-                                            ? "text-text_Success"
-                                            : "text-text_Danger"
-                                        }`}
-                                      >
-                                        &gt;&gt; {stake && odd}
-                                      </span>
-                                    );
-                                  })}
-                              </span>
-                            );
-                          })}
+                          <span key={i} className="w-full whitespace-nowrap">
+                            {pnl &&
+                              pnl?.map(({ pnl }, i) => {
+                                return (
+                                  <span
+                                    key={i}
+                                    className={`text-[12px] font-bold  whitespace-nowrap ${
+                                      pnl > 0
+                                        ? "text-text_Success"
+                                        : "text-text_Danger"
+                                    }`}
+                                  >
+                                    {pnl || ""}
+                                  </span>
+                                );
+                              })}
+
+                            {stake &&
+                              predictOddValues?.map(({ odd, id }) => {
+                                return (
+                                  <span
+                                    key={id}
+                                    className={`text-[12px] font-bold ${
+                                      odd > 0
+                                        ? "text-text_Success"
+                                        : "text-text_Danger"
+                                    }`}
+                                  >
+                                    &gt;&gt; {stake && odd}
+                                  </span>
+                                );
+                              })}
+                          </span>
                         </div>
                       </div>
                       {isOddSuspended(runner) ? (

@@ -54,7 +54,7 @@ const Fancy = ({ fancy }) => {
     }
   };
 
-  // console.log(predictOdd);
+  console.log(predictOdd);
   return (
     <>
       <div className="text-base font-medium text-center py-1.5">

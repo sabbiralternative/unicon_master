@@ -239,44 +239,39 @@ const MatchOdds = ({ match_odds }) => {
                             {runner?.name}
                           </span>
                         </div>
-                        {pnl &&
-                          pnl?.map(({ pnl }, i) => {
-                            return (
-                              <span
-                                key={i}
-                                className="w-full whitespace-nowrap"
-                              >
-                                <span
-                                  className={`text-[12px] font-bold  whitespace-nowrap ${
-                                    pnl > 0
-                                      ? "text-text_Success"
-                                      : "text-text_Danger"
-                                  }`}
-                                >
-                                  {pnl || ""}
-                                </span>
-                                {/* <span className="text-[12px] font-bold text-text_Success">
-                              &gt;&gt; 96
+                        <span key={i} className="w-full whitespace-nowrap">
+                            {pnl &&
+                              pnl?.map(({ pnl }, i) => {
+                                return (
+                                  <span
+                                    key={i}
+                                    className={`text-[12px] font-bold  whitespace-nowrap ${
+                                      pnl > 0
+                                        ? "text-text_Success"
+                                        : "text-text_Danger"
+                                    }`}
+                                  >
+                                    {pnl || ""}
+                                  </span>
+                                );
+                              })}
 
-                            </span> */}{" "}
-                                {stake &&
-                                  predictOddValues?.map(({ odd, id }) => {
-                                    return (
-                                      <span
-                                        key={id}
-                                        className={`text-[12px] font-bold ${
-                                          odd > 0
-                                            ? "text-text_Success"
-                                            : "text-text_Danger"
-                                        }`}
-                                      >
-                                        &gt;&gt; {stake && odd}
-                                      </span>
-                                    );
-                                  })}
-                              </span>
-                            );
-                          })}
+                            {stake &&
+                              predictOddValues?.map(({ odd, id }) => {
+                                return (
+                                  <span
+                                    key={id}
+                                    className={`text-[12px] font-bold ${
+                                      odd > 0
+                                        ? "text-text_Success"
+                                        : "text-text_Danger"
+                                    }`}
+                                  >
+                                    &gt;&gt; {stake && odd}
+                                  </span>
+                                );
+                              })}
+                          </span>
                       </div>
                     </div>
                     {isOddSuspended(runner) ? (

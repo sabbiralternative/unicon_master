@@ -172,23 +172,23 @@ const Fancy = ({ fancy }) => {
                       </span>
                     </div>
                     {/* <span className="text-[12px] font-bold text-text_Success"></span> */}
-                    {pnl &&
-                      pnl?.map(({ pnl }, i) => {
-                        return (
-                          <span key={i} className="w-full whitespace-nowrap">
-                            <span
-                              className={`text-[12px] font-bold  whitespace-nowrap ${
-                                pnl > 0
-                                  ? "text-text_Success"
-                                  : "text-text_Danger"
-                              }`}
-                            >
-                              {pnl || ""}
-                            </span>
-                            {/* <span className="text-[12px] font-bold text-text_Success">
-                              &gt;&gt; 96
+                    <span className="w-full whitespace-nowrap">
+                            {pnl &&
+                              pnl?.map(({ pnl }, i) => {
+                                return (
+                                  <span
+                                    key={i}
+                                    className={`text-[12px] font-bold  whitespace-nowrap ${
+                                      pnl > 0
+                                        ? "text-text_Success"
+                                        : "text-text_Danger"
+                                    }`}
+                                  >
+                                    {pnl || ""}
+                                  </span>
+                                );
+                              })}
 
-                            </span> */}{" "}
                             {stake &&
                               predictOddValues?.map(({ odd, id }) => {
                                 return (
@@ -205,8 +205,6 @@ const Fancy = ({ fancy }) => {
                                 );
                               })}
                           </span>
-                        );
-                      })}
                   </div>
                   <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center gap-x-[2px]">
                     <svg
