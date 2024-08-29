@@ -49,7 +49,7 @@ const OpenBets = () => {
               </div>
               <div className="flex w-full flex-col gap-0.5">
                 {orderedBets?.map((bet, i) => {
-                  console.log(bet);
+              
                   return (
                     <div
                       key={i}

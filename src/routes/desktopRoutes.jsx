@@ -1,6 +1,8 @@
 import Events from "../pages/desktop/Events/Events";
 import Home from "../pages/desktop/Home/Home";
 import IFrame from "../pages/desktop/IFrame/IFrame";
+import OpenBets from "../pages/desktop/OpenBets/OpenBets";
+import Transaction from "../pages/desktop/Transaction/Transaction";
 
 export const desktopRoutes = [
   {
@@ -14,5 +16,13 @@ export const desktopRoutes = [
   {
     path: "/:route/:name/:gameId",
     element: <IFrame />,
+  },
+  {
+    path: "/transaction",
+    element: <Transaction />,
+  },
+  {
+    path: "/open-bets",
+    element: <OpenBets />,
   },
 ];

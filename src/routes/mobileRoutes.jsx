@@ -1,6 +1,8 @@
 import Events from "../pages/mobile/Events/Events";
 import Home from "../pages/mobile/Home/Home";
 import IFrame from "../pages/mobile/IFrame/IFrame";
+import OpenBets from "../pages/mobile/OpenBets/OpenBets";
+import Transaction from "../pages/mobile/Transaction/Transaction";
 
 export const mobileRoutes = [
   {
@@ -14,5 +16,13 @@ export const mobileRoutes = [
   {
     path: "/:route/:name/:gameId",
     element: <IFrame />,
+  },
+  {
+    path: "/transaction",
+    element: <Transaction />,
+  },
+  {
+    path: "/open-bets",
+    element: <OpenBets />,
   },
 ];
