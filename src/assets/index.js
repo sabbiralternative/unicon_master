@@ -25,9 +25,19 @@ import appIcon from "./images/apk_icon_white.73474760.svg";
 import search from "./images/toolbar-search-icon.b64bd6a7.svg";
 import inplay from "./images/inplay.svg";
 import upcoming from "./images/upcoming.svg";
-// import football from "./images/football.svg";
+import telegram from "./images/telegramGray.fded7f58 (1).svg";
+import instagram from "./images/instagramGray.20f307d4.svg";
+import fasterBet from "./images/fasterBetAcceptanceIcon.0268b720.svg";
+import begamle from "./images/BegambleAware.svg";
+import cogra from "./images/cograE.svg";
+import commision from "./images/gamblingCommission.svg";
 
 export default {
+  commision,
+  cogra,
+  begamle,
+  fasterBet,
+  instagram,
   favorite,
   cricket,
   football,
@@ -55,5 +65,5 @@ export default {
   search,
   inplay,
   upcoming,
-
+  telegram,
 };

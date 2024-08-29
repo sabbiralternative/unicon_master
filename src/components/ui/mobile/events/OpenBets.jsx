@@ -3,9 +3,14 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
+import useCurrentBets from "../../../../hooks/useCurrentBets";
+import { useNavigate } from "react-router-dom";
 
 const OpenBets = () => {
   const [activeTab, setActiveTab] = useState(true);
+  const { myBets } = useCurrentBets();
+  const navigate = useNavigate();
+
   return (
     <div title="Open Bets" className="">
       <div className="flex items-start justify-start flex-col w-full px-2 py-1">
@@ -32,58 +37,41 @@ const OpenBets = () => {
             activeTab ? "" : "hidden"
           }`}
         >
-          <div className="bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);">
-            <div id="eventHeader" className="font-lato-bold font-semibold">
-              <div className="font-medium underline capitalize text-sm text-text_ChangeAnimationBack">
-                Back England for 200 @ 98 to win 196.00.
+          {myBets?.map((item, i) => {
+            return (
+              <div
+                key={i}
+                className="bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);"
+              >
+                <div
+                  onClick={() => {
+                    setActiveTab((prev) => !prev);
+                    navigate(
+                      `/game-details/${item?.eventTypeId}/${item?.eventId}`
+                    );
+                  }}
+                  id="eventHeader"
+                  className="font-lato-bold font-semibold cursor-pointer"
+                >
+                  <div className="font-medium underline capitalize text-sm text-text_ChangeAnimationBack">
+                    {item?.title}
+                  </div>
+                </div>
+                <div className="font-normal text-text_Ternary capitalize text-xs font-lato">
+                  {item?.marketName}: {item?.nation}
+                </div>
+                <div
+                  id="tiem_Date_of_order_0_1724640350689"
+                  className="text-xs font-lato font-normal"
+                >
+                  <strong>Placed : </strong>
+                  <span>{item?.placeDate}</span>
+                </div>
               </div>
-            </div>
-            <div className="font-normal text-text_Ternary capitalize text-xs font-lato">
-              To Win The Toss
-            </div>
-            <div
-              id="tiem_Date_of_order_0_1724640350689"
-              className="text-xs font-lato font-normal"
-            >
-              <strong>Placed : </strong>
-              <span>8/28/2024, 11:14:27 AM</span>
-            </div>
-          </div>
-          <div className="bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);">
-            <div id="eventHeader" className="font-lato-bold font-semibold">
-              <div className="font-medium underline capitalize text-sm text-text_ChangeAnimationBack">
-                Back England for 100 @ 98 to win 98.00.
-              </div>
-            </div>
-            <div className="font-normal text-text_Ternary capitalize text-xs font-lato">
-              To Win The Toss
-            </div>
-            <div
-              id="tiem_Date_of_order_0_1724640350689"
-              className="text-xs font-lato font-normal"
-            >
-              <strong>Placed : </strong>
-              <span>8/28/2024, 1:37:26 PM</span>
-            </div>
-          </div>
-          <div className="bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);">
-            <div id="eventHeader" className="font-lato-bold font-semibold">
-              <div className="font-medium underline capitalize text-sm text-text_ChangeAnimationBack">
-                22 runs - Yes for 100 @ 90 to win 90.00.
-              </div>
-            </div>
-            <div className="font-normal text-text_Ternary capitalize text-xs font-lato">
-              1st Wicket SL
-            </div>
-            <div
-              id="tiem_Date_of_order_0_1724925600000"
-              className="text-xs font-lato font-normal"
-            >
-              <strong>Placed : </strong>
-              <span>8/28/2024, 1:44:44 PM</span>
-            </div>
-          </div>
-          <div className="bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);">
+            );
+          })}
+
+          {/* <div className="bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);">
             <div id="eventHeader" className="font-lato-bold font-semibold">
               <div className="font-medium underline capitalize text-sm text-text_ChangeAnimationLay">
                 22 runs - No for 100 @ 120 liability 120.00.
@@ -99,7 +87,7 @@ const OpenBets = () => {
               <strong>Placed : </strong>
               <span>8/28/2024, 1:44:54 PM</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

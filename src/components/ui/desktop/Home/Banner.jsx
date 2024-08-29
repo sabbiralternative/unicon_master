@@ -1,4 +1,12 @@
+import { useDispatch } from "react-redux";
+import { setGroupType } from "../../../../redux/features/stateSlice";
+
 const Banner = () => {
+  const dispatch = useDispatch();
+  const handleNavigate = (group) => {
+    dispatch(setGroupType(group));
+  };
+
   return (
     <>
       <div
@@ -82,6 +90,7 @@ const Banner = () => {
         className="grid gap-0.5 grid-cols-5 grid-flow-col w-full bg-transparent px-[6px] py-1.5 overflow-x-auto text-selection-none"
       >
         <span
+          onClick={() => handleNavigate(4)}
           className="w-full col-span-1 px-0.5 py-0.5 rounded-[3px]"
           title="cricket"
         >
@@ -110,6 +119,7 @@ const Banner = () => {
           </div>{" "}
         </span>
         <span
+          onClick={() => handleNavigate(1)}
           className="w-full col-span-1 px-0.5 py-0.5 rounded-[3px]"
           title="Football"
         >
@@ -138,6 +148,7 @@ const Banner = () => {
           </div>{" "}
         </span>
         <span
+          onClick={() => handleNavigate(2)}
           className="w-full col-span-1 px-0.5 py-0.5 rounded-[3px]"
           title="Tennis"
         >

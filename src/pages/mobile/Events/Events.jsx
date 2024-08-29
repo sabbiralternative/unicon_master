@@ -84,7 +84,7 @@ const Events = () => {
   const pnl3 =
     placeBetValues?.pnl && placeBetValues?.pnl[2] ? placeBetValues?.pnl[2] : 0;
   const selectionId = placeBetValues?.selectionId?.toString();
-console.log(placeBetValues);
+
   useEffect(() => {
     if (
       placeBetValues?.btype === "MATCH_ODDS" ||
@@ -238,7 +238,7 @@ console.log(placeBetValues);
     } else {
 
       let total = price * stake - stake;
-      console.log(formatNumber(total + pnl1));
+
       dispatch(
         setPredictOdd([
           {
@@ -280,7 +280,7 @@ console.log(placeBetValues);
               data={data}
             />
 
-            {betsType === "openBet" && <OpenBets />}
+            {betsType === "openBet" && <OpenBets eventId={eventId} />}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (

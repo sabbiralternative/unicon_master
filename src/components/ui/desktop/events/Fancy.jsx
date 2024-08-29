@@ -183,7 +183,7 @@ const Fancy = ({ fancy }) => {
         />
       )}
       {fancy?.map((games) => {
-        // console.log(games);
+   
         const pnl =
           pnlBySelection?.filter((pnl) => pnl?.MarketId === games?.id) || [];
         const predictOddValues = predictOdd?.filter(

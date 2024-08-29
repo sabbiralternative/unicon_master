@@ -59,7 +59,7 @@ const Fancy = ({ fancy }) => {
     }
   };
 
-  // console.log(ladderData);
+
   return (
     <>
    
@@ -86,7 +86,7 @@ const Fancy = ({ fancy }) => {
         const predictOddValues = predictOdd?.filter(
           (val) => val?.id === games?.id
         );
-        // console.log(predictOddValues);
+      
         return (
           <div key={games?.id} className="py-1.5">
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">

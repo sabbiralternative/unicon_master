@@ -1,4 +1,35 @@
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setGroupType,
+  setShowLoginModal,
+} from "../../../../redux/features/stateSlice";
+import { userToken } from "../../../../redux/features/auth/authSlice";
+import { settings } from "../../../../api";
+import { useNavigate } from "react-router-dom";
 const Banner = () => {
+  const navigate = useNavigate();
+  const token = useSelector(userToken);
+  const dispatch = useDispatch();
+  const handleNavigate = (group) => {
+    dispatch(setGroupType(group));
+  };
+
+  const navigateAviatorCasinoVideo = () => {
+    if (token) {
+      if (settings.casinoCurrency !== "AED") {
+        navigate(`/casino/aviator/201206`);
+      } else {
+        // setShowModal(true);
+        // setCasinoInfo({
+        //   provider_name: "aviator",
+        //   game_id: "201206",
+        //   base: "casino",
+        // });
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
   return (
     <>
       <div
@@ -82,6 +113,7 @@ const Banner = () => {
         className="grid gap-0.5 grid-cols-5 grid-flow-col w-full bg-transparent px-[6px] py-1.5 overflow-x-auto text-selection-none"
       >
         <span
+          onClick={() => handleNavigate(4)}
           className="w-full col-span-1 px-0.5 py-0.5 rounded-[3px]"
           title="cricket"
         >
@@ -110,6 +142,7 @@ const Banner = () => {
           </div>{" "}
         </span>
         <span
+          onClick={() => handleNavigate(1)}
           className="w-full col-span-1 px-0.5 py-0.5 rounded-[3px]"
           title="Football"
         >
@@ -138,6 +171,7 @@ const Banner = () => {
           </div>{" "}
         </span>
         <span
+          onClick={() => handleNavigate(2)}
           className="w-full col-span-1 px-0.5 py-0.5 rounded-[3px]"
           title="Tennis"
         >
@@ -225,7 +259,7 @@ const Banner = () => {
       <div className="flex flex-col items-center justify-start w-full scrollSmooth no-scrollbar">
         <div className="flex overflow-auto w-full scrollSmooth no-scrollbar">
           <div title="QuickButtons-0" className="grid grid-row-2">
-            <span title="Aviator" className="col-span-1 px-[3px] py-[3px]">
+            <span onClick={navigateAviatorCasinoVideo} title="Aviator" className="col-span-1 px-[3px] py-[3px]">
               <div
                 className="relative w-full active:scale-95 cursor-pointer bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                 style={{

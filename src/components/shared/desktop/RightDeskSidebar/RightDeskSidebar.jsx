@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useOrderMutation } from "../../../../redux/features/events/events";
 import { useEffect, useState } from "react";
 import useExposer from "../../../../hooks/useExposure";
@@ -19,10 +19,12 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
+import useCurrentBets from "../../../../hooks/useCurrentBets";
 
 const RightDeskSidebar = () => {
-  const [unMarchedBet, setUnmatchedBet] = useState(true);
-  const [marchedBet, setMatchedBet] = useState(true);
+  const navigate = useNavigate()
+  const { myBets } = useCurrentBets();
+  const [openBets, setOpenBets] = useState(true);
   const dispatch = useDispatch();
   const { showComponent, price, stake } = useSelector((state) => state.event);
   const { eventId } = useParams();
@@ -36,8 +38,6 @@ const RightDeskSidebar = () => {
   if (buttonValues) {
     parseButtonValues = JSON.parse(buttonValues);
   }
-console.log(placeBetValues);
-
 
   useEffect(() => {
     if (betDelay <= 0) {
@@ -132,7 +132,6 @@ console.log(placeBetValues);
               absolute={true}
               betDelay={betDelay}
               setBetDelay={setBetDelay}
-            
             />
           )}
           <div className="flex flex-col w-full gap-1 select-none">
@@ -363,45 +362,7 @@ console.log(placeBetValues);
               <div id="openBetsRightSide" title="Open Bets">
                 <div className=" flex flex-col w-full  gap-1">
                   <div
-                    onClick={() => setUnmatchedBet((prev) => !prev)}
-                    id="unmatched_0"
-                    className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-bg_Secondary rounded "
-                  >
-                    <span className=" text-text_Quaternary text-xs">
-                      Unmatched Bets
-                    </span>
-                    <div className=" flex items-center justify-center autoAnimate ">
-                      {unMarchedBet ? (
-                        <MdOutlineKeyboardArrowUp size={20} color="#fff" />
-                      ) : (
-                        <MdOutlineKeyboardArrowDown size={20} color="#fff" />
-                      )}
-
-                      {/* <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        transform="rotate(180)"
-                        viewBox="0 0 512 512"
-                        height="12"
-                        width="12"
-                        fill="var(--color-quaternary)"
-                      >
-                        <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
-                      </svg> */}
-                    </div>
-                  </div>
-                  <div
-                    className={`w-full origin-top scaleVerticalOpen ${
-                      unMarchedBet ? "hidden" : ""
-                    }`}
-                  >
-                    <div
-                      className={`w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary `}
-                    >
-                      You have no Unmatched Bets.
-                    </div>
-                  </div>
-                  <div
-                    onClick={() => setMatchedBet((prev) => !prev)}
+                    onClick={() => setOpenBets((prev) => !prev)}
                     id="matched_1"
                     className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-bg_Secondary rounded "
                   >
@@ -419,22 +380,60 @@ console.log(placeBetValues);
                       >
                         <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
                       </svg> */}
-                      {marchedBet ? (
-                        <MdOutlineKeyboardArrowUp size={20} color="#fff" />
-                      ) : (
+                      {openBets ? (
                         <MdOutlineKeyboardArrowDown size={20} color="#fff" />
+                      ) : (
+                        <MdOutlineKeyboardArrowUp size={20} color="#fff" />
                       )}
                     </div>
                   </div>
-                  <div
-                    className={`w-full origin-top scaleVerticalOpen ${
-                      marchedBet ? "hidden" : ""
-                    }`}
-                  >
-                    <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary ">
-                      You have no Matched Bets.
+
+                  {myBets?.length > 0 ? (
+                    myBets?.map((item, i) => {
+                      return (
+                        <div
+                        
+                          key={i}
+                          className={`bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px  ${
+                            openBets ? "hidden" : ""
+                          }`}
+                        >
+                          <div
+                            onClick={() => {
+                 
+                              navigate(`/game-details/${item?.eventTypeId}/${item?.eventId}`);
+                            }}
+                            id="eventHeader"
+                            className="font-lato-bold font-semibold cursor-pointer "
+                          >
+                            <div className="font-medium underline capitalize text-sm text-text_ChangeAnimationBack">
+                              {item?.title}
+                            </div>
+                          </div>
+                          <div className="font-normal text-text_Ternary capitalize text-xs font-lato">
+                            {item?.marketName}: {item?.nation}
+                          </div>
+                          <div
+                            id="tiem_Date_of_order_0_1724640350689"
+                            className="text-xs font-lato font-normal"
+                          >
+                            <strong>Placed : </strong>
+                            <span>{item?.placeDate}</span>
+                          </div>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div
+                      className={`w-full origin-top scaleVerticalOpen ${
+                        openBets ? "hidden" : ""
+                      }`}
+                    >
+                      <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary ">
+                        You have no Matched Bets.
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             )}
