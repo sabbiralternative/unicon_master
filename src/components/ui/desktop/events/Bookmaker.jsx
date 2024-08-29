@@ -13,7 +13,7 @@ import {
 const Bookmaker = ({ bookmaker }) => {
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
-  const { showComponent, predictOdd, stake } = useSelector(
+  const { predictOdd, stake } = useSelector(
     (state) => state?.event
   );
   const dispatch = useDispatch();
@@ -32,7 +32,6 @@ const Bookmaker = ({ bookmaker }) => {
       dispatch,
       setPlaceBetValues,
       setShowComponent,
-      showComponent,
       price
     );
   };

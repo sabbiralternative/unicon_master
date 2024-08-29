@@ -7,7 +7,8 @@ export const handleBetSlip = (
   dispatch,
   setPlaceBetValues
 ) => {
-  console.log(games);
+  console.log(runner);
+  let price;
   if (betType === "back" && !runner?.back[0].price) {
     return;
   }
@@ -22,17 +23,28 @@ export const handleBetSlip = (
     pnlBySelection = Object?.values(obj);
   }
 
-  games?.runners?.forEach((runner) => {
-    const pnl = pnlBySelection?.find((p) =>
-      (p?.RunnerId === games?.btype) == "FANCY" ? games.id : runner?.id
-    );
+  if (games?.btype == "FANCY") {
+    const pnl = pnlBySelection?.find((p) => p?.RunnerId === games?.id);
     if (pnl) {
       updatedPnl.push(pnl?.pnl);
     }
-  });
+  } else {
+    games?.runners?.forEach((runner) => {
+      const pnl = pnlBySelection?.find((p) => p?.RunnerId === runner?.id);
+      if (pnl) {
+        updatedPnl.push(pnl?.pnl);
+      }
+    });
+  }
+
+  if (games?.btype == "FANCY") {
+    price = runner?.back?.[0]?.line;
+  } else {
+    price = betType === "back" ? runner?.back[0].price : runner?.lay[0].price;
+  }
 
   const betData = {
-    price: betType === "back" ? runner?.back[0].price : runner?.lay[0].price,
+    price,
     side: betType === "back" ? 0 : 1,
     selectionId: games?.btype == "FANCY" ? games?.id : runner?.id,
     btype: games?.btype,

@@ -85,7 +85,7 @@ const Events = () => {
   const pnl3 =
     placeBetValues?.pnl && placeBetValues?.pnl[2] ? placeBetValues?.pnl[2] : 0;
   const selectionId = placeBetValues?.selectionId?.toString();
-
+console.log(placeBetValues);
   useEffect(() => {
     if (
       placeBetValues?.btype === "MATCH_ODDS" ||
@@ -235,25 +235,20 @@ const Events = () => {
             ])
           );
         }
-      }else {
-        let total = price * stake - stake;
-        dispatch(
-          setPredictOdd([
-            {
-              odd: formatNumber(total + pnl1),
-              id: placeBetValues?.runnerId[0],
-            },
-            {
-              odd: formatNumber(pnl2 + -1 * stake),
-              id: placeBetValues?.runnerId[1],
-            },
-            {
-              odd: formatNumber(pnl3 + -1 * stake),
-              id: placeBetValues?.runnerId[2],
-            },
-          ])
-        );
       }
+    }
+    else {
+      let total = price * stake - stake;
+      console.log(formatNumber(total + pnl1));
+      dispatch(
+        setPredictOdd([
+          {
+            odd: formatNumber(total + pnl1),
+            id: placeBetValues?.runnerId,
+          },
+         
+        ])
+      );
     }
   }, [price, stake, placeBetValues, pnl1, pnl2, pnl3, selectionId, dispatch]);
 

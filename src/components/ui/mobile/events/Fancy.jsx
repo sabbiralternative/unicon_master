@@ -12,11 +12,15 @@ import { useGetLadderMutation } from "../../../../redux/features/events/events";
 import handleRandomToken from "../../../../utils/handleRandomToken";
 import handleEncryptData from "../../../../utils/handleEncryptData";
 import { settings } from "../../../../api";
+import Ladder from "../../../modal/Ladder/Ladder";
 
 const Fancy = ({ fancy }) => {
+  const [eventName,setEventName] = useState('')
   const [ladderData, setLadderData] = useState([]);
   const [getLadder] = useGetLadderMutation();
-  const { predictOdd, stake,placeBetValues } = useSelector((state) => state?.event);
+  const { predictOdd, stake } = useSelector(
+    (state) => state?.event
+  );
   const [runnerId, setRunnerId] = useState("");
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
@@ -38,7 +42,8 @@ const Fancy = ({ fancy }) => {
     );
   };
 
-  const handleGetLadder = async (marketId) => {
+  const handleGetLadder = async (marketId,games) => {
+    setEventName(games?.eventName)
     const generatedToken = handleRandomToken();
     const encryptedData = handleEncryptData({
       token: generatedToken,
@@ -54,9 +59,10 @@ const Fancy = ({ fancy }) => {
     }
   };
 
-  console.log(predictOdd);
+  // console.log(ladderData);
   return (
     <>
+   
       <div className="text-base font-medium text-center py-1.5">
         <ul className="flex flex-wrap items-center justify-start gap-x-3">
           <li className="px-[15px] py-2 rounded-[100px] flex items-center justify-center cursor-pointer active:scale-95 transition-all ease-in-out duration-100 bg-bg_Primary text-text_Quaternary border-borderOfFancyPremiumTab">
@@ -71,14 +77,16 @@ const Fancy = ({ fancy }) => {
           </li>
         </ul>
       </div>
+      {ladderData?.length > 0 && (
+        <Ladder ladderData={ladderData} setLadderData={setLadderData} eventName={eventName} />
+      )}
       {fancy?.map((games) => {
-
         const pnl =
           pnlBySelection?.filter((pnl) => pnl?.MarketId === games?.id) || [];
         const predictOddValues = predictOdd?.filter(
-          (val) => val?.id === games?.runners?.[0]?.id
+          (val) => val?.id === games?.id
         );
-    
+        // console.log(predictOddValues);
         return (
           <div key={games?.id} className="py-1.5">
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
@@ -90,11 +98,12 @@ const Fancy = ({ fancy }) => {
                         {games?.name}
                       </span>
                     </div>
-                    {pnl &&
-                      pnl?.map(({ pnl }, i) => {
-                        return (
-                          <span key={i} className="w-full whitespace-nowrap">
+                    <span className="w-full whitespace-nowrap">
+                      {pnl &&
+                        pnl?.map(({ pnl }, i) => {
+                          return (
                             <span
+                              key={i}
                               className={`text-[12px] font-bold  whitespace-nowrap ${
                                 pnl > 0
                                   ? "text-text_Success"
@@ -103,28 +112,25 @@ const Fancy = ({ fancy }) => {
                             >
                               {pnl || ""}
                             </span>
-                            {/* <span className="text-[12px] font-bold text-text_Success">
-                              &gt;&gt; 96
+                          );
+                        })}
 
-                            </span> */}{" "}
-                            {stake &&
-                              predictOddValues?.map(({ odd, id }) => {
-                                return (
-                                  <span
-                                    key={id}
-                                    className={`text-[12px] font-bold ${
-                                      odd > 0
-                                        ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}
-                                  >
-                                    &gt;&gt; {stake && odd}
-                                  </span>
-                                );
-                              })}
-                          </span>
-                        );
-                      })}
+                      {stake &&
+                        predictOddValues?.map(({ odd, id }) => {
+                          return (
+                            <span
+                              key={id}
+                              className={`text-[12px] font-bold ${
+                                odd > 0
+                                  ? "text-text_Success"
+                                  : "text-text_Danger"
+                              }`}
+                            >
+                              &gt;&gt; {stake && odd}
+                            </span>
+                          );
+                        })}
+                    </span>
                   </div>
                   <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center gap-x-[2px]">
                     <svg
@@ -154,7 +160,7 @@ const Fancy = ({ fancy }) => {
                       return (
                         <span
                           key={i}
-                          onClick={() => handleGetLadder(MarketId)}
+                          onClick={() => handleGetLadder(MarketId,games)}
                           className="col-span-2 md:col-span-1 flex flex-row items-center justify-center"
                         >
                           <div className="opacity-100 cursor-pointer">

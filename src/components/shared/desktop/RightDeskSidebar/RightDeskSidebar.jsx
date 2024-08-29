@@ -29,15 +29,15 @@ const RightDeskSidebar = () => {
   const { refetchBalance, balance } = useBalance();
   const { refetchExposure } = useExposer(eventId);
   const { placeBetValues } = useSelector((state) => state?.event);
-
+  const [betDelay, setBetDelay] = useState(null);
   const [createOrder] = useOrderMutation();
   const buttonValues = localStorage.getItem("buttonValue");
   let parseButtonValues = [];
   if (buttonValues) {
     parseButtonValues = JSON.parse(buttonValues);
   }
+console.log(placeBetValues);
 
-  const [betDelay, setBetDelay] = useState(null);
 
   useEffect(() => {
     if (betDelay <= 0) {

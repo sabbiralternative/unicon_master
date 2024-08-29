@@ -8,12 +8,20 @@ import {
   setPlaceBetValues,
   setShowComponent,
 } from "../../../../redux/features/events/eventSlice";
+import { useState } from "react";
+import { useGetLadderMutation } from "../../../../redux/features/events/events";
+import { settings } from "../../../../api";
+import handleRandomToken from "../../../../utils/handleRandomToken";
+import handleEncryptData from "../../../../utils/handleEncryptData";
+import Ladder from "../../../modal/Ladder/Ladder";
 
 const Fancy = ({ fancy }) => {
+  const [eventName, setEventName] = useState("");
+  const [ladderData, setLadderData] = useState([]);
+  const [getLadder] = useGetLadderMutation();
   const { predictOdd, stake } = useSelector((state) => state?.event);
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
-  const { showComponent } = useSelector((state) => state?.event);
   const dispatch = useDispatch();
   let pnlBySelection;
   if (exposer?.pnlBySelection) {
@@ -29,9 +37,24 @@ const Fancy = ({ fancy }) => {
       dispatch,
       setPlaceBetValues,
       setShowComponent,
-      showComponent,
       price
     );
+  };
+  const handleGetLadder = async (marketId, games) => {
+    setEventName(games?.eventName);
+    const generatedToken = handleRandomToken();
+    const encryptedData = handleEncryptData({
+      token: generatedToken,
+      site: settings.siteUrl,
+    });
+    const payload = {
+      marketId,
+      data: encryptedData,
+    };
+    const res = await getLadder(payload).unwrap();
+    if (res.success) {
+      setLadderData(res.result);
+    }
   };
   return (
     <>
@@ -152,14 +175,21 @@ const Fancy = ({ fancy }) => {
           </div>
         </div>
       </div> */}
+      {ladderData?.length > 0 && (
+        <Ladder
+          ladderData={ladderData}
+          setLadderData={setLadderData}
+          eventName={eventName}
+        />
+      )}
       {fancy?.map((games) => {
-        console.log(games);
+        // console.log(games);
         const pnl =
           pnlBySelection?.filter((pnl) => pnl?.MarketId === games?.id) || [];
         const predictOddValues = predictOdd?.filter(
           (val) => val?.id === games?.id
         );
-      
+
         return (
           <div key={games?.id} className="py-1.5">
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
@@ -173,38 +203,38 @@ const Fancy = ({ fancy }) => {
                     </div>
                     {/* <span className="text-[12px] font-bold text-text_Success"></span> */}
                     <span className="w-full whitespace-nowrap">
-                            {pnl &&
-                              pnl?.map(({ pnl }, i) => {
-                                return (
-                                  <span
-                                    key={i}
-                                    className={`text-[12px] font-bold  whitespace-nowrap ${
-                                      pnl > 0
-                                        ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}
-                                  >
-                                    {pnl || ""}
-                                  </span>
-                                );
-                              })}
+                      {pnl &&
+                        pnl?.map(({ pnl }, i) => {
+                          return (
+                            <span
+                              key={i}
+                              className={`text-[12px] font-bold  whitespace-nowrap ${
+                                pnl > 0
+                                  ? "text-text_Success"
+                                  : "text-text_Danger"
+                              }`}
+                            >
+                              {pnl || ""}
+                            </span>
+                          );
+                        })}
 
-                            {stake &&
-                              predictOddValues?.map(({ odd, id }) => {
-                                return (
-                                  <span
-                                    key={id}
-                                    className={`text-[12px] font-bold ${
-                                      odd > 0
-                                        ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}
-                                  >
-                                    &gt;&gt; {stake && odd}
-                                  </span>
-                                );
-                              })}
-                          </span>
+                      {stake &&
+                        predictOddValues?.map(({ odd, id }) => {
+                          return (
+                            <span
+                              key={id}
+                              className={`text-[12px] font-bold ${
+                                odd > 0
+                                  ? "text-text_Success"
+                                  : "text-text_Danger"
+                              }`}
+                            >
+                              &gt;&gt; {stake && odd}
+                            </span>
+                          );
+                        })}
+                    </span>
                   </div>
                   <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center gap-x-[2px]">
                     <svg
@@ -228,45 +258,95 @@ const Fancy = ({ fancy }) => {
                       2s
                     </span>
                   </span>
-                  <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center">
-                    <div className="opacity-50 cursor-not-allowed">
-                      <svg
-                        height="18"
-                        width="18"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g id="63d691358b4e4026f6539708_stairs 1">
-                          <path
-                            id="Vector"
-                            d="M5.21875 3.13672V13.1367"
-                            stroke="var(--color-ternary4)"
-                          ></path>
-                          <path
-                            id="Vector_2"
-                            d="M5.21875 5.48047H10.5312"
-                            stroke="var(--color-ternary4)"
-                          ></path>
-                          <path
-                            id="Vector_3"
-                            d="M5.21875 8.13672H10.5312"
-                            stroke="var(--color-ternary4)"
-                          ></path>
-                          <path
-                            id="Vector_4"
-                            d="M5.21875 11.1055H10.5312"
-                            stroke="var(--color-ternary4)"
-                          ></path>
-                          <path
-                            id="Vector_5"
-                            d="M10.5312 3.13672V13.1367"
-                            stroke="var(--color-ternary4)"
-                          ></path>
-                        </g>
-                      </svg>
-                    </div>
-                  </span>
+                  {pnl?.length > 0 ? (
+                    pnl?.map(({ MarketId }, i) => {
+                      return (
+                        <span
+                          key={i}
+                          onClick={() => handleGetLadder(MarketId, games)}
+                          className="col-span-2 md:col-span-1 flex flex-row items-center justify-center"
+                        >
+                          <div className="opacity-100 cursor-pointer">
+                            <svg
+                              height="18"
+                              width="18"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <g id="63d691358b4e4026f6539708_stairs 1">
+                                <path
+                                  id="Vector"
+                                  d="M5.21875 3.13672V13.1367"
+                                  stroke="var(--color-ternary4)"
+                                ></path>
+                                <path
+                                  id="Vector_2"
+                                  d="M5.21875 5.48047H10.5312"
+                                  stroke="var(--color-ternary4)"
+                                ></path>
+                                <path
+                                  id="Vector_3"
+                                  d="M5.21875 8.13672H10.5312"
+                                  stroke="var(--color-ternary4)"
+                                ></path>
+                                <path
+                                  id="Vector_4"
+                                  d="M5.21875 11.1055H10.5312"
+                                  stroke="var(--color-ternary4)"
+                                ></path>
+                                <path
+                                  id="Vector_5"
+                                  d="M10.5312 3.13672V13.1367"
+                                  stroke="var(--color-ternary4)"
+                                ></path>
+                              </g>
+                            </svg>
+                          </div>
+                        </span>
+                      );
+                    })
+                  ) : (
+                    <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center">
+                      <div className="opacity-50 cursor-not-allowed">
+                        <svg
+                          height="18"
+                          width="18"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g id="63d691358b4e4026f6539708_stairs 1">
+                            <path
+                              id="Vector"
+                              d="M5.21875 3.13672V13.1367"
+                              stroke="var(--color-ternary4)"
+                            ></path>
+                            <path
+                              id="Vector_2"
+                              d="M5.21875 5.48047H10.5312"
+                              stroke="var(--color-ternary4)"
+                            ></path>
+                            <path
+                              id="Vector_3"
+                              d="M5.21875 8.13672H10.5312"
+                              stroke="var(--color-ternary4)"
+                            ></path>
+                            <path
+                              id="Vector_4"
+                              d="M5.21875 11.1055H10.5312"
+                              stroke="var(--color-ternary4)"
+                            ></path>
+                            <path
+                              id="Vector_5"
+                              d="M10.5312 3.13672V13.1367"
+                              stroke="var(--color-ternary4)"
+                            ></path>
+                          </g>
+                        </svg>
+                      </div>
+                    </span>
+                  )}
                 </div>
                 <div className="col-span-5 md:col-span-6 h-12 grid grid-cols-2 md:grid-cols-6 relative">
                   {isOddSuspended(games) ? (
@@ -283,7 +363,7 @@ const Fancy = ({ fancy }) => {
                             "lay",
                             games,
                             games?.runners?.[0],
-                            games?.runners?.[0]?.back?.[0]?.line
+                            games?.runners?.[0]?.lay?.[0]?.line
                           )
                         }
                         className="text-center min-h-12 cols-span-1 md:col-span-2"

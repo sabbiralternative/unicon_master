@@ -18,7 +18,7 @@ const MatchOdds = ({ match_odds }) => {
   
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
-  const { showComponent, predictOdd, stake } = useSelector(
+  const { predictOdd, stake } = useSelector(
     (state) => state?.event
   );
   const { token } = useSelector((state) => state?.auth);
@@ -40,7 +40,6 @@ const MatchOdds = ({ match_odds }) => {
       dispatch,
       setPlaceBetValues,
       setShowComponent,
-      showComponent,
       price
     );
   };

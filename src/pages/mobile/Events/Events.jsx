@@ -236,7 +236,9 @@ console.log(placeBetValues);
         }
       }
     } else {
+
       let total = price * stake - stake;
+      console.log(formatNumber(total + pnl1));
       dispatch(
         setPredictOdd([
           {
