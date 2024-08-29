@@ -37,10 +37,10 @@ const OpenBets = () => {
                 <span className="col-span-2 text-text_Ternary font-semibold capitalize">
                   Market
                 </span>
-                <span className="col-span-1 text-center text-text_Ternary">
+                <span className="col-span-2 text-center text-text_Ternary">
                   Odds
                 </span>
-                <span className="col-span-1 text-center text-text_Ternary">
+                <span className="col-span-2 text-center text-text_Ternary">
                   Stake
                 </span>
                 {/* <span className="col-span-2 text-center text-text_Ternary">
@@ -60,10 +60,10 @@ const OpenBets = () => {
                       }`}
                     >
                       <span className="col-span-2">{bet?.nation}</span>
-                      <span className="col-span-1 text-center">
+                      <span className="col-span-2 text-center">
                         {bet?.userRate}
                       </span>
-                      <span className="col-span-1 text-center">
+                      <span className="col-span-2 text-center">
                         {bet?.amount}
                       </span>
                       {/* <span className="col-span-2 text-center">
