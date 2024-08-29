@@ -42,14 +42,7 @@ const Bookmaker = ({ bookmaker }) => {
                 <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
                   {games?.name}
                 </span>
-                <button
-                  type="button"
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-cashout-btn-gradient rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-max max-w-[74%] mr-1 cursor-pointer"
-                >
-                  <div className="text-[10px] md:text-sm text-text_Quaternary whitespace-nowrap font-semibold">
-                    Cashout
-                  </div>
-                </button>
+         
               </div>
               <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">
                 <span className="hidden md:flex col-span-1 text-center font-semibold h-full items-end justify-center"></span>
