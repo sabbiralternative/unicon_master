@@ -1,15 +1,15 @@
 import { createContext, useEffect, useState } from "react";
 import { getSetApis } from "../api/config";
 import { API, settings } from "../api";
-
+import notice from "../../notice.json";
 export const ApiContext = createContext(null);
 const ApiProvider = ({ children }) => {
   const [noticeLoaded, setNoticeLoaded] = useState(false);
   const [logo, setLogo] = useState("");
-
+  const baseUrl = notice?.result?.settings?.baseUrl;
   useEffect(() => {
-    getSetApis(setNoticeLoaded);
-  }, [noticeLoaded]);
+    getSetApis(setNoticeLoaded, baseUrl);
+  }, [noticeLoaded, baseUrl]);
 
   useEffect(() => {
     if (noticeLoaded) {

@@ -9,18 +9,23 @@ const MainRouter = () => {
   const windowWidth = useWindowWidth();
   const routes = windowWidth > 1024 ? desktopRoutes : mobileRoutes;
 
-  const router = createBrowserRouter([
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: (
+          <>
+            <ScrollToTop />
+            <App />
+          </>
+        ),
+        children: routes,
+      },
+    ],
     {
-      path: "/",
-      element: (
-        <>
-          <ScrollToTop />
-          <App />
-        </>
-      ),
-      children: routes,
-    },
-  ]);
+      basename: import.meta.env.BASE_URL ?? "/",
+    }
+  );
 
   return <RouterProvider router={router} />;
 };

@@ -24,7 +24,8 @@
         "height": 55,
         "width": 125,
         "format": "png"
-      }
+      },
+      "baseUrl":"/unicon"
     },
 
     "endpoint": {
