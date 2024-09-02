@@ -16,7 +16,7 @@
       "deposit": true,
       "apkLink": "https://a23money.com/site.apk",
       "withdraw": true,
-      "disabledDevtool": false,
+      "disabledDevtool": true,
       "casinoCurrency": "AEDD",
       "balanceApiLoop": false,
       "betFairCashOut": true,
