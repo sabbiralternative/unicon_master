@@ -32,6 +32,7 @@ import begamle from "./images/BegambleAware.svg";
 import cogra from "./images/cograE.svg";
 import commision from "./images/gamblingCommission.svg";
 
+
 export default {
   commision,
   cogra,

@@ -250,7 +250,7 @@ const Events = () => {
       );
     }
   }, [price, stake, placeBetValues, pnl1, pnl2, pnl3, selectionId, dispatch]);
-// console.log(placeBetValues);
+
 
 
 
@@ -260,7 +260,7 @@ const Events = () => {
       return;
     } else {
       const hasDecimal = value % 1 !== 0;
-      // console.log({ value, hasDecimal });
+    
       // value?.toFixed(2)
       return hasDecimal ? value : value;
     }

@@ -16,7 +16,7 @@
       "deposit": true,
       "apkLink": "https://a23money.com/site.apk",
       "withdraw": true,
-      "disabledDevtool": true,
+      "disabledDevtool": false,
       "casinoCurrency": "AEDD",
       "balanceApiLoop": false,
       "betFairCashOut": true,
@@ -86,7 +86,11 @@
       "slotsWolf": "https://api7.live/api/exchange/diamond/slotsWolf",
       "latestEvents": "https://api7.live/api/exchange/diamond/latestEvents",
       "forgotPassword": "https://api7.live/api/exchange/diamond/forgotPassword",
-      "liveCasinoIFrame": " https://api7.live/api/livecasino/iframe"
+      "liveCasinoIFrame": " https://api7.live/api/livecasino/iframe",
+      "bankAccount": "https://api7.live/api/exchange/diamond/bankAccount",
+      "pg": "https://api7.live/api/exchange/diamond/pg",
+      "uploadScreenshot": "https://b2c.bet/deposit/up.php",
+      "withdrawBreakdown": "https://api7.live/api/exchange/diamond/withdrawBreakdown"
  
     }
   },

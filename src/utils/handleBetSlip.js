@@ -7,7 +7,7 @@ export const handleBetSlip = (
   dispatch,
   setPlaceBetValues
 ) => {
-  console.log(runner);
+
   let price;
   if (betType === "back" && !runner?.back[0].price) {
     return;

@@ -4,6 +4,8 @@ import useWindowWidth from "../hooks/useWindowWidth.jsx";
 import { desktopRoutes } from "./desktopRoutes.jsx";
 import { mobileRoutes } from "./mobileRoutes.jsx";
 import ScrollToTop from "../components/shared/ScrollToTop/ScrollToTop.jsx";
+import Deposit from "../pages/Deposit/Deposit.jsx";
+import Withdraw from "../pages/Withdraw/Withdraw.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -19,7 +21,17 @@ const MainRouter = () => {
             <App />
           </>
         ),
-        children: routes,
+        children: [
+          ...routes,
+          {
+            path: "/deposit",
+            element: <Deposit />,
+          },
+          {
+            path: "/withdraw",
+            element: <Withdraw />,
+          },
+        ],
       },
     ],
     {

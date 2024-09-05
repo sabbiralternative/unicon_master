@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API, settings } from "./index";
 
-export const getSetApis = (setNoticeLoaded,baseUrl) => {
+export const getSetApis = (setNoticeLoaded, baseUrl) => {
   const url = baseUrl ? `${baseUrl}/notice.json` : "/notice.json";
   axios
     .get(url)
@@ -10,6 +10,10 @@ export const getSetApis = (setNoticeLoaded,baseUrl) => {
       if (data?.result?.endpoint) {
         const endPoints = data?.result?.endpoint;
         const setting = data?.result?.settings;
+        API.uploadScreenshot = endPoints?.uploadScreenshot;
+        API.withdrawBreakdown = endPoints?.withdrawBreakdown;
+        API.pg = endPoints?.pg;
+        API.bankAccount = endPoints?.bankAccount;
         API.liveCasinoIFrame = endPoints?.liveCasinoIFrame;
         API.accessToken = endPoints?.accessToken;
         API.notification = endPoints?.notification;

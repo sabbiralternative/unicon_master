@@ -116,7 +116,7 @@ const Transaction = () => {
                         (item) => item?.date?.split(" ")?.[0] === category
                       )
                       ?.map((data, i) => {
-                        console.log(data);
+                     
                         return (
                           <div
                             key={i}

@@ -34,13 +34,16 @@ export const API = {
   slotsWolf: "",
   withdrawIframe: "",
   assets: "",
-  forgotPassword:"",
-  liveCasinoIFrame:"",
-
+  forgotPassword: "",
+  liveCasinoIFrame: "",
+  bankAccount: "",
+  pg: "",
+  uploadScreenshot: "",
+  withdrawBreakdown:"",
 };
 
 export const settings = {
-  otp:"",
+  otp: "",
   casino: "",
   siteTitle: "",
   forceLogin: "",
@@ -53,9 +56,9 @@ export const settings = {
   disabledDevtool: "",
   casinoCurrency: "",
   interval: "",
-  logoFormat:"",
-  logoHeight:"",
-  logoWidth:"",
-  apkLink:"",
-  betFairCashOut:"",
+  logoFormat: "",
+  logoHeight: "",
+  logoWidth: "",
+  apkLink: "",
+  betFairCashOut: "",
 };

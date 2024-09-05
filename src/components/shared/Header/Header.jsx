@@ -14,6 +14,7 @@ import RightDeskSidebar from "../mobile/RightDeskSidebar/RightDeskSidebar";
 import useBonusBalance from "../../../hooks/useBonusBalance";
 
 const Header = () => {
+
   const { balance } = useBalance();
   const {bonusBalance} = useBonusBalance()
   const { logo } = useContextState();

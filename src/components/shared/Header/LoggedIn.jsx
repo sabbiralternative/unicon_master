@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setShowRightSidebar } from "../../../redux/features/stateSlice";
+import { useNavigate } from "react-router-dom";
 
 const LoggedIn = ({ balance, bonusBalance }) => {
+  const navigate = useNavigate();
   const { user, bonusToken } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -38,6 +40,7 @@ const LoggedIn = ({ balance, bonusBalance }) => {
         className=" hidden lg:flex items-center justify-center gap-1"
       >
         <button
+          onClick={() => navigate("/deposit")}
           className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-none border-none shadow-none 
 cursor-pointer
 "
@@ -84,6 +87,7 @@ cursor-pointer
           </span>
         </button>
         <button
+          onClick={() => navigate("/withdraw")}
           className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-none border-none shadow-none 
 cursor-pointer
 "
