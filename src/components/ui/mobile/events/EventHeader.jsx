@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-const EventHeader = ({ data, setBetsType,betType }) => {
+const EventHeader = ({ data, setBetsType,betType,myBets }) => {
   const navigate = useNavigate();
+
   return (
     <div
       className="w-full sticky top-0 flex items-center justify-start flex-col"
@@ -163,7 +164,7 @@ const EventHeader = ({ data, setBetsType,betType }) => {
           >
             OPEN BETS
             <span>
-              <div>(0)</div>
+              <div>({myBets?.length})</div>
             </span>
           </button>
           <div

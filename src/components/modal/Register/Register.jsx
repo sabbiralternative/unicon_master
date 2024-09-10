@@ -157,7 +157,7 @@ const Register = () => {
               className="w-full gap-y-4 flex flex-col"
             >
               <div title="signUpForm" className="w-full">
-                <div className="flex w-full items-center py-2 bg-bg_BgGray rounded-lg border">
+                <div className="flex w-full items-center py-2 bg-auth rounded-lg border">
                   {/* <span
                     id="dropdown-phone-button"
                     className="flex-shrink-0 z-10 inline-flex items-center pl-2 pr-1 text-sm sm:text-md font-normal text-center"
@@ -168,7 +168,7 @@ const Register = () => {
                     maxLength={10}
                     onChange={(e) => handleMobileInputChange(e)}
                     id="mobile-no-input"
-                    className="px-2 block w-full focus:outline-none w-full font-lato bg-bg_BgGray rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
+                    className="px-2 block w-full focus:outline-none w-full font-lato bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
                     placeholder="Phone Number"
                     type="number"
                     value={mobile}
@@ -193,11 +193,11 @@ const Register = () => {
                     {mobile.length}/10
                   </span>
                 </div>
-                <div className="flex w-full items-center border p-1 bg-bg_BgGray rounded-lg mt-2">
+                <div className="flex w-full items-center border p-1 bg-auth rounded-lg mt-2">
                   <input
                     {...register("otp", { required: true })}
                     id="otpSignUp"
-                    className="block w-full focus:outline-none w-full font-lato rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-bg_BgGray"
+                    className="block w-full focus:outline-none w-full font-lato rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-auth"
                     placeholder="OTP"
                     type="text"
                   />
@@ -206,7 +206,7 @@ const Register = () => {
                   id="otpTimeCount"
                   className="flex w-full items-center justify-start mt-1 px-1"
                 ></div>
-                <div className="flex w-full items-center justify-between bg-bg_BgGray rounded-lg p-1 border mt-4">
+                <div className="flex w-full items-center justify-between bg-auth rounded-lg p-1 border mt-4">
                   <div className="w-full h-full flex items-center justify-start pl-1">
                     <span className="mb-1 py-1">
                       <svg
@@ -225,7 +225,7 @@ const Register = () => {
                       <input
                         autoComplete="off"
                         {...register("password", { required: true })}
-                        className="block w-full focus:outline-none w-full h-full py-1 rounded-none text-text_Ternary px-2 text-sm xs:text-md font-lato bg-bg_BgGray"
+                        className="block w-full focus:outline-none w-full h-full py-1 rounded-none text-text_Ternary px-2 text-sm xs:text-md font-lato bg-auth"
                         placeholder="Password"
                         type={passType ? "password" : "text"}
                       />
@@ -270,7 +270,7 @@ const Register = () => {
                     </button>
                   </span>
                 </div>
-                <div className="flex w-full items-center justify-between bg-bg_BgGray rounded-lg border p-1 mt-4">
+                <div className="flex w-full items-center justify-between bg-auth rounded-lg border p-1 mt-4">
                   <div className="w-full h-full flex items-center justify-start pl-1">
                     <span className="mb-1">
                       <svg
@@ -289,7 +289,7 @@ const Register = () => {
                       {...register("confirmPassword", { required: true })}
                       autoComplete="off"
                       id="confirmpasswordSignUp"
-                      className="block w-full focus:outline-none w-full rounded-none text-text_Ternary px-2 py-1 text-sm xs:text-md font-lato bg-bg_BgGray"
+                      className="block w-full focus:outline-none w-full rounded-none text-text_Ternary px-2 py-1 text-sm xs:text-md font-lato bg-auth"
                       placeholder="Confirm Password"
                       type={confirmPassType ? "password" : "text"}
                     />
@@ -339,7 +339,7 @@ const Register = () => {
                 >
                   <span className="text-xs text-text_Danger font-lato"></span>
                 </div>
-                <div className="flex w-full items-center justify-between bg-bg_BgGray rounded-lg border p-1 mt-4">
+                <div className="flex w-full items-center justify-between bg-auth rounded-lg border p-1 mt-4">
                   <div className="w-full h-full flex items-center justify-start pl-1">
                     <span className="mb-0">
                       <svg
@@ -366,7 +366,7 @@ const Register = () => {
                     <input
                       {...register("referralCode", { required: true })}
                       id="promocodeSignUp"
-                      className="block w-full focus:outline-none w-full rounded-none text-text_Ternary px-2 py-1 text-sm xs:text-md font-lato bg-bg_BgGray"
+                      className="block w-full focus:outline-none w-full rounded-none text-text_Ternary px-2 py-1 text-sm xs:text-md font-lato bg-auth"
                       placeholder="Enter Promocode(Optional)"
                       type="text"
                     />

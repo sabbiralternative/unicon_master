@@ -11,7 +11,7 @@ import PopularGames from "../../../components/ui/desktop/Home/PopularGames";
 import UpcomingEvents from "../../../components/ui/desktop/Home/UpcomingEvents";
 import FAQ from "../../../components/ui/desktop/Home/FAQ";
 import WhatsApp from "../../../components/ui/desktop/Home/WhatsApp";
-import WithdrawAndDepositButton from "../../../components/ui/desktop/Home/WithdrawAndDepositButton";
+// import WithdrawAndDepositButton from "../../../components/ui/desktop/Home/WithdrawAndDepositButton";
 import LeftDeskSidebar from "../../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
 import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/desktop/Home/Group";
@@ -40,7 +40,7 @@ const Home = () => {
                 >
                   <Banner />
                   <Originals />
-                  <WithdrawAndDepositButton />
+                  {/* <WithdrawAndDepositButton /> */}
                   {data && <InPlay data={data} />}
                   <Casino />
                   <IndianCardGames />

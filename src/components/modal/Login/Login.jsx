@@ -130,11 +130,11 @@ const Login = () => {
                 <div className="font-lato uppercase text-[10px] md:text-xs lg:text-sm ml-1">
                   Username
                 </div>
-                <div className="flex w-full items-center py-3.5 bg-bg_BgGray rounded-lg border">
+                <div className="flex w-full items-center py-3.5 bg-auth rounded-lg border">
                   <input
                     {...register("username", { required: true })}
                     id="mobile-no-input"
-                    className="px-2 block w-full focus:outline-none w-full font-lato bg-bg_BgGray text-text_Ternary pr-2 text-sm xs:text-md"
+                    className="px-2 block w-full focus:outline-none w-full font-lato bg-auth text-text_Ternary pr-2 text-sm xs:text-md"
                     placeholder="username"
                   />
                   <span className="h-fit"> </span>
@@ -148,11 +148,11 @@ const Login = () => {
                   <div className="text-[10px] ml-1 md:text-xs lg:text-sm">
                     Password
                   </div>
-                  <div className="flex w-full items-center py-2 px-2 bg-bg_BgGray rounded-lg border">
+                  <div className="flex w-full items-center py-2 px-2 bg-auth rounded-lg border">
                     <input
                       {...register("password", { required: true })}
                       id="password-input"
-                      className="block w-full focus:outline-none w-full pr-2 rounded-none text-text_Ternary bg-bg_BgGray text-sm xs:text-md"
+                      className="block w-full focus:outline-none w-full pr-2 rounded-none text-text_Ternary bg-auth text-sm xs:text-md"
                       placeholder="Password"
                       type={passwordType ? "password" : "text"}
                     />

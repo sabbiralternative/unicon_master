@@ -4,8 +4,10 @@ import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import { useEffect, useState } from "react";
 import { formatDate } from "../../../../utils/formateDate";
 import assets from "../../../../assets";
+import useCurrentBets from "../../../../hooks/useCurrentBets";
 
 const InPlay = ({ data }) => {
+  const { myBets } = useCurrentBets();
   const [categories, setCategories] = useState([]);
   const eventName = { 4: "Cricket", 2: "Tennis", 1: "Football" };
   const navigate = useNavigate();
@@ -64,7 +66,7 @@ const InPlay = ({ data }) => {
               </span>
               <sup className="font-features sups">
                 <span className="text-x font-normal tracking-wide text-text_Ternary bg-bg_Warning min-w-4 min-h-4 text-center px-1 py-0.5 font-lato rounded-full">
-                  0
+                  {myBets?.length}
                 </span>
               </sup>
             </div>

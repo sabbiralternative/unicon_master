@@ -3,12 +3,11 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
-import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { useNavigate } from "react-router-dom";
 
-const OpenBets = () => {
+const OpenBets = ({myBets}) => {
   const [activeTab, setActiveTab] = useState(true);
-  const { myBets } = useCurrentBets();
+
   const navigate = useNavigate();
 
   return (

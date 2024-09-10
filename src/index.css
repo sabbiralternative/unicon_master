@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #8a8a8a inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px #f3f4f6 inset !important;
   -webkit-text-fill-color: black !important;
 }
 
 input:-moz-autofill {
-  box-shadow: 0 0 0px 1000px #8a8a8a inset !important;
+  box-shadow: 0 0 0px 1000px #f3f4f6 inset !important;
   -moz-text-fill-color: black !important;
+}
+
+.bg-auth{
+  background-color: #f3f4f6;
 }

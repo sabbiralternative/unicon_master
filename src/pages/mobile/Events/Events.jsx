@@ -15,6 +15,9 @@ import {
   setThirdOdd,
 } from "../../../redux/features/events/eventSlice";
 import OpenBets from "../../../components/ui/mobile/events/OpenBets";
+import useIFrame from "../../../hooks/useIFrame";
+import IFrame from "../../../components/ui/IFrame/IFrame";
+import useCurrentBets from "../../../hooks/useCurrentBets";
 
 const Events = () => {
   const [betsType, setBetsType] = useState("live");
@@ -26,6 +29,8 @@ const Events = () => {
     eventTypeId,
     eventId,
   };
+  const { iFrameUrl } = useIFrame(eventTypeId, eventId);
+  const { myBets } = useCurrentBets(eventId);
   const [match_odds, setMatch_odds] = useState([]);
   const [bookmaker, setBookmaker] = useState([]);
   // const [bookmaker2, setBookmaker2] = useState([]);
@@ -236,7 +241,6 @@ const Events = () => {
         }
       }
     } else {
-
       let total = price * stake - stake;
 
       dispatch(
@@ -245,14 +249,10 @@ const Events = () => {
             odd: formatNumber(total + pnl1),
             id: placeBetValues?.runnerId,
           },
-         
         ])
       );
     }
   }, [price, stake, placeBetValues, pnl1, pnl2, pnl3, selectionId, dispatch]);
-
-
-
 
   /* Format number */
   const formatNumber = (value) => {
@@ -260,7 +260,7 @@ const Events = () => {
       return;
     } else {
       const hasDecimal = value % 1 !== 0;
-    
+
       // value?.toFixed(2)
       return hasDecimal ? value : value;
     }
@@ -278,9 +278,11 @@ const Events = () => {
               betType={betsType}
               setBetsType={setBetsType}
               data={data}
+         myBets={myBets}
             />
 
-            {betsType === "openBet" && <OpenBets eventId={eventId} />}
+            {betsType === "openBet" && <OpenBets myBets={myBets}  />}
+            <IFrame iFrameUrl={iFrameUrl} />
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (

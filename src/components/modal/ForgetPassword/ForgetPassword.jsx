@@ -170,7 +170,7 @@ const ForgetPassword = () => {
                         onChange={(e) => handleMobileInputChange(e)}
                         id="mobile-no-input"
                         placeholder="Username/Phone Number"
-                        className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-10 pr-8 ml-0 mr-0"
+                        className="block w-full focus:outline-none py-2 bg-auth border rounded-lg pl-10 pr-8 ml-0 mr-0"
                         type="text"
                       />
                     </div>
@@ -186,7 +186,7 @@ const ForgetPassword = () => {
                         id="otpSignUp"
                         placeholder="OTP"
                         disabled=""
-                        className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-4 pr-8 ml-0 mr-0"
+                        className="block w-full focus:outline-none py-2 bg-auth border rounded-lg pl-4 pr-8 ml-0 mr-0"
                         type="text"
                       />
                       <span className="px-2 absolute top-1/2 -translate-y-1/2 right-0">
@@ -229,7 +229,7 @@ const ForgetPassword = () => {
                         id="newPassword-input"
                         placeholder="Password"
                         disabled=""
-                        className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-10 pr-8 ml-0 mr-0"
+                        className="block w-full focus:outline-none py-2 bg-auth border rounded-lg pl-10 pr-8 ml-0 mr-0"
                         type={passType ? "password" : "text"}
                       />
                       <span
@@ -294,7 +294,7 @@ const ForgetPassword = () => {
                         {...register("confirmPassword", { required: true })}
                         id="password-input"
                         placeholder="Confirm Password"
-                        className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-10 pr-8 ml-0 mr-0"
+                        className="block w-full focus:outline-none py-2 bg-auth border rounded-lg pl-10 pr-8 ml-0 mr-0"
                         type={confirmPassType ? "password" : "text"}
                       />
                       <span

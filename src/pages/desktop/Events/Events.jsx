@@ -16,6 +16,8 @@ import {
   setSecondOdd,
   setThirdOdd,
 } from "../../../redux/features/events/eventSlice";
+import IFrame from "../../../components/ui/IFrame/IFrame";
+import useIFrame from "../../../hooks/useIFrame";
 
 const Events = () => {
   const dispatch = useDispatch();
@@ -26,6 +28,7 @@ const Events = () => {
     eventTypeId,
     eventId,
   };
+  const { iFrameUrl } = useIFrame(eventTypeId, eventId);
   const [match_odds, setMatch_odds] = useState([]);
   const [bookmaker, setBookmaker] = useState([]);
   // const [bookmaker2, setBookmaker2] = useState([]);
@@ -236,17 +239,15 @@ const Events = () => {
           );
         }
       }
-    }
-    else {
+    } else {
       let total = price * stake - stake;
-   
+
       dispatch(
         setPredictOdd([
           {
             odd: formatNumber(total + pnl1),
             id: placeBetValues?.runnerId,
           },
-         
         ])
       );
     }
@@ -328,6 +329,7 @@ const Events = () => {
                 </div>
               </div>
             </div> */}
+            <IFrame iFrameUrl={iFrameUrl} />
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (
