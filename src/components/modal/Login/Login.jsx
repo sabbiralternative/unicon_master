@@ -26,10 +26,10 @@ const Login = () => {
     dispatch(setShowLoginModal(false));
   });
   const { register, handleSubmit } = useForm({
-    defaultValues: {
-      username: "8888884000",
-      password: "avinya123",
-    },
+    // defaultValues: {
+    //   username: "8888884000",
+    //   password: "avinya123",
+    // },
   });
 
   const onSubmit = async ({ username, password }) => {
