@@ -10,7 +10,7 @@ import useBonusBalance from "../../../../hooks/useBonusBalance";
 const BalanceInfo = ({ balance }) => {
   const { bonusBalance } = useBonusBalance();
   const { token, user, bonusToken } = useSelector((state) => state.auth);
-  const [showBalance, setShowBalance] = useState(true);
+  const [showBalance, setShowBalance] = useState(false);
   const dispatch = useDispatch();
   const handleToggleBalance = (e) => {
     const checked = e.target.checked;

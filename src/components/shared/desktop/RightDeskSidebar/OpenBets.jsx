@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 const OpenBets = () => {
   const { eventId } = useParams();
   const { myBets } = useCurrentBets(eventId);
-  const [openBets, setOpenBets] = useState(false);
+  const [openBets, setOpenBets] = useState(true);
   const orderedBets = [
     ...myBets.filter((bet) => bet.betType === "Back"),
     ...myBets.filter((bet) => bet.betType === "Lay"),
