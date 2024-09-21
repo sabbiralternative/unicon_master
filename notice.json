@@ -25,7 +25,7 @@
         "width": 125,
         "format": "png"
       },
-      "baseUrl":"/unicon"
+      "baseUrl": "/unicon"
     },
 
     "endpoint": {
@@ -91,7 +91,6 @@
       "pg": "https://api7.live/api/exchange/diamond/pg",
       "uploadScreenshot": "https://b2c.bet/deposit/up.php",
       "withdrawBreakdown": "https://api7.live/api/exchange/diamond/withdrawBreakdown"
- 
     }
   },
   "success": true

@@ -70,11 +70,7 @@ const Fancy = ({ fancy }) => {
               Fancy Market
             </span>
           </li>
-          <li className="px-[15px] py-2 border rounded-[100px] flex items-center justify-center cursor-pointer active:scale-95 transition-all ease-in-out duration-100 bg-bg_Quaternary text-text_Ternary border-borderinActiveFancyPremiumTab">
-            <span className="inline-block font-bold text-xs sm:text-sm md:text-base leading-4">
-              Premium Market
-            </span>
-          </li>
+ 
         </ul>
       </div>
       {ladderData?.length > 0 && (

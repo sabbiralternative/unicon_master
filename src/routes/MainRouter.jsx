@@ -10,6 +10,8 @@ import RulesRegulation from "../pages/RulesRegulation/RulesRegulation.jsx";
 import ExclusivePolicy from "../pages/ExclusivePolicy/ExclusivePolicy.jsx";
 import ResponsibleGambling from "../pages/ResponsibleGambling/ResponsibleGambling.jsx";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy.jsx";
+import ChangePassword from "../pages/ChangePassword/ChangePassword.jsx";
+import StakeSettings from "../pages/StakeSettings/StakeSettings.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -50,6 +52,14 @@ const MainRouter = () => {
           {
             path: "/privacy-policy",
             element: <PrivacyPolicy />,
+          },
+          {
+            path: "/change-password",
+            element: <ChangePassword />,
+          },
+          {
+            path: "/stake-settings",
+            element: <StakeSettings />,
           },
         ],
       },
