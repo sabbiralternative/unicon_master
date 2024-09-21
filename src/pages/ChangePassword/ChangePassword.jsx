@@ -14,8 +14,8 @@ import { Lock } from "../../assets/Icon";
 const ChangePassword = () => {
   const [handleChangePassword] = useChangePasswordMutation();
   window.scrollTo(0, 0);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
+  const [showNewPassword, setShowNewPassword] = useState(true);
   const [showConfirmPassword, setShowConfirmPassword] = useState(true);
 
   const { register, handleSubmit, reset } = useForm();
@@ -70,7 +70,7 @@ const ChangePassword = () => {
                       id="oldPassword"
                       placeholder="Old Password"
                       className="block w-full focus:outline-none py-2 bg-bg_DepositBoxBg border rounded-lg pl-10 pr-8 ml-0 mr-0"
-                      type={`${showPassword ? "text" : "password"}`}
+                      type={`${showPassword ? "password" : "text"}`}
                     />
                     <span className="px-2 absolute top-1/2 -translate-y-1/2 right-0">
                       <button
@@ -105,7 +105,7 @@ const ChangePassword = () => {
                           label="New Password"
                           className="rounded h-10 col-span-8 md:col-span-10 bg-bg_DepositBoxBg w-full placeholder:text-sm font-lato font-[400] pl-10 pr-8 ml-0 mr-0"
                           placeholder="New Password"
-                          type={`${showNewPassword ? "text" : "password"}`}
+                          type={`${showNewPassword ? "password" : "text"}`}
                         />
                         <span className="px-2 absolute top-1/2 -translate-y-1/2 right-0">
                           <button
@@ -141,7 +141,7 @@ const ChangePassword = () => {
                           label="Confirm Password"
                           placeholder="Confirm Password"
                           className="rounded h-10 col-span-8 md:col-span-10 w-full bg-bg_DepositBoxBg placeholder:text-sm font-lato font-[400] pl-10 pr-8 ml-0 mr-0"
-                          type={`${showConfirmPassword ? "text" : "password"}`}
+                          type={`${showConfirmPassword ? "password" : "text"}`}
                         />
                         <span className="px-2 absolute top-1/2 -translate-y-1/2 right-0">
                           <button

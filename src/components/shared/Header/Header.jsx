@@ -12,15 +12,23 @@ import useBalance from "../../../hooks/useBalance";
 import LeftDeskSidebar from "../mobile/LeftDeskSidebar/LeftDeskSidebar";
 import RightDeskSidebar from "../mobile/RightDeskSidebar/RightDeskSidebar";
 import useBonusBalance from "../../../hooks/useBonusBalance";
+import moment from "moment";
+import { useEffect, useState } from "react";
 
 const Header = () => {
-
+  const [time, setTime] = useState();
   const { balance } = useBalance();
-  const {bonusBalance} = useBonusBalance()
+  const { bonusBalance } = useBonusBalance();
   const { logo } = useContextState();
   const token = useSelector(userToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(moment().format("h:mm:ss a"));
+    }, 1000);
+  }, [time]);
 
   return (
     <div
@@ -170,14 +178,19 @@ cursor-pointer
               <div id="currentDateTime" className=" hidden font-lato lg:block ">
                 <div className=" w-full text-text_Quaternary1 text-[10px] lg:text-[12px] flex flex-col px-2">
                   <div className="flex gap-1 items-center text-nowrap whitespace-nowrap">
-                    Aug 16th, 2024 ( GMT +5.5:30 )
+                    {/* Aug 16th, 2024 ( GMT +5.5:30 ) */}
+                    {moment().format("MMMM Do YYYY")}
                   </div>
                   <span className="text-text_Quaternary text-xs lg:text-[14px] text-nowrap whitespace-nowrap font-semibold ">
-                    20:49:02{" "}
+                    {time}
                   </span>
                 </div>
               </div>
-              {token ? <LoggedIn balance={balance} bonusBalance={bonusBalance} /> : <UnAuthorized />}
+              {token ? (
+                <LoggedIn balance={balance} bonusBalance={bonusBalance} />
+              ) : (
+                <UnAuthorized />
+              )}
             </div>
             <div className=" hidden lg:block">
               <div className="flex w-full overflow-y-auto no-scrollbar gap-0.5 bg-bg_Quaternary items-center p-1 justify-center ">
