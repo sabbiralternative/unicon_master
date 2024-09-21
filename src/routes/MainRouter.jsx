@@ -12,6 +12,8 @@ import ResponsibleGambling from "../pages/ResponsibleGambling/ResponsibleGamblin
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy.jsx";
 import ChangePassword from "../pages/ChangePassword/ChangePassword.jsx";
 import StakeSettings from "../pages/StakeSettings/StakeSettings.jsx";
+import BettingProfitLoss from "../pages/BettingProfitLoss/BettingProfitLoss.jsx";
+import SingleProfitLoss from "../pages/SingleProfitLoss/SingleProfitLoss.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -60,6 +62,14 @@ const MainRouter = () => {
           {
             path: "/stake-settings",
             element: <StakeSettings />,
+          },
+          {
+            path: "/betting-profit-loss",
+            element: <BettingProfitLoss />,
+          },
+          {
+            path: "/betting-profit-loss/:marketId",
+            element: <SingleProfitLoss />,
           },
         ],
       },

@@ -420,7 +420,7 @@ const RightDeskSidebar = () => {
                     Transactions
                   </span>
                 </div>
-                <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -443,7 +443,7 @@ const RightDeskSidebar = () => {
                   <span className="font-medium text-sm xs:text-base">
                     Bonuses
                   </span>
-                </div>
+                </div> */}
                 <div
                   onClick={() => handleNavigate("/open-bets")}
                   className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
@@ -470,7 +470,7 @@ const RightDeskSidebar = () => {
                     Open Bets
                   </span>
                 </div>
-                <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                <div onClick={()=> handleNavigate('/betting-profit-loss')} className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -499,7 +499,7 @@ const RightDeskSidebar = () => {
                     Betting Profit &amp; Loss
                   </span>
                 </div>
-                <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -523,8 +523,8 @@ const RightDeskSidebar = () => {
                   <span className="font-medium text-sm xs:text-base">
                     Account Statement
                   </span>
-                </div>
-                <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                </div> */}
+                {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -547,8 +547,8 @@ const RightDeskSidebar = () => {
                   <span className="font-medium text-sm xs:text-base">
                     Bonus Statement
                   </span>
-                </div>
-                <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                </div> */}
+                {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -571,7 +571,7 @@ const RightDeskSidebar = () => {
                   <span className="font-medium text-sm xs:text-base">
                     Transfer Statement
                   </span>
-                </div>
+                </div> */}
               </div>
             </li>
             <li className="divide-y flex items-start justify-start flex-col">
