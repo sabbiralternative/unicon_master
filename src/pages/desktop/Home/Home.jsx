@@ -8,7 +8,7 @@ import InPlay from "../../../components/ui/desktop/Home/InPlay";
 import Casino from "../../../components/ui/desktop/Home/Casino";
 import IndianCardGames from "../../../components/ui/desktop/Home/IndianCardGames";
 import PopularGames from "../../../components/ui/desktop/Home/PopularGames";
-import UpcomingEvents from "../../../components/ui/desktop/Home/UpcomingEvents";
+// import UpcomingEvents from "../../../components/ui/desktop/Home/UpcomingEvents";
 import FAQ from "../../../components/ui/desktop/Home/FAQ";
 import WhatsApp from "../../../components/ui/desktop/Home/WhatsApp";
 // import WithdrawAndDepositButton from "../../../components/ui/desktop/Home/WithdrawAndDepositButton";
@@ -45,7 +45,7 @@ const Home = () => {
                   <Casino />
                   <IndianCardGames />
                   <PopularGames />
-                  <UpcomingEvents />
+                  {/* <UpcomingEvents /> */}
                 </div>
                 <FAQ />
               </div>

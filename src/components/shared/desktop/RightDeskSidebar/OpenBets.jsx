@@ -4,14 +4,17 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
+import { useParams } from "react-router-dom";
 
 const OpenBets = () => {
-  const { myBets } = useCurrentBets();
-  const [openBets, setOpenBets] = useState(true);
+  const { eventId } = useParams();
+  const { myBets } = useCurrentBets(eventId);
+  const [openBets, setOpenBets] = useState(false);
   const orderedBets = [
     ...myBets.filter((bet) => bet.betType === "Back"),
     ...myBets.filter((bet) => bet.betType === "Lay"),
   ];
+
   return (
     <div id="openBetsRightSide" title="Open Bets">
       <div className=" flex flex-col w-full  gap-1">
@@ -49,7 +52,6 @@ const OpenBets = () => {
               </div>
               <div className="flex w-full flex-col gap-0.5">
                 {orderedBets?.map((bet, i) => {
-              
                   return (
                     <div
                       key={i}
@@ -77,12 +79,8 @@ const OpenBets = () => {
           </div>
         )}
 
-        {openBets && !myBets && orderedBets?.length === 0 && (
-          <div
-            className={`w-full origin-top scaleVerticalOpen ${
-              openBets ? "hidden" : ""
-            }`}
-          >
+        {openBets && myBets?.length === 0 && orderedBets?.length === 0 && (
+          <div className={`w-full origin-top scaleVerticalOpen`}>
             <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary ">
               You have no Matched Bets.
             </div>

@@ -4,14 +4,14 @@ import Casino from "../../../components/ui/mobile/home/Casino";
 import IndianCardGames from "../../../components/ui/mobile/home/IndianCardGames";
 import InPlay from "../../../components/ui/mobile/home/InPlay";
 import PopularGames from "../../../components/ui/mobile/home/PopularGames";
-import UpcomingEvents from "../../../components/ui/mobile/home/UpcomingEvents";
+// import UpcomingEvents from "../../../components/ui/mobile/home/UpcomingEvents";
 
 import { useGetAllGroupEventsQuery } from "../../../redux/features/events/events";
-import FAQForOnlineCricketBetting from "../../../components/ui/mobile/home/FAQForOnlineCricketBetting";
 import WithdrawDepositButton from "../../../components/ui/mobile/home/WithdrawDepositButton";
 import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/mobile/home/Group";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
+import FAQ from "../../../components/ui/desktop/Home/FAQ";
 
 const Home = () => {
   const { socialLink } = useGetSocialLink();
@@ -99,10 +99,10 @@ const Home = () => {
                 <Casino />
                 <IndianCardGames />
                 <PopularGames />
-                <UpcomingEvents />
+                {/* <UpcomingEvents /> */}
               </div>
               <div className="px-[6px]"></div>
-              <FAQForOnlineCricketBetting />
+              <FAQ />
             </div>
           ) : (
             <Group data={data} />

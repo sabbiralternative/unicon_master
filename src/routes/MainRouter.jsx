@@ -6,6 +6,10 @@ import { mobileRoutes } from "./mobileRoutes.jsx";
 import ScrollToTop from "../components/shared/ScrollToTop/ScrollToTop.jsx";
 import Deposit from "../pages/Deposit/Deposit.jsx";
 import Withdraw from "../pages/Withdraw/Withdraw.jsx";
+import RulesRegulation from "../pages/RulesRegulation/RulesRegulation.jsx";
+import ExclusivePolicy from "../pages/ExclusivePolicy/ExclusivePolicy.jsx";
+import ResponsibleGambling from "../pages/ResponsibleGambling/ResponsibleGambling.jsx";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -30,6 +34,22 @@ const MainRouter = () => {
           {
             path: "/withdraw",
             element: <Withdraw />,
+          },
+          {
+            path: "/rules-&-regulation",
+            element: <RulesRegulation />,
+          },
+          {
+            path: "/exclusive-policy",
+            element: <ExclusivePolicy />,
+          },
+          {
+            path: "/responsible-gambling",
+            element: <ResponsibleGambling />,
+          },
+          {
+            path: "/privacy-policy",
+            element: <PrivacyPolicy />,
           },
         ],
       },

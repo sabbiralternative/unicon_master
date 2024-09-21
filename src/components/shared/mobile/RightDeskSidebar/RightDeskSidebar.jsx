@@ -53,7 +53,7 @@ const RightDeskSidebar = () => {
 
   const handleNavigate = (link) => {
     navigate(link);
-    dispatch(setShowRightSidebar(false))
+    dispatch(setShowRightSidebar(false));
   };
 
   return (
@@ -444,7 +444,10 @@ const RightDeskSidebar = () => {
                     Bonuses
                   </span>
                 </div>
-                <div onClick={()=> handleNavigate('/open-bets')} className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                <div
+                  onClick={() => handleNavigate("/open-bets")}
+                  className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -631,7 +634,10 @@ const RightDeskSidebar = () => {
                 Legal &amp; Compliance
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
-                <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                <div
+                  onClick={() => handleNavigate("/rules-&-regulation")}
+                  className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -655,7 +661,10 @@ const RightDeskSidebar = () => {
                     Rules &amp; Regulations
                   </span>
                 </div>
-                <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                <div
+                  onClick={() => handleNavigate("/exclusive-policy")}
+                  className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -679,7 +688,10 @@ const RightDeskSidebar = () => {
                     Exclusion Policy
                   </span>
                 </div>
-                <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                <div
+                  onClick={() => handleNavigate("/responsible-gambling")}
+                  className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -701,7 +713,10 @@ const RightDeskSidebar = () => {
                     Responsible Gambling
                   </span>
                 </div>
-                <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                <div
+                  onClick={() => handleNavigate("/privacy-policy")}
+                  className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
