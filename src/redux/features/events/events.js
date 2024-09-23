@@ -1,4 +1,5 @@
 import { API } from "../../../api";
+import handleDecryptData from "../../../utils/handleDecryptData";
 import { baseApi } from "../../api/baseApi";
 
 export const eventsApi = baseApi.injectEndpoints({
@@ -14,9 +15,13 @@ export const eventsApi = baseApi.injectEndpoints({
     getAllOddsEvents: builder.query({
       query: (payload) => {
         return {
-          url: `${API.odds}/${payload.eventTypeId}/${payload.eventId}`,
+          url: `${API.eventDetails}/${payload.eventTypeId}/${payload.eventId}`,
           method: "GET",
         };
+      },
+      transformResponse: (data) => {
+        const decryptionData = handleDecryptData(JSON.stringify(data));
+        return decryptionData;
       },
     }),
     order: builder.mutation({
@@ -45,7 +50,7 @@ export const eventsApi = baseApi.injectEndpoints({
           body: payload,
         };
       },
-    }),
+    })
   }),
 });
 
@@ -54,5 +59,5 @@ export const {
   useGetAllOddsEventsQuery,
   useOrderMutation,
   useGetLadderMutation,
-  useEditButtonValuesMutation
+  useEditButtonValuesMutation,
 } = eventsApi;

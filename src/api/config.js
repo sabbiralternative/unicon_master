@@ -10,6 +10,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
       if (data?.result?.endpoint) {
         const endPoints = data?.result?.endpoint;
         const setting = data?.result?.settings;
+        API.banner = endPoints?.banner;
         API.uploadScreenshot = endPoints?.uploadScreenshot;
         API.withdrawBreakdown = endPoints?.withdrawBreakdown;
         API.pg = endPoints?.pg;
@@ -44,7 +45,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         API.testCasino = endPoints?.testCasino;
         API.liveCasinoWolf = endPoints?.liveCasinoWolf;
         API.exposure = endPoints?.exposure;
-        API.odds = endPoints?.odds;
+        API.eventDetails = endPoints?.eventDetails;
         API.forgotPassword = endPoints?.forgotPassword;
         API.virtualCasino = endPoints?.virtualCasino;
         API.slotsWolf = endPoints?.slotsWolf;

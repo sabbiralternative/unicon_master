@@ -5,9 +5,7 @@ import RightDeskSidebar from "../../../components/shared/desktop/RightDeskSideba
 import Banner from "../../../components/ui/desktop/Home/Banner";
 import Originals from "../../../components/ui/desktop/Home/Originals";
 import InPlay from "../../../components/ui/desktop/Home/InPlay";
-import Casino from "../../../components/ui/desktop/Home/Casino";
-import IndianCardGames from "../../../components/ui/desktop/Home/IndianCardGames";
-import PopularGames from "../../../components/ui/desktop/Home/PopularGames";
+
 // import UpcomingEvents from "../../../components/ui/desktop/Home/UpcomingEvents";
 import FAQ from "../../../components/ui/desktop/Home/FAQ";
 import WhatsApp from "../../../components/ui/desktop/Home/WhatsApp";
@@ -15,6 +13,9 @@ import WhatsApp from "../../../components/ui/desktop/Home/WhatsApp";
 import LeftDeskSidebar from "../../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
 import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/desktop/Home/Group";
+import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
+import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
+import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 
 const Home = () => {
   const { group } = useSelector((state) => state.state);
@@ -34,15 +35,17 @@ const Home = () => {
                 style={{ minHeight: "calc(-54px + 100dvh)" }}
               >
                 <WhatsApp />
+           
+                  <Banner  />
+             
                 <div
                   id="home"
                   className="py-1 flex flex-col items-start justify-start"
                 >
-                  <Banner />
                   <Originals />
                   {/* <WithdrawAndDepositButton /> */}
                   {data && <InPlay data={data} />}
-                  <Casino />
+                  <CasinoProvider />
                   <IndianCardGames />
                   <PopularGames />
                   {/* <UpcomingEvents /> */}

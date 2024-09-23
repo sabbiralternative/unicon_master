@@ -1,9 +1,7 @@
 import { useSelector } from "react-redux";
 import Banner from "../../../components/ui/mobile/home/Banner";
-import Casino from "../../../components/ui/mobile/home/Casino";
-import IndianCardGames from "../../../components/ui/mobile/home/IndianCardGames";
 import InPlay from "../../../components/ui/mobile/home/InPlay";
-import PopularGames from "../../../components/ui/mobile/home/PopularGames";
+
 // import UpcomingEvents from "../../../components/ui/mobile/home/UpcomingEvents";
 
 import { useGetAllGroupEventsQuery } from "../../../redux/features/events/events";
@@ -12,6 +10,9 @@ import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/mobile/home/Group";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import FAQ from "../../../components/ui/desktop/Home/FAQ";
+import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
+import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
+import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 
 const Home = () => {
   const { socialLink } = useGetSocialLink();
@@ -19,14 +20,12 @@ const Home = () => {
   const { data } = useGetAllGroupEventsQuery(group, {
     pollingInterval: isRefetchGroupData(group) ? 1000 : null,
   });
- 
 
   const openWhatsapp = () => {
     if (socialLink?.whatsapplink) {
       window.open(socialLink?.whatsapplink, "_blank");
     }
   };
-
 
   return (
     <>
@@ -89,14 +88,15 @@ const Home = () => {
                 </div>
               )}
 
+              <Banner />
+
               <div
                 id="home"
                 className="py-1 flex flex-col items-start justify-start"
               >
-                <Banner />
                 <WithdrawDepositButton />
                 {data && <InPlay data={data} />}
-                <Casino />
+                <CasinoProvider />
                 <IndianCardGames />
                 <PopularGames />
                 {/* <UpcomingEvents /> */}

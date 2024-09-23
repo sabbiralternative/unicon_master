@@ -6,6 +6,8 @@ import {
 import { userToken } from "../../../../redux/features/auth/authSlice";
 import { settings } from "../../../../api";
 import { useNavigate } from "react-router-dom";
+
+import BannerSlider from "../../BannerSlider/BannerSlider";
 const Banner = () => {
   const navigate = useNavigate();
   const token = useSelector(userToken);
@@ -32,81 +34,8 @@ const Banner = () => {
   };
   return (
     <>
-      <div
-        className="w-full px-[6px] rounded-md overflow-hidden"
-        title="InPlayAndPopulars"
-        id="banners"
-        style={{ aspectRatio: 2.00561 / 1, maxHeight: "350px" }}
-      >
-        <div className="w-full relative h-full z-10 rounded-md overflow-hidden">
-          <div className="w-full h-full">
-            <img
-              src="https://promomaterial.imgix.net/inPlaySlidingBanners/DelhiDevils-1718966736075"
-              width="100"
-              height="100"
-              className="min-w-full min-h-full bg-bg_Primary md:h-full bg-[null] absolute top-0 left-0 transition-all ease-in-out duration-500 transform translate-x-0 z-10"
-              alt="Carousel Image 0"
-              loading="lazy"
-              title="Carousel Image 0"
-            />
-          </div>
-          <div className="w-full h-full">
-            <img
-              src="https://promomaterial.imgix.net/inPlaySlidingBanners/AssociateSharjah-1718966683664"
-              width="100"
-              height="100"
-              className="min-w-full min-h-full bg-bg_Primary md:h-full bg-[null] absolute top-0 left-0 transition-all ease-in-out duration-500 transform translate-x-full z-0"
-              alt="Carousel Image 1"
-              loading="lazy"
-              title="Carousel Image 1"
-            />
-          </div>
-          <div className="w-full h-full">
-            <img
-              src="https://promomaterial.imgix.net/inPlaySlidingBanners/PrincipleGulf-1718966637662"
-              width="100"
-              height="100"
-              className="min-w-full min-h-full bg-bg_Primary md:h-full bg-[null] absolute top-0 left-0 transition-all ease-in-out duration-500 transform z-0"
-              alt="Carousel Image 2"
-              loading="lazy"
-              title="Carousel Image 2"
-            />
-          </div>
-          <div className="w-full h-full">
-            <img
-              src="https://promomaterial.imgix.net/inPlaySlidingBanners/IshanCrore-1718966438595"
-              width="100"
-              height="100"
-              className="min-w-full min-h-full bg-bg_Primary md:h-full bg-[null] absolute top-0 left-0 transition-all ease-in-out duration-500 transform z-0"
-              alt="Carousel Image 3"
-              loading="lazy"
-              title="Carousel Image 3"
-            />
-          </div>
-          <div className="w-full h-full">
-            <img
-              src="https://promomaterial.imgix.net/inPlaySlidingBanners/MadeInIndiaRohit-1718966368863"
-              width="100"
-              height="100"
-              className="min-w-full min-h-full bg-bg_Primary md:h-full bg-[null] absolute top-0 left-0 transition-all ease-in-out duration-500 transform z-0"
-              alt="Carousel Image 4"
-              loading="lazy"
-              title="Carousel Image 4"
-            />
-          </div>
-          <div className="w-full h-full">
-            <img
-              src="https://promomaterial.imgix.net/inPlaySlidingBanners/DelDubSponsor-1718966819602"
-              width="100"
-              height="100"
-              className="min-w-full min-h-full bg-bg_Primary md:h-full bg-[null] absolute top-0 left-0 transition-all ease-in-out duration-500 transform -translate-x-full z-0 z-0"
-              alt="Carousel Image 5"
-              loading="lazy"
-              title="Carousel Image 5"
-            />
-          </div>
-        </div>
-      </div>
+      <BannerSlider />
+
       <div
         title="Sports"
         id="sportsTabsBtns"
@@ -259,7 +188,11 @@ const Banner = () => {
       <div className="flex flex-col items-center justify-start w-full scrollSmooth no-scrollbar">
         <div className="flex overflow-auto w-full scrollSmooth no-scrollbar">
           <div title="QuickButtons-0" className="grid grid-row-2">
-            <span onClick={navigateAviatorCasinoVideo} title="Aviator" className="col-span-1 px-[3px] py-[3px]">
+            <span
+              onClick={navigateAviatorCasinoVideo}
+              title="Aviator"
+              className="col-span-1 px-[3px] py-[3px]"
+            >
               <div
                 className="relative w-full active:scale-95 cursor-pointer bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                 style={{

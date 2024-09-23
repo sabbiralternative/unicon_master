@@ -278,11 +278,11 @@ const Events = () => {
               betType={betsType}
               setBetsType={setBetsType}
               data={data}
-         myBets={myBets}
+              myBets={myBets}
             />
 
-            {betsType === "openBet" && <OpenBets myBets={myBets}  />}
-            <IFrame iFrameUrl={iFrameUrl} />
+            {betsType === "openBet" && <OpenBets myBets={myBets} />}
+            {data?.score?.hasVideo && <IFrame iFrameUrl={iFrameUrl} />}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (

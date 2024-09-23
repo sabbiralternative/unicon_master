@@ -329,7 +329,7 @@ const Events = () => {
                 </div>
               </div>
             </div> */}
-            <IFrame iFrameUrl={iFrameUrl} />
+            {data?.score?.hasVideo && <IFrame iFrameUrl={iFrameUrl} />}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (

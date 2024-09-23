@@ -7,7 +7,7 @@ const MobileLayout = () => {
   const { pathname } = useLocation();
   return (
     <>
-      <div className="w-full flex flex-col app-bg h-[100dvh]">
+      <div className="w-full flex flex-col app-bg h-[100%]">
         {!pathname.includes("/casino") && <Header />}
         <Outlet />
         {!pathname.includes("/casino") && <Footer />}

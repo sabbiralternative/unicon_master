@@ -14,6 +14,7 @@ const OpenBets = () => {
     ...myBets.filter((bet) => bet.betType === "Back"),
     ...myBets.filter((bet) => bet.betType === "Lay"),
   ];
+  console.log(myBets);
   return (
     <div
       className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
@@ -88,7 +89,7 @@ const OpenBets = () => {
             </div>
           )}
 
-          {openBets && !myBets && orderedBets?.length === 0 && (
+          {openBets && myBets?.length === 0 && orderedBets?.length === 0 && (
             <div className="w-full origin-top scaleVerticalOpen">
               <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4 py-3 shadow text-text_Ternary">
                 You have no Open Bets.

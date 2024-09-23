@@ -29,7 +29,7 @@ export const API = {
   testCasino: "",
   liveCasinoWolf: "",
   exposure: "",
-  odds: "",
+  eventDetails: "",
   virtualCasino: "",
   slotsWolf: "",
   withdrawIframe: "",
@@ -40,6 +40,7 @@ export const API = {
   pg: "",
   uploadScreenshot: "",
   withdrawBreakdown:"",
+  banner:""
 };
 
 export const settings = {
