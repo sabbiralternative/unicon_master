@@ -10,6 +10,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
       if (data?.result?.endpoint) {
         const endPoints = data?.result?.endpoint;
         const setting = data?.result?.settings;
+        API.exchangeGames = endPoints?.exchangeGames;
         API.banner = endPoints?.banner;
         API.uploadScreenshot = endPoints?.uploadScreenshot;
         API.withdrawBreakdown = endPoints?.withdrawBreakdown;

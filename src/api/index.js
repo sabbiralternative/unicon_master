@@ -40,7 +40,8 @@ export const API = {
   pg: "",
   uploadScreenshot: "",
   withdrawBreakdown:"",
-  banner:""
+  banner:"",
+  exchangeGames:""
 };
 
 export const settings = {
