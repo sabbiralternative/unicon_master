@@ -47,6 +47,7 @@ const ForgetPassword = () => {
       };
       const encryptedData = handleEncryptData(otpData);
       const res = await getOTP(encryptedData).unwrap();
+      console.log(res);
       if (res?.success) {
         setOTP({
           orderId: res?.result?.orderId,
@@ -72,6 +73,7 @@ const ForgetPassword = () => {
       orderId: OTP.orderId,
       otpMethod: OTP.otpMethod,
     };
+  
     const encryptedData = handleEncryptData(forgotPasswordData);
     const result = await handleForgotPassword(encryptedData).unwrap();
     if (result.success) {

@@ -262,7 +262,7 @@ const Events = () => {
       const hasDecimal = value % 1 !== 0;
 
       // value?.toFixed(2)
-      return hasDecimal ? value : value;
+      return hasDecimal ? value?.toFixed(2) : value;
     }
   };
 
