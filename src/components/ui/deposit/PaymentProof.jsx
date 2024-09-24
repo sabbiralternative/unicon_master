@@ -32,6 +32,7 @@ const PaymentProof = ({ paymentId, amount }) => {
           },
         });
         const data = res.data;
+        console.log(data);
         if (data?.success) {
           setLoading(false);
           setUploadedImage(data?.fileName);
@@ -176,13 +177,15 @@ const PaymentProof = ({ paymentId, amount }) => {
                     ></path>
                   </svg>
                 </div>
-                <img
+             <div className="flex items-center justify-center">
+             <img
                   loading="lazy"
                   id="bank-receipt"
                   src={filePath}
                   alt=""
                   style={{ borderRadius: "0.375rem", width: "15rem" }}
                 />
+             </div>
               </div>
 
               <span></span>
@@ -215,6 +218,7 @@ const PaymentProof = ({ paymentId, amount }) => {
                 className="block w-full focus:outline-none border-[1px] font-lato px-3 py-2.5 rounded-[4px] font-lato placeholder:font-lato font-semibold text-base border-quinary focus:border-ternary"
                 placeholder="6 to 23 Digit UTR/RRN Number"
                 type="text"
+                value={utr}
               
               />
               <span className="text-text_Danger text-xs font-lato font-[450] leading-4"></span>
