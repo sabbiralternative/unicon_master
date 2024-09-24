@@ -70,7 +70,6 @@ const ForgetPassword = () => {
       token: generatedToken,
       otp: data?.otp,
       isOtpAvailable: settings.otp,
-      referralCode: "",
       orderId: OTP.orderId,
       otpMethod: OTP.otpMethod,
     };
