@@ -62,10 +62,9 @@ const ForgetPassword = () => {
   const onSubmit = async (data) => {
     const generatedToken = handleRandomToken();
     const forgotPasswordData = {
-      username: "",
+      username: mobile,
       password: data?.password,
       confirmPassword: data?.confirmPassword,
-      mobile: mobile,
       site: settings.siteUrl,
       token: generatedToken,
       otp: data?.otp,
