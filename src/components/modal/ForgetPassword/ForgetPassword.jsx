@@ -170,7 +170,7 @@ const ForgetPassword = () => {
                         onChange={(e) => handleMobileInputChange(e)}
                         id="mobile-no-input"
                         placeholder="Username/Phone Number"
-                        className="block w-full focus:outline-none py-2 bg-auth border rounded-lg pl-10 pr-8 ml-0 mr-0"
+                        className="block w-full focus:outline-none py-2 bg-auth border rounded-lg pl-4 pr-8 ml-0 mr-0"
                         type="text"
                       />
                     </div>
