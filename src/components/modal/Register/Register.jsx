@@ -69,7 +69,7 @@ const Register = () => {
       token: generatedToken,
       otp: data?.otp,
       isOtpAvailable: settings.otp,
-      referralCode: "",
+      referralCode: data?.referralCode,
       orderId: OTP.orderId,
       otpMethod: OTP.otpMethod,
     };
@@ -365,9 +365,8 @@ const Register = () => {
                     </span>
                     <input
                       {...register("referralCode", { required: true })}
-                      id="promocodeSignUp"
                       className="block w-full focus:outline-none w-full rounded-none text-text_Ternary px-2 py-1 text-sm xs:text-md font-lato bg-auth"
-                      placeholder="Enter Promocode(Optional)"
+                      placeholder="Enter referral code(Optional)"
                       type="text"
                     />
                   </div>
