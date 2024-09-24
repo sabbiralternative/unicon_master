@@ -3,14 +3,18 @@ import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import { handleBetSlip } from "../../../../utils/handleBetSlip";
-import { useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import useExposer from "../../../../hooks/useExposure";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
 import { userToken } from "../../../../redux/features/auth/authSlice";
+import { settings } from "../../../../api";
+import { handleCashoutBetMobile } from "../../../../utils/handleCashoutBetMobile";
 
 const Bookmaker = ({ bookmaker }) => {
-  const token = useSelector(userToken)
+
+  const [teamProfit, setTeamProfit] = useState([]);
+  const token = useSelector(userToken);
   const { predictOdd, stake } = useSelector((state) => state?.event);
   const [runnerId, setRunnerId] = useState("");
   const { eventId } = useParams();
@@ -33,9 +37,108 @@ const Bookmaker = ({ bookmaker }) => {
       token
     );
   };
+  const computeExposureAndStake = (
+    exposureA,
+    exposureB,
+    runner1,
+    runner2,
+    gameId
+  ) => {
+    let runner, largerExposure, layValue, oppositeLayValue, lowerExposure;
+
+    const pnlArr = [exposureA, exposureB];
+    const isOnePositiveExposure = onlyOnePositive(pnlArr);
+
+    if (exposureA > exposureB) {
+      // Team A has a larger exposure.
+      runner = runner1;
+      largerExposure = exposureA;
+      layValue = runner1?.lay?.[0]?.price;
+      oppositeLayValue = runner2?.lay?.[0]?.price;
+      lowerExposure = exposureB;
+    } else {
+      // Team B has a larger exposure.
+      runner = runner2;
+      largerExposure = exposureB;
+      layValue = runner2?.lay?.[0]?.price;
+      oppositeLayValue = runner1?.lay?.[0]?.price;
+      lowerExposure = exposureA;
+    }
+
+    // Compute the absolute value of the lower exposure.
+    let absLowerExposure = Math.abs(lowerExposure);
+
+    // Compute the liability for the team with the initially larger exposure.
+    let liability = absLowerExposure * (layValue - 1);
+
+    // Compute the new exposure of the team with the initially larger exposure.
+    let newExposure = largerExposure - liability;
+
+    // Compute the profit using the new exposure and the lay odds of the opposite team.
+    let profit = newExposure / layValue;
+
+    // Calculate the new stake value for the opposite team by adding profit to the absolute value of its exposure.
+    let newStakeValue = absLowerExposure + profit;
+
+    // Return the results.
+    return {
+      runner,
+      newExposure,
+      profit,
+      newStakeValue,
+      oppositeLayValue,
+      gameId,
+      isOnePositiveExposure,
+    };
+  };
+  function onlyOnePositive(arr) {
+    let positiveCount = arr?.filter((num) => num > 0).length;
+    return positiveCount === 1;
+  }
+  useEffect(() => {
+    let results = [];
+    if (
+      bookmaker?.length > 0 &&
+      exposer?.pnlBySelection &&
+      Object.keys(exposer?.pnlBySelection)?.length > 0
+    ) {
+      bookmaker.forEach((game) => {
+        const runners = game?.runners || [];
+        if (runners?.length === 2) {
+          const runner1 = runners[0];
+          const runner2 = runners[1];
+          const pnl1 = pnlBySelection?.find(
+            (pnl) => pnl?.RunnerId === runner1?.id
+          )?.pnl;
+          const pnl2 = pnlBySelection?.find(
+            (pnl) => pnl?.RunnerId === runner2?.id
+          )?.pnl;
+
+          if (pnl1 && pnl2 && runner1 && runner2) {
+            const result = computeExposureAndStake(
+              pnl1,
+              pnl2,
+              runner1,
+              runner2,
+              game?.id
+            );
+            results.push(result);
+          }
+        }
+      });
+      setTeamProfit(results);
+    } else {
+      setTeamProfit([]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bookmaker, eventId]);
   return (
     <>
       {bookmaker?.map((games, i) => {
+        const teamProfitForGame = teamProfit?.find(
+          (profit) =>
+            profit?.gameId === games?.id && profit?.isOnePositiveExposure
+        );
         return (
           <div key={i} className="py-1.5">
             <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] mb-1.5">
@@ -43,7 +146,51 @@ const Bookmaker = ({ bookmaker }) => {
                 <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
                   {games?.name}
                 </span>
-         
+                {settings.betFairCashOut && games?.runners?.length !== 3 && (
+                  <button
+                    onClick={() =>
+                      handleCashoutBetMobile(
+                        games,
+                        "lay",
+                        dispatch,
+                        setRunnerId,
+                        pnlBySelection,
+                        token,
+                        teamProfitForGame
+                      )
+                    }
+                    style={{
+                      cursor: `${
+                        !teamProfitForGame ? "not-allowed" : "pointer"
+                      }`,
+                      opacity: `${!teamProfitForGame ? "0.6" : "1"}`,
+                    }}
+                    disabled={!teamProfitForGame}
+                    type="button"
+                    className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-max max-w-[74%] mr-1 cursor-pointer ${
+                      teamProfitForGame?.profit > 0
+                        ? "bg-maxBtnGrd"
+                        : " bg-bg_lossGrd"
+                    }`}
+                  >
+                    <div className="text-[10px] md:text-sm text-text_Quaternary whitespace-nowrap font-semibold">
+                      Cashout
+                    </div>
+                    {teamProfitForGame?.profit && (
+                      <div className="capitalize text-[10px] md:text-sm ml-1 text-text_Quaternary whitespace-nowrap font-semibold">
+                        <span> : </span>
+                        <span className="font-roboto">₹ </span>
+                        <span> {teamProfitForGame?.profit?.toFixed(2)}</span>
+                      </div>
+                    )}
+                  </button>
+                )}
+                <span className="text-xs font-light">
+                  Min: {games?.minLiabilityPerBet}
+                </span>
+                <span className="text-xs font-light">
+                  | Max: {games?.maxLiabilityPerBet}
+                </span>
               </div>
               <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">
                 <span className="hidden md:flex col-span-1 text-center font-semibold h-full items-end justify-center"></span>
@@ -85,39 +232,39 @@ const Bookmaker = ({ bookmaker }) => {
                             {runner?.name}
                           </span>
                         </div>
-                        <span  className="w-full whitespace-nowrap">
-                            {pnl &&
-                              pnl?.map(({ pnl }, i) => {
-                                return (
-                                  <span
-                                    key={i}
-                                    className={`text-[12px] font-bold  whitespace-nowrap ${
-                                      pnl > 0
-                                        ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}
-                                  >
-                                    {pnl || ""}
-                                  </span>
-                                );
-                              })}
+                        <span className="w-full whitespace-nowrap">
+                          {pnl &&
+                            pnl?.map(({ pnl }, i) => {
+                              return (
+                                <span
+                                  key={i}
+                                  className={`text-[12px] font-bold  whitespace-nowrap ${
+                                    pnl > 0
+                                      ? "text-text_Success"
+                                      : "text-text_Danger"
+                                  }`}
+                                >
+                                  {pnl || ""}
+                                </span>
+                              );
+                            })}
 
-                            {stake &&
-                              predictOddValues?.map(({ odd, id }) => {
-                                return (
-                                  <span
-                                    key={id}
-                                    className={`text-[12px] font-bold ${
-                                      odd > 0
-                                        ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}
-                                  >
-                                    &gt;&gt; {stake && odd}
-                                  </span>
-                                );
-                              })}
-                          </span>
+                          {stake &&
+                            predictOddValues?.map(({ odd, id }) => {
+                              return (
+                                <span
+                                  key={id}
+                                  className={`text-[12px] font-bold ${
+                                    odd > 0
+                                      ? "text-text_Success"
+                                      : "text-text_Danger"
+                                  }`}
+                                >
+                                  &gt;&gt; {stake && odd}
+                                </span>
+                              );
+                            })}
+                        </span>
                       </div>
                     </div>
                     {isOddSuspended(runner) ? (

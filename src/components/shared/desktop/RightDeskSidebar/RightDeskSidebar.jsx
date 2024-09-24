@@ -183,7 +183,7 @@ const RightDeskSidebar = () => {
                             STAKE
                           </span>
                           <span className="text-[10px] float-right capitalize text-text_Ternary 5 font-normal text-center">
-                            Max Mkt : {placeBetValues?.maxLiabilityPerMarket}
+                            Max Mkt : {placeBetValues?.maxLiabilityPerBet}
                           </span>
                         </div>
                         <span title="Odds" className="col-span-6 pt-1.5 w-full">
@@ -212,7 +212,7 @@ const RightDeskSidebar = () => {
                           <input
                             id="stakeInput"
                             className="focus:outline-none text-md w-full h-full text-center bg-bg_Quaternary flex items-center justify-center border-[0.75px] text-text_Ternary placeholder:text-text_Ternary 5 rounded-sm text-text_Ternary focus:border-oddInputBorderActive active:border-oddInputBorderActive"
-                            placeholder="Max : 50,000"
+                            placeholder={`Max : ${placeBetValues?.maxLiabilityPerBet}`}
                             pattern="d*"
                             type="number"
                             value={stake !== null && stake}

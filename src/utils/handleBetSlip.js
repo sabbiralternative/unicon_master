@@ -70,6 +70,7 @@ export const handleBetSlip = (
       marketName: games?.name,
       eventId: games?.eventId,
       totalSize: 0,
+  
     };
     if (games?.btype == "FANCY") {
       setRunnerId(games?.id);

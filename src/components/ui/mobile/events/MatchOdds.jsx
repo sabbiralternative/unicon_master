@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useExposer from "../../../../hooks/useExposure";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
@@ -8,14 +8,14 @@ import { handleBetSlip } from "../../../../utils/handleBetSlip";
 import { useEffect, useState } from "react";
 import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
 import { settings } from "../../../../api";
-import { handleCashoutBetDesktop } from "../../../../utils/handleCashoutBetDesktop";
+import { handleCashoutBetMobile } from "../../../../utils/handleCashoutBetMobile";
 
 const MatchOdds = ({ match_odds }) => {
   const [teamProfit, setTeamProfit] = useState([]);
   const [runnerId, setRunnerId] = useState("");
   const { predictOdd, stake } = useSelector((state) => state?.event);
   const { token } = useSelector((state) => state?.auth);
-  const navigate = useNavigate();
+
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
   const dispatch = useDispatch();
@@ -132,7 +132,6 @@ const MatchOdds = ({ match_odds }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [match_odds, eventId]);
 
-
   return (
     <>
       {match_odds?.map((games, i) => {
@@ -159,14 +158,13 @@ const MatchOdds = ({ match_odds }) => {
                 {settings.betFairCashOut && games?.runners?.length !== 3 && (
                   <button
                     onClick={() =>
-                      handleCashoutBetDesktop(
+                      handleCashoutBetMobile(
                         games,
                         "lay",
                         dispatch,
                         setRunnerId,
                         pnlBySelection,
                         token,
-                        navigate,
                         teamProfitForGame
                       )
                     }
@@ -196,6 +194,12 @@ const MatchOdds = ({ match_odds }) => {
                     )}
                   </button>
                 )}
+                <span className="text-xs font-light">
+                  Min: {games?.minLiabilityPerBet}
+                </span>
+                <span className="text-xs font-light">
+                  | Max: {games?.maxLiabilityPerBet}
+                </span>
               </div>
               <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">
                 <span className="hidden md:flex col-span-1 text-center font-semibold h-full items-end justify-center"></span>

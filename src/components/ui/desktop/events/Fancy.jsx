@@ -62,6 +62,7 @@ const Fancy = ({ fancy }) => {
             <span className="inline-block font-bold text-xs sm:text-sm md:text-base leading-4">
               Fancy Market
             </span>
+ 
           </li>
  
         </ul>
