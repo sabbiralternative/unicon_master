@@ -295,7 +295,7 @@ const Footer = () => {
               />
             </div>
           </div>
-          <div
+          {/* <div
             id="footerTopDownlodApp"
             className="  px-2 rounded  gap-2 w-full grid grid-cols-2 sm:flex sm:flex-row justify-center items-center"
           >
@@ -431,7 +431,7 @@ cursor-pointer
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className=" flex py-3 items-center justify-center">
             <img
               alt="footer-logo"

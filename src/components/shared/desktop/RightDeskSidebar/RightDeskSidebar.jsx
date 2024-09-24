@@ -43,7 +43,13 @@ const RightDeskSidebar = () => {
     }
 
     dispatch(setPrice(placeBetValues?.price));
-    dispatch(setStake(placeBetValues?.totalSize?.toFixed(2)));
+    dispatch(
+      setStake(
+        placeBetValues?.totalSize > 0
+          ? placeBetValues?.totalSize.toFixed(2)
+          : null
+      )
+    );
   }, [placeBetValues, betDelay, dispatch]);
 
   useEffect(() => {
@@ -209,7 +215,7 @@ const RightDeskSidebar = () => {
                             placeholder="Max : 50,000"
                             pattern="d*"
                             type="number"
-                            value={stake}
+                            value={stake !== null && stake}
                           />
                         </span>
                       </div>

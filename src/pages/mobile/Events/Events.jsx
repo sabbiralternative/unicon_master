@@ -260,9 +260,7 @@ const Events = () => {
       return;
     } else {
       const hasDecimal = value % 1 !== 0;
-
-      // value?.toFixed(2)
-      return hasDecimal ? value?.toFixed(2) : value;
+      return hasDecimal ? parseFloat(value?.toFixed(2)) : value;
     }
   };
 

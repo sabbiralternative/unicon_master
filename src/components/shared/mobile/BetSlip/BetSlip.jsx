@@ -32,7 +32,13 @@ const BetSlip = ({ setRunnerId }) => {
 
   useEffect(() => {
     dispatch(setPrice(placeBetValues?.price));
-    dispatch(setStake(placeBetValues?.totalSize?.toFixed(2)));
+    dispatch(
+      setStake(
+        placeBetValues?.totalSize > 0
+          ? placeBetValues?.totalSize?.toFixed(2)
+          : null
+      )
+    );
   }, [placeBetValues, dispatch]);
 
   let payload = {};
@@ -154,7 +160,7 @@ const BetSlip = ({ setRunnerId }) => {
                   placeholder="Max : 1,00,000"
                   pattern="d*"
                   type="number"
-                  value={stake}
+                  value={stake !== null && stake}
                 />
               </span>
             </div>
@@ -227,15 +233,14 @@ const BetSlip = ({ setRunnerId }) => {
                 <button
                   onClick={handleOrderBets}
                   disabled={!stake || betDelay > 0}
-                
                   type="button"
                   className={` leading-normal relative overflow-hidden  transition duration-150 ease-in-out py-1 w-full flex  min-h-[46px] px-2.5 rounded-md  font-medium border  flex-row items-center justify-between  
                    text-text_Ternary 5     text-text_Quaternary  
                cursor-pointer ${
-        !stake || betDelay > 0
-          ? " bg-bg_InActivePlaceBtnColor border-inActivePlaceBtnColor cursor-not-allowed"
-          : "bg-placeBetBtnGrd border-primary cursor-pointer"
-      }`}
+                 !stake || betDelay > 0
+                   ? " bg-bg_InActivePlaceBtnColor border-inActivePlaceBtnColor cursor-not-allowed"
+                   : "bg-placeBetBtnGrd border-primary cursor-pointer"
+               }`}
                 >
                   <div className=" flex items-start justify-start flex-col">
                     <span className="  font-bold text-xs sm:text-sm">
