@@ -1,10 +1,11 @@
+import { setPlaceBetValues } from "../redux/features/events/eventSlice";
+
 /* handle place bet */
 export const handleCashoutBetDesktop = (
     games,
     betType,
     dispatch,
     setRunnerId,
-    setPlaceBetValues,
     pnlBySelection,
     token,
     navigate,

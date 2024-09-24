@@ -13,8 +13,10 @@ import FAQ from "../../../components/ui/desktop/Home/FAQ";
 import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
 import PopularGames from "../../../components/ui/PopularGames/PopularGames";
+import { userToken } from "../../../redux/features/auth/authSlice";
 
 const Home = () => {
+  const token = useSelector(userToken);
   const { socialLink } = useGetSocialLink();
   const { group } = useSelector((state) => state.state);
   const { data } = useGetAllGroupEventsQuery(group, {
@@ -94,7 +96,7 @@ const Home = () => {
                 id="home"
                 className="py-1 flex flex-col items-start justify-start"
               >
-                <WithdrawDepositButton />
+                {token && <WithdrawDepositButton />}
                 {data && <InPlay data={data} />}
                 <CasinoProvider />
                 <IndianCardGames />

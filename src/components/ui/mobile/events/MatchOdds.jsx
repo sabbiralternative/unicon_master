@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import useExposer from "../../../../hooks/useExposure";
-import { setPlaceBetValues } from "../../../../redux/features/events/eventSlice";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
@@ -33,7 +32,7 @@ const MatchOdds = ({ match_odds }) => {
       runner,
       exposer,
       dispatch,
-      setPlaceBetValues
+      token
     );
   };
 
@@ -131,7 +130,7 @@ const MatchOdds = ({ match_odds }) => {
       setTeamProfit([]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [match_odds, eventId, exposer]);
+  }, [match_odds, eventId]);
 
 
   return (
@@ -165,7 +164,6 @@ const MatchOdds = ({ match_odds }) => {
                         "lay",
                         dispatch,
                         setRunnerId,
-                        setPlaceBetValues,
                         pnlBySelection,
                         token,
                         navigate,

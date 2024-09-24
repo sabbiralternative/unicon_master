@@ -2,14 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
-import { setPlaceBetValues } from "../../../../redux/features/events/eventSlice";
 import { handleBetSlip } from "../../../../utils/handleBetSlip";
 import { useParams } from "react-router-dom";
 import useExposer from "../../../../hooks/useExposure";
 import { useState } from "react";
 import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
+import { userToken } from "../../../../redux/features/auth/authSlice";
 
 const Bookmaker = ({ bookmaker }) => {
+  const token = useSelector(userToken)
   const { predictOdd, stake } = useSelector((state) => state?.event);
   const [runnerId, setRunnerId] = useState("");
   const { eventId } = useParams();
@@ -29,7 +30,7 @@ const Bookmaker = ({ bookmaker }) => {
       runner,
       exposer,
       dispatch,
-      setPlaceBetValues
+      token
     );
   };
   return (

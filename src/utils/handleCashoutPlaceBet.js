@@ -1,10 +1,10 @@
+import { setPlaceBetValues, setShowComponent } from "../redux/features/events/eventSlice";
+
 /* handle place bet */
 export const handleCashOutPlaceBet = (
   games,
   betType,
   dispatch,
-  setShowComponent,
-  setPlaceBetValues,
   pnlBySelection,
   token,
   navigate,

@@ -4,18 +4,17 @@ import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import useExposer from "../../../../hooks/useExposure";
 import { useDispatch, useSelector } from "react-redux";
 import { handleDesktopBetSlip } from "../../../../utils/handleDesktopBetSlip";
-import {
-  setPlaceBetValues,
-  setShowComponent,
-} from "../../../../redux/features/events/eventSlice";
+
 import { useState } from "react";
 import { useGetLadderMutation } from "../../../../redux/features/events/events";
 import { settings } from "../../../../api";
 import handleRandomToken from "../../../../utils/handleRandomToken";
 import handleEncryptData from "../../../../utils/handleEncryptData";
 import Ladder from "../../../modal/Ladder/Ladder";
+import { userToken } from "../../../../redux/features/auth/authSlice";
 
 const Fancy = ({ fancy }) => {
+  const token = useSelector(userToken)
   const [eventName, setEventName] = useState("");
   const [ladderData, setLadderData] = useState([]);
   const [getLadder] = useGetLadderMutation();
@@ -35,9 +34,8 @@ const Fancy = ({ fancy }) => {
       runner,
       exposer,
       dispatch,
-      setPlaceBetValues,
-      setShowComponent,
-      price
+      price,
+      token
     );
   };
   const handleGetLadder = async (marketId, games) => {

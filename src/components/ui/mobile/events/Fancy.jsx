@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
-import { setPlaceBetValues } from "../../../../redux/features/events/eventSlice";
 import { useParams } from "react-router-dom";
 import useExposer from "../../../../hooks/useExposure";
 import { handleBetSlip } from "../../../../utils/handleBetSlip";
@@ -13,9 +12,11 @@ import handleRandomToken from "../../../../utils/handleRandomToken";
 import handleEncryptData from "../../../../utils/handleEncryptData";
 import { settings } from "../../../../api";
 import Ladder from "../../../modal/Ladder/Ladder";
+import { userToken } from "../../../../redux/features/auth/authSlice";
 
 const Fancy = ({ fancy }) => {
-  const [eventName,setEventName] = useState('')
+  const token = useSelector(userToken)
+   const [eventName,setEventName] = useState('')
   const [ladderData, setLadderData] = useState([]);
   const [getLadder] = useGetLadderMutation();
   const { predictOdd, stake } = useSelector(
@@ -38,7 +39,7 @@ const Fancy = ({ fancy }) => {
       runner,
       exposer,
       dispatch,
-      setPlaceBetValues
+     token
     );
   };
 

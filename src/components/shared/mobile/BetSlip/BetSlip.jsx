@@ -179,7 +179,7 @@ const BetSlip = ({ setRunnerId }) => {
                   );
                 })}
               </div>
-              <div className="grid grid-cols-12 gap-x-1 gap-y-1 pt-[15px]">
+              <div className="grid grid-cols-9 gap-x-1 gap-y-1 pt-[15px]">
                 <button
                   onClick={() => dispatch(setStake(100))}
                   className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] min-h-[26px] font-semibold rounded-[4px] bg-minBtnGrd text-text_Quaternary py-2 cursor-pointer"
@@ -200,12 +200,12 @@ const BetSlip = ({ setRunnerId }) => {
                 >
                   MAX
                 </button>
-                <button
+                {/* <button
                   className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] text-text_Quaternary py-2 bg-editStakesGrd cursor-pointer"
                   type="button"
                 >
                   EDIT STAKES
-                </button>
+                </button> */}
                 <button
                   onClick={() => dispatch(setStake(null))}
                   className="inline-block  relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-clearBtnGrd text-text_Quaternary leading-4 py-2 cursor-pointer"

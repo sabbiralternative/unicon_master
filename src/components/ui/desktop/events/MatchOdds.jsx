@@ -4,10 +4,6 @@ import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import useExposer from "../../../../hooks/useExposure";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setPlaceBetValues,
-  setShowComponent,
-} from "../../../../redux/features/events/eventSlice";
 import { handleDesktopBetSlip } from "../../../../utils/handleDesktopBetSlip";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -15,12 +11,9 @@ import { settings } from "../../../../api";
 import { handleCashOutPlaceBet } from "../../../../utils/handleCashoutPlaceBet";
 
 const MatchOdds = ({ match_odds }) => {
-  
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
-  const { predictOdd, stake } = useSelector(
-    (state) => state?.event
-  );
+  const { predictOdd, stake } = useSelector((state) => state?.event);
   const { token } = useSelector((state) => state?.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,9 +31,8 @@ const MatchOdds = ({ match_odds }) => {
       runner,
       exposer,
       dispatch,
-      setPlaceBetValues,
-      setShowComponent,
-      price
+      price,
+      token
     );
   };
 
@@ -162,8 +154,6 @@ const MatchOdds = ({ match_odds }) => {
                         games,
                         "lay",
                         dispatch,
-                        setShowComponent,
-                        setPlaceBetValues,
                         pnlBySelection,
                         token,
                         navigate,
@@ -219,7 +209,7 @@ const MatchOdds = ({ match_odds }) => {
                 const predictOddValues = predictOdd?.filter(
                   (val) => val?.id === runner?.id
                 );
-         
+
                 return (
                   <div
                     key={runner?.id}
@@ -239,38 +229,38 @@ const MatchOdds = ({ match_odds }) => {
                           </span>
                         </div>
                         <span key={i} className="w-full whitespace-nowrap">
-                            {pnl &&
-                              pnl?.map(({ pnl }, i) => {
-                                return (
-                                  <span
-                                    key={i}
-                                    className={`text-[12px] font-bold  whitespace-nowrap ${
-                                      pnl > 0
-                                        ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}
-                                  >
-                                    {pnl || ""}
-                                  </span>
-                                );
-                              })}
+                          {pnl &&
+                            pnl?.map(({ pnl }, i) => {
+                              return (
+                                <span
+                                  key={i}
+                                  className={`text-[12px] font-bold  whitespace-nowrap ${
+                                    pnl > 0
+                                      ? "text-text_Success"
+                                      : "text-text_Danger"
+                                  }`}
+                                >
+                                  {pnl || ""}
+                                </span>
+                              );
+                            })}
 
-                            {stake &&
-                              predictOddValues?.map(({ odd, id }) => {
-                                return (
-                                  <span
-                                    key={id}
-                                    className={`text-[12px] font-bold ${
-                                      odd > 0
-                                        ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}
-                                  >
-                                    &gt;&gt; {stake && odd}
-                                  </span>
-                                );
-                              })}
-                          </span>
+                          {stake &&
+                            predictOddValues?.map(({ odd, id }) => {
+                              return (
+                                <span
+                                  key={id}
+                                  className={`text-[12px] font-bold ${
+                                    odd > 0
+                                      ? "text-text_Success"
+                                      : "text-text_Danger"
+                                  }`}
+                                >
+                                  &gt;&gt; {stake && odd}
+                                </span>
+                              );
+                            })}
+                        </span>
                       </div>
                     </div>
                     {isOddSuspended(runner) ? (

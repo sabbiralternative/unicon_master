@@ -5,12 +5,10 @@ import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import useExposer from "../../../../hooks/useExposure";
 import { useDispatch, useSelector } from "react-redux";
 import { handleDesktopBetSlip } from "../../../../utils/handleDesktopBetSlip";
-import {
-  setPlaceBetValues,
-  setShowComponent,
-} from "../../../../redux/features/events/eventSlice";
+import { userToken } from "../../../../redux/features/auth/authSlice";
 
 const Bookmaker = ({ bookmaker }) => {
+  const token = useSelector(userToken)
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
   const { predictOdd, stake } = useSelector(
@@ -30,9 +28,8 @@ const Bookmaker = ({ bookmaker }) => {
       runner,
       exposer,
       dispatch,
-      setPlaceBetValues,
-      setShowComponent,
-      price
+      price,
+      token
     );
   };
   return (
