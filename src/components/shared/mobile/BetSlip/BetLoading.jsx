@@ -15,8 +15,8 @@ const BetLoading = ({ setBetDelay, betDelay,absolute }) => {
     <div
       id="popup-modal"
       className={`z-[1000] ${
-        absolute ? "absolute" : "relative w-[100vw]"
-      }  top-0 right-[0.5px] md:right-0 overflow-hidden flex w-full h-screen min-h-[100dvh] items-center justify-center bg-bg_CasinoPopupBg __web-inspector-hide-shortcut__`}
+        absolute ? "absolute" : "fixed w-[100vw]"
+      }  top-0 right-[0.5px] md:right-0 overflow-hidden flex w-full h-screen min-h-[100vh] items-center justify-center bg-bg_CasinoPopupBg __web-inspector-hide-shortcut__`}
     >
       <div
         className={`z-2 popUpBoxShadow popUpOpenAnimation absolute w-[86%] max-w-[380px] py-3 px-2 rounded-[10px] bg-bg_Quaternary p-2 xs:p-5`}

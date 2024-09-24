@@ -110,8 +110,8 @@ const BetSlip = ({ setRunnerId }) => {
 
   return (
     <>
-      {betDelay > 0 && (
-        <BetLoading betDelay={betDelay} setBetDelay={setBetDelay} />
+      {betDelay > 0   && (
+        <BetLoading betDelay={betDelay} setBetDelay={setBetDelay} absolute={false} />
       )}
       <div className="col-span-12 h-max">
         <span className="col-span-12 h-max w-full">
