@@ -41,7 +41,7 @@ export const handleBetSlip = (
     }
 
     if (games?.btype == "FANCY") {
-      price = runner?.back?.[0]?.line;
+      price = betType === "back" ? runner?.back?.[0]?.line : runner?.lay?.[0]?.line;
     } else {
       price = betType === "back" ? runner?.back[0].price : runner?.lay[0].price;
     }
