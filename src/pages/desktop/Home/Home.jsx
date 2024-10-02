@@ -35,9 +35,9 @@ const Home = () => {
                 style={{ minHeight: "calc(-54px + 100dvh)" }}
               >
                 <WhatsApp />
-           
-                  <Banner  />
-             
+
+                <Banner />
+
                 <div
                   id="home"
                   className="py-1 flex flex-col items-start justify-start"

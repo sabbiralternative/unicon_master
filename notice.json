@@ -7,7 +7,7 @@
     "settings": {
       "otp": true,
       "siteTitle": "a23money",
-      "siteUrl": "a23money.com",
+      "siteUrl": "lotusind365.com",
       "interval": "600",
       "casino": "aura",
       "registration": true,
@@ -26,7 +26,6 @@
         "format": "png"
       },
       "baseUrl": ""
-      
     },
 
     "endpoint": {
@@ -93,7 +92,7 @@
       "uploadScreenshot": "https://b2c.bet/deposit/up.php",
       "withdrawBreakdown": "https://api7.live/api/exchange/diamond/withdrawBreakdown",
       "banner": "https://api7.live/api/exchange/diamond/banner",
-      "exchangeGames" : "https://cache7.live/api/exchange/diamond/exchangeGames"
+      "exchangeGames": "https://cache7.live/api/exchange/diamond/exchangeGames"
     }
   },
   "success": true
