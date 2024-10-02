@@ -98,7 +98,7 @@ const Login = () => {
             </g>
           </svg>
         </div>
-        <div className="logo w-full hidden lg:flex items-center justify-center mb-4">
+        <div className="logo w-full hidden lg:flex items-center justify-center mb-4 h-[70px]">
           <img
             alt="logo"
             loading="lazy"
@@ -106,7 +106,7 @@ const Login = () => {
             height="100"
             decoding="async"
             data-nimg="1"
-            className="h-auto"
+            className="w-72 h-auto"
             src={logo}
             style={{ color: "transparent" }}
           />

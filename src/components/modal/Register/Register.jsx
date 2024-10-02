@@ -128,12 +128,12 @@ const Register = () => {
             </g>
           </svg>
         </div>
-        <div className="logo w-full hidden lg:flex items-center justify-center mb-4">
+        <div className="logo w-full hidden lg:flex items-center justify-center mb-4 h-[100px]">
           <img
             alt="logo"
             width="100"
             height="100"
-            className=" h-auto"
+            className="w-72 h-auto"
             src={logo}
             style={{ color: "transparent" }}
           />

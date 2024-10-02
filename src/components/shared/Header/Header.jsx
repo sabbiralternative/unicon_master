@@ -14,6 +14,7 @@ import RightDeskSidebar from "../mobile/RightDeskSidebar/RightDeskSidebar";
 import useBonusBalance from "../../../hooks/useBonusBalance";
 import moment from "moment";
 import { useEffect, useState } from "react";
+import { settings } from "../../../api";
 
 const Header = () => {
   const [time, setTime] = useState();
@@ -79,7 +80,12 @@ cursor-pointer
                   className=" ml-[2px] md:ml-[0px]  flex items-center"
                 >
                   <div className="   cursor-pointer">
-                    <img src={logo} alt="" />
+                    <img
+                      height={settings.logoHeight}
+                      width={settings.logoWidth}
+                      src={logo}
+                      alt=""
+                    />
                     {/* <svg
                       width="3778"
                       height="652"
