@@ -437,10 +437,10 @@ const Fancy = ({ fancy }) => {
                       </div>
                       <div className="flex items-center justify-start">
                         <span className="text-[10px] text-center text-text_MaxMarketTextColor">
-                          Max Mkt :
+                          Min :
                         </span>
                         <span className="text-[10px] text-center text-text_MaxMarketTextColor">
-                          60,000
+                        {games?.minLiabilityPerBet}
                         </span>
                       </div>
                     </div>

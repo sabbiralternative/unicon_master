@@ -23,7 +23,7 @@ const PaymentMethod = ({
   const [handlePgPayment] = usePgPaymentMutation();
   const [handleBankPayment] = useBankMutation();
   const [tabs, setTabs] = useState("");
-  const { paymentMethods } = useGetAllPaymentMethods();
+  const { paymentMethods } = useGetAllPaymentMethods(amount);
 
   const handleVisibleBankMethod = async (e, method) => {
     e.preventDefault();

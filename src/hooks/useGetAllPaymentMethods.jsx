@@ -6,7 +6,7 @@ import handleEncryptData from "../utils/handleEncryptData";
 import { useSelector } from "react-redux";
 import { userToken } from "../redux/features/auth/authSlice";
 
-const useGetAllPaymentMethods = () => {
+const useGetAllPaymentMethods = (amount) => {
   const token = useSelector(userToken);
   const { data: paymentMethods, refetch: refetchPaymentMethods } = useQuery({
     queryKey: ["paymentMethods"],
@@ -16,6 +16,7 @@ const useGetAllPaymentMethods = () => {
         type: "depositMethods",
         site: settings.siteUrl,
         token: generatedToken,
+        amount,
       };
       const encryptedData = handleEncryptData(bankData);
       const res = await axios.post(API.bankAccount, encryptedData, {
