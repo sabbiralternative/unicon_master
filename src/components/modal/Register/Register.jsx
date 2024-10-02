@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
-import useContextState from "../../../hooks/useContextState";
 import { useForm } from "react-hook-form";
 import {
   useGetOtpMutation,
@@ -27,7 +26,7 @@ const Register = () => {
   const [getOTP] = useGetOtpMutation();
   const [handleRegister] = useRegisterMutation();
   const { register, handleSubmit } = useForm();
-  const { logo } = useContextState();
+  // const { logo } = useContextState();
   const registerRef = useRef();
   useCloseModalClickOutside(registerRef, () => {
     dispatch(setShowRegisterModal(false));
@@ -128,7 +127,7 @@ const Register = () => {
             </g>
           </svg>
         </div>
-        <div className="logo w-full hidden lg:flex items-center justify-center mb-4">
+        {/* <div className="logo w-full hidden lg:flex items-center justify-center mb-4">
           <img
             alt="logo"
             loading="lazy"
@@ -140,18 +139,18 @@ const Register = () => {
             src={logo}
             style={{ color: "transparent" }}
           />
-        </div>
+        </div> */}
         <div className="flex gap-6 items-start h-max w-full">
-          <div className="hidden lg:w-[50%] w-full rounded-lg overflow-hidden">
+          {/* <div className="hidden lg:w-[50%] w-full rounded-lg overflow-hidden">
             <img src={logo} alt="" />
-          </div>
+          </div> */}
           <div
             title="register"
             className="flex flex-col items-start gap-y-4 w-full"
           >
-            <div className="logo w-full lg:hidden flex items-center justify-center">
+            {/* <div className="logo w-full lg:hidden flex items-center justify-center">
               <img src="/assets/svg/logo.svg" alt="" />
-            </div>
+            </div> */}
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="w-full gap-y-4 flex flex-col"
@@ -364,7 +363,7 @@ const Register = () => {
                       </svg>
                     </span>
                     <input
-                      {...register("referralCode", { required: true })}
+                      {...register("referralCode")}
                       className="block w-full focus:outline-none w-full rounded-none text-text_Ternary px-2 py-1 text-sm xs:text-md font-lato bg-auth"
                       placeholder="Enter referral code(Optional)"
                       type="text"
