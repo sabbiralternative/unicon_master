@@ -146,8 +146,8 @@ const Register = () => {
             title="register"
             className="flex flex-col items-start gap-y-4 w-full"
           >
-            <div className="logo w-full lg:hidden flex items-center justify-center">
-              <img src="/assets/svg/logo.svg" alt="" />
+            <div className="logo w-full lg:hidden flex items-center justify-center h-[70px]">
+              <img src={logo} alt="" />
             </div>
             <form
               onSubmit={handleSubmit(onSubmit)}
