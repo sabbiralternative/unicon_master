@@ -10,9 +10,9 @@ import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/mobile/home/Group";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import FAQ from "../../../components/ui/desktop/Home/FAQ";
-import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
+// import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
-import PopularGames from "../../../components/ui/PopularGames/PopularGames";
+// import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 import { userToken } from "../../../redux/features/auth/authSlice";
 
 const Home = () => {
@@ -98,9 +98,9 @@ const Home = () => {
               >
                 {token && <WithdrawDepositButton />}
                 {data && <InPlay data={data} />}
-                <CasinoProvider />
+                {/* <CasinoProvider /> */}
                 <IndianCardGames />
-                <PopularGames />
+                {/* <PopularGames /> */}
                 {/* <UpcomingEvents /> */}
               </div>
               <div className="px-[6px]"></div>

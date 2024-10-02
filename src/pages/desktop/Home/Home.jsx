@@ -3,7 +3,7 @@ import { useGetAllGroupEventsQuery } from "../../../redux/features/events/events
 
 import RightDeskSidebar from "../../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import Banner from "../../../components/ui/desktop/Home/Banner";
-import Originals from "../../../components/ui/desktop/Home/Originals";
+// import Originals from "../../../components/ui/desktop/Home/Originals";
 import InPlay from "../../../components/ui/desktop/Home/InPlay";
 
 // import UpcomingEvents from "../../../components/ui/desktop/Home/UpcomingEvents";
@@ -13,9 +13,9 @@ import WhatsApp from "../../../components/ui/desktop/Home/WhatsApp";
 import LeftDeskSidebar from "../../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
 import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/desktop/Home/Group";
-import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
+// import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
-import PopularGames from "../../../components/ui/PopularGames/PopularGames";
+// import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 
 const Home = () => {
   const { group } = useSelector((state) => state.state);
@@ -42,12 +42,12 @@ const Home = () => {
                   id="home"
                   className="py-1 flex flex-col items-start justify-start"
                 >
-                  <Originals />
+                  {/* <Originals /> */}
                   {/* <WithdrawAndDepositButton /> */}
                   {data && <InPlay data={data} />}
-                  <CasinoProvider />
+                  {/* <CasinoProvider /> */}
                   <IndianCardGames />
-                  <PopularGames />
+                  {/* <PopularGames /> */}
                   {/* <UpcomingEvents /> */}
                 </div>
                 <FAQ />

@@ -16,6 +16,7 @@ import {
   setShowLoginModal,
   setShowRegisterModal,
 } from "../../../redux/features/stateSlice";
+import useContextState from "../../../hooks/useContextState";
 
 const Register = () => {
   const [passType, setPassType] = useState(true);
@@ -26,12 +27,12 @@ const Register = () => {
   const [getOTP] = useGetOtpMutation();
   const [handleRegister] = useRegisterMutation();
   const { register, handleSubmit } = useForm();
-  // const { logo } = useContextState();
+  const { logo } = useContextState();
   const registerRef = useRef();
   useCloseModalClickOutside(registerRef, () => {
     dispatch(setShowRegisterModal(false));
   });
-
+  console.log(logo);
   const handleMobileInputChange = (e) => {
     if (e.target.value.length <= 10) {
       setMobile(e.target.value);
@@ -127,30 +128,27 @@ const Register = () => {
             </g>
           </svg>
         </div>
-        {/* <div className="logo w-full hidden lg:flex items-center justify-center mb-4">
+        <div className="logo w-full hidden lg:flex items-center justify-center mb-4">
           <img
             alt="logo"
-            loading="lazy"
             width="100"
             height="100"
-            decoding="async"
-            data-nimg="1"
-            className="w-72 h-auto"
+            className=" h-auto"
             src={logo}
             style={{ color: "transparent" }}
           />
-        </div> */}
+        </div>
         <div className="flex gap-6 items-start h-max w-full">
-          {/* <div className="hidden lg:w-[50%] w-full rounded-lg overflow-hidden">
+          <div className="hidden lg:w-[50%] w-full rounded-lg overflow-hidden">
             <img src={logo} alt="" />
-          </div> */}
+          </div>
           <div
             title="register"
             className="flex flex-col items-start gap-y-4 w-full"
           >
-            {/* <div className="logo w-full lg:hidden flex items-center justify-center">
+            <div className="logo w-full lg:hidden flex items-center justify-center">
               <img src="/assets/svg/logo.svg" alt="" />
-            </div> */}
+            </div>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="w-full gap-y-4 flex flex-col"

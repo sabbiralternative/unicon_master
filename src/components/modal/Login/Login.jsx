@@ -8,13 +8,13 @@ import handleEncryptData from "../../../utils/handleEncryptData";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/features/auth/authSlice";
-import useContextState from "../../../hooks/useContextState";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import {
   setShowForgetModal,
   setShowLoginModal,
   setShowRegisterModal,
 } from "../../../redux/features/stateSlice";
+import useContextState from "../../../hooks/useContextState";
 
 const Login = () => {
   const [passwordType, setPasswordType] = useState(true);
@@ -106,7 +106,7 @@ const Login = () => {
             height="100"
             decoding="async"
             data-nimg="1"
-            className="w-72 h-auto"
+            className="h-auto"
             src={logo}
             style={{ color: "transparent" }}
           />
