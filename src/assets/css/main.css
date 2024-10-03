@@ -4922,7 +4922,7 @@ video {
 }
 
 .text-text_Primary {
-  color: var(--color-text-primary);
+  color: var(--color-bg-primary);
 }
 
 .text-text_Profit {

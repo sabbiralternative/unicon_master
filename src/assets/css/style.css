@@ -3916,7 +3916,7 @@ video {
   background-image: var(--color-bg-transactionSuccessBg);
 }
 
-.bg-bg_withdrawAcRemoveBtn {
+.bg-bg_with--color-bg-gradientdrawAcRemoveBtn {
   background-image: var(--color-bg-withdrawAcRemoveBtn);
 }
 
@@ -3941,7 +3941,7 @@ video {
 }
 
 .bg-headerBg {
-  background-image: var(--color-bg-headerBg);
+  background-image: var(--color-bg-gradient);
 }
 
 .bg-inPlayBlockBg {
@@ -4920,7 +4920,7 @@ video {
 }
 
 .text-text_Primary {
-  color: var(--color-text-primary);
+  color: var(--color-bg-primary);
 }
 
 .text-text_Profit {
