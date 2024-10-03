@@ -15,6 +15,7 @@ import useBonusBalance from "../../../hooks/useBonusBalance";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { settings } from "../../../api";
+import SearchBox from "./SearchBox";
 
 const Header = () => {
   const [time, setTime] = useState();
@@ -159,28 +160,7 @@ cursor-pointer
                   </div>
                 </div>
               </div>
-              <div
-                id="searchBox"
-                className="text-text_Quaternary relative hidden max-w-96 font-lato lg:block flex-grow"
-              >
-                <div className=" relative w-full max-w-[450px]">
-                  <input
-                    className="border-1 peer w-full  appearance-none text-xs pl-9 py-2 border  rounded-full md:text-[14px]  bg-bg_Quaternary  text-text_Ternary "
-                    placeholder="Search Events(At least 3 letters)..."
-                    type="text"
-                  />
-                  <svg
-                    fill="#999"
-                    className="absolute top-1/2 left-3 -translate-y-1/2"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"></path>
-                  </svg>
-                </div>
-              </div>
+              <SearchBox />
               <div id="currentDateTime" className=" hidden font-lato lg:block ">
                 <div className=" w-full text-text_Quaternary1 text-[10px] lg:text-[12px] flex flex-col px-2">
                   <div className="flex gap-1 items-center text-nowrap whitespace-nowrap">

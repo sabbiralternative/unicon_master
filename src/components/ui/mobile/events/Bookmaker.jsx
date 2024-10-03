@@ -3,7 +3,7 @@ import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import { handleBetSlip } from "../../../../utils/handleBetSlip";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useExposer from "../../../../hooks/useExposure";
 import { useEffect, useState } from "react";
 import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
@@ -12,7 +12,6 @@ import { settings } from "../../../../api";
 import { handleCashoutBetMobile } from "../../../../utils/handleCashoutBetMobile";
 
 const Bookmaker = ({ bookmaker }) => {
-
   const [teamProfit, setTeamProfit] = useState([]);
   const token = useSelector(userToken);
   const { predictOdd, stake } = useSelector((state) => state?.event);
@@ -185,11 +184,11 @@ const Bookmaker = ({ bookmaker }) => {
                     )}
                   </button>
                 )}
-                <span className="text-xs font-light">
+                {/* <span className="text-xs font-light">
                   Min: {games?.minLiabilityPerBet}
-                </span>
+                </span> */}
                 <span className="text-xs font-light">
-                  | Max: {games?.maxLiabilityPerBet}
+                  Max: {games?.maxLiabilityPerBet}
                 </span>
               </div>
               <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">

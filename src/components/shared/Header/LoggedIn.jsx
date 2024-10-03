@@ -135,7 +135,7 @@ cursor-pointer
         </button>
       </div>
       <div className="w-max flex items-center justify-center">
-        <div
+        {/* <div
           id="mobileSearchIcon"
           className=" lg:hidden mr-[2px] flex items-center justify-center"
         >
@@ -178,7 +178,7 @@ cursor-pointer
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className=" w-max hidden items-center justify-center gap-1 rounded-full  lg:flex">
           <button
             onClick={() => dispatch(setShowRightSidebar(true))}

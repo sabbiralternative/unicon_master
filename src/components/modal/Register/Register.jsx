@@ -69,7 +69,7 @@ const Register = () => {
       token: generatedToken,
       otp: data?.otp,
       isOtpAvailable: settings.otp,
-      referralCode: data?.referralCode,
+      // referralCode: data?.referralCode,
       orderId: OTP.orderId,
       otpMethod: OTP.otpMethod,
     };
@@ -336,7 +336,7 @@ const Register = () => {
                 >
                   <span className="text-xs text-text_Danger font-lato"></span>
                 </div>
-                <div className="flex w-full items-center justify-between bg-auth rounded-lg border p-1 mt-4">
+                {/* <div className="flex w-full items-center justify-between bg-auth rounded-lg border p-1 mt-4">
                   <div className="w-full h-full flex items-center justify-start pl-1">
                     <span className="mb-0">
                       <svg
@@ -363,11 +363,11 @@ const Register = () => {
                     <input
                       {...register("referralCode")}
                       className="block w-full focus:outline-none w-full rounded-none text-text_Ternary px-2 py-1 text-sm xs:text-md font-lato bg-auth"
-                      placeholder="Enter referral code(Optional)"
+                      placeholder="Enter referral code(Optional)"
                       type="text"
                     />
                   </div>
-                </div>
+                </div> */}
                 <div title="registerSubmitBtn" className="w-full mt-4">
                   <button
                     type="submit"

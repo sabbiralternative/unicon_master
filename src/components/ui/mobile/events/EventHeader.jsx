@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const EventHeader = ({ data, setBetsType,betType,myBets }) => {
+const EventHeader = ({ data, setBetsType, betType, myBets }) => {
   const navigate = useNavigate();
 
   return (
@@ -88,7 +88,7 @@ const EventHeader = ({ data, setBetsType,betType,myBets }) => {
               </svg>
             </span>
             <div className="flex flex-col items-start justify-start w-[95%] break-words gap-y-0">
-              <span className="w-full bg-titleGrd text-transparent text-start bg-clip-text font-lato text-base font-bold">
+              <span className="w-full bg-titleGrd text-transparent text-start bg-clip-text font-lato text-base font-bold truncate ">
                 <span className="capitalize break-words">
                   {data?.result?.length > 0 && data?.result?.[0]?.eventName}
                 </span>
@@ -148,8 +148,10 @@ const EventHeader = ({ data, setBetsType,betType,myBets }) => {
           className="relative flex  rounded-lg border shadow bg-bg_Quaternary  bg-bg_Quaternary w-full border-none overflow-clip gap-x-2.5"
         >
           <button
-          onClick={()=> setBetsType('live')}
-            className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3    font-bold font-lato text-xs ${betType === 'live' ? 'text-text_Primary':'text-text_Quinary '}`}
+            onClick={() => setBetsType("live")}
+            className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3    font-bold font-lato text-xs ${
+              betType === "live" ? "text-text_Primary" : "text-text_Quinary "
+            }`}
             style={{ zIndex: 10 }}
           >
             <span>
@@ -158,8 +160,10 @@ const EventHeader = ({ data, setBetsType,betType,myBets }) => {
             LIVE
           </button>
           <button
-          onClick={()=> setBetsType('openBet')}
-            className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3  font-lato font-bold text-xs ${betType === 'openBet' ? 'text-text_Primary':'text-text_Quinary '}`}
+            onClick={() => setBetsType("openBet")}
+            className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3  font-lato font-bold text-xs ${
+              betType === "openBet" ? "text-text_Primary" : "text-text_Quinary "
+            }`}
             style={{ zIndex: 10 }}
           >
             OPEN BETS
@@ -168,11 +172,13 @@ const EventHeader = ({ data, setBetsType,betType,myBets }) => {
             </span>
           </button>
           <div
-            className={`w-[48%] absolute z-10 transition-all ease-in-out bg-bg_Primary rounded-lg h-[2px] ${betType === 'live' ? 'left-0' :'right-0'}`}
+            className={`w-[48%] absolute z-10 transition-all ease-in-out bg-bg_Primary rounded-lg h-[2px] ${
+              betType === "live" ? "left-0" : "right-0"
+            }`}
             style={{
               zIndex: 9,
               width: "50%",
-              
+
               bottom: "0px",
             }}
           ></div>

@@ -11,7 +11,7 @@ import { settings } from "../../../../api";
 import { handleCashOutPlaceBet } from "../../../../utils/handleCashoutPlaceBet";
 
 const Bookmaker = ({ bookmaker }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [teamProfit, setTeamProfit] = useState([]);
   const token = useSelector(userToken);
   const { eventId } = useParams();
@@ -134,10 +134,10 @@ const Bookmaker = ({ bookmaker }) => {
   return (
     <>
       {bookmaker?.map((games, i) => {
-           const teamProfitForGame = teamProfit?.find(
-            (profit) =>
-              profit?.gameId === games?.id && profit?.isOnePositiveExposure
-          );
+        const teamProfitForGame = teamProfit?.find(
+          (profit) =>
+            profit?.gameId === games?.id && profit?.isOnePositiveExposure
+        );
         return (
           <div key={i} className="py-1.5">
             <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] mb-1.5">
@@ -185,11 +185,11 @@ const Bookmaker = ({ bookmaker }) => {
                     )}
                   </button>
                 )}
-                <span className="text-xs font-light">
+                {/* <span className="text-xs font-light">
                   Min: {games?.minLiabilityPerBet}
-                </span>
+                </span> */}
                 <span className="text-xs font-light">
-                  | Max: {games?.maxLiabilityPerBet}
+                  Max: {games?.maxLiabilityPerBet}
                 </span>
               </div>
               <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">

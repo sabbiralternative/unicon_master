@@ -39,9 +39,9 @@ export const API = {
   bankAccount: "",
   pg: "",
   uploadScreenshot: "",
-  withdrawBreakdown:"",
-  banner:"",
-  exchangeGames:""
+  withdrawBreakdown: "",
+  banner: "",
+  exchangeGames: "",
 };
 
 export const settings = {

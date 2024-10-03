@@ -21,7 +21,7 @@ const UnAuthorized = () => {
       <div className="w-max flex items-center justify-center">
         <div
           id="mobileSearchIcon"
-          className="lg:hidden mr-[2px] flex items-center justify-center"
+          className="md:hidden mr-[2px] flex items-center justify-center"
         >
           <span className="bg-none border-none shadow-none px-1">
             <svg
