@@ -128,7 +128,7 @@ const Register = () => {
             </g>
           </svg>
         </div>
-        <div className="logo w-full hidden lg:flex items-center justify-center mb-4 h-[100px]">
+        <div className="auth-gradient logo w-full hidden lg:flex items-center justify-center mb-4 h-[100px]">
           <img
             alt="logo"
             width="100"
@@ -146,7 +146,7 @@ const Register = () => {
             title="register"
             className="flex flex-col items-start gap-y-4 w-full"
           >
-            <div className="logo w-full lg:hidden flex items-center justify-center h-[70px]">
+            <div className="auth-gradient logo w-full lg:hidden flex items-center justify-center h-[70px]">
               <img src={logo} alt="" />
             </div>
             <form

@@ -12,6 +12,11 @@ input:-moz-autofill {
   -moz-text-fill-color: black !important;
 }
 
-.bg-auth{
+.bg-auth {
   background-color: #f3f4f6;
+}
+
+.auth-gradient {
+  background-image: var(--color-bg-gradient);
+  border-radius: 4px;
 }

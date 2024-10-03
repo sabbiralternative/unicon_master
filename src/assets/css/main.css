@@ -3741,7 +3741,7 @@ video {
 }
 
 .bg-bg_Secondary {
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg-secondary);
 }
 
 .bg-bg_Secondary2 {
@@ -5746,7 +5746,6 @@ video {
   --color-text-InPlayEventsScoreAndTime: #29ab2b;
   --color-text-UpcomingEvents: #ea580c;
 
-  --color-bg-secondary: #6e081d;
   --color-bg-quaternary: #fff;
   --color-bg-quinary: #9a9898;
   --color-bg-success: #29ab2b;
