@@ -9,10 +9,10 @@ import {
 import { userToken } from "../../../../redux/features/auth/authSlice";
 import { settings } from "../../../../api";
 import { useNavigate } from "react-router-dom";
-import useGetSocialLink from "../../../../hooks/useGetSocialLink";
+// import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 
 const LeftDeskSidebar = () => {
-  const { socialLink } = useGetSocialLink();
+  // const { socialLink } = useGetSocialLink();
   const navigate = useNavigate();
   const { showLeftSidebar } = useSelector((state) => state.state);
   const token = useSelector(userToken);
@@ -58,16 +58,16 @@ const LeftDeskSidebar = () => {
     }
   };
 
-  const handleOpenSocialLink = (link) => {
-    if (link) {
-      window.open(link, "_blank");
-    }
-  };
+  // const handleOpenSocialLink = (link) => {
+  //   if (link) {
+  //     window.open(link, "_blank");
+  //   }
+  // };
 
   return (
     <aside>
       <div
-        className={`fixed top-0 left-0 z-50 w-full h-full bg-opacity-50 block`}
+        className={`fixed top-0 left-0 z-50 w-full h-dvh  bg-opacity-50 block`}
         style={{ visibility: `${showLeftSidebar ? "visible" : "hidden"}` }}
       >
         <div className="undefined">
@@ -420,38 +420,40 @@ const LeftDeskSidebar = () => {
                   Slot Games
                 </span>
               </li>
-              <li
-                onClick={handleDownloadAPK}
-                className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
-              >
-                <span className="w-3 h-auto xs:w-4">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 21 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M18.0001 16.4918H3.00008C2.77907 16.4918 2.56711 16.5796 2.41083 16.7359C2.25455 16.8922 2.16675 17.1042 2.16675 17.3252C2.16675 17.5462 2.25455 17.7582 2.41083 17.9144C2.56711 18.0707 2.77907 18.1585 3.00008 18.1585H18.0001C18.2211 18.1585 18.4331 18.0707 18.5893 17.9144C18.7456 17.7582 18.8334 17.5462 18.8334 17.3252C18.8334 17.1042 18.7456 16.8922 18.5893 16.7359C18.4331 16.5796 18.2211 16.4918 18.0001 16.4918Z"
-                      fill="#C10B32"
-                    ></path>
-                    <path
-                      d="M10.5 2.32517C10.279 2.32517 10.067 2.41297 9.91074 2.56925C9.75446 2.72553 9.66666 2.93749 9.66666 3.15851V11.9835L6.92499 9.23351C6.76807 9.07659 6.55524 8.98843 6.33333 8.98843C6.11141 8.98843 5.89858 9.07659 5.74166 9.23351C5.58474 9.39043 5.49658 9.60326 5.49658 9.82518C5.49658 10.0471 5.58474 10.2599 5.74166 10.4168L9.90833 14.5835C9.98579 14.6616 10.078 14.7236 10.1795 14.7659C10.2811 14.8082 10.39 14.83 10.5 14.83C10.61 14.83 10.7189 14.8082 10.8205 14.7659C10.922 14.7236 11.0142 14.6616 11.0917 14.5835L15.2583 10.4168C15.336 10.3391 15.3977 10.2469 15.4397 10.1454C15.4818 10.0439 15.5034 9.93506 15.5034 9.82518C15.5034 9.71529 15.4818 9.60649 15.4397 9.50497C15.3977 9.40345 15.336 9.31121 15.2583 9.23351C15.1806 9.15581 15.0884 9.09418 14.9869 9.05213C14.8853 9.01008 14.7765 8.98843 14.6667 8.98843C14.5568 8.98843 14.448 9.01008 14.3465 9.05213C14.2449 9.09418 14.1527 9.15581 14.075 9.23351L11.3333 11.9835V3.15851C11.3333 2.93749 11.2455 2.72553 11.0892 2.56925C10.933 2.41297 10.721 2.32517 10.5 2.32517Z"
-                      fill="#C10B32"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="font-medium text-sm xs:text-base">
-                  Download APK
-                </span>
-              </li>
+              {settings?.apkLink && (
+                <li
+                  onClick={handleDownloadAPK}
+                  className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
+                >
+                  <span className="w-3 h-auto xs:w-4">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 21 21"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M18.0001 16.4918H3.00008C2.77907 16.4918 2.56711 16.5796 2.41083 16.7359C2.25455 16.8922 2.16675 17.1042 2.16675 17.3252C2.16675 17.5462 2.25455 17.7582 2.41083 17.9144C2.56711 18.0707 2.77907 18.1585 3.00008 18.1585H18.0001C18.2211 18.1585 18.4331 18.0707 18.5893 17.9144C18.7456 17.7582 18.8334 17.5462 18.8334 17.3252C18.8334 17.1042 18.7456 16.8922 18.5893 16.7359C18.4331 16.5796 18.2211 16.4918 18.0001 16.4918Z"
+                        fill="#C10B32"
+                      ></path>
+                      <path
+                        d="M10.5 2.32517C10.279 2.32517 10.067 2.41297 9.91074 2.56925C9.75446 2.72553 9.66666 2.93749 9.66666 3.15851V11.9835L6.92499 9.23351C6.76807 9.07659 6.55524 8.98843 6.33333 8.98843C6.11141 8.98843 5.89858 9.07659 5.74166 9.23351C5.58474 9.39043 5.49658 9.60326 5.49658 9.82518C5.49658 10.0471 5.58474 10.2599 5.74166 10.4168L9.90833 14.5835C9.98579 14.6616 10.078 14.7236 10.1795 14.7659C10.2811 14.8082 10.39 14.83 10.5 14.83C10.61 14.83 10.7189 14.8082 10.8205 14.7659C10.922 14.7236 11.0142 14.6616 11.0917 14.5835L15.2583 10.4168C15.336 10.3391 15.3977 10.2469 15.4397 10.1454C15.4818 10.0439 15.5034 9.93506 15.5034 9.82518C15.5034 9.71529 15.4818 9.60649 15.4397 9.50497C15.3977 9.40345 15.336 9.31121 15.2583 9.23351C15.1806 9.15581 15.0884 9.09418 14.9869 9.05213C14.8853 9.01008 14.7765 8.98843 14.6667 8.98843C14.5568 8.98843 14.448 9.01008 14.3465 9.05213C14.2449 9.09418 14.1527 9.15581 14.075 9.23351L11.3333 11.9835V3.15851C11.3333 2.93749 11.2455 2.72553 11.0892 2.56925C10.933 2.41297 10.721 2.32517 10.5 2.32517Z"
+                        fill="#C10B32"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span className="font-medium text-sm xs:text-base">
+                    Download APK
+                  </span>
+                </li>
+              )}
               <li className="px-3 py-2">
                 <span className="flex text-center text-text_Primary text-sm xs:text-base font-medium">
                   Register online and play online
                 </span>
               </li>
-              <li className="p-1">
+              {/* <li className="p-1">
                 <div className="flex flex-col gap-1 p-3 items-center bg-headerBg rounded">
                   <span className="text-text_Quaternary font-semibold">
                     Contact Us
@@ -660,7 +662,7 @@ const LeftDeskSidebar = () => {
                     </a>
                   </div>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

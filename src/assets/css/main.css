@@ -6367,7 +6367,7 @@ input::placeholder {
 }
 
 .closeDrawer {
-  animation: closeDrawer 0.29s ease-in-out;
+  animation: closeDrawer 0.3s ease-in-out;
 }
 
 @keyframes openDrawer {
