@@ -9,89 +9,11 @@ import { Link } from "react-router-dom";
 const SearchBox = () => {
   const [searchText, setSearchText] = useState("");
   const token = useSelector(userToken);
-  const [data, setData] = useState([
-    {
-      name: "Brighton v Everton",
-      eventId: 33011440,
-      eventTypeId: 1,
-      eventType: "Football",
-      openDate: "2024-02-24 20:30:00",
-    },
-    {
-      name: "Leverkusen v Mainz",
-      eventId: 33014035,
-      eventTypeId: 1,
-      eventType: "Football",
-      openDate: "2024-02-24 01:00:00",
-    },
-    {
-      name: "K Stevenson v Pa Brady",
-      eventId: 806743465,
-      eventTypeId: 2,
-      eventType: "Tennis",
-      openDate: "2023-11-13 02:30:00",
-    },
-    {
-      name: "Juan Estevez - Alan Fernando Rubio Fierros",
-      eventId: 687141750,
-      eventTypeId: 2,
-      eventType: "Tennis",
-      openDate: "2023-11-01 23:20:00",
-    },
-    {
-      name: "Djokovic v To Etcheverry",
-      eventId: 872386048,
-      eventTypeId: 2,
-      eventType: "Tennis",
-      openDate: "2023-11-01 18:30:00",
-    },
-    {
-      name: "Evan King/Brandon Nakashima - Cornea V V / Stevens B",
-      eventId: 802104308,
-      eventTypeId: 2,
-      eventType: "Tennis",
-      openDate: "2023-11-01 17:30:00",
-    },
-    {
-      name: "Duncan/stevenson - Anirudh Chandrasekar/ Prashanth Vijay Sundar",
-      eventId: 768752629,
-      eventTypeId: 2,
-      eventType: "Tennis",
-      openDate: "2023-11-01 14:30:00",
-    },
-    {
-      name: "Kecmanovic v To Etcheverry",
-      eventId: 484398358,
-      eventTypeId: 2,
-      eventType: "Tennis",
-      openDate: "2023-10-31 15:30:00",
-    },
-    {
-      name: "David Stevenson - James Mackinlay",
-      eventId: 878092877,
-      eventTypeId: 2,
-      eventType: "Tennis",
-      openDate: "2023-10-29 15:30:00",
-    },
-    {
-      name: "Murray v To Etcheverry",
-      eventId: 897310501,
-      eventTypeId: 2,
-      eventType: "Tennis",
-      openDate: "2023-10-25 23:30:00",
-    },
-    {
-      name: "Griekspoor/Stevens v Bhambri/Cash",
-      eventId: 663705545,
-      eventTypeId: 2,
-      eventType: "Tennis",
-      openDate: "2023-10-21 22:40:00",
-    },
-  ]);
+  const [data, setData] = useState([]);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    if (searchText.length > 2) {
+    if (searchText?.length > 2) {
       const generatedToken = handleRandomToken();
       const encryptedData = handleEncryptData(generatedToken);
       const getSearchData = async () => {
@@ -132,13 +54,13 @@ const SearchBox = () => {
     <div className="relative search-box">
       <div
         id="searchBox"
-        className="text-text_Quaternary relative hidden max-w-96 font-lato md:block flex-grow"
+        className="text-text_Quaternary relative hidden max-w-[500] font-lato md:block flex-grow"
       >
         <div className=" relative w-full max-w-[450px]">
           <input
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            className="border-1 peer w-full  appearance-none text-xs pl-9 py-2 border  rounded-full md:text-[14px]  bg-bg_Quaternary  text-text_Ternary "
+            className="border-1 peer w-[260px]  appearance-none text-xs pl-9 py-2 border  rounded-full md:text-[14px]  bg-bg_Quaternary  text-text_Ternary pr-6"
             placeholder="Search Events(At least 3 letters)..."
             type="text"
           />

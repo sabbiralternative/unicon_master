@@ -2,7 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowRightSidebar } from "../../../redux/features/stateSlice";
 import { useNavigate } from "react-router-dom";
 
-const LoggedIn = ({ balance, bonusBalance }) => {
+const LoggedIn = ({
+  balance,
+  bonusBalance,
+  setShowMobileSearch,
+  showMobileSearch,
+}) => {
   const navigate = useNavigate();
   const { user, bonusToken } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -134,10 +139,15 @@ cursor-pointer
           </span>
         </button>
       </div>
-      <div className="w-max flex items-center justify-center">
-        {/* <div
+      <div
+        className={`w-max flex items-center justify-center ${
+          showMobileSearch ? "hidden" : ""
+        }`}
+      >
+        <div
+          onClick={() => setShowMobileSearch(true)}
           id="mobileSearchIcon"
-          className=" lg:hidden mr-[2px] flex items-center justify-center"
+          className=" md:hidden mr-[2px] flex items-center justify-center cursor-pointer"
         >
           <span className="bg-none border-none shadow-none px-1">
             <svg
@@ -178,7 +188,7 @@ cursor-pointer
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
         <div className=" w-max hidden items-center justify-center gap-1 rounded-full  lg:flex">
           <button
             onClick={() => dispatch(setShowRightSidebar(true))}

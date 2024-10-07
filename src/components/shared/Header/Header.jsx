@@ -16,8 +16,11 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import { settings } from "../../../api";
 import SearchBox from "./SearchBox";
+import MobileSearch from "./MobileSearch";
 
 const Header = () => {
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
+
   const [time, setTime] = useState();
   const { balance } = useBalance();
   const { bonusBalance } = useBonusBalance();
@@ -73,12 +76,19 @@ cursor-pointer
                     </span>
                   </button>
                 </div>
+                {/* Mobile search */}
+                {showMobileSearch && (
+                  <MobileSearch setShowMobileSearch={setShowMobileSearch} />
+                )}
+
                 <div
                   onClick={() => {
                     navigate("/");
                     dispatch(setGroupType(0));
                   }}
-                  className=" ml-[2px] md:ml-[0px]  flex items-center"
+                  className={`ml-[2px] md:ml-[0px]  flex items-center ${
+                    showMobileSearch ? "hidden" : ""
+                  }`}
                 >
                   <div className="   cursor-pointer">
                     <img
@@ -173,9 +183,17 @@ cursor-pointer
                 </div>
               </div>
               {token ? (
-                <LoggedIn balance={balance} bonusBalance={bonusBalance} />
+                <LoggedIn
+                  setShowMobileSearch={setShowMobileSearch}
+                  showMobileSearch={showMobileSearch}
+                  balance={balance}
+                  bonusBalance={bonusBalance}
+                />
               ) : (
-                <UnAuthorized />
+                <UnAuthorized
+                  setShowMobileSearch={setShowMobileSearch}
+                  showMobileSearch={showMobileSearch}
+                />
               )}
             </div>
             <div className=" hidden lg:block">
