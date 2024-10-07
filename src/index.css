@@ -69,3 +69,7 @@ input:-moz-autofill {
 .search-game-name {
   width: 100%;
 }
+
+svg {
+  fill: var(bg-bg_Secondary) !important;
+}

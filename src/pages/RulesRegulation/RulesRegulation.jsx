@@ -1,3 +1,4 @@
+import { settings } from "../../api";
 import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 
@@ -20,11 +21,12 @@ const RulesRegulation = () => {
               </h3>
               <div className="mt-1 mb-1 text-justify leading-tight">
                 These Rules and Regulations (Rules) are part of the
-                <strong>Unicon365 </strong>terms and conditions.
+                <strong> {settings.siteTitle} </strong>terms and conditions.
               </div>
               <div className="mt-1 mb-1 text-justify leading-tight">
                 The Rules apply to all bets placed on this online betting
-                platform (<b>Unicon365</b>). The Rules consist of the following:
+                platform (<b>{settings.siteTitle}</b>). The Rules consist of the
+                following:
               </div>
               <ul className="mt-1 mb-1 pl-6 list-disc text-justify leading-tight">
                 <li>Introduction Section (Part A);</li>

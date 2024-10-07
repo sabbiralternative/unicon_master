@@ -1,23 +1,23 @@
 import assets from "../../../assets";
 import useContextState from "../../../hooks/useContextState";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
+// import useGetSocialLink from "../../../hooks/useGetSocialLink";
 
 const Footer = () => {
   const { logo } = useContextState();
-  const { socialLink } = useGetSocialLink();
-  const handleOpenSocialLink = (link) => {
-    if (link) {
-      window.open(link, "_blank");
-    }
-  };
+  // const { socialLink } = useGetSocialLink();
+  // const handleOpenSocialLink = (link) => {
+  //   if (link) {
+  //     window.open(link, "_blank");
+  //   }
+  // };
   return (
     <div id="footer" className="w-full ">
       <div className=" pb-12 pr-3 pl-3 mt-1 w-full  md:pr-0 mb:pb-0 md:pl-0">
         <div
           id="homeFooter"
-          className="py-5 w-full bg-bg_Quaternary gap-2 rounded-xl md:rounded-none"
+          className="pt-5 w-full bg-bg_Quaternary gap-2 rounded-xl md:rounded-none"
         >
-          <div className="flex w-full pb-[18px] items-center gap-x-[11px]  justify-center ">
+          {/* <div className="flex w-full pb-[18px] items-center gap-x-[11px]  justify-center ">
             {socialLink?.whatsapplink && (
               <a
                 onClick={() => handleOpenSocialLink(socialLink?.whatsapplink)}
@@ -29,14 +29,14 @@ const Footer = () => {
                   width="45"
                   height="45"
                   viewBox="0 0 45 45"
-                  fill="var(--color-quaternary)"
+                  fill=""
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <rect
                     width="45"
                     height="45"
                     rx="6"
-                    fill="var(--color-quaternary)"
+                    fill=""
                     fillOpacity="0.2"
                   ></rect>
                   <g clipPath="url(#clip0_1217_680)">
@@ -158,31 +158,31 @@ const Footer = () => {
                 width="42"
                 height="42"
                 viewBox="0 0 45 45"
-                fill="#C10B32"
+                fill=""
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <rect
                   width="45"
                   height="45"
                   rx="6"
-                  fill="#C10B32"
+                  fill="var(bg-bg_Secondary)"
                   fillOpacity="0.2"
                 ></rect>
                 <path
                   d="M25.8472 22.1105L32.763 26.4842V17.5474L25.8472 22.1105Z"
-                  fill="#C10B32"
+                  fill="var(bg-bg_Secondary)"
                 ></path>
                 <path
                   d="M12.2368 17.5474V26.4842L19.1526 22.1105L12.2368 17.5474Z"
-                  fill="#C10B32"
+                  fill="var(bg-bg_Secondary)"
                 ></path>
                 <path
                   d="M31.4843 14.9421H13.5159C12.8843 14.9421 12.3633 15.4158 12.2686 16.0316L22.5001 22.7737L32.7317 16.0316C32.637 15.4158 32.1001 14.9421 31.4843 14.9421Z"
-                  fill="#C10B32"
+                  fill="var(bg-bg_Secondary)"
                 ></path>
                 <path
                   d="M24.6631 22.8842L22.8473 24.0842C22.7368 24.1474 22.6263 24.1947 22.5 24.1947C22.3737 24.1947 22.2473 24.1632 22.1526 24.0842L20.3368 22.8842L12.2842 27.9842C12.3789 28.6 12.9 29.0579 13.5315 29.0737H31.5C32.1315 29.0737 32.6526 28.6158 32.7473 27.9842L24.6631 22.8842Z"
-                  fill="#C10B32"
+                  fill="var(bg-bg_Secondary)"
                 ></path>
               </svg>
             </a>
@@ -196,23 +196,13 @@ const Footer = () => {
                 width="45"
                 height="45"
                 viewBox="0 0 45 45"
-                fill="#C10B32"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect
-                  width="45"
-                  height="45"
-                  rx="6"
-                  fill="#C10B32"
-                  fillOpacity="0.2"
-                ></rect>
-                <path
-                  d="M34 22.0301C34 15.3895 28.624 10 22 10C15.376 10 10 15.3895 10 22.0301C10 27.8526 14.128 32.7007 19.6 33.8195V25.6391H17.2V22.0301H19.6V19.0226C19.6 16.7008 21.484 14.812 23.8 14.812H26.8V18.4211H24.4C23.74 18.4211 23.2 18.9624 23.2 19.6241V22.0301H26.8V25.6391H23.2V34C29.26 33.3985 34 28.2737 34 22.0301Z"
-                  fill="#C10B32"
-                ></path>
+                <rect width="45" height="45" rx="6" fillOpacity="0.2"></rect>
+                <path d="M34 22.0301C34 15.3895 28.624 10 22 10C15.376 10 10 15.3895 10 22.0301C10 27.8526 14.128 32.7007 19.6 33.8195V25.6391H17.2V22.0301H19.6V19.0226C19.6 16.7008 21.484 14.812 23.8 14.812H26.8V18.4211H24.4C23.74 18.4211 23.2 18.9624 23.2 19.6241V22.0301H26.8V25.6391H23.2V34C29.26 33.3985 34 28.2737 34 22.0301Z"></path>
               </svg>
             </a>
-          </div>
+          </div> */}
           <div
             id="mobileIcons"
             className="w-full py-[29px] px-2 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-x-[12px] sm:gap-x-[18px] gap-y-[18px]"
@@ -432,7 +422,7 @@ cursor-pointer
               </div>
             </div>
           </div> */}
-          <div className=" flex py-3 items-center justify-center">
+          <div className="bg-headerBg flex py-3 items-center justify-center">
             <img
               alt="footer-logo"
               loading="eager"

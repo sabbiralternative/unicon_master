@@ -384,7 +384,7 @@ const Register = () => {
                   className="w-full flex justify-center items-center text-xs mt-4 md:text-sm lg:text-base"
                 >
                   <div>
-                    Already have an account?
+                    Already have an account?{" "}
                     <span
                       onClick={() => {
                         dispatch(setShowRegisterModal(false));

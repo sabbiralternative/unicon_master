@@ -77,7 +77,11 @@ const LeftDeskSidebar = () => {
               showLeftSidebar ? "openDrawer" : "closeDrawer"
             }  origin-left top-0 left-0  z-50 w-[70%] max-w-sm h-full overflow-y-auto bg-bg_Quaternary shadow-lg`}
           >
-            <ul className="overflow-y-auto h-max divide-y">
+            <ul
+              className={`overflow-y-auto h-max ${
+                showLeftSidebar ? "divide-y" : ""
+              }`}
+            >
               <li
                 onClick={navigateAviatorCasinoVideo}
                 className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
@@ -448,7 +452,7 @@ const LeftDeskSidebar = () => {
                 </span>
               </li>
               <li className="p-1">
-                <div className="flex flex-col gap-1 p-3 items-center bg-bg_contactUsCard rounded">
+                <div className="flex flex-col gap-1 p-3 items-center bg-headerBg rounded">
                   <span className="text-text_Quaternary font-semibold">
                     Contact Us
                   </span>

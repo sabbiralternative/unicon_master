@@ -172,7 +172,8 @@ const RightDeskSidebar = () => {
                   id="deposit_withdraw_btn"
                   className="flex items-center justify-center w-full gap-1"
                 >
-                  <button onClick={()=> handleNavigate('/deposit')}
+                  <button
+                    onClick={() => handleNavigate("/deposit")}
                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex bg-none border-none shadow-none w-full cursor-pointer"
                     type="button"
                   >
@@ -216,7 +217,8 @@ const RightDeskSidebar = () => {
                       deposit
                     </span>
                   </button>
-                  <button onClick={()=> handleNavigate('/withdraw')}
+                  <button
+                    onClick={() => handleNavigate("/withdraw")}
                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex bg-none border-none shadow-none w-full cursor-pointer"
                     type="button"
                   >
@@ -470,7 +472,10 @@ const RightDeskSidebar = () => {
                     Open Bets
                   </span>
                 </div>
-                <div onClick={()=> handleNavigate('/betting-profit-loss')} className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                <div
+                  onClick={() => handleNavigate("/betting-profit-loss")}
+                  className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -605,7 +610,10 @@ const RightDeskSidebar = () => {
                     Time Settings
                   </span>
                 </div>
-                <div onClick={()=> handleNavigate('/stake-settings')} className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                <div
+                  onClick={() => handleNavigate("/stake-settings")}
+                  className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -746,7 +754,10 @@ const RightDeskSidebar = () => {
                 Account actions
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
-                <div onClick={() => handleNavigate("/change-password")} className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                <div
+                  onClick={() => handleNavigate("/change-password")}
+                  className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
