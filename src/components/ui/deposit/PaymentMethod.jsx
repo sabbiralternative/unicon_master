@@ -82,31 +82,32 @@ const PaymentMethod = ({
               id="payMentOptions"
               className="flex items-center gap-x-1.5 pt-[18px] pb-[8px] overflow-x-auto no-scrollbar scroll-smooth cursor-pointer w-full transition-all ease-in-out duration-150"
             >
-              {paymentMethods?.map((method, i) => {
-                return (
-                  <div
-                    onClick={(e) => handleVisibleBankMethod(e, method)}
-                    key={i}
-                    className={`flex justify-start items-center flex-col gap-y-2 rounded-[10px] bg-bg_Quaternary py-2 w-full min-w-[117px] max-w-[130px] px-[20px] relative border ${
-                      tabs === method?.type
-                        ? "border-borderColorForDepositPaymentMethod shadow-depositGateWayBoxShadows  "
-                        : "border-quinary"
-                    }`}
-                  >
-                    <div className="absolute top-0 right-0.5">
-                      <div className="inline-flex items-center">
-                        <label
-                          className="relative flex cursor-pointer items-center rounded-full"
-                          htmlFor="blue"
-                        >
-                          <input
-                            className="before:content[''] before:bg-bg_Secondary3 peer relative cursor-pointer appearance-none rounded-full border border-ternary8 transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-max before:w-max before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:opacity-0 before:transition-opacity checked:border-primary checked:bg-bg_Primary hover:before:opacity-10 undefined"
-                            id="blue"
-                            type="checkbox"
-                            style={{ width: "14px", height: "14px" }}
-                          />
-                          <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-text_Quaternary opacity-0 transition-opacity peer-checked:opacity-100">
-                            {/* <svg
+              {paymentMethods?.length > 0 ? (
+                paymentMethods?.map((method, i) => {
+                  return (
+                    <div
+                      onClick={(e) => handleVisibleBankMethod(e, method)}
+                      key={i}
+                      className={`flex justify-start items-center flex-col gap-y-2 rounded-[10px] bg-bg_Quaternary py-2 w-full min-w-[117px] max-w-[130px] px-[20px] relative border ${
+                        tabs === method?.type
+                          ? "border-borderColorForDepositPaymentMethod shadow-depositGateWayBoxShadows  "
+                          : "border-quinary"
+                      }`}
+                    >
+                      <div className="absolute top-0 right-0.5">
+                        <div className="inline-flex items-center">
+                          <label
+                            className="relative flex cursor-pointer items-center rounded-full"
+                            htmlFor="blue"
+                          >
+                            <input
+                              className="before:content[''] before:bg-bg_Secondary3 peer relative cursor-pointer appearance-none rounded-full border border-ternary8 transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-max before:w-max before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:opacity-0 before:transition-opacity checked:border-primary checked:bg-bg_Primary hover:before:opacity-10 undefined"
+                              id="blue"
+                              type="checkbox"
+                              style={{ width: "14px", height: "14px" }}
+                            />
+                            <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-text_Quaternary opacity-0 transition-opacity peer-checked:opacity-100">
+                              {/* <svg
                               xmlns="http://www.w3.org/2000/svg"
                               className="h-3.5 w-3.5"
                               viewBox="0 0 20 20"
@@ -120,31 +121,36 @@ const PaymentMethod = ({
                                 clipRule="evenodd"
                               ></path>
                             </svg> */}
-                          </span>
-                        </label>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-y-1 flex-col w-full">
+                        {method?.type == "qr" && (
+                          <FaQrcode size={20} color="gray" />
+                        )}
+                        {method?.type == "bank" && (
+                          <CiBank size={20} color="gray" />
+                        )}
+                        {method?.type == "upi" || method?.type == "pg" ? (
+                          <img
+                            style={{ height: "20px", width: "20px" }}
+                            src={assets.upi}
+                          />
+                        ) : null}
+
+                        <span className="text-xs font-lato font-medium truncate w-full uppercase">
+                          {method?.title?.toUpperCase()}
+                        </span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-y-1 flex-col w-full">
-                      {method?.type == "qr" && (
-                        <FaQrcode size={20} color="gray" />
-                      )}
-                      {method?.type == "bank" && (
-                        <CiBank size={20} color="gray" />
-                      )}
-                      {method?.type == "upi" || method?.type == "pg" ? (
-                        <img
-                          style={{ height: "20px", width: "20px" }}
-                          src={assets.upi}
-                        />
-                      ) : null}
-
-                      <span className="text-xs font-lato font-medium truncate w-full uppercase">
-                        {method?.title?.toUpperCase()}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })
+              ) : (
+                <div className="py-10 flex items-center justify-center w-full">
+                  <h2>No payment method available right now.</h2>
+                </div>
+              )}
             </div>
             <p className="text-xs md:text-sm pt-2 font-lato font-normal leading-4">
               1. Deposit money only in the below available accounts to get the
@@ -524,7 +530,7 @@ const PaymentMethod = ({
               </label>
             </div>
             <span className="text-sm text-textColor font-lato font-[400] leading-5">
-              I have read and agree with
+              I have read and agree with{" "}
               <span className="text-text_Primary underline text-sm font-lato font-[400] leading-4 cursor-pointer">
                 the terms of payment and withdrawal policy.
               </span>

@@ -65,7 +65,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
       >
         <div className="rounded-lg bg-bg_Quaternary py-2 px-3.5 pb-5 flex flex-col items-start justify-start w-full gap-y-2">
           <div className="w-full flex items-start justify-start gap-y-[0.5] flex-col">
-            <span className="text-sm mt-1 bg-titleGrd rounded font-roboto shadow-md text-text_Quaternary px-2 py-1 my-1">
+            <span className="text-sm mt-1 bg-headerBg rounded  shadow-md text-text_Quaternary px-2 py-1 my-1">
               Available to withdrawal : ₹ {withdrawBreakdown?.mainWallet}
             </span>
             <div className="flex flex-col w-full">
@@ -82,7 +82,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
                   label="Amount"
                   required=""
                   placeholder="Enter Amount"
-                  className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-10 pr-8 ml-0 mr-0"
+                  className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-10 pr-8 ml-0 mr-0 placeholder:text-gray-300"
                   type="number"
                   value={amount}
                 />
@@ -105,7 +105,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
                 className="before:content[''] before:bg-bg_Secondary3 rounded-md peer relative cursor-pointer appearance-none border border-undefined transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-max before:w-max before:-translate-x-2/4 before:-translate-y-2/4 before:opacity-0 before:transition-opacity checked:border-undefined checked:bg-bg_Success hover:before:opacity-10 h-5 w-5"
                 id="blue"
                 type="checkbox"
-                checked=""
+                defaultChecked
               />
               <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-text_Quaternary opacity-0 transition-opacity peer-checked:opacity-100">
                 <svg
@@ -126,7 +126,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
             </label>
           </div>
           <span className="text-sm text-textColor font-lato font-[400] leading-5">
-            I have read and agree with
+            I have read and agree with{" "}
             <span className="text-text_Primary underline text-sm font-lato font-[400] leading-4 cursor-pointer">
               the terms of payment and withdrawal policy.
             </span>

@@ -29,8 +29,8 @@ const useGetAllPaymentMethods = (amount) => {
         return data?.result;
       }
     },
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
+
+    gcTime: 0,
   });
   return { paymentMethods, refetchPaymentMethods };
 };

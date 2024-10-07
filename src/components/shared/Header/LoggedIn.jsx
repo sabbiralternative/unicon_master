@@ -163,7 +163,7 @@ cursor-pointer
               ></path>
             </svg>
           </span>
-          <div className=" w-max h-max relative font-lato">
+          {/* <div className=" w-max h-max relative font-lato">
             <div
               className="bg-none border-none shadow-none px-1 mr-2 cursor-pointer transition-all ease-in-out duration-200 active:scale-105"
               style={{ position: "relative" }}
@@ -187,7 +187,7 @@ cursor-pointer
                 <span> 0</span>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className=" w-max hidden items-center justify-center gap-1 rounded-full  lg:flex">
           <button

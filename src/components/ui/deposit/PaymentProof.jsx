@@ -177,15 +177,15 @@ const PaymentProof = ({ paymentId, amount }) => {
                     ></path>
                   </svg>
                 </div>
-             <div className="flex items-center justify-center">
-             <img
-                  loading="lazy"
-                  id="bank-receipt"
-                  src={filePath}
-                  alt=""
-                  style={{ borderRadius: "0.375rem", width: "15rem" }}
-                />
-             </div>
+                <div className="flex items-center justify-center">
+                  <img
+                    loading="lazy"
+                    id="bank-receipt"
+                    src={filePath}
+                    alt=""
+                    style={{ borderRadius: "0.375rem", width: "15rem" }}
+                  />
+                </div>
               </div>
 
               <span></span>
@@ -219,7 +219,6 @@ const PaymentProof = ({ paymentId, amount }) => {
                 placeholder="6 to 23 Digit UTR/RRN Number"
                 type="text"
                 value={utr}
-              
               />
               <span className="text-text_Danger text-xs font-lato font-[450] leading-4"></span>
             </div>
@@ -236,7 +235,6 @@ const PaymentProof = ({ paymentId, amount }) => {
                   id="blue"
                   type="checkbox"
                   defaultChecked
-                 
                 />
                 <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-text_Quaternary opacity-0 transition-opacity peer-checked:opacity-100">
                   <svg
@@ -257,7 +255,7 @@ const PaymentProof = ({ paymentId, amount }) => {
               </label>
             </div>
             <span className="text-sm text-textColor font-lato font-[400] leading-5">
-              I have read and agree with
+              I have read and agree with{" "}
               <span className="text-text_Primary underline text-sm font-lato font-[400] leading-4 cursor-pointer">
                 the terms of payment and withdrawal policy.
               </span>

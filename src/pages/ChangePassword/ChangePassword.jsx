@@ -43,10 +43,9 @@ const ChangePassword = () => {
     }
   };
 
-
   return (
     <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
-      <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
+      <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24 change-password">
         <LeftDeskSidebar />
         <div
           className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
@@ -166,14 +165,14 @@ const ChangePassword = () => {
                 <div className="flex items-center justify-center mt-2 w-full gap-x-2">
                   <button
                     onClick={() => reset()}
-                    className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out max-w-[180px] p-2 bg-bg_Quaternary mt-2 w-full rounded-lg font-semibold text-text_Primary border border-primary cursor-pointer"
+                    className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out max-w-[180px] p-2 bg-bg_Quaternary mt-2 w-full rounded-lg font-semibold text-text_Primary border border-[var(--color-bg-primary)] cursor-pointer"
                     type="button"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out max-w-[180px] cursor-pointer disabled:cursor-not-allowed p-2 bg-bg_Primary mt-2 w-full rounded-lg font-semibold text-text_Quaternary border border-primary disabled:opacity-40 flex items-center justify-center cursor-pointer"
+                    className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out max-w-[180px] cursor-pointer disabled:cursor-not-allowed p-2 bg-bg_Primary mt-2 w-full rounded-lg font-semibold text-text_Quaternary disabled:opacity-40 flex items-center justify-center "
                   >
                     <span>Save</span>
                   </button>

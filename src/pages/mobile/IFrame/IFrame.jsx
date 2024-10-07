@@ -12,7 +12,7 @@ const IFrame = () => {
   const [iFrame, setIFrame] = useState("");
   const { gameId } = useParams();
   const token = useSelector(userToken);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   /* get iframe url */
   useEffect(() => {
@@ -72,7 +72,10 @@ const IFrame = () => {
               id="logoContainer"
               className="logo flex w-full h-full md:w-fit"
             >
-              <div onClick={()=> navigate('/')} className="flex items-center w-[40px] md:w-fit justify-center lg:hidden">
+              <div
+                onClick={() => navigate("/")}
+                className="flex items-center w-[40px] md:w-fit justify-center lg:hidden back-from-iframe"
+              >
                 <button
                   className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 h-6 flex ml-[4px] items-center bg-bg_Primary2 rounded-md justify-center active:scale-150 cursor-pointer"
                   type="button"
@@ -93,7 +96,7 @@ const IFrame = () => {
               </div>
             </div>
             <div className="md:w-max flex items-center justify-center ml-auto lg:ml-0">
-              <div  className="w-max hidden items-center justify-center gap-1 rounded-full lg:flex">
+              <div className="w-max hidden items-center justify-center gap-1 rounded-full lg:flex">
                 <button className="relative flex rounded-full gap-1 border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-bg_Secondary">
                   <span className="w-max text-text_LoginTextColor hidden md:block">
                     <svg

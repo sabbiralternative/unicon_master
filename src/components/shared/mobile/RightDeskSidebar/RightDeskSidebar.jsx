@@ -6,12 +6,12 @@ import { logout, setUser } from "../../../../redux/features/auth/authSlice";
 import useBalance from "../../../../hooks/useBalance";
 import useBonusBalance from "../../../../hooks/useBonusBalance";
 import { settings } from "../../../../api";
-import useGetSocialLink from "../../../../hooks/useGetSocialLink";
+// import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 import { useNavigate } from "react-router-dom";
 
 const RightDeskSidebar = () => {
   const navigate = useNavigate();
-  const { socialLink } = useGetSocialLink();
+  // const { socialLink } = useGetSocialLink();
   const { user, token, bonusToken } = useSelector((state) => state.auth);
   const { balance } = useBalance();
   const { bonusBalance } = useBonusBalance();
@@ -45,11 +45,11 @@ const RightDeskSidebar = () => {
     }
   };
 
-  const handleOpenSocialLink = (link) => {
-    if (link) {
-      window.open(link, "_blank");
-    }
-  };
+  // const handleOpenSocialLink = (link) => {
+  //   if (link) {
+  //     window.open(link, "_blank");
+  //   }
+  // };
 
   const handleNavigate = (link) => {
     navigate(link);
@@ -58,7 +58,7 @@ const RightDeskSidebar = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 z-50 w-full h-dvh bg-opacity-50 block`}
+      className={`fixed top-0 left-0 z-50 w-full h-dvh bg-opacity-50 block primary-icon-color`}
       style={{ visibility: `${showRightSidebar ? "visible" : "hidden"}` }}
     >
       <div className="undefined">
@@ -69,8 +69,8 @@ const RightDeskSidebar = () => {
           } origin-left top-0 right-0 z-50 w-[70%] max-w-sm h-full overflow-y-auto bg-bg_Quaternary shadow-lg`}
         >
           <ul className="overflow-y-auto h-max divide-y">
-            <li className="px-3 py-2 flex items-center justify-between">
-              <div className="flex items-center justify-start gap-x-1.5">
+            <li className="px-3 py-2 flex items-center justify-between ">
+              <div className="flex items-center justify-start gap-x-1.5 ">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +177,7 @@ const RightDeskSidebar = () => {
                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex bg-none border-none shadow-none w-full cursor-pointer"
                     type="button"
                   >
-                    <span className="text-text_Quaternary capitalize border flex rounded px-3 py-1 flex-col text-[10px] hover:opacity-100 w-full font-semibold items-center justify-center bg-bg_HomeDepositBtnBgColor border-depositBtn">
+                    <span className="text-text_Quaternary capitalize border flex rounded px-3 py-1 flex-col text-[10px] hover:opacity-100 w-full font-semibold items-center justify-center bg-bg_HomeDepositBtnBgColor border-depositBtn white-icon-color">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="21"
@@ -187,7 +187,8 @@ const RightDeskSidebar = () => {
                       >
                         <path
                           d="M3.62143 4.52979C3.52275 4.52988 3.42507 4.54945 3.33397 4.58737C3.24287 4.62528 3.16014 4.68079 3.09054 4.75074C3.02094 4.82068 2.96584 4.90368 2.92837 4.99496C2.8909 5.08624 2.87181 5.18402 2.8722 5.28269C2.8724 5.48134 2.95139 5.67179 3.09185 5.81225C3.23232 5.95271 3.42278 6.03171 3.62143 6.03191H16.6423C17.4549 6.03191 18.0115 6.5801 18.0115 7.19078V8.50099C18.0111 8.59998 18.0303 8.69805 18.068 8.78958C18.1057 8.8811 18.1612 8.96425 18.2312 9.03424C18.3012 9.10424 18.3843 9.15969 18.4758 9.19739C18.5674 9.23508 18.6654 9.25429 18.7644 9.2539C18.8631 9.2538 18.9608 9.23424 19.0519 9.19632C19.143 9.1584 19.2257 9.10288 19.2953 9.03293C19.3649 8.96299 19.42 8.87999 19.4575 8.78871C19.4949 8.69743 19.514 8.59966 19.5136 8.50099V7.19078C19.5136 5.6859 18.1796 4.52979 16.6423 4.52979H3.62143Z"
-                          fill="var(--color-quaternary)"
+                          // fill="white"
+                          // style={{ fill: "white" }}
                         ></path>
                         <path
                           d="M16.6606 7.75177C15.5639 7.75177 14.6603 8.65906 14.6603 9.75583V11.2579C14.6603 12.3547 15.5639 13.262 16.6606 13.262H18.7459C19.8427 13.262 20.75 12.3547 20.75 11.2579V9.75583C20.75 8.65906 19.8427 7.75177 18.7459 7.75177H16.6606ZM16.6606 9.25389H18.7459C19.032 9.25389 19.2478 9.46966 19.2478 9.75583V11.2579C19.2478 11.5441 19.032 11.7599 18.7459 11.7599H16.6606C16.3745 11.7599 16.1587 11.5441 16.1587 11.2579V9.75583C16.1587 9.46966 16.3745 9.25389 16.6606 9.25389Z"
@@ -222,7 +223,7 @@ const RightDeskSidebar = () => {
                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex bg-none border-none shadow-none w-full cursor-pointer"
                     type="button"
                   >
-                    <span className="text-text_Quaternary capitalize border flex rounded px-3 py-1 flex-col text-[10px] hover:opacity-100 w-full font-semibold items-center justify-center bg-bg_HomeWithdrawBtnBgColor border-withDrawBtn">
+                    <span className="text-text_Quaternary capitalize border flex rounded px-3 py-1 flex-col text-[10px] hover:opacity-100 w-full font-semibold items-center justify-center bg-bg_HomeWithdrawBtnBgColor border-withDrawBtn white-icon-color">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="21"
@@ -394,7 +395,7 @@ const RightDeskSidebar = () => {
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                 <div
-                  onClick={() => handleNavigate("/transaction")}
+                  onClick={() => handleNavigate("/deposit-withdraw-report")}
                   className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
                 >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
@@ -419,7 +420,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Transactions
+                    Deposit Withdraw Report
                   </span>
                 </div>
                 {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
@@ -816,7 +817,7 @@ const RightDeskSidebar = () => {
                 Register online and play online
               </span>
             </li>
-            <li className="p-1">
+            {/* <li className="p-1">
               <div className="flex flex-col gap-1 p-3 items-center bg-bg_contactUsCard rounded">
                 <span className="text-text_Quaternary font-semibold">
                   Contact Us
@@ -1025,7 +1026,7 @@ const RightDeskSidebar = () => {
                   </a>
                 </div>
               </div>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

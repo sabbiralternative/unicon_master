@@ -3,7 +3,7 @@ import useDepositStatement from "../../../hooks/useDepositStatement";
 import ShowImage from "../../modal/ShowImage/ShowImage";
 
 const Transaction = () => {
-  const [tabs,setTabs] = useState('deposit')
+  const [tabs, setTabs] = useState("deposit");
   const [image, setImage] = useState("");
   const { accountStatement } = useDepositStatement();
   const [category, setCategory] = useState([]);
@@ -28,28 +28,41 @@ const Transaction = () => {
       >
         <div className="no-scrollbar h-full overflow-y-auto">
           <div className="px-2 w-full">
-            <div className="flex flex-row font-manrope-regular items-center justify-start gap-6 relative">
+            <div className="flex flex-row items-center justify-start gap-6 relative">
               <div
-              onClick={()=> setTabs('deposit')}
-              className="cursor-pointer flex flex-row items-center justify-center">
-                <span className={` px-[25px] py-2 text-[13px] md:text-sm lg:text-base rounded-full font-bold leading-4 active:scale-95 block z-10 ${tabs === 'deposit' ? 'text-text_Quaternary':"bg-bg_Quaternary"}`}>
+                onClick={() => setTabs("deposit")}
+                className="cursor-pointer flex flex-row items-center justify-center"
+              >
+                <span
+                  className={` px-[25px] py-2 text-[13px] md:text-sm lg:text-base rounded-full font-bold leading-4 active:scale-95 block z-10 ${
+                    tabs === "deposit"
+                      ? "text-text_Quaternary"
+                      : "bg-bg_Quaternary"
+                  }`}
+                >
                   Deposit
                 </span>
               </div>
               <div
-              onClick={()=> setTabs('withdraw')}
-              className="cursor-pointer flex flex-row items-center justify-center">
-                <span className={`text-text_Ternary text-sm  rounded-full border border-ternary6 px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 ${tabs === 'withdraw' ? 'text-text_Quaternary':'bg-bg_Quaternary'}`}>
+                onClick={() => setTabs("withdraw")}
+                className="cursor-pointer flex flex-row items-center justify-center"
+              >
+                <span
+                  className={`text-text_Ternary text-sm  rounded-full  px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 ${
+                    tabs === "withdraw"
+                      ? "text-text_Quaternary"
+                      : "bg-bg_Quaternary"
+                  }`}
+                >
                   Withdrawal
                 </span>
               </div>
               <div
-                className={`absolute z-1 w-full h-full transition-all ease-in-out duration-150 bg-bg_Primary text-sm bg-bg_Primary rounded-full border border-primary ${tabs === 'deposit' ? 'left-0':'left-[120px]'}`}
+                className={`absolute z-1 w-full h-full transition-all ease-in-out duration-150 bg-bg_Primary text-sm bg-bg_Primary rounded-full  ${
+                  tabs === "deposit" ? "left-0" : "left-[120px] "
+                }`}
                 style={{
                   width: "110.234px",
-                  top: "1px",
-                 
-                  height: "32px",
                 }}
               ></div>
             </div>

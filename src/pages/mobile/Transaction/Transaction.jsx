@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import TransactionComponent from "../../../components/ui/Transaction/Transaction";
 const Transaction = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div>
-      <div  className="lg:hidden flex flex-col " style={{ paddingTop: "60px" }}>
+      <div className="lg:hidden flex flex-col " style={{ paddingTop: "60px" }}>
         <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
           <div className="app-bg flex-row w-full h-full flex">
             <div className="w-[34px] h-full flex items-center justify-center">
               <button
-              onClick={() => navigate(-1)}
-                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer"
+                onClick={() => navigate(-1)}
+                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
                 type="button"
               >
                 <svg

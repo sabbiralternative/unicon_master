@@ -70,6 +70,16 @@ input:-moz-autofill {
   width: 100%;
 }
 
-svg {
-  fill: var(bg-bg_Secondary) !important;
+.primary-icon-color svg,
+.back-from-iframe svg {
+  stroke: var(--color-bg-primary);
+}
+
+.change-password svg,
+.primary-icons svg {
+  fill: var(--color-bg-primary);
+}
+
+.white-icon-color svg {
+  stroke: #fff;
 }

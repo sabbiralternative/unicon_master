@@ -19,7 +19,7 @@ const useExposer = (eventId) => {
         site: settings.siteUrl,
       });
       const res = await axios.post(
-        `${API.exposure}/${eventId}`,
+        `${API.exposure}/${eventId || "sports"}`,
         encryptedData,
         {
           headers: {

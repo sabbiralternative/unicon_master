@@ -18,7 +18,7 @@ export const desktopRoutes = [
     element: <IFrame />,
   },
   {
-    path: "/transaction",
+    path: "/deposit-withdraw-report",
     element: <Transaction />,
   },
   {

@@ -425,7 +425,7 @@ const LeftDeskSidebar = () => {
                   onClick={handleDownloadAPK}
                   className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
                 >
-                  <span className="w-3 h-auto xs:w-4">
+                  <span className="w-3 h-auto xs:w-4 primary-icons">
                     <svg
                       width="20"
                       height="20"
