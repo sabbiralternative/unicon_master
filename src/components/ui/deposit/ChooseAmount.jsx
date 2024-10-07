@@ -28,7 +28,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                 Amount<span className="text-text_Danger">*</span>
               </p>
             </div>
-            <div className="w-full mt-2 py-2 grid grid-cols-12 border rounded-[4px] px-2 items-center justify-center border-danger">
+            <div className="w-full mt-2 py-2 grid grid-cols-12 border rounded-[4px] px-2 items-center justify-center border-[var(--color-bg-primary)]">
               <input
                 onChange={(e) => setAmount(e.target.value)}
                 value={amount !== null && amount !== undefined ? amount : ""}
@@ -105,7 +105,6 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                   id="blue"
                   type="checkbox"
                   defaultChecked
-              
                 />
                 <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-text_Quaternary opacity-0 transition-opacity peer-checked:opacity-100">
                   <svg

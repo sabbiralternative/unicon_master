@@ -152,13 +152,13 @@ const PaymentMethod = ({
                 </div>
               )}
             </div>
-            <p className="text-xs md:text-sm pt-2 font-lato font-normal leading-4">
+            {/* <p className="text-xs md:text-sm pt-2 font-lato font-normal leading-4">
               1. Deposit money only in the below available accounts to get the
               fastest credits and avoid possible delays.
-            </p>
-            <p className="text-textColor pt-1 font-sans text-xs md:text-sm font-normal cursor-pointer">
+            </p> */}
+            {/* <p className="text-textColor pt-1 font-sans text-xs md:text-sm font-normal cursor-pointer">
               See More..
-            </p>
+            </p> */}
           </div>
           {/* details */}
           {tabs === "bank" && (
@@ -538,6 +538,7 @@ const PaymentMethod = ({
           </div>
           <div className="w-full text-center py-4 px-2">
             <button
+              disabled={paymentMethods?.length === 0}
               onClick={() => {
                 setPaymentMethods(false);
                 setUploadTransaction(true);
