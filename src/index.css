@@ -11,6 +11,12 @@
 .primary-icons svg {
   fill: var(--color-bg-primary);
 }
+.text-primary {
+  color: var(--color-bg-primary);
+}
+.bg-primary {
+  background-color: var(--color-bg-primary);
+}
 
 .white-icon-color svg {
   stroke: #fff;
@@ -106,18 +112,11 @@ input:-moz-autofill {
 }
 
 @media (min-width: 768px) {
-  .page-body[_ngcontent-ng-c1965075897]
-    .casino-section[_ngcontent-ng-c1965075897]
-    .game-type-list[_ngcontent-ng-c1965075897]
-    ul[_ngcontent-ng-c1965075897] {
-    grid-template-columns: repeat(4, 1fr);
+  .casino-container {
+    grid-template-columns: repeat(4, 1fr) !important;
   }
 }
-
-.page-body[_ngcontent-ng-c1965075897]
-  .casino-section[_ngcontent-ng-c1965075897]
-  .game-type-list[_ngcontent-ng-c1965075897]
-  ul[_ngcontent-ng-c1965075897] {
+.casino-container {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -671,4 +670,25 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 
 .border-primary {
   border-color: var(--color-bg-primary) !important;
+}
+
+.page-body[_ngcontent-ng-c943649379] {
+  background-color: var(--grey-00);
+  height: auto;
+  padding: 0;
+  margin-bottom: 55px;
+  max-height: calc(100% - 110px);
+  overflow-y: auto;
+}
+
+.page-body[_ngcontent-ng-c943649379] .pagetab-body[_ngcontent-ng-c943649379] {
+  padding: 0 10px 30px;
+  margin-top: 15px;
+}
+
+.page-body[_ngcontent-ng-c943649379]
+  .pagetab-body[_ngcontent-ng-c943649379]
+  .pagetab-content[_ngcontent-ng-c943649379]
+  .casino-section[_ngcontent-ng-c943649379] {
+  margin-bottom: 15px;
 }

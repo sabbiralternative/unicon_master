@@ -262,6 +262,7 @@ const MatchOdds = ({ match_odds }) => {
                               })}
 
                             {stake &&
+                              runnerId &&
                               predictOddValues?.map(({ odd, id }) => {
                                 return (
                                   <span
@@ -272,6 +273,7 @@ const MatchOdds = ({ match_odds }) => {
                                         : "text-text_Danger"
                                     }`}
                                   >
+                                    {" "}
                                     &gt;&gt; {stake && odd}
                                   </span>
                                 );

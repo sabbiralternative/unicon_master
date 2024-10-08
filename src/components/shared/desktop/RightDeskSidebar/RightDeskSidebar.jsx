@@ -295,7 +295,7 @@ const RightDeskSidebar = () => {
                             disabled={!stake || betDelay > 0}
                             onClick={handleOrderBets}
                             type="button"
-                            className="leading-normal relative overflow-hidden transition duration-150 ease-in-out py-1  w-full flex min-h-[46px] px-2.5 rounded-md font-medium border flex-row items-center justify-between bg-placeBetBtnGrd text-text_Quaternary border-primary cursor-pointer"
+                            className="leading-normal relative overflow-hidden transition duration-150 ease-in-out py-1  w-full flex min-h-[46px] px-2.5 rounded-md font-medium border flex-row items-center justify-between bg-primary text-text_Quaternary border-primary cursor-pointer"
                           >
                             <div className="flex items-start justify-start flex-col">
                               <span className="font-bold text-xs sm:text-sm">

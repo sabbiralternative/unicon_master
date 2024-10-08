@@ -6,7 +6,7 @@ import { useBankMutation } from "../../../../redux/features/payment/payment.api"
 import toast from "react-hot-toast";
 import useGetAllBankAccount from "../../../../hooks/useGetAllBankAccount";
 
-const NewAccount = () => {
+const NewAccount = ({ setTabs }) => {
   const { refetchBankAccounts } = useGetAllBankAccount();
   const [addNewBank] = useBankMutation();
   const [isFormValid, setIsFormValid] = useState(false);
@@ -44,6 +44,7 @@ const NewAccount = () => {
         confirmAccountNumber: "",
       });
       toast.success(res?.result?.message);
+      setTabs("oldAccount");
       refetchBankAccounts();
     } else {
       toast.error(res?.result?.message);

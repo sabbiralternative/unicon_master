@@ -87,19 +87,21 @@ const LiveCasino = () => {
       {showWarning && (
         <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
       )}
-      <div _ngcontent-ng-c1965075897="" className="filter-wrapper">
-        <Dropdown
-          showLeftDropdown={showLeftDropdown}
-          setShowLeftDropdown={setShowLeftDropdown}
-          data={data}
-          showRightDropdown={showRightDropdown}
-          setShowRightDropdown={setShowRightDropdown}
-          setProduct={setProduct}
-          setGameList={setGameList}
-          product={product}
-          gameList={gameList}
-        />
-      </div>
+      {group !== "auraWolf" && (
+        <div _ngcontent-ng-c1965075897="" className="filter-wrapper">
+          <Dropdown
+            showLeftDropdown={showLeftDropdown}
+            setShowLeftDropdown={setShowLeftDropdown}
+            data={data}
+            showRightDropdown={showRightDropdown}
+            setShowRightDropdown={setShowRightDropdown}
+            setProduct={setProduct}
+            setGameList={setGameList}
+            product={product}
+            gameList={gameList}
+          />
+        </div>
+      )}
 
       <div className="pt-2.5">
         {group !== "auraWolf" &&
@@ -127,7 +129,10 @@ const LiveCasino = () => {
                     _ngcontent-ng-c1965075897=""
                     className="game-type-list ng-star-inserted"
                   >
-                    <ul _ngcontent-ng-c1965075897="">
+                    <ul
+                      _ngcontent-ng-c1965075897=""
+                      className="casino-container"
+                    >
                       {Array.isArray(data.gameList[title])
                         ? data?.gameList[title]?.map((item, i) => {
                             return (
@@ -250,7 +255,7 @@ const LiveCasino = () => {
               _ngcontent-ng-c1965075897=""
               className="game-type-list ng-star-inserted"
             >
-              <ul _ngcontent-ng-c1965075897="">
+              <ul _ngcontent-ng-c1965075897="" className="casino-container">
                 {data?.data?.map((item, i) => {
                   return (
                     <li

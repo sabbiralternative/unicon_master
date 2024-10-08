@@ -245,7 +245,7 @@ const BetSlip = ({ setRunnerId }) => {
                cursor-pointer ${
                  !stake || betDelay > 0
                    ? " bg-bg_InActivePlaceBtnColor border-inActivePlaceBtnColor cursor-not-allowed"
-                   : "bg-placeBetBtnGrd border-primary cursor-pointer"
+                   : "bg-primary border-primary cursor-pointer"
                }`}
                 >
                   <div className=" flex items-start justify-start flex-col">
@@ -287,7 +287,7 @@ const BetSlip = ({ setRunnerId }) => {
                         !stake || betDelay > 0 ? "" : "text-text_Quaternary"
                       }  `}
                     >
-                      {placeBetValues?.betDelay}ss
+                      {placeBetValues?.betDelay}s
                     </span>
                   </span>
                 </button>

@@ -244,7 +244,7 @@ cursor-pointer
                 <button
                   onClick={() => {
                     navigate("/");
-                    dispatch(setGroupType("liveCasinoWolf"));
+                    dispatch(setGroupType("auraWolf"));
                   }}
                   className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                 >
@@ -255,7 +255,7 @@ cursor-pointer
                 <button
                   onClick={() => {
                     navigate("/");
-                    dispatch(setGroupType("slotWolf"));
+                    dispatch(setGroupType("liveCasinoWolf"));
                   }}
                   className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
                 >
@@ -266,7 +266,7 @@ cursor-pointer
                 <button
                   onClick={() => {
                     navigate("/");
-                    dispatch(setGroupType("auraWolf"));
+                    dispatch(setGroupType("slotWolf"));
                   }}
                   className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                 >

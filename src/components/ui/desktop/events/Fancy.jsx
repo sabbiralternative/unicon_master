@@ -222,6 +222,7 @@ const Fancy = ({ fancy }) => {
                                   : "text-text_Danger"
                               }`}
                             >
+                              {" "}
                               &gt;&gt; {stake && odd}
                             </span>
                           );

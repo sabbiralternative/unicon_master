@@ -251,6 +251,7 @@ const Bookmaker = ({ bookmaker }) => {
                             })}
 
                           {stake &&
+                            runnerId &&
                             predictOddValues?.map(({ odd, id }) => {
                               return (
                                 <span
@@ -261,6 +262,7 @@ const Bookmaker = ({ bookmaker }) => {
                                       : "text-text_Danger"
                                   }`}
                                 >
+                                  {" "}
                                   &gt;&gt; {stake && odd}
                                 </span>
                               );

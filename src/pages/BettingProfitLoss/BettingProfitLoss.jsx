@@ -179,7 +179,7 @@ const BettingProfitLoss = () => {
                     title="Profit &amp; Loss Statement"
                     className="w-full px-1 my-1.5 cursor-pointer"
                   >
-                    <div className="w-full text-text_Quaternary rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-titleGrd">
+                    <div className="w-full text-text_Quaternary rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-headerBg">
                       <div className="text-xs text-text_Quaternary  font-[600] leading-[140%]">
                         {item?.settledTime}
                         {/* 29th August 2024 */}

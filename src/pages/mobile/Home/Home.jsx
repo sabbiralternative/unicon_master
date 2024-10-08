@@ -16,8 +16,11 @@ import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGa
 // import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 import { userToken } from "../../../redux/features/auth/authSlice";
 import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
+import { useEffect } from "react";
+import useBalance from "../../../hooks/useBalance";
 
 const Home = () => {
+  const { refetchBalance } = useBalance();
   const token = useSelector(userToken);
   const { socialLink } = useGetSocialLink();
   const { group } = useSelector((state) => state.state);
@@ -30,6 +33,10 @@ const Home = () => {
       window.open(socialLink?.whatsapplink, "_blank");
     }
   };
+
+  useEffect(() => {
+    refetchBalance();
+  }, [refetchBalance]);
 
   return (
     <>
@@ -109,7 +116,9 @@ const Home = () => {
               <FAQ />
             </div>
           )}
-          {group === 2 || group === 4 || (group === 1 && <Group data={data} />)}
+          {group === 2 || group === 4 || group === 1 ? (
+            <Group data={data} />
+          ) : null}
           {group === "liveCasinoWolf" ||
           group === "slotWolf" ||
           group === "auraWolf" ? (

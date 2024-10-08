@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useGetAllBankAccount from "../../../../hooks/useGetAllBankAccount";
 import RemoveAccount from "../../../modal/RemoveAccount/RemoveAccount";
 import handleRandomToken from "../../../../utils/handleRandomToken";
 import { useBankMutation } from "../../../../redux/features/payment/payment.api";
@@ -8,11 +7,11 @@ import toast from "react-hot-toast";
 import { settings } from "../../../../api";
 import WithdrawSuccess from "../../../modal/WithdrawSuccess/WithdrawSuccess";
 
-const OldAccount = ({ amount }) => {
+const OldAccount = ({ amount, bankAccounts }) => {
   const [withdrawCoin] = useBankMutation();
   const [bankId, setBankId] = useState("");
   const [removeBank, setRemoveBank] = useState("");
-  const { bankAccounts } = useGetAllBankAccount();
+
   const [withdrawSuccess, setWithdrawSuccess] = useState(false);
 
   const handleWithdraw = async (e) => {
@@ -150,7 +149,7 @@ const OldAccount = ({ amount }) => {
               disabled={!bankId}
               className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-text_Quaternary h-10 text-base shadow-lg font-lato rounded-md font-[900] leading-4 disabled:opacity-70 flex gap-x-1 items-center justify-center cursor-pointer"
             >
-              <span>SUBMIT</span>
+              <span>{bankId ? "SUBMIT" : "Please select bank account"}</span>
             </button>
           </div>
         </form>

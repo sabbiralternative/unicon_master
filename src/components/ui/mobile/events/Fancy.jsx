@@ -112,6 +112,7 @@ const Fancy = ({ fancy }) => {
                         })}
 
                       {stake &&
+                        runnerId &&
                         predictOddValues?.map(({ odd, id }) => {
                           return (
                             <span
@@ -122,6 +123,7 @@ const Fancy = ({ fancy }) => {
                                   : "text-text_Danger"
                               }`}
                             >
+                              {" "}
                               &gt;&gt; {stake && odd}
                             </span>
                           );

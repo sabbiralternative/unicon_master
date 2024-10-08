@@ -262,6 +262,7 @@ const MatchOdds = ({ match_odds }) => {
                                       : "text-text_Danger"
                                   }`}
                                 >
+                                  {" "}
                                   &gt;&gt; {stake && odd}
                                 </span>
                               );

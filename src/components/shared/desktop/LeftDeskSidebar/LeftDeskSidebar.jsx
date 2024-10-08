@@ -236,7 +236,7 @@ const LeftDeskSidebar = () => {
         <li
           onClick={() => {
             navigate("/");
-            dispatch(setGroupType("liveCasinoWolf"));
+            dispatch(setGroupType("auraWolf"));
           }}
           className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
         >
@@ -292,7 +292,7 @@ const LeftDeskSidebar = () => {
         <li
           onClick={() => {
             navigate("/");
-            dispatch(setGroupType("slotWolf"));
+            dispatch(setGroupType("liveCasinoWolf"));
           }}
           className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
         >
@@ -367,40 +367,16 @@ const LeftDeskSidebar = () => {
           </span>
         </li>
         <li
-          onClick={navigateAviatorCasinoVideo}
-          className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
-        >
-          <span className="flex w-full items-center h-full px-6 justify-start gap-3">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M10.2208 25.2081C8.58995 23.849 8.72593 21.3034 10.4923 20.1258L22.5839 12.7529L30.5466 12.458L39.7792 6.91839C46.1332 3.10599 53.757 2.0196 60.923 3.90539C62.9758 10.2502 62.0646 17.1819 58.4418 22.7807L51.1908 33.9869L50.6009 42.2446L42.3433 54.3361C41.4141 55.0795 40.1911 55.3464 39.0367 55.0578L38.8483 55.0107C38.6265 54.9553 38.424 54.8406 38.2623 54.6789L37.9195 54.3361L32.611 45.7836L26.1229 46.6683L21.1093 41.6547L16.6855 36.9361L17.8652 30.153L10.4923 25.4343L10.2208 25.2081ZM52.9603 19.2411C52.9603 23.4759 49.5273 26.9089 45.2925 26.9089C41.0576 26.9089 37.6246 23.4759 37.6246 19.2411C37.6246 15.0062 41.0576 11.5732 45.2925 11.5732C49.5273 11.5732 52.9603 15.0062 52.9603 19.2411ZM17.376 44.2883L2 58.9329L4.01489 61.0484L19.3909 46.4039L17.376 44.2883ZM10.2577 58.9316L21.2972 48.4172L23.3121 50.5327L12.2725 61.0471L10.2577 58.9316ZM13.0396 40.1595L2 50.6739L4.01489 52.7894L15.0545 42.275L13.0396 40.1595Z"
-                fill="#c10931"
-              ></path>
-            </svg>
-            <span className="font-medium text-start text-text_Ternary">
-              Aviator
-            </span>
-          </span>
-        </li>
-        <li
           onClick={() => {
             navigate("/");
-            dispatch(setGroupType("auraWolf"));
+            dispatch(setGroupType("slotWolf"));
           }}
           className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
         >
           <span className="flex w-full items-center h-full px-6 justify-start gap-3">
             <svg
-              width="20"
-              height="20"
+              width="17"
+              height="16"
               viewBox="0 0 17 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -424,6 +400,30 @@ const LeftDeskSidebar = () => {
             </svg>
             <span className="font-medium text-start text-text_Ternary">
               Slot Games
+            </span>
+          </span>
+        </li>
+        <li
+          onClick={navigateAviatorCasinoVideo}
+          className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
+        >
+          <span className="flex w-full items-center h-full px-6 justify-start gap-3">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M10.2208 25.2081C8.58995 23.849 8.72593 21.3034 10.4923 20.1258L22.5839 12.7529L30.5466 12.458L39.7792 6.91839C46.1332 3.10599 53.757 2.0196 60.923 3.90539C62.9758 10.2502 62.0646 17.1819 58.4418 22.7807L51.1908 33.9869L50.6009 42.2446L42.3433 54.3361C41.4141 55.0795 40.1911 55.3464 39.0367 55.0578L38.8483 55.0107C38.6265 54.9553 38.424 54.8406 38.2623 54.6789L37.9195 54.3361L32.611 45.7836L26.1229 46.6683L21.1093 41.6547L16.6855 36.9361L17.8652 30.153L10.4923 25.4343L10.2208 25.2081ZM52.9603 19.2411C52.9603 23.4759 49.5273 26.9089 45.2925 26.9089C41.0576 26.9089 37.6246 23.4759 37.6246 19.2411C37.6246 15.0062 41.0576 11.5732 45.2925 11.5732C49.5273 11.5732 52.9603 15.0062 52.9603 19.2411ZM17.376 44.2883L2 58.9329L4.01489 61.0484L19.3909 46.4039L17.376 44.2883ZM10.2577 58.9316L21.2972 48.4172L23.3121 50.5327L12.2725 61.0471L10.2577 58.9316ZM13.0396 40.1595L2 50.6739L4.01489 52.7894L15.0545 42.275L13.0396 40.1595Z"
+                fill="#c10931"
+              ></path>
+            </svg>
+            <span className="font-medium text-start text-text_Ternary">
+              Aviator
             </span>
           </span>
         </li>

@@ -1,11 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DepositReport from "./DepositReport";
 import WithdrawReport from "./WithdrawReport";
+import useBalance from "../../../hooks/useBalance";
 
 const Transaction = () => {
+  const { refetchBalance } = useBalance();
   const navigate = useNavigate();
   const [tabs, setTabs] = useState("deposit");
+  useEffect(() => {
+    refetchBalance();
+  }, [refetchBalance]);
   return (
     <>
       <div className="lg:hidden flex flex-col " style={{ paddingTop: "60px" }}>

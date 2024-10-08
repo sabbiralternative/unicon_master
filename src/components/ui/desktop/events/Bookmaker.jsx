@@ -263,6 +263,7 @@ const Bookmaker = ({ bookmaker }) => {
                                       : "text-text_Danger"
                                   }`}
                                 >
+                                  {" "}
                                   &gt;&gt; {stake && odd}
                                 </span>
                               );

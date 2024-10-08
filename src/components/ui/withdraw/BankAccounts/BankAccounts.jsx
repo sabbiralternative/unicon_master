@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewAccount from "./NewAccount";
 import OldAccount from "./OldAccount";
+import useGetAllBankAccount from "../../../../hooks/useGetAllBankAccount";
 
-const BankAccounts = ({amount}) => {
-  const [tabs, setTabs] = useState("newAccount");
+const BankAccounts = ({ amount }) => {
+  const { bankAccounts } = useGetAllBankAccount();
+  const [tabs, setTabs] = useState("");
+  useEffect(() => {
+    if (bankAccounts?.length > 0) {
+      setTabs("oldAccount");
+    } else {
+      setTabs("newAccount");
+    }
+  }, [bankAccounts]);
   return (
     <div
       className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
@@ -102,8 +111,10 @@ const BankAccounts = ({amount}) => {
             </div>
           </div>
         </div>
-        {tabs === "newAccount" && <NewAccount />}
-        {tabs === "oldAccount" && <OldAccount amount={amount} />}
+        {tabs === "newAccount" && <NewAccount setTabs={setTabs} />}
+        {tabs === "oldAccount" && (
+          <OldAccount bankAccounts={bankAccounts} amount={amount} />
+        )}
       </div>
     </div>
   );

@@ -15,16 +15,25 @@ import LeftDeskSidebar from "../../../components/shared/desktop/LeftDeskSidebar/
 import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/desktop/Home/Group";
 // import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
-import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
+// import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
 import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
+import useBalance from "../../../hooks/useBalance";
+import { useEffect } from "react";
+// import CardGames from "../../../components/ui/CardGames/CardGames";
+// import IndianLiveCasino from "../../../components/ui/IndianLiveCasino/IndianLiveCasino";
+// import Casino from "../../../components/ui/Casino/Casino";
 // import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 
 const Home = () => {
+  const { refetchBalance } = useBalance();
   const { group } = useSelector((state) => state.state);
   const { data } = useGetAllGroupEventsQuery(group, {
     pollingInterval: isRefetchGroupData(group) ? 1000 : null,
   });
 
+  useEffect(() => {
+    refetchBalance();
+  }, [refetchBalance]);
   return (
     <>
       <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
@@ -48,9 +57,12 @@ const Home = () => {
                   {/* <WithdrawAndDepositButton /> */}
                   {data && <InPlay data={data} />}
                   {/* <CasinoProvider /> */}
-                  <IndianCardGames />
+                  {/* <IndianCardGames /> */}
                   {/* <PopularGames /> */}
                   {/* <UpcomingEvents /> */}
+                  {/* <CardGames />
+                  <IndianLiveCasino />
+                  <Casino /> */}
                 </div>
                 <FAQ />
               </div>
@@ -72,6 +84,7 @@ const Home = () => {
               <LiveCasino />
             </div>
           ) : null}
+
           <RightDeskSidebar />
         </div>
       </div>
