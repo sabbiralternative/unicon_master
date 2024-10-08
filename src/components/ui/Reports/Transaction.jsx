@@ -1,27 +1,42 @@
-import { useEffect, useState } from "react";
-import useDepositStatement from "../../../hooks/useDepositStatement";
-import ShowImage from "../../modal/ShowImage/ShowImage";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import DepositReport from "./DepositReport";
+import WithdrawReport from "./WithdrawReport";
 
 const Transaction = () => {
+  const navigate = useNavigate();
   const [tabs, setTabs] = useState("deposit");
-  const [image, setImage] = useState("");
-  const { accountStatement } = useDepositStatement();
-  const [category, setCategory] = useState([]);
-  //   const [showModal, setShowModal] = useState(false);
-  //   const [image, setImage] = useState("");
-
-  useEffect(() => {
-    if (accountStatement?.length > 0) {
-      const categories = Array.from(
-        new Set(accountStatement?.map((item) => item?.date?.split(" ")?.[0]))
-      );
-      setCategory(categories);
-    }
-  }, [accountStatement]);
-
   return (
     <>
-      {image && <ShowImage image={image} setShowImage={setImage} />}
+      <div className="lg:hidden flex flex-col " style={{ paddingTop: "60px" }}>
+        <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
+          <div className="app-bg flex-row w-full h-full flex">
+            <div className="w-[34px] h-full flex items-center justify-center">
+              <button
+                onClick={() => navigate(-1)}
+                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
+                type="button"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="7"
+                  height="12"
+                  viewBox="0 0 7 12"
+                  fill="var(--color-iconsColor)"
+                >
+                  <path
+                    d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
+                    fill="var(--color-iconsColor)"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary font-lato font-bold text-[16px] leading-5">
+              <span>transactions</span>
+            </span>
+          </div>
+        </div>
+      </div>
       <div
         className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
         style={{ minHeight: "calc(-110px + 100dvh)", paddingTop: "10px" }}
@@ -122,90 +137,8 @@ const Transaction = () => {
           </button>
         </div> */}
 
-          <div className="rounded-lg flex flex-col gap-y-2 px-2 overflow-clip mt-2 font-lato">
-            {accountStatement?.length > 0 ? (
-              <>
-                {category?.map((category) => {
-                  return (
-                    <>
-                      <div className="flex justify-center items-center sticky top-12">
-                        <div className="text-center bg-bg_Quaternary px-2.5 py-1 font-bold rounded text-[10px] shadow-sm">
-                          {category}
-                        </div>
-                      </div>
-                      {accountStatement
-                        ?.filter(
-                          (item) => item?.date?.split(" ")?.[0] === category
-                        )
-                        ?.map((data, i) => {
-                          return (
-                            <div
-                              key={i}
-                              className="flex active:scale-95 hover:scale-95 flex-col gap-2 border bg-bg_Quaternary rounded overflow-hidden shadow-lg"
-                            >
-                              <div className="flex justify-between items-start text-[10px] font-bold h-full">
-                                <div className="text-base px-3 py-1">
-                                  Deposit
-                                </div>
-                                <div
-                                  className={`px-3 py-1 text-x xs:text-xs sm:text-sm font-semibold text-text_Quaternary rounded-bl h-full   
-                            
-                            ${
-                              data?.status === "APPROVED"
-                                ? "bg-bg_transactionSuccessBg"
-                                : ""
-                            } ${
-                                    data?.status === "REJECTED"
-                                      ? "bg-bg_transactionFailedBg "
-                                      : ""
-                                  } ${
-                                    data?.status === "PENDING"
-                                      ? "bg-bg_transactionPendingBg"
-                                      : ""
-                                  }
-                            `}
-                                >
-                                  {data?.status}
-                                </div>
-                              </div>
-                              <div className="flex px-3 justify-between">
-                                <span className="flex flex-col justify-center flex-1">
-                                  <span className="text-xs font-normal">
-                                    {data?.remark}
-                                  </span>
-                                </span>
-                                {data?.image && (
-                                  <span
-                                    onClick={() => setImage(data?.image)}
-                                    className="flex-1 flex justify-end cursor-pointer"
-                                  >
-                                    <img
-                                      className="size-12"
-                                      src={data?.image}
-                                      alt=""
-                                    />
-                                  </span>
-                                )}
-                                <span className="text-start text-lg font-roboto flex items-end justify-end tracking-tighter font-bold flex-1">
-                                  ₹ {data?.amount}{" "}
-                                </span>
-                              </div>
-                              <div className="text-xs py-1 text-center text-text_Quinary w-full border-t bg-bg_Ternary6">
-                                {data?.date}
-                              </div>
-                            </div>
-                          );
-                        })}
-                    </>
-                  );
-                })}
-              </>
-            ) : (
-              <div>
-                <p>No transaction yet!</p>
-              </div>
-            )}
-          </div>
+          {tabs === "deposit" && <DepositReport />}
+          {tabs === "withdraw" && <WithdrawReport />}
         </div>
         <div className="px-[6px]"></div>
         <div className="py-1 px-[6px]"></div>

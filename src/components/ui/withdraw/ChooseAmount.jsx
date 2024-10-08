@@ -82,7 +82,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
                   label="Amount"
                   required=""
                   placeholder="Enter Amount"
-                  className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-10 pr-8 ml-0 mr-0 placeholder:text-gray-300"
+                  className="block w-full focus:outline-none py-2  border rounded-lg pl-10 pr-8 ml-0 mr-0 placeholder:text-gray-300 border-primary"
                   type="number"
                   value={amount}
                 />

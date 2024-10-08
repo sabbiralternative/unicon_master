@@ -21,8 +21,7 @@ const ApiProvider = ({ children }) => {
       link.type = "text/css";
       link.href = `${API.assets}/${settings.siteUrl}/theme.css`;
       document.head.appendChild(link);
-      console.log(link);
-      console.log(link);
+
       /* Dynamically append  favicon  */
       const FavIconLink = document.createElement("link");
       FavIconLink.rel = "icon";

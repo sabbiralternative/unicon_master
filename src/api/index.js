@@ -42,6 +42,7 @@ export const API = {
   withdrawBreakdown: "",
   banner: "",
   exchangeGames: "",
+  auraWolf: "",
 };
 
 export const settings = {

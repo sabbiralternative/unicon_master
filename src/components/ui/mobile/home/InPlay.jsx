@@ -60,7 +60,10 @@ const InPlay = ({ data }) => {
               </svg>
               <span>In Play</span>
             </div>
-            <div className="w-max text-nowrap">
+            <div
+              onClick={() => navigate("/open-bets")}
+              className="w-max text-nowrap cursor-pointer"
+            >
               <span className="text-xs tracking-wide text-text_Quaternary text-nowrap whitespace-nowrap font-normal">
                 Open Bets
               </span>

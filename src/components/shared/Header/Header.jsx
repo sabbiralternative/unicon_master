@@ -198,9 +198,9 @@ cursor-pointer
             </div>
             <div className=" hidden lg:block">
               <div className="flex w-full overflow-y-auto no-scrollbar gap-0.5 bg-bg_Quaternary items-center p-1 justify-center ">
-                <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
+                {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
                   <span className="font font-lato text-[12px]">SportsBook</span>
-                </button>
+                </button> */}
                 <button
                   onClick={() => {
                     navigate("/");
@@ -231,27 +231,45 @@ cursor-pointer
                 >
                   <span className="font font-lato text-[12px]">Tennis</span>
                 </button>
-                <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
+                {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
                   <span className="font font-lato text-[12px]">
                     Horse Racing
                   </span>
-                </button>
-                <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
+                </button> */}
+                {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
                   <span className="font font-lato text-[12px]">
                     GreyHound Racing
                   </span>
-                </button>
-                <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
+                </button> */}
+                <button
+                  onClick={() => {
+                    navigate("/");
+                    dispatch(setGroupType("liveCasinoWolf"));
+                  }}
+                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                >
                   <span className="font font-lato text-[12px]">
                     Indian Card Games
                   </span>
                 </button>
-                <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
+                <button
+                  onClick={() => {
+                    navigate("/");
+                    dispatch(setGroupType("slotWolf"));
+                  }}
+                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
+                >
                   <span className="font font-lato text-[12px]">
                     Live Casino
                   </span>
                 </button>
-                <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
+                <button
+                  onClick={() => {
+                    navigate("/");
+                    dispatch(setGroupType("auraWolf"));
+                  }}
+                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                >
                   <span className="font font-lato text-[12px]">Slot Games</span>
                 </button>
               </div>

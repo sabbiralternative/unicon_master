@@ -93,6 +93,7 @@ const BetSlip = ({ setRunnerId }) => {
     if (res?.success) {
       refetchExposure();
       refetchBalance();
+      setRunnerId("");
       // refetchCurrentBets();
       setBetDelay("");
       toast.success(res?.result?.result?.placed?.[0]?.message);
@@ -110,8 +111,12 @@ const BetSlip = ({ setRunnerId }) => {
 
   return (
     <>
-      {betDelay > 0   && (
-        <BetLoading betDelay={betDelay} setBetDelay={setBetDelay} absolute={false} />
+      {betDelay > 0 && (
+        <BetLoading
+          betDelay={betDelay}
+          setBetDelay={setBetDelay}
+          absolute={false}
+        />
       )}
       <div className="col-span-12 h-max">
         <span className="col-span-12 h-max w-full">
@@ -155,7 +160,7 @@ const BetSlip = ({ setRunnerId }) => {
                 className="col-span-6 pt-1.5 w-full px-[1px] overflow-hidden"
               >
                 <input
-                onChange={(e)=> dispatch(setStake(e.target.value))}
+                  onChange={(e) => dispatch(setStake(e.target.value))}
                   id="stakeInput"
                   className=" focus:outline-none text-md w-full h-full text-center bg-bg_Quaternary flex items-center justify-center border-[0.75px] text-text_Ternary placeholder:text-text_Ternary 5 rounded-sm text-text_Ternary 5 focus:border-oddInputBorderActive active:border-oddInputBorderActive"
                   placeholder={`Max : ${placeBetValues?.maxLiabilityPerBet}`}
@@ -224,7 +229,7 @@ const BetSlip = ({ setRunnerId }) => {
                   setRunnerId("");
                 }}
                 type="button"
-                className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent text-text_BetSlipCancelBtnColor font-medium border border-danger rounded-md cursor-pointer"
+                className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent text-text_BetSlipCancelBtnColor font-medium border border-primary rounded-md cursor-pointer"
               >
                 <span className="text-text_Primary font-bold text-xs leading-5">
                   Cancel Bet

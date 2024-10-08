@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { useSelector } from "react-redux";
 import { useGetAllGroupEventsQuery } from "../../../redux/features/events/events";
 
@@ -15,6 +16,7 @@ import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/desktop/Home/Group";
 // import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
+import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
 // import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 
 const Home = () => {
@@ -28,7 +30,7 @@ const Home = () => {
       <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
         <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
           <LeftDeskSidebar />
-          {group === 0 ? (
+          {group === 0 && (
             <>
               <div
                 className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
@@ -53,9 +55,23 @@ const Home = () => {
                 <FAQ />
               </div>
             </>
-          ) : (
-            <Group data={data} />
           )}
+
+          {group === 2 || group === 4 || group === 1 ? (
+            <Group data={data} />
+          ) : null}
+
+          {group === "liveCasinoWolf" ||
+          group === "slotWolf" ||
+          group === "auraWolf" ? (
+            <div
+              className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%] page-body"
+              style={{ minHeight: "calc(-110px + 100dvh)" }}
+              _ngcontent-ng-c1965075897=""
+            >
+              <LiveCasino />
+            </div>
+          ) : null}
           <RightDeskSidebar />
         </div>
       </div>

@@ -160,7 +160,10 @@ const EventHeader = ({ data, setBetsType, betType, myBets }) => {
             LIVE
           </button>
           <button
-            onClick={() => setBetsType("openBet")}
+            onClick={() => {
+              setBetsType("openBet");
+              window.scrollTo(0, 0);
+            }}
             className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3  font-lato font-bold text-xs ${
               betType === "openBet" ? "text-text_Primary" : "text-text_Quinary "
             }`}

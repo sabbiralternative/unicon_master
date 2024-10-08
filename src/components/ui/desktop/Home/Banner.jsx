@@ -160,7 +160,7 @@ const Banner = () => {
           </div>
         </span>
       </div>
-      <div
+      {/* <div
         title="scaleton-Quick"
         className="w-full h-max overflow-auto no-scrollbar scroll-smooth"
       >
@@ -446,7 +446,7 @@ const Banner = () => {
             </div>
           </span>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

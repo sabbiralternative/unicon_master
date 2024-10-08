@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { userToken } from "../../../redux/features/auth/authSlice";
+import toast from "react-hot-toast";
 
 const IFrame = () => {
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const [iFrame, setIFrame] = useState("");
   const { gameId } = useParams();
   const token = useSelector(userToken);
@@ -33,12 +34,12 @@ const IFrame = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = res?.data;
-      
+
         setIFrame(data?.gameUrl);
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        console.error("Error opening casino game:", error);
+        toast.error(error?.message);
       }
     };
     getCasinoVideo();

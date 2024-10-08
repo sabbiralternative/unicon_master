@@ -69,7 +69,7 @@ const PaymentMethod = ({
       }
     }
   };
-  console.log(depositData);
+
   return (
     <div
       className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
@@ -538,7 +538,7 @@ const PaymentMethod = ({
           </div>
           <div className="w-full text-center py-4 px-2">
             <button
-              disabled={paymentMethods?.length === 0}
+              disabled={paymentMethods?.length === 0 || !tabs}
               onClick={() => {
                 setPaymentMethods(false);
                 setUploadTransaction(true);

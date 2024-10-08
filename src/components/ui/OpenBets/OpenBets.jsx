@@ -14,7 +14,7 @@ const OpenBets = () => {
     ...myBets.filter((bet) => bet.betType === "Back"),
     ...myBets.filter((bet) => bet.betType === "Lay"),
   ];
-  console.log(myBets);
+
   return (
     <div
       className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
@@ -41,7 +41,6 @@ const OpenBets = () => {
             <div className="w-full origin-top scaleVerticalOpen">
               <div className="flex flex-col gap-1 w-full">
                 {orderedBets?.map((bet, i) => {
-          
                   return (
                     <div
                       key={i}

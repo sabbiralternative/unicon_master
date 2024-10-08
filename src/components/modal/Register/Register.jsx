@@ -32,7 +32,7 @@ const Register = () => {
   useCloseModalClickOutside(registerRef, () => {
     dispatch(setShowRegisterModal(false));
   });
-  console.log(logo);
+
   const handleMobileInputChange = (e) => {
     if (e.target.value.length <= 10) {
       setMobile(e.target.value);

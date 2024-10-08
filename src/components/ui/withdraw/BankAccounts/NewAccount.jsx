@@ -86,7 +86,7 @@ const NewAccount = () => {
                 label="IFSC Code"
                 required=""
                 placeholder="Enter IFSC Code"
-                className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-4 pr-4 ml-0 mr-0"
+                className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
                 type="text"
                 value={bankDetails.ifsc}
               />
@@ -110,7 +110,7 @@ const NewAccount = () => {
               label="Account No"
               required=""
               placeholder="Enter Account Number"
-              className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-4 pr-4 ml-0 mr-0"
+              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
               type="text"
               value={bankDetails.accountNumber}
             />
@@ -134,7 +134,7 @@ const NewAccount = () => {
               required=""
               id="confirmAccountNo"
               placeholder="Re-enter Account Number"
-              className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-4 pr-4 ml-0 mr-0"
+              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
               type="text"
               value={bankDetails.confirmAccountNumber}
             />
@@ -157,7 +157,7 @@ const NewAccount = () => {
               label="Account Name"
               required=""
               placeholder="Enter Account Name"
-              className="block w-full focus:outline-none py-2 bg-bg_BgGray border rounded-lg pl-4 pr-4 ml-0 mr-0"
+              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
               type="text"
               value={bankDetails.accountName}
             />
@@ -173,10 +173,10 @@ const NewAccount = () => {
             htmlFor="blue"
           >
             <input
-              className="before:content[''] before:bg-bg_Secondary3 rounded-md peer relative cursor-pointer appearance-none border border-undefined transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-max before:w-max before:-translate-x-2/4 before:-translate-y-2/4 before:opacity-0 before:transition-opacity checked:border-undefined checked:bg-bg_Success hover:before:opacity-10 h-5 w-5"
+              className="before:content[''] before:bg-bg_Secondary3 rounded-md peer relative cursor-pointer appearance-none border border-success transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-max before:w-max before:-translate-x-2/4 before:-translate-y-2/4 before:opacity-0 before:transition-opacity checked:border-success checked:bg-bg_Success hover:before:opacity-10 h-5 w-5"
               id="blue"
               type="checkbox"
-              checked=""
+              defaultChecked
             />
             <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-text_Quaternary opacity-0 transition-opacity peer-checked:opacity-100">
               <svg

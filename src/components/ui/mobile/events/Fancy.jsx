@@ -15,13 +15,11 @@ import Ladder from "../../../modal/Ladder/Ladder";
 import { userToken } from "../../../../redux/features/auth/authSlice";
 
 const Fancy = ({ fancy }) => {
-  const token = useSelector(userToken)
-   const [eventName,setEventName] = useState('')
+  const token = useSelector(userToken);
+  const [eventName, setEventName] = useState("");
   const [ladderData, setLadderData] = useState([]);
   const [getLadder] = useGetLadderMutation();
-  const { predictOdd, stake } = useSelector(
-    (state) => state?.event
-  );
+  const { predictOdd, stake } = useSelector((state) => state?.event);
   const [runnerId, setRunnerId] = useState("");
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
@@ -39,12 +37,12 @@ const Fancy = ({ fancy }) => {
       runner,
       exposer,
       dispatch,
-     token
+      token
     );
   };
 
-  const handleGetLadder = async (marketId,games) => {
-    setEventName(games?.eventName)
+  const handleGetLadder = async (marketId, games) => {
+    setEventName(games?.name);
     const generatedToken = handleRandomToken();
     const encryptedData = handleEncryptData({
       token: generatedToken,
@@ -60,10 +58,8 @@ const Fancy = ({ fancy }) => {
     }
   };
 
-
   return (
     <>
-   
       <div className="text-base font-medium text-center py-1.5">
         <ul className="flex flex-wrap items-center justify-start gap-x-3">
           <li className="px-[15px] py-2 rounded-[100px] flex items-center justify-center cursor-pointer active:scale-95 transition-all ease-in-out duration-100 bg-bg_Primary text-text_Quaternary border-borderOfFancyPremiumTab">
@@ -71,11 +67,14 @@ const Fancy = ({ fancy }) => {
               Fancy Market
             </span>
           </li>
- 
         </ul>
       </div>
       {ladderData?.length > 0 && (
-        <Ladder ladderData={ladderData} setLadderData={setLadderData} eventName={eventName} />
+        <Ladder
+          ladderData={ladderData}
+          setLadderData={setLadderData}
+          eventName={eventName}
+        />
       )}
       {fancy?.map((games) => {
         const pnl =
@@ -83,7 +82,7 @@ const Fancy = ({ fancy }) => {
         const predictOddValues = predictOdd?.filter(
           (val) => val?.id === games?.id
         );
-      
+
         return (
           <div key={games?.id} className="py-1.5">
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
@@ -157,7 +156,7 @@ const Fancy = ({ fancy }) => {
                       return (
                         <span
                           key={i}
-                          onClick={() => handleGetLadder(MarketId,games)}
+                          onClick={() => handleGetLadder(MarketId, games)}
                           className="col-span-2 md:col-span-1 flex flex-row items-center justify-center"
                         >
                           <div className="opacity-100 cursor-pointer">

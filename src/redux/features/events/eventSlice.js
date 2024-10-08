@@ -51,7 +51,10 @@ export const {
   setPlaceBetValues,
   setPrice,
   setStake,
-  setFirstOdd,setPredictOdd,setSecondOdd,setThirdOdd
+  setFirstOdd,
+  setPredictOdd,
+  setSecondOdd,
+  setThirdOdd,
 } = eventSlice.actions;
 
 export default eventSlice.reducer;

@@ -5,16 +5,12 @@ const OpenBets = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div
-   
-        className="lg:hidden flex flex-col"
-        style={{ paddingTop: "60px" }}
-      >
+      <div className="lg:hidden flex flex-col" style={{ paddingTop: "60px" }}>
         <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
           <div className="app-bg flex-row w-full h-full flex ">
-            <div className="w-[34px] h-full flex items-center justify-center">
+            <div className="w-[34px] h-full flex items-center justify-center primary-icons">
               <button
-                   onClick={() => navigate(-1)}
+                onClick={() => navigate(-1)}
                 className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer"
                 type="button"
               >
@@ -23,11 +19,11 @@ const OpenBets = () => {
                   width="7"
                   height="12"
                   viewBox="0 0 7 12"
-                  fill="var(--color-iconsColor)"
+                  fill="var(--color-bg-primary)"
                 >
                   <path
                     d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
-                    fill="var(--color-iconsColor)"
+                    fill="var(--color-bg-primary)"
                   ></path>
                 </svg>
               </button>

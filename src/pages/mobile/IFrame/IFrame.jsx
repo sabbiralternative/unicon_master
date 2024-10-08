@@ -6,9 +6,10 @@ import handleRandomToken from "../../../utils/handleRandomToken";
 import handleEncryptData from "../../../utils/handleEncryptData";
 import { API, settings } from "../../../api";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const IFrame = () => {
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const [iFrame, setIFrame] = useState("");
   const { gameId } = useParams();
   const token = useSelector(userToken);
@@ -38,7 +39,7 @@ const IFrame = () => {
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        console.error("Error opening casino game:", error);
+        toast.error(error?.message);
       }
     };
     getCasinoVideo();

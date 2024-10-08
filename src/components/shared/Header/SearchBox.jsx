@@ -28,7 +28,7 @@ const SearchBox = () => {
           }),
         });
         const data = await res.json();
-        console.log(data);
+
         if (data?.result?.length > 0) {
           setData(data?.result);
         }

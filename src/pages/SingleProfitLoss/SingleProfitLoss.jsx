@@ -45,7 +45,7 @@ const SingleProfitLoss = () => {
           style={{ minHeight: "calc(-110px + 100dvh)" }}
         >
           <div className="pb-2">
-            <div className="w-full h-full flex flex-col gap-2 p-2 text-text_Ternary font-manrope-regular text-sm">
+            <div className="w-full h-full flex flex-col gap-2 p-2 text-text_Ternary  text-sm">
               <div className="flex flex-col bg-bg_Quaternary rounded-md overflow-hidden shadow-lg">
                 <div className="bg-titleGrd py-2 px-4 text-text_Quaternary font-semibold">
                   {singlePassbook?.[0]?.eventName}

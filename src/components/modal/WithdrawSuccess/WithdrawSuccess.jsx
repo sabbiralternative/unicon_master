@@ -475,14 +475,14 @@ const WithdrawSuccess = ({ setWithdrawSuccess }) => {
               </linearGradient>
             </defs>
           </svg>
-          <h6 className="text-xl font-lato font-bold leading-5 text-text_Ternary">
+          <h6 className="text-xl  font-bold leading-5 text-text_Ternary">
             Congratulations!
           </h6>
           <span className="text-sm leading-5 text-text_Ternary">
-            <span className="font-normal font-roboto text-gray/80">
+            <span className="font-normal  text-gray/80">
               We have your request to Withdraw{" "}
             </span>
-            <span className="font-semibold font-roboto">₹ 300.</span>
+            <span className="font-semibold ">₹ 300.</span>
           </span>
           <div className="w-full">
             <button
@@ -490,7 +490,7 @@ const WithdrawSuccess = ({ setWithdrawSuccess }) => {
                 setWithdrawSuccess(false);
                 navigate("/");
               }}
-              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato bg-titleGrd text-text_Quaternary w-full py-2 px-2.5 text-base shadow-lg font-lato rounded-[4px] font-[900] leading-4 cursor-pointer"
+              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  bg-[var(--color-bg-primary)] text-text_Quaternary w-full py-2 px-2.5 text-base shadow-lg rounded-[4px] font-[900] leading-4 cursor-pointer"
               type="button"
             >
               Go Back

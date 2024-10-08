@@ -135,7 +135,6 @@ const MatchOdds = ({ match_odds }) => {
   return (
     <>
       {match_odds?.map((games, i) => {
-        console.log(games);
         const teamProfitForGame = teamProfit?.find(
           (profit) =>
             profit?.gameId === games?.id && profit?.isOnePositiveExposure

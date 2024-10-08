@@ -3,24 +3,24 @@ import {
   setGroupType,
   setShowLoginModal,
 } from "../../../../redux/features/stateSlice";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { groupTitle } from "../../../../const";
-import { useGetAllOddsEventsQuery } from "../../../../redux/features/events/events";
+import { useNavigate } from "react-router-dom";
+// import { groupTitle } from "../../../../const";
+// import { useGetAllOddsEventsQuery } from "../../../../redux/features/events/events";
 import { settings } from "../../../../api";
 import { userToken } from "../../../../redux/features/auth/authSlice";
 
 const LeftDeskSidebar = () => {
   const token = useSelector(userToken);
-  const { group } = useSelector((state) => state.state);
+  // const { group } = useSelector((state) => state.state);
   const dispatch = useDispatch();
-  const location = useLocation();
+  // const location = useLocation();
   const navigate = useNavigate();
-  const { eventTypeId, eventId } = useParams();
-  const payload = {
-    eventTypeId,
-    eventId,
-  };
-  const { data } = useGetAllOddsEventsQuery(payload);
+  // const { eventTypeId, eventId } = useParams();
+  // const payload = {
+  //   eventTypeId,
+  //   eventId,
+  // };
+  // const { data } = useGetAllOddsEventsQuery(payload);
 
   const navigateAviatorCasinoVideo = () => {
     if (token) {
@@ -195,7 +195,7 @@ const LeftDeskSidebar = () => {
             </span>
           </span>
         </li>
-        <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
+        {/* <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
           <span className="flex w-full items-center h-full px-6 justify-start gap-3">
             <svg
               width="20"
@@ -213,8 +213,8 @@ const LeftDeskSidebar = () => {
               Horse Racing
             </span>
           </span>
-        </li>
-        <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
+        </li> */}
+        {/* <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
           <span className="flex w-full items-center h-full px-6 justify-start gap-3">
             <svg
               width="20"
@@ -232,8 +232,14 @@ const LeftDeskSidebar = () => {
               Greyhound Racing
             </span>
           </span>
-        </li>
-        <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
+        </li> */}
+        <li
+          onClick={() => {
+            navigate("/");
+            dispatch(setGroupType("liveCasinoWolf"));
+          }}
+          className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
+        >
           <span className="flex w-full items-center h-full px-6 justify-start gap-3">
             <svg
               width="20"
@@ -252,7 +258,7 @@ const LeftDeskSidebar = () => {
             </span>
           </span>
         </li>
-        <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
+        {/* <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
           <span className="flex w-full items-center h-full px-6 justify-start gap-3">
             <svg
               width="20"
@@ -282,8 +288,14 @@ const LeftDeskSidebar = () => {
               Sportsbook
             </span>
           </span>
-        </li>
-        <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
+        </li> */}
+        <li
+          onClick={() => {
+            navigate("/");
+            dispatch(setGroupType("slotWolf"));
+          }}
+          className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
+        >
           <span className="flex w-full items-center h-full px-6 justify-start gap-3">
             <svg
               width="20"
@@ -378,7 +390,13 @@ const LeftDeskSidebar = () => {
             </span>
           </span>
         </li>
-        <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
+        <li
+          onClick={() => {
+            navigate("/");
+            dispatch(setGroupType("auraWolf"));
+          }}
+          className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
+        >
           <span className="flex w-full items-center h-full px-6 justify-start gap-3">
             <svg
               width="20"

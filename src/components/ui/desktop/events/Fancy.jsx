@@ -14,7 +14,7 @@ import Ladder from "../../../modal/Ladder/Ladder";
 import { userToken } from "../../../../redux/features/auth/authSlice";
 
 const Fancy = ({ fancy }) => {
-  const token = useSelector(userToken)
+  const token = useSelector(userToken);
   const [eventName, setEventName] = useState("");
   const [ladderData, setLadderData] = useState([]);
   const [getLadder] = useGetLadderMutation();
@@ -39,7 +39,7 @@ const Fancy = ({ fancy }) => {
     );
   };
   const handleGetLadder = async (marketId, games) => {
-    setEventName(games?.eventName);
+    setEventName(games?.name);
     const generatedToken = handleRandomToken();
     const encryptedData = handleEncryptData({
       token: generatedToken,
@@ -62,9 +62,7 @@ const Fancy = ({ fancy }) => {
             <span className="inline-block font-bold text-xs sm:text-sm md:text-base leading-4">
               Fancy Market
             </span>
- 
           </li>
- 
         </ul>
       </div>
       {/* <div className="py-1.5">
@@ -178,7 +176,6 @@ const Fancy = ({ fancy }) => {
         />
       )}
       {fancy?.map((games) => {
-   
         const pnl =
           pnlBySelection?.filter((pnl) => pnl?.MarketId === games?.id) || [];
         const predictOddValues = predictOdd?.filter(
@@ -440,7 +437,7 @@ const Fancy = ({ fancy }) => {
                           Min :
                         </span>
                         <span className="text-[10px] text-center text-text_MaxMarketTextColor">
-                        {games?.minLiabilityPerBet}
+                          {games?.minLiabilityPerBet}
                         </span>
                       </div>
                     </div>

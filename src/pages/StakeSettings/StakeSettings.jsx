@@ -105,7 +105,7 @@ const StakeSettings = () => {
                   </div>
                   <div className="w-full flex items-center justify-center">
                     <button
-                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex items-center justify-center gap-1 p-2 bg-bg_Success mt-2 w-full sm:max-w-[350px] rounded font-semibold text-text_Quaternary disabled:opacity-80 cursor-pointer"
+                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex items-center justify-center gap-1 p-2 bg-[var(--color-bg-primary)] mt-2 w-full sm:max-w-[350px] rounded font-semibold text-text_Quaternary disabled:opacity-80 cursor-pointer"
                       type="submit"
                     >
                       <span className="text-base text-text_Quaternary font-lato font-[400] space-x-1">

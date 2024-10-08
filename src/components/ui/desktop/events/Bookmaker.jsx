@@ -138,6 +138,7 @@ const Bookmaker = ({ bookmaker }) => {
           (profit) =>
             profit?.gameId === games?.id && profit?.isOnePositiveExposure
         );
+
         return (
           <div key={i} className="py-1.5">
             <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] mb-1.5">
@@ -146,45 +147,47 @@ const Bookmaker = ({ bookmaker }) => {
                 <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
                   {games?.name}
                 </span>
-                {settings.betFairCashOut && games?.runners?.length !== 3 && (
-                  <button
-                    onClick={() =>
-                      handleCashOutPlaceBet(
-                        games,
-                        "lay",
-                        dispatch,
-                        pnlBySelection,
-                        token,
-                        navigate,
-                        teamProfitForGame
-                      )
-                    }
-                    style={{
-                      cursor: `${
-                        !teamProfitForGame ? "not-allowed" : "pointer"
-                      }`,
-                      opacity: `${!teamProfitForGame ? "0.6" : "1"}`,
-                    }}
-                    disabled={!teamProfitForGame}
-                    type="button"
-                    className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-10 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-fit max-w-[74%] mr-1 cursor-pointer ${
-                      teamProfitForGame?.profit > 0
-                        ? "bg-maxBtnGrd"
-                        : " bg-bg_lossGrd"
-                    }`}
-                  >
-                    <div className="text-[10px] md:text-sm text-text_Quaternary whitespace-nowrap font-semibold">
-                      Cashout
-                    </div>
-                    {teamProfitForGame?.profit && (
-                      <div className="capitalize text-[10px] md:text-sm ml-1 text-text_Quaternary whitespace-nowrap font-semibold">
-                        <span> : </span>
-                        <span className="font-roboto">₹ </span>
-                        <span> {teamProfitForGame?.profit?.toFixed(2)}</span>
+                {settings.betFairCashOut &&
+                  games?.runners?.length !== 3 &&
+                  games?.name === "bookmaker" && (
+                    <button
+                      onClick={() =>
+                        handleCashOutPlaceBet(
+                          games,
+                          "lay",
+                          dispatch,
+                          pnlBySelection,
+                          token,
+                          navigate,
+                          teamProfitForGame
+                        )
+                      }
+                      style={{
+                        cursor: `${
+                          !teamProfitForGame ? "not-allowed" : "pointer"
+                        }`,
+                        opacity: `${!teamProfitForGame ? "0.6" : "1"}`,
+                      }}
+                      disabled={!teamProfitForGame}
+                      type="button"
+                      className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-10 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-fit max-w-[74%] mr-1 cursor-pointer ${
+                        teamProfitForGame?.profit > 0
+                          ? "bg-maxBtnGrd"
+                          : " bg-bg_lossGrd"
+                      }`}
+                    >
+                      <div className="text-[10px] md:text-sm text-text_Quaternary whitespace-nowrap font-semibold">
+                        Cashout
                       </div>
-                    )}
-                  </button>
-                )}
+                      {teamProfitForGame?.profit && (
+                        <div className="capitalize text-[10px] md:text-sm ml-1 text-text_Quaternary whitespace-nowrap font-semibold">
+                          <span> : </span>
+                          <span className="font-roboto">₹ </span>
+                          <span> {teamProfitForGame?.profit?.toFixed(2)}</span>
+                        </div>
+                      )}
+                    </button>
+                  )}
                 {/* <span className="text-xs font-light">
                   Min: {games?.minLiabilityPerBet}
                 </span> */}

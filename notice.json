@@ -17,7 +17,7 @@
       "apkLink": "https://a23money.com/site.apk",
       "withdraw": true,
       "disabledDevtool": false,
-      "casinoCurrency": "INR",
+      "casinoCurrency": "AED",
       "balanceApiLoop": false,
       "betFairCashOut": true,
       "logo": {
@@ -29,6 +29,9 @@
     },
 
     "endpoint": {
+      "liveCasinoWolf": "https://api7.live/api/exchange/diamond/liveCasinoWolf",
+      "slotsWolf": "https://api7.live/api/exchange/diamond/slotsWolf",
+      "auraWolf": "https://api7.live/api/exchange/diamond/auraWolf",
       "login": "https://api7.live/api/account/diamond/login",
       "inPlayAndPopularEvents": "https://api7.live/api/exchange/odds/inPlayAndPopularEvents",
       "menu": "https://cache.api7.live/api/exchange/diamond/menu2",
@@ -82,8 +85,6 @@
       "testCasino": "https://cache.api7.live/api/exchange/diamond/testCasino",
       "assets": "https://api7.live/sitethemes",
       "myMarket": "https://api7.live/api/exchange/diamond/myMarket",
-      "liveCasinoWolf": "https://api7.live/api/exchange/diamond/liveCasinoWolf",
-      "slotsWolf": "https://api7.live/api/exchange/diamond/slotsWolf",
       "latestEvents": "https://api7.live/api/exchange/diamond/latestEvents",
       "forgotPassword": "https://api7.live/api/exchange/diamond/forgotPassword",
       "liveCasinoIFrame": " https://api7.live/api/livecasino/iframe",

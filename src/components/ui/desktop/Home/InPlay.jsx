@@ -62,7 +62,10 @@ const InPlay = ({ data }) => {
               </svg>
               <span>{groupTitle[group]}</span>
             </div>
-            <div className="w-max text-nowrap">
+            <div
+              onClick={() => navigate("/open-bets")}
+              className="w-max text-nowrap cursor-pointer"
+            >
               <span className="text-xs tracking-wide text-text_Quaternary text-nowrap whitespace-nowrap font-normal">
                 Open Bets
               </span>
@@ -88,7 +91,7 @@ const InPlay = ({ data }) => {
                 <div className="eventHeadName grid grid-cols-12">
                   <div className="text-text_Ternary px-2 h-full py-2.5 col-span-6 lg:col-span-5 pl-2 flex items-center justify-start w-full gap-x-2">
                     <span>
-                    {eventName[category] === "Cricket" && (
+                      {eventName[category] === "Cricket" && (
                         <img src={assets.cricket} alt="" />
                       )}
                       {eventName[category] === "Tennis" && (

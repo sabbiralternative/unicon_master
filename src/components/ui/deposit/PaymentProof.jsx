@@ -32,7 +32,7 @@ const PaymentProof = ({ paymentId, amount }) => {
           },
         });
         const data = res.data;
-        console.log(data);
+
         if (data?.success) {
           setLoading(false);
           setUploadedImage(data?.fileName);

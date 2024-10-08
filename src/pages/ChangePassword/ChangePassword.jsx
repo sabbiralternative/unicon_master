@@ -164,7 +164,10 @@ const ChangePassword = () => {
                 </div>
                 <div className="flex items-center justify-center mt-2 w-full gap-x-2">
                   <button
-                    onClick={() => reset()}
+                    onClick={() => {
+                      reset();
+                      navigate("/");
+                    }}
                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out max-w-[180px] p-2 bg-bg_Quaternary mt-2 w-full rounded-lg font-semibold text-text_Primary border border-[var(--color-bg-primary)] cursor-pointer"
                     type="button"
                   >

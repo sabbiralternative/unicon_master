@@ -1,37 +1,37 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   setGroupType,
-  setShowLoginModal,
+  // setShowLoginModal,
 } from "../../../../redux/features/stateSlice";
-import { userToken } from "../../../../redux/features/auth/authSlice";
-import { settings } from "../../../../api";
-import { useNavigate } from "react-router-dom";
+// import { userToken } from "../../../../redux/features/auth/authSlice";
+// import { settings } from "../../../../api";
+// import { useNavigate } from "react-router-dom";
 
 import BannerSlider from "../../BannerSlider/BannerSlider";
 const Banner = () => {
-  const navigate = useNavigate();
-  const token = useSelector(userToken);
+  // const navigate = useNavigate();
+  // const token = useSelector(userToken);
   const dispatch = useDispatch();
   const handleNavigate = (group) => {
     dispatch(setGroupType(group));
   };
 
-  const navigateAviatorCasinoVideo = () => {
-    if (token) {
-      if (settings.casinoCurrency !== "AED") {
-        navigate(`/casino/aviator/201206`);
-      } else {
-        // setShowModal(true);
-        // setCasinoInfo({
-        //   provider_name: "aviator",
-        //   game_id: "201206",
-        //   base: "casino",
-        // });
-      }
-    } else {
-      dispatch(setShowLoginModal(true));
-    }
-  };
+  // const navigateAviatorCasinoVideo = () => {
+  //   if (token) {
+  //     if (settings.casinoCurrency !== "AED") {
+  //       navigate(`/casino/aviator/201206`);
+  //     } else {
+  //       // setShowModal(true);
+  //       // setCasinoInfo({
+  //       //   provider_name: "aviator",
+  //       //   game_id: "201206",
+  //       //   base: "casino",
+  //       // });
+  //     }
+  //   } else {
+  //     dispatch(setShowLoginModal(true));
+  //   }
+  // };
   return (
     <>
       <BannerSlider />
@@ -185,7 +185,7 @@ const Banner = () => {
           </div>
         </span>
       </div>
-      <div className="flex flex-col items-center justify-start w-full scrollSmooth no-scrollbar">
+      {/* <div className="flex flex-col items-center justify-start w-full scrollSmooth no-scrollbar">
         <div className="flex overflow-auto w-full scrollSmooth no-scrollbar">
           <div title="QuickButtons-0" className="grid grid-row-2">
             <span
@@ -8398,7 +8398,7 @@ const Banner = () => {
             </span>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
