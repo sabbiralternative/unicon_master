@@ -51,17 +51,17 @@ const Bookmaker = ({ bookmaker }) => {
     if (exposureA > exposureB) {
       // Team A has a larger exposure.
       runner = runner1;
-      largerExposure = exposureA;
+      largerExposure = 1 + exposureA / 100;
       layValue = runner1?.lay?.[0]?.price;
       oppositeLayValue = runner2?.lay?.[0]?.price;
-      lowerExposure = exposureB;
+      lowerExposure = 1 + exposureB / 100;
     } else {
       // Team B has a larger exposure.
       runner = runner2;
-      largerExposure = exposureB;
+      largerExposure = 1 + exposureB / 100;
       layValue = runner2?.lay?.[0]?.price;
       oppositeLayValue = runner1?.lay?.[0]?.price;
-      lowerExposure = exposureA;
+      lowerExposure = 1 + exposureA / 100;
     }
 
     // Compute the absolute value of the lower exposure.

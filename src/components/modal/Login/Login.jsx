@@ -28,7 +28,7 @@ const Login = () => {
   const { register, handleSubmit } = useForm({
     // defaultValues: {
     //   username: "8888884000",
-    //   password: "Abcd1234",
+    //   password: "avinya123",
     // },
   });
 
