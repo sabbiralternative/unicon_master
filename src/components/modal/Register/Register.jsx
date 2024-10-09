@@ -17,8 +17,10 @@ import {
   setShowRegisterModal,
 } from "../../../redux/features/stateSlice";
 import useContextState from "../../../hooks/useContextState";
+import useBalance from "../../../hooks/useBalance";
 
 const Register = () => {
+  const { refetchBalance } = useBalance();
   const [passType, setPassType] = useState(true);
   const [confirmPassType, setConfirmPassType] = useState(true);
   const dispatch = useDispatch();
@@ -83,6 +85,7 @@ const Register = () => {
       dispatch(setUser({ user, token, bonusToken }));
       localStorage.setItem("buttonValue", JSON.stringify(game));
       if (token && user) {
+        refetchBalance();
         dispatch(setShowRegisterModal(false));
         toast.success("Register successful");
       }

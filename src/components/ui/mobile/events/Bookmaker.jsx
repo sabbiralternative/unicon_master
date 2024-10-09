@@ -147,7 +147,8 @@ const Bookmaker = ({ bookmaker }) => {
                 </span>
                 {settings.betFairCashOut &&
                   games?.runners?.length !== 3 &&
-                  games?.name === "bookmaker" && (
+                  games?.name === "bookmaker" &&
+                  games?.status === "OPEN" && (
                     <button
                       onClick={() =>
                         handleCashoutBetMobile(

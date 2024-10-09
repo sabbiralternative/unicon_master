@@ -19,7 +19,7 @@ const Fancy = ({ fancy }) => {
   const [eventName, setEventName] = useState("");
   const [ladderData, setLadderData] = useState([]);
   const [getLadder] = useGetLadderMutation();
-  const { predictOdd, stake } = useSelector((state) => state?.event);
+  // const { predictOdd, stake } = useSelector((state) => state?.event);
   const [runnerId, setRunnerId] = useState("");
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
@@ -79,9 +79,9 @@ const Fancy = ({ fancy }) => {
       {fancy?.map((games) => {
         const pnl =
           pnlBySelection?.filter((pnl) => pnl?.MarketId === games?.id) || [];
-        const predictOddValues = predictOdd?.filter(
-          (val) => val?.id === games?.id
-        );
+        // const predictOddValues = predictOdd?.filter(
+        //   (val) => val?.id === games?.id
+        // );
 
         return (
           <div key={games?.id} className="py-1.5">
@@ -111,7 +111,7 @@ const Fancy = ({ fancy }) => {
                           );
                         })}
 
-                      {stake &&
+                      {/* {stake &&
                         runnerId &&
                         predictOddValues?.map(({ odd, id }) => {
                           return (
@@ -127,7 +127,7 @@ const Fancy = ({ fancy }) => {
                               &gt;&gt; {stake && odd}
                             </span>
                           );
-                        })}
+                        })} */}
                     </span>
                   </div>
                   <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center gap-x-[2px]">

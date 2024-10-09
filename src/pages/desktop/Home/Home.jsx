@@ -60,8 +60,8 @@ const Home = () => {
                   {/* <IndianCardGames /> */}
                   {/* <PopularGames /> */}
                   {/* <UpcomingEvents /> */}
-                  {/* <CardGames />
-                  <IndianLiveCasino />
+                  {/* <CardGames /> */}
+                  {/* <IndianLiveCasino />
                   <Casino /> */}
                 </div>
                 <FAQ />

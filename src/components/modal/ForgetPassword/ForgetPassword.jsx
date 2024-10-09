@@ -126,7 +126,7 @@ const ForgetPassword = () => {
           title="forgotPasswor"
           className="flex flex-col items-start gap-y-4 w-full"
         >
-          <div className="logo w-full hidden lg:flex items-center justify-center mb-4">
+          <div className="logo auth-gradient w-full hidden lg:flex items-center justify-center mb-4 h-[100px]">
             <img
               alt="logo"
               loading="lazy"

@@ -6,7 +6,9 @@ const MainLayout = () => {
   return (
     <div className="w-full flex flex-col app-bg h-[100%] ">
       <Header />
-      <Outlet />
+      <div style={{ minHeight: "calc(-110px + 100dvh)" }}>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

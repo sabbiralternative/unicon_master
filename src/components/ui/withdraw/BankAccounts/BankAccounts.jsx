@@ -42,7 +42,7 @@ const BankAccounts = ({ amount }) => {
             </div>
             <div
               className="overflow-hidden transition-height duration-100 ease-in-out"
-              style={{ height: "36px" }}
+              style={{ height: "20px" }}
             >
               <div className="text-xs pt-1 md:text-sm font-lato font-semibold leading-4">
                 3. Do not put Withdraw request without betting with deposit
@@ -58,17 +58,6 @@ const BankAccounts = ({ amount }) => {
                 the linked users will be blocked.
               </div>
             </div>
-            <div
-              className="overflow-hidden transition-height duration-100 ease-in-out"
-              style={{ height: "20px" }}
-            >
-              <div className="text-xs pt-1 md:text-sm font-lato font-semibold leading-4">
-                5. Paytm account numbers always start with 91.
-              </div>
-            </div>
-            <p className="text-textColor pt-1 font-sans text-xs md:text-sm font-normal cursor-pointer">
-              See Less..
-            </p>
           </div>
         </div>
         <div className="text-base text-text_Ternary font-roboto w-full font-[700] flex flex-col items-start justify-start gap-y-1">

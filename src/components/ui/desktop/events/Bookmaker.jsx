@@ -149,7 +149,8 @@ const Bookmaker = ({ bookmaker }) => {
                 </span>
                 {settings.betFairCashOut &&
                   games?.runners?.length !== 3 &&
-                  games?.name === "bookmaker" && (
+                  games?.name === "bookmaker" &&
+                  games?.status === "OPEN" && (
                     <button
                       onClick={() =>
                         handleCashOutPlaceBet(
@@ -170,7 +171,7 @@ const Bookmaker = ({ bookmaker }) => {
                       }}
                       disabled={!teamProfitForGame}
                       type="button"
-                      className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-10 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-fit max-w-[74%] mr-1 cursor-pointer ${
+                      className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-fit max-w-[74%] mr-1 cursor-pointer ${
                         teamProfitForGame?.profit > 0
                           ? "bg-maxBtnGrd"
                           : " bg-bg_lossGrd"

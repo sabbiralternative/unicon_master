@@ -40,11 +40,11 @@ const SingleProfitLoss = () => {
   return (
     <>
       <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
-        <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
+        <div className="lg:flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
           <LeftDeskSidebar />
           <div
             className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
-            // style={{ minHeight: "calc(-110px + 100dvh)" }}
+            style={{ minHeight: "calc(-110px + 100dvh)" }}
           >
             <div className="pb-2">
               <div className="w-full h-full flex flex-col gap-2 p-2 text-text_Ternary  text-sm">
@@ -182,38 +182,40 @@ const SingleProfitLoss = () => {
                 </div>
               </div>
             </div>
+            <div
+              onClick={() => navigate(-1)}
+              className="lg:hidden flex flex-col w-fit cursor-pointer"
+            >
+              <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
+                <div className="app-bg flex-row w-full h-full flex">
+                  <div className="w-[34px] h-full flex items-center justify-center">
+                    <button
+                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
+                      type="button"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="7"
+                        height="12"
+                        viewBox="0 0 7 12"
+                        fill="var(--color-iconsColor)"
+                      >
+                        <path
+                          d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
+                          fill="var(--color-iconsColor)"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary font-lato font-bold text-[16px] leading-5">
+                    <span>Back</span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <RightDeskSidebar />
-        </div>
-      </div>
-      <div className="lg:hidden flex flex-col " style={{ paddingTop: "60px" }}>
-        <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
-          <div className="app-bg flex-row w-full h-full flex">
-            <div className="w-[34px] h-full flex items-center justify-center">
-              <button
-                onClick={() => navigate(-1)}
-                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
-                type="button"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="7"
-                  height="12"
-                  viewBox="0 0 7 12"
-                  fill="var(--color-iconsColor)"
-                >
-                  <path
-                    d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
-                    fill="var(--color-iconsColor)"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-            <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary font-lato font-bold text-[16px] leading-5">
-              <span>Back</span>
-            </span>
-          </div>
         </div>
       </div>
     </>
