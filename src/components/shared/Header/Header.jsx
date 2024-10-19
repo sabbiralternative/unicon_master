@@ -17,6 +17,8 @@ import { useEffect, useState } from "react";
 import { settings } from "../../../api";
 import SearchBox from "./SearchBox";
 import MobileSearch from "./MobileSearch";
+import { AndroidView } from "react-device-detect";
+import AppPopup from "./AppPopUp";
 
 const Header = () => {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -28,6 +30,7 @@ const Header = () => {
   const token = useSelector(userToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -35,69 +38,84 @@ const Header = () => {
     }, 1000);
   }, [time]);
 
+  useEffect(() => {
+    const expiryTime = localStorage.getItem("installPromptExpiryTime");
+    const currentTime = new Date().getTime();
+    if (!expiryTime || currentTime > expiryTime) {
+      localStorage.removeItem("installPromptExpiryTime");
+      setIsModalOpen(true);
+    }
+  }, [isModalOpen]);
+
   return (
-    <div
-      id="header"
-      title="header"
-      className=" fixed top-0 w-full  z-[100]"
-      style={{ zIndex: 1000 }}
-    >
-      <header>
-        <div className="flex flex-col">
-          <div className=" flex flex-col shadow-lg autoAnimate">
-            <div
-              id="header_body"
-              className="w-full bg-headerBg h-[54px] lg:h-[72px] pr-[4px] md:px-4 flex items-center justify-between gap-1  relative "
-            >
+    <>
+      <div
+        id="header"
+        title="header"
+        className=" fixed top-0 w-full  z-[100]"
+        style={{ zIndex: 1000 }}
+      >
+        {settings?.apkLink && isModalOpen && (
+          <AndroidView>
+            <AppPopup setIsModalOpen={setIsModalOpen} />
+          </AndroidView>
+        )}
+        <header>
+          <div className="flex flex-col">
+            <div className=" flex flex-col shadow-lg autoAnimate">
               <div
-                id="logoContainer"
-                className="logo flex   w-full h-full md:w-fit "
+                id="header_body"
+                className="w-full bg-headerBg h-[54px] lg:h-[72px] pr-[4px] md:px-4 flex items-center justify-between gap-1  relative "
               >
                 <div
-                  onClick={() => dispatch(setShowLeftSidebar(true))}
-                  className=" flex items-center w-[40px] md:w-fit justify-center  lg:hidden "
+                  id="logoContainer"
+                  className="logo flex   w-full h-full md:w-fit "
                 >
-                  <button
-                    className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-none border-none h-full flex items-center justify-center active:scale-150  w-[100%] shadow-none px-1  
+                  <div
+                    onClick={() => dispatch(setShowLeftSidebar(true))}
+                    className=" flex items-center w-[40px] md:w-fit justify-center  lg:hidden "
+                  >
+                    <button
+                      className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-none border-none h-full flex items-center justify-center active:scale-150  w-[100%] shadow-none px-1  
 cursor-pointer
 "
-                    type="button"
-                  >
-                    <span>
-                      <svg
-                        height="19"
-                        width="16"
-                        fill="var(--color-quaternary)"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 448 512"
-                      >
-                        <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path>
-                      </svg>
-                    </span>
-                  </button>
-                </div>
-                {/* Mobile search */}
-                {showMobileSearch && (
-                  <MobileSearch setShowMobileSearch={setShowMobileSearch} />
-                )}
+                      type="button"
+                    >
+                      <span>
+                        <svg
+                          height="19"
+                          width="16"
+                          fill="var(--color-quaternary)"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 448 512"
+                        >
+                          <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path>
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                  {/* Mobile search */}
+                  {showMobileSearch && (
+                    <MobileSearch setShowMobileSearch={setShowMobileSearch} />
+                  )}
 
-                <div
-                  onClick={() => {
-                    navigate("/");
-                    dispatch(setGroupType(0));
-                  }}
-                  className={`ml-[2px] md:ml-[0px]  flex items-center ${
-                    showMobileSearch ? "hidden" : ""
-                  }`}
-                >
-                  <div className="   cursor-pointer">
-                    <img
-                      height={settings.logoHeight}
-                      width={settings.logoWidth}
-                      src={logo}
-                      alt=""
-                    />
-                    {/* <svg
+                  <div
+                    onClick={() => {
+                      navigate("/");
+                      dispatch(setGroupType(0));
+                    }}
+                    className={`ml-[2px] md:ml-[0px]  flex items-center ${
+                      showMobileSearch ? "hidden" : ""
+                    }`}
+                  >
+                    <div className="   cursor-pointer">
+                      <img
+                        height={settings.logoHeight}
+                        width={settings.logoWidth}
+                        src={logo}
+                        alt=""
+                      />
+                      {/* <svg
                       width="3778"
                       height="652"
                       className="h-24 w-36 hidden sm:block"
@@ -167,120 +185,126 @@ cursor-pointer
                         fill="white"
                       ></path>
                     </svg> */}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <SearchBox />
-              <div id="currentDateTime" className=" hidden font-lato lg:block ">
-                <div className=" w-full text-text_Quaternary1 text-[10px] lg:text-[12px] flex flex-col px-2">
-                  <div className="flex gap-1 items-center text-nowrap whitespace-nowrap">
-                    {/* Aug 16th, 2024 ( GMT +5.5:30 ) */}
-                    {moment().format("MMMM Do YYYY")}
+                <SearchBox />
+                <div
+                  id="currentDateTime"
+                  className=" hidden font-lato lg:block "
+                >
+                  <div className=" w-full text-text_Quaternary1 text-[10px] lg:text-[12px] flex flex-col px-2">
+                    <div className="flex gap-1 items-center text-nowrap whitespace-nowrap">
+                      {/* Aug 16th, 2024 ( GMT +5.5:30 ) */}
+                      {moment().format("MMMM Do YYYY")}
+                    </div>
+                    <span className="text-text_Quaternary text-xs lg:text-[14px] text-nowrap whitespace-nowrap font-semibold ">
+                      {time}
+                    </span>
                   </div>
-                  <span className="text-text_Quaternary text-xs lg:text-[14px] text-nowrap whitespace-nowrap font-semibold ">
-                    {time}
-                  </span>
                 </div>
+                {token ? (
+                  <LoggedIn
+                    setShowMobileSearch={setShowMobileSearch}
+                    showMobileSearch={showMobileSearch}
+                    balance={balance}
+                    bonusBalance={bonusBalance}
+                  />
+                ) : (
+                  <UnAuthorized
+                    setShowMobileSearch={setShowMobileSearch}
+                    showMobileSearch={showMobileSearch}
+                  />
+                )}
               </div>
-              {token ? (
-                <LoggedIn
-                  setShowMobileSearch={setShowMobileSearch}
-                  showMobileSearch={showMobileSearch}
-                  balance={balance}
-                  bonusBalance={bonusBalance}
-                />
-              ) : (
-                <UnAuthorized
-                  setShowMobileSearch={setShowMobileSearch}
-                  showMobileSearch={showMobileSearch}
-                />
-              )}
-            </div>
-            <div className=" hidden lg:block">
-              <div className="flex w-full overflow-y-auto no-scrollbar gap-0.5 bg-bg_Quaternary items-center p-1 justify-center ">
-                {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
+              <div className=" hidden lg:block">
+                <div className="flex w-full overflow-y-auto no-scrollbar gap-0.5 bg-bg_Quaternary items-center p-1 justify-center ">
+                  {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
                   <span className="font font-lato text-[12px]">SportsBook</span>
                 </button> */}
-                <button
-                  onClick={() => {
-                    navigate("/");
-                    dispatch(setGroupType(4));
-                  }}
-                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
-                >
-                  <span className="font font-lato text-[12px]">Cricket</span>
-                </button>
-                <button
-                  onClick={() => {
-                    navigate("/");
-                    dispatch(setGroupType(1));
-                  }}
-                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
-                >
-                  <span className="font font-lato text-[12px]">Football</span>
-                </button>
-                <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
-                  <span className="font font-lato text-[12px]">Election</span>
-                </button>
-                <button
-                  onClick={() => {
-                    navigate("/");
-                    dispatch(setGroupType(2));
-                  }}
-                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
-                >
-                  <span className="font font-lato text-[12px]">Tennis</span>
-                </button>
-                {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
+                  <button
+                    onClick={() => {
+                      navigate("/");
+                      dispatch(setGroupType(4));
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                  >
+                    <span className="font font-lato text-[12px]">Cricket</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate("/");
+                      dispatch(setGroupType(1));
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                  >
+                    <span className="font font-lato text-[12px]">Football</span>
+                  </button>
+                  <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
+                    <span className="font font-lato text-[12px]">Election</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate("/");
+                      dispatch(setGroupType(2));
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                  >
+                    <span className="font font-lato text-[12px]">Tennis</span>
+                  </button>
+                  {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
                   <span className="font font-lato text-[12px]">
                     Horse Racing
                   </span>
                 </button> */}
-                {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
+                  {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu ">
                   <span className="font font-lato text-[12px]">
                     GreyHound Racing
                   </span>
                 </button> */}
-                <button
-                  onClick={() => {
-                    navigate("/");
-                    dispatch(setGroupType("auraWolf"));
-                  }}
-                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
-                >
-                  <span className="font font-lato text-[12px]">
-                    Indian Card Games
-                  </span>
-                </button>
-                <button
-                  onClick={() => {
-                    navigate("/");
-                    dispatch(setGroupType("liveCasinoWolf"));
-                  }}
-                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
-                >
-                  <span className="font font-lato text-[12px]">
-                    Live Casino
-                  </span>
-                </button>
-                <button
-                  onClick={() => {
-                    navigate("/");
-                    dispatch(setGroupType("slotWolf"));
-                  }}
-                  className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
-                >
-                  <span className="font font-lato text-[12px]">Slot Games</span>
-                </button>
+                  <button
+                    onClick={() => {
+                      navigate("/");
+                      dispatch(setGroupType("auraWolf"));
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                  >
+                    <span className="font font-lato text-[12px]">
+                      Indian Card Games
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate("/");
+                      dispatch(setGroupType("liveCasinoWolf"));
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
+                  >
+                    <span className="font font-lato text-[12px]">
+                      Live Casino
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate("/");
+                      dispatch(setGroupType("slotWolf"));
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                  >
+                    <span className="font font-lato text-[12px]">
+                      Slot Games
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
 
-          <LeftDeskSidebar />
-          <RightDeskSidebar />
-        </div>
-      </header>
-    </div>
+            <LeftDeskSidebar />
+            <RightDeskSidebar />
+          </div>
+        </header>
+      </div>
+    </>
   );
 };
 

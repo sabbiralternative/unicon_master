@@ -31,7 +31,8 @@ import fasterBet from "./images/fasterBetAcceptanceIcon.0268b720.svg";
 import begamle from "./images/BegambleAware.svg";
 import cogra from "./images/cograE.svg";
 import commision from "./images/gamblingCommission.svg";
-
+import appStar from "./images/app-star.svg";
+import playStore from "./images/playstore.svg";
 
 export default {
   commision,
@@ -67,4 +68,6 @@ export default {
   inplay,
   upcoming,
   telegram,
+  appStar,
+  playStore,
 };
