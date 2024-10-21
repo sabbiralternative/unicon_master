@@ -2,11 +2,12 @@
 import { useEffect, useState } from "react";
 import { API, settings } from "../../../api";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import toast from "react-hot-toast";
+import { setShowLoginModal } from "../../../redux/features/stateSlice";
 
 const LiveCasino = () => {
   const [showLeftDropdown, setShowLeftDropdown] = useState(false);
@@ -20,6 +21,7 @@ const LiveCasino = () => {
   const [data, setData] = useState({});
   const [warnMessage, setWarnMessage] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   /* casino thumbnail for 3 tabs */
   useEffect(() => {
@@ -56,7 +58,7 @@ const LiveCasino = () => {
         navigate(`/casino/${name.replace(/ /g, "")}/${code}`);
       }
     } else {
-      setShowWarning(true);
+      dispatch(setShowLoginModal(true));
     }
   };
 
@@ -73,7 +75,7 @@ const LiveCasino = () => {
         setShowWarning(true);
       }
     } else {
-      setShowWarning(true);
+      dispatch(setShowLoginModal(true));
     }
   };
   useEffect(() => {

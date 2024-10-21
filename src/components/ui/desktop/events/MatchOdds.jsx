@@ -130,7 +130,7 @@ const MatchOdds = ({ match_odds }) => {
       setTeamProfit([]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [match_odds, eventId, exposer]);
+  }, [match_odds, eventId]);
 
   return (
     <>

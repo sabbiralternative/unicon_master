@@ -15,9 +15,9 @@ import {
   setThirdOdd,
 } from "../../../redux/features/events/eventSlice";
 import OpenBets from "../../../components/ui/mobile/events/OpenBets";
-import useIFrame from "../../../hooks/useIFrame";
-import IFrame from "../../../components/ui/IFrame/IFrame";
+import IFrameScore from "../../../components/ui/IFrame/IFrame";
 import useCurrentBets from "../../../hooks/useCurrentBets";
+import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 
 const Events = () => {
   const [betsType, setBetsType] = useState("live");
@@ -29,7 +29,7 @@ const Events = () => {
     eventTypeId,
     eventId,
   };
-  const { iFrameUrl } = useIFrame(eventTypeId, eventId);
+
   const { myBets } = useCurrentBets(eventId);
   const [match_odds, setMatch_odds] = useState([]);
   const [bookmaker, setBookmaker] = useState([]);
@@ -277,10 +277,21 @@ const Events = () => {
               setBetsType={setBetsType}
               data={data}
               myBets={myBets}
+              score={data?.score}
             />
 
             {betsType === "openBet" && <OpenBets myBets={myBets} />}
-            {data?.score?.hasVideo && <IFrame iFrameUrl={iFrameUrl} />}
+
+            {
+              <IFrameScore
+                betType={betsType}
+                setBetType={setBetsType}
+                score={data?.score}
+              />
+            }
+            {betsType === "video" &&
+              match_odds?.[0]?.score &&
+              eventTypeId == 4 && <ScoreCard match_odds={match_odds} />}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (

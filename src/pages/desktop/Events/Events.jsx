@@ -17,9 +17,11 @@ import {
   setThirdOdd,
 } from "../../../redux/features/events/eventSlice";
 import IFrame from "../../../components/ui/IFrame/IFrame";
-import useIFrame from "../../../hooks/useIFrame";
+import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
+import IframeVideoTab from "../../../components/ui/mobile/events/IframeVideoTab";
 
 const Events = () => {
+  const [tab, setTab] = useState("");
   const dispatch = useDispatch();
   const { placeBetValues, price, stake } = useSelector((state) => state.event);
   const { refetchBalance } = useBalance();
@@ -28,7 +30,6 @@ const Events = () => {
     eventTypeId,
     eventId,
   };
-  const { iFrameUrl } = useIFrame(eventTypeId, eventId);
   const [match_odds, setMatch_odds] = useState([]);
   const [bookmaker, setBookmaker] = useState([]);
   // const [bookmaker2, setBookmaker2] = useState([]);
@@ -38,6 +39,7 @@ const Events = () => {
   const { data } = useGetAllOddsEventsQuery(payload, {
     pollingInterval: settings.interval,
   });
+
   useEffect(() => {
     refetchBalance();
     window.scrollTo(0, 0); // Scroll to top when component mounts
@@ -329,7 +331,11 @@ const Events = () => {
                 </div>
               </div>
             </div> */}
-            {data?.score?.hasVideo && <IFrame iFrameUrl={iFrameUrl} />}
+
+            <IframeVideoTab tab={tab} setTab={setTab} score={data?.score} />
+            <IFrame betType={tab} score={data?.score} setBetType={setTab} />
+            {eventTypeId == 4 && <ScoreCard match_odds={match_odds} />}
+
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (

@@ -54,7 +54,7 @@ const IndianCardGames = () => {
             <span className="text-text_Ternary font-semibold capitalize">
               Indian Card Games
             </span>
-            <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
+            {/* <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
               <button
                 className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato text-text_DepositTextColor font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200 cursor-pointer"
                 type="button"
@@ -99,7 +99,7 @@ const IndianCardGames = () => {
                   <path d="M9 6l6 6l-6 6"></path>
                 </svg>
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div

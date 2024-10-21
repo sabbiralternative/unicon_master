@@ -3889,7 +3889,7 @@ video {
 }
 
 .bg-bg_lossGrd {
-  background-image: var(--color-bg-lossGrd);
+  background-image: var(--color-bg-gradient);
 }
 
 .bg-bg_primary_to_secondary {
@@ -3951,7 +3951,7 @@ video {
 }
 
 .bg-maxBtnGrd {
-  background-image: var(--color-bg-maxBtn);
+  background-image: var(--color-bg-gradient);
 }
 
 .bg-minBtnGrd {

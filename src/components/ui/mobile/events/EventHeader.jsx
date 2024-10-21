@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const EventHeader = ({ data, setBetsType, betType, myBets }) => {
+const EventHeader = ({ data, setBetsType, betType, myBets, score }) => {
   const navigate = useNavigate();
 
   return (
@@ -95,11 +95,11 @@ const EventHeader = ({ data, setBetsType, betType, myBets }) => {
                 {/* <span className="">vs</span>
                 <span className="capitalize break-words"> USA</span> */}
               </span>
-              <span className="w-full">
+              {/* <span className="w-full">
                 <span className="w-max break-words  inline-block text-transparent bg-clip-text font-lato text-xs font-bold text-primary">
                   {data?.result?.length > 0 && data?.result?.[0]?.openDate}{" "}
                 </span>
-              </span>
+              </span> */}
             </div>
           </div>
           {/* <div className="flex items-start justify-start w-max h-full">
@@ -149,7 +149,7 @@ const EventHeader = ({ data, setBetsType, betType, myBets }) => {
         >
           <button
             onClick={() => setBetsType("live")}
-            className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3    font-bold font-lato text-xs ${
+            className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase relative p-3    font-bold font-lato text-xs ${
               betType === "live" ? "text-text_Primary" : "text-text_Quinary "
             }`}
             style={{ zIndex: 10 }}
@@ -158,13 +158,81 @@ const EventHeader = ({ data, setBetsType, betType, myBets }) => {
               <div className="w-2 h-2 bg-bg_Success rounded-full mr"></div>{" "}
             </span>
             LIVE
+            <div
+              className={`w-full absolute z-10 transition-all ease-in-out bg-bg_Primary rounded-lg h-[2px] 
+            left-0 ${betType === "live" ? "block" : "hidden"}
+              
+              `}
+              style={{
+                zIndex: 9,
+                width: "100%",
+
+                bottom: "0px",
+              }}
+            ></div>
           </button>
+          {score && score?.hasVideo && (
+            <button
+              onClick={() => {
+                setBetsType("video");
+                window.scrollTo(0, 0);
+              }}
+              className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase relative p-3    font-bold font-lato text-xs ${
+                betType === "video" ? "text-text_Primary" : "text-text_Quinary "
+              }`}
+              style={{ zIndex: 10 }}
+            >
+              Video{" "}
+              <div
+                className={`w-full absolute z-10 transition-all ease-in-out bg-bg_Primary rounded-lg h-[2px] 
+            left-0 ${betType === "video" ? "block" : "hidden"}
+              
+              `}
+                style={{
+                  zIndex: 9,
+                  width: "100%",
+
+                  bottom: "0px",
+                }}
+              ></div>
+            </button>
+          )}
+
+          {score && score?.tracker && (
+            <button
+              onClick={() => {
+                setBetsType("tracker");
+                window.scrollTo(0, 0);
+              }}
+              className={`flex items-center justify-center w-full relative gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3    font-bold font-lato text-xs ${
+                betType === "tracker"
+                  ? "text-text_Primary"
+                  : "text-text_Quinary "
+              }`}
+              style={{ zIndex: 10 }}
+            >
+              Tracker{" "}
+              <div
+                className={`w-full absolute z-10 transition-all ease-in-out bg-bg_Primary rounded-lg h-[2px] 
+            left-0 ${betType === "tracker" ? "block" : "hidden"}
+              
+              `}
+                style={{
+                  zIndex: 9,
+                  width: "100%",
+
+                  bottom: "0px",
+                }}
+              ></div>
+            </button>
+          )}
+
           <button
             onClick={() => {
               setBetsType("openBet");
               window.scrollTo(0, 0);
             }}
-            className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3  font-lato font-bold text-xs ${
+            className={`flex items-center justify-center w-full relative gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3  font-lato font-bold text-xs ${
               betType === "openBet" ? "text-text_Primary" : "text-text_Quinary "
             }`}
             style={{ zIndex: 10 }}
@@ -173,18 +241,19 @@ const EventHeader = ({ data, setBetsType, betType, myBets }) => {
             <span>
               <div>({myBets?.length})</div>
             </span>
-          </button>
-          <div
-            className={`w-[48%] absolute z-10 transition-all ease-in-out bg-bg_Primary rounded-lg h-[2px] ${
-              betType === "live" ? "left-0" : "right-0"
-            }`}
-            style={{
-              zIndex: 9,
-              width: "50%",
+            <div
+              className={`w-full absolute z-10 transition-all ease-in-out bg-bg_Primary rounded-lg h-[2px] 
+            left-0 ${betType === "openBet" ? "block" : "hidden"}
+              
+              `}
+              style={{
+                zIndex: 9,
+                width: "100%",
 
-              bottom: "0px",
-            }}
-          ></div>
+                bottom: "0px",
+              }}
+            ></div>
+          </button>
         </div>
       </div>
     </div>

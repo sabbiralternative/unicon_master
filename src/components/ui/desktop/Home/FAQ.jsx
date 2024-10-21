@@ -52,25 +52,25 @@ const FAQ = () => {
                   Guide to Online Betting in India
                 </h2>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
-                  Welcome to {settings.siteTitle}, where we hand you the best of everything
-                  you want to know about betting! You are in the right place to
-                  uncover the best betting apps and sites in India. We know that
-                  it can be very hard to find your way around the world of
-                  online betting, especially since there are so many choices
-                  available. Because of this, we put together this detailed
-                  guide to help you make smart choices and make your betting
-                  experience better overall. There are a lot of different
-                  betting options at {settings.siteTitle}, so no matter how experienced you
-                  are or how new you are to betting, you can find something that
-                  suits you. We have everything you could want, from the
-                  exciting Indian card games to the popular sports from around
-                  the world, like tennis and football. This guide aims to teach
-                  you everything you need to know about the best online betting
-                  apps in India and gambling online in India. For instance, you
-                  will learn how to choose the right site, as well as the
-                  differing kinds of bets and gambling responsibly. Thats over
-                  with. Now lets dive in and learn more about the exciting world
-                  of online betting!
+                  Welcome to {settings.siteTitle}, where we hand you the best of
+                  everything you want to know about betting! You are in the
+                  right place to uncover the best betting apps and sites in
+                  India. We know that it can be very hard to find your way
+                  around the world of online betting, especially since there are
+                  so many choices available. Because of this, we put together
+                  this detailed guide to help you make smart choices and make
+                  your betting experience better overall. There are a lot of
+                  different betting options at {settings.siteTitle}, so no
+                  matter how experienced you are or how new you are to betting,
+                  you can find something that suits you. We have everything you
+                  could want, from the exciting Indian card games to the popular
+                  sports from around the world, like tennis and football. This
+                  guide aims to teach you everything you need to know about the
+                  best online betting apps in India and gambling online in
+                  India. For instance, you will learn how to choose the right
+                  site, as well as the differing kinds of bets and gambling
+                  responsibly. Thats over with. Now lets dive in and learn more
+                  about the exciting world of online betting!
                 </p>
               </div>
               <div className="mb-[8px] p-[12px]">
@@ -91,12 +91,13 @@ const FAQ = () => {
                   apps in India allow us to do this kind of activity on a vast
                   array of games so that one can easily chill and do it from the
                   comfort of their homes or even while they are traveling. Here
-                  at {settings.siteTitle}, we take pride in being one of the biggest known
-                  betting sites in India. The tool that we provide has been done
-                  so with acute gamblers in mind; thus, it has been tailored in
-                  an easy way to facilitate their needs. Safe, fun, and fair
-                  atmosphere—our primary goal is to process so that whoever
-                  comes into our site can actually bet in such conditions.
+                  at {settings.siteTitle}, we take pride in being one of the
+                  biggest known betting sites in India. The tool that we provide
+                  has been done so with acute gamblers in mind; thus, it has
+                  been tailored in an easy way to facilitate their needs. Safe,
+                  fun, and fair atmosphere—our primary goal is to process so
+                  that whoever comes into our site can actually bet in such
+                  conditions.
                 </p>
               </div>
               <div className="mb-[8px] p-[12px]">
@@ -104,9 +105,10 @@ const FAQ = () => {
                   Optional bets that are often made on {settings.siteTitle}
                 </h2>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
-                  There are a lot of different betting options at {settings.siteTitle} so
-                  that they can cater to a wide range of tastes and interests.
-                  Most of the time, the following groups are used:
+                  There are a lot of different betting options at{" "}
+                  {settings.siteTitle} so that they can cater to a wide range of
+                  tastes and interests. Most of the time, the following groups
+                  are used:
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   a) Indian Card Games:
@@ -159,8 +161,8 @@ const FAQ = () => {
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   In each of these groups, you can find a wide range of betting
                   options and fun things to do. You can find anything you want
-                  at {settings.siteTitle}, whether you like traditional Indian games or
-                  sports from around the world.
+                  at {settings.siteTitle}, whether you like traditional Indian
+                  games or sports from around the world.
                 </p>
               </div>
               <div className="mb-[8px] p-[12px]">
@@ -209,10 +211,10 @@ const FAQ = () => {
                   strong encryption to keep your personal and banking data safe.
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
-                  Overall, {settings.siteTitle} is one of the top betting sites in india
-                  because it meets all of these criteria. When we made our app,
-                  we thought about the Indian user and made sure it would work
-                  the same on all devices.
+                  Overall, {settings.siteTitle} is one of the top betting sites
+                  in india because it meets all of these criteria. When we made
+                  our app, we thought about the Indian user and made sure it
+                  would work the same on all devices.
                 </p>
               </div>
               <div className="mb-[8px] p-[12px]">
@@ -228,13 +230,13 @@ const FAQ = () => {
                   Step 1: First of all, make sure to pick a site you can trust.
                   You need to find a gaming website or app. You can use, for
                   instance, a top betting sites in india rated among the best,
-                  {settings.siteTitle}. You may use the site regardless of being new to
-                  gambling or an expert.
+                  {settings.siteTitle}. You may use the site regardless of being
+                  new to gambling or an expert.
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   Step 2: Register yourself. Just by logging in with an ID at
-                  {settings.siteTitle} or its Indian gaming app, you will soon create an
-                  account, guided by simple steps.
+                  {settings.siteTitle} or its Indian gaming app, you will soon
+                  create an account, guided by simple steps.
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   Step 3: Authenticate the authenticity of your account. Our
@@ -245,7 +247,8 @@ const FAQ = () => {
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   Step 4: Deposit Now that your account has been verified, you
-                  can make your first payment—{settings.siteTitle} On checkout, {settings.siteTitle}
+                  can make your first payment—{settings.siteTitle} On checkout,{" "}
+                  {settings.siteTitle}
                   offers Indian people a number of safe payment options made
                   just for the people in this country.
                 </p>
@@ -272,7 +275,8 @@ const FAQ = () => {
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   To get the most out of your betting, you need to have a good
                   idea of the different kinds of bets that are out there. Here
-                  is a list of common types of bets you can find on {settings.siteTitle}:
+                  is a list of common types of bets you can find on{" "}
+                  {settings.siteTitle}:
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   1: Single Bets: A simple bet on just one result of an event is
@@ -318,15 +322,16 @@ const FAQ = () => {
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   Live betting, otherwise referred to as in-play betting, has
                   developed into a new frontier in terms of the way people are
-                  wagering online today, and {settings.siteTitle} is right at the
-                  forefront. With this, you can bet on events as they happen,
-                  hence allowing one to make betting more exciting and
+                  wagering online today, and {settings.siteTitle} is right at
+                  the forefront. With this, you can bet on events as they
+                  happen, hence allowing one to make betting more exciting and
                   strategic.You can do live bets on many varieties of sports and
-                  events on {settings.siteTitle}. From watching a thrilling cricket match
-                  right in the stadium, sitting at the stands, to an intense
-                  football game or a nail-biting play of tennis, these are bets
-                  that can be made during the match. Its a thrilling form of
-                  betting with loads of benefits associated with it, such as:
+                  events on {settings.siteTitle}. From watching a thrilling
+                  cricket match right in the stadium, sitting at the stands, to
+                  an intense football game or a nail-biting play of tennis,
+                  these are bets that can be made during the match. Its a
+                  thrilling form of betting with loads of benefits associated
+                  with it, such as:
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   1: More Informed Decisions: Should you be able to be there
@@ -361,9 +366,10 @@ const FAQ = () => {
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   We have made much investment in up-to-date technology at
-                  {settings.siteTitle} to ensure that our live betting is fast, secure, and
-                  simple. With our live odds changes and user-friendly placement
-                  of bets, you will never miss a great opportunity in betting.
+                  {settings.siteTitle} to ensure that our live betting is fast,
+                  secure, and simple. With our live odds changes and
+                  user-friendly placement of bets, you will never miss a great
+                  opportunity in betting.
                 </p>
               </div>
               <div className="mb-[8px] p-[12px]">
@@ -371,9 +377,9 @@ const FAQ = () => {
                   How to Play Gambling Games Advisably
                 </h2>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
-                  We support responsible gambling in the {settings.siteTitle} community.
-                  Here are some tips that will help you keep your betting fun
-                  and risk-free:
+                  We support responsible gambling in the {settings.siteTitle}{" "}
+                  community. Here are some tips that will help you keep your
+                  betting fun and risk-free:
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   1: Make a budget. Figure out how much money you can spend on
@@ -407,8 +413,8 @@ const FAQ = () => {
                 </h2>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   Once you understand the basics of online betting, lets talk
-                  about why {settings.siteTitle} is thought to be one of the best apps for
-                  online betting in your country:
+                  about why {settings.siteTitle} is thought to be one of the
+                  best apps for online betting in your country:
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   1:An Easy-to-use Interface: Our platform is designed to be
@@ -463,16 +469,17 @@ const FAQ = () => {
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   Finally, remember to play responsibly and stay informed on a
-                  site you can trust. So, join {settings.siteTitle} right now and not only
-                  get to play on one of the best online betting apps in India,
-                  but also be part of a large community of players who are
-                  invested in the game in just the manner that you are..
+                  site you can trust. So, join {settings.siteTitle} right now
+                  and not only get to play on one of the best online betting
+                  apps in India, but also be part of a large community of
+                  players who are invested in the game in just the manner that
+                  you are..
                 </p>
                 <p className="bg-bg_Quaternary font-normal font-lato text-[12px]">
                   Then how come we wait? For beginning your journey on how to
                   have the best betting experience with us, move over to our
-                  site or download the app for betting from {settings.siteTitle} India
-                  right now! Good luck, and may the odds always be in your
+                  site or download the app for betting from {settings.siteTitle}{" "}
+                  India right now! Good luck, and may the odds always be in your
                   favor!
                 </p>
               </div>
@@ -528,14 +535,15 @@ const FAQ = () => {
             </div>
             <div className="mb-[8px] p-[12px]">
               <h3 className="bg-bg_Quaternary font-bold font-lato text-[12px]">
-                What do I need to do to get the {settings.siteTitle} betting app?
+                What do I need to do to get the {settings.siteTitle} betting
+                app?
               </h3>
               <div className="bg-bg_Quaternary font-normal font-lato text-[12px] list-decimal list-inside">
                 <div>
                   You can get our gaming app that is especially made for India
-                  right from our website. By going to {settings.siteTitle}s home page and
-                  following the instructions given, you can easily India betting
-                  app download and set up the app.
+                  right from our website. By going to {settings.siteTitle}s home
+                  page and following the instructions given, you can easily
+                  India betting app download and set up the app.
                 </div>
               </div>
             </div>
@@ -545,16 +553,17 @@ const FAQ = () => {
               </h3>
               <div className="bg-bg_Quaternary font-normal font-lato text-[12px] list-decimal list-inside">
                 <div>
-                  The website {settings.siteTitle} lets you pay in a number of different
-                  ways. Indian users can pay for things in a number of different
-                  ways, such as the Unified Payments Interface (UPI), net
-                  banking, credit and debit cards, and well-known e-wallets.
+                  The website {settings.siteTitle} lets you pay in a number of
+                  different ways. Indian users can pay for things in a number of
+                  different ways, such as the Unified Payments Interface (UPI),
+                  net banking, credit and debit cards, and well-known e-wallets.
                 </div>
               </div>
             </div>
             <div className="mb-[8px] p-[12px]">
               <h3 className="bg-bg_Quaternary font-bold font-lato text-[12px]">
-                How long does it take for {settings.siteTitle} to handle withdrawals?
+                How long does it take for {settings.siteTitle} to handle
+                withdrawals?
               </h3>
               <div className="bg-bg_Quaternary font-normal font-lato text-[12px] list-decimal list-inside">
                 <div>
@@ -566,7 +575,8 @@ const FAQ = () => {
             </div>
             <div className="mb-[8px] p-[12px]">
               <h3 className="bg-bg_Quaternary font-bold font-lato text-[12px]">
-                Will my personal information be safe if I store it on {settings.siteTitle}?
+                Will my personal information be safe if I store it on{" "}
+                {settings.siteTitle}?
               </h3>
               <div className="bg-bg_Quaternary font-normal font-lato text-[12px] list-decimal list-inside">
                 <div>
@@ -583,8 +593,8 @@ const FAQ = () => {
               <div className="bg-bg_Quaternary font-normal font-lato text-[12px] list-decimal list-inside">
                 <div>
                   The answer is yes. As part of our pledge to responsible
-                  gaming, {settings.siteTitle} lets users limit how much they can deposit,
-                  bet, and lose.
+                  gaming, {settings.siteTitle} lets users limit how much they
+                  can deposit, bet, and lose.
                 </div>
               </div>
             </div>
