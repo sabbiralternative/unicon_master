@@ -700,7 +700,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 .android-popup {
   width: 100%;
   font-family: "Inter";
-  background: #000c24;
+  background: var(--color-bg-secondary);
   padding: 16px;
   display: flex;
   align-items: center;
@@ -792,7 +792,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 }
 
 .app-text span {
-  color: #6b7280;
+  color: #fff;
   font-family: "Inter";
   font-size: 10px;
   font-style: normal;
@@ -815,7 +815,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
   gap: 12px;
   flex-shrink: 0;
   border-radius: 8px;
-  background: #0d4389;
+  background: var(--color-bg-primary);
 }
 
 .install-btn button {
