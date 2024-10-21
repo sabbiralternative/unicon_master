@@ -289,9 +289,9 @@ const Events = () => {
                 score={data?.score}
               />
             }
-            {betsType === "video" &&
-              match_odds?.[0]?.score &&
-              eventTypeId == 4 && <ScoreCard match_odds={match_odds} />}
+            {match_odds?.[0]?.score && eventTypeId == 4 && (
+              <ScoreCard match_odds={match_odds} />
+            )}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (

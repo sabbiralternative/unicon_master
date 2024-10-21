@@ -5,7 +5,7 @@ import {
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-const OpenBets = ({myBets}) => {
+const OpenBets = ({ myBets }) => {
   const [activeTab, setActiveTab] = useState(true);
 
   const navigate = useNavigate();
@@ -19,9 +19,7 @@ const OpenBets = ({myBets}) => {
           className="w-full flex items-center justify-between bg-bg_Secondary transition-all ease-in-out my-1 py-1 rounded-[6px] origin-center active:opacity-95 cursor-pointer"
         >
           <div className="head pl-2">
-            <span className="text-text_Quaternary font-lato-bold">
-              Open Bets
-            </span>
+            <span className="text-text_Quaternary site-font">Open Bets</span>
           </div>
           <div className="cursor-pointer mr-2 transform transition-transform ease-in-out flex items-center justify-center w-max origin-center active:scale-90 active:opacity-85">
             {activeTab ? (
@@ -36,39 +34,45 @@ const OpenBets = ({myBets}) => {
             activeTab ? "" : "hidden"
           }`}
         >
-          {myBets?.map((item, i) => {
-            return (
-              <div
-                key={i}
-                className="bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);"
-              >
+          {myBets?.length > 0 ? (
+            myBets?.map((item, i) => {
+              return (
                 <div
-                  onClick={() => {
-                    setActiveTab((prev) => !prev);
-                    navigate(
-                      `/game-details/${item?.eventTypeId}/${item?.eventId}`
-                    );
-                  }}
-                  id="eventHeader"
-                  className="font-lato-bold font-semibold cursor-pointer"
+                  key={i}
+                  className="bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);"
                 >
-                  <div className="font-medium underline capitalize text-sm text-text_ChangeAnimationBack">
-                    {item?.title}
+                  <div
+                    onClick={() => {
+                      setActiveTab((prev) => !prev);
+                      navigate(
+                        `/game-details/${item?.eventTypeId}/${item?.eventId}`
+                      );
+                    }}
+                    id="eventHeader"
+                    className="font-lato-bold font-semibold cursor-pointer"
+                  >
+                    <div className="font-medium underline capitalize text-sm text-text_ChangeAnimationBack">
+                      {item?.title}
+                    </div>
+                  </div>
+                  <div className="font-normal text-text_Ternary capitalize text-xs font-lato">
+                    {item?.marketName}: {item?.nation}
+                  </div>
+                  <div
+                    id="tiem_Date_of_order_0_1724640350689"
+                    className="text-xs font-lato font-normal"
+                  >
+                    <strong>Placed : </strong>
+                    <span>{item?.placeDate}</span>
                   </div>
                 </div>
-                <div className="font-normal text-text_Ternary capitalize text-xs font-lato">
-                  {item?.marketName}: {item?.nation}
-                </div>
-                <div
-                  id="tiem_Date_of_order_0_1724640350689"
-                  className="text-xs font-lato font-normal"
-                >
-                  <strong>Placed : </strong>
-                  <span>{item?.placeDate}</span>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })
+          ) : (
+            <div className="flex items-center justify-center py-3">
+              No open bets available!
+            </div>
+          )}
 
           {/* <div className="bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);">
             <div id="eventHeader" className="font-lato-bold font-semibold">
