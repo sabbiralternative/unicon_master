@@ -334,7 +334,9 @@ const Events = () => {
 
             <IframeVideoTab tab={tab} setTab={setTab} score={data?.score} />
             <IFrame betType={tab} score={data?.score} setBetType={setTab} />
-            {eventTypeId == 4 && <ScoreCard match_odds={match_odds} />}
+            {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
+              <ScoreCard match_odds={match_odds} />
+            )}
 
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">

@@ -3,8 +3,10 @@ import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/Lef
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import useSingleProfitLoss from "../../hooks/useSingleProfitLoss";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const SingleProfitLoss = () => {
+  const { showAppPopUp } = useSelector((state) => state.state);
   const navigate = useNavigate();
   const [backTotal, setBackTotal] = useState(0);
   const [layTotal, setLayTotal] = useState(0);
@@ -39,7 +41,11 @@ const SingleProfitLoss = () => {
 
   return (
     <>
-      <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
+      <div
+        className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 ${
+          showAppPopUp ? "pt-[122px]" : "pt-[54px]"
+        }`}
+      >
         <div className="lg:flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
           <LeftDeskSidebar />
           <div

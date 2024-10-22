@@ -60,6 +60,36 @@ const Login = () => {
       toast.error(result?.error);
     }
   };
+
+  /* handle login demo user */
+  const loginWithDemo = async () => {
+    /* Random token generator */
+    const generatedToken = handleRandomToken();
+    /* Encrypted the post data */
+    const loginData = handleEncryptData({
+      username: "demo",
+      password: "",
+      token: generatedToken,
+      site: settings.siteUrl,
+      b2c: true,
+    });
+    const result = await handleLogin(loginData).unwrap();
+    if (result.success) {
+      const token = result?.result?.token;
+      const bonusToken = result?.result?.bonusToken;
+      const user = result?.result?.loginName;
+      const game = result?.result?.buttonValue?.game;
+      dispatch(setUser({ user, token }));
+      localStorage.setItem("buttonValue", JSON.stringify(game));
+      localStorage.setItem("bonusToken", bonusToken);
+      if (token && user) {
+        dispatch(setShowLoginModal(false));
+        toast.success("Login successful");
+      }
+    } else {
+      toast.error(result?.error);
+    }
+  };
   return (
     <div
       id="popup-modal"
@@ -212,6 +242,13 @@ const Login = () => {
                   className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-text_Quaternary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 font-lato-bold font-semibold text-base cursor-pointer"
                 >
                   <span>Log In</span>
+                </button>
+                <button
+                  onClick={loginWithDemo}
+                  type="button"
+                  className="inline-block mt-3 leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-text_Quaternary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 font-lato-bold font-semibold text-base cursor-pointer"
+                >
+                  <span>Demo Login</span>
                 </button>
               </div>
             </form>

@@ -14,6 +14,7 @@ import ChangePassword from "../pages/ChangePassword/ChangePassword.jsx";
 import StakeSettings from "../pages/StakeSettings/StakeSettings.jsx";
 import BettingProfitLoss from "../pages/BettingProfitLoss/BettingProfitLoss.jsx";
 import SingleProfitLoss from "../pages/SingleProfitLoss/SingleProfitLoss.jsx";
+import APK from "../pages/APK/APK.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -70,6 +71,10 @@ const MainRouter = () => {
           {
             path: "/betting-profit-loss/:marketId",
             element: <SingleProfitLoss />,
+          },
+          {
+            path: "/apk",
+            element: <APK />,
           },
         ],
       },

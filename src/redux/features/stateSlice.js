@@ -7,6 +7,8 @@ const initialState = {
   showLeftSidebar: false,
   showRightSidebar: false,
   showForgetModal: false,
+  showAppPopUp: false,
+  windowWidth: window.innerWidth,
 };
 
 const stateSlice = createSlice({
@@ -36,6 +38,12 @@ const stateSlice = createSlice({
     setShowForgetModal: (state, action) => {
       state.showForgetModal = action.payload;
     },
+    setShowAppPopUp: (state, action) => {
+      state.showAppPopUp = action.payload;
+    },
+    setWindowWidth: (state, action) => {
+      state.windowWidth = action.payload;
+    },
   },
 });
 
@@ -47,6 +55,8 @@ export const {
   setShowLeftSidebar,
   setShowRightSidebar,
   setShowForgetModal,
+  setShowAppPopUp,
+  setWindowWidth,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

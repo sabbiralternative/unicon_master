@@ -52,11 +52,11 @@ const Bookmaker = ({ bookmaker }) => {
   //     // Team A has a larger exposure.
   //     runner = runner1;
   //     largerExposure = 1 + exposureA / 100;
-  //     console.log(largerExposure);
+
   //     layValue = runner1?.lay?.[0]?.price;
   //     oppositeLayValue = runner2?.lay?.[0]?.price;
   //     lowerExposure = 1 + exposureB / 100;
-  //     console.log(lowerExposure);
+
   //   } else {
   //     // Team B has a larger exposure.
   //     runner = runner2;
@@ -115,7 +115,7 @@ const Bookmaker = ({ bookmaker }) => {
   //         const pnl2 = pnlBySelection?.find(
   //           (pnl) => pnl?.RunnerId === runner2?.id
   //         )?.pnl;
-  //         console.log(pnl1, pnl2);
+
   //         if (pnl1 && pnl2 && runner1 && runner2) {
   //           const result = computeExposureAndStake(
   //             pnl1,

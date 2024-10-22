@@ -23,7 +23,7 @@ const Home = () => {
   const { refetchBalance } = useBalance();
   const token = useSelector(userToken);
   const { socialLink } = useGetSocialLink();
-  const { group } = useSelector((state) => state.state);
+  const { group, showAppPopUp } = useSelector((state) => state.state);
   const { data } = useGetAllGroupEventsQuery(group, {
     pollingInterval: isRefetchGroupData(group) ? 1000 : null,
   });
@@ -40,7 +40,11 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
+      <div
+        className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 ${
+          showAppPopUp ? "pt-[122px]" : "pt-[54px]"
+        }`}
+      >
         <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
           {group === 0 && (
             <div

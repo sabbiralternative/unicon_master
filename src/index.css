@@ -699,7 +699,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 /* App pop up */
 .android-popup {
   width: 100%;
-  font-family: "Inter";
+  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
   background: var(--color-bg-secondary);
   padding: 16px;
   display: flex;
@@ -745,7 +745,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 }
 
 .android-card {
-  font-family: "Inter";
+  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
   display: flex;
   width: 282px;
   align-items: center;
@@ -783,7 +783,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 }
 .app-text h2 {
   color: #fff;
-  font-family: "Inter";
+  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
   font-size: 11px;
   font-style: normal;
   font-weight: 700;
@@ -793,7 +793,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 
 .app-text span {
   color: #fff;
-  font-family: "Inter";
+  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -820,7 +820,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 
 .install-btn button {
   color: #fff;
-  font-family: "Inter";
+  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;

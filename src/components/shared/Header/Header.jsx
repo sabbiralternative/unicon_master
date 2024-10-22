@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   setGroupType,
+  setShowAppPopUp,
   setShowLeftSidebar,
 } from "../../../redux/features/stateSlice";
 import useContextState from "../../../hooks/useContextState";
@@ -21,8 +22,8 @@ import { AndroidView } from "react-device-detect";
 import AppPopup from "./AppPopUp";
 
 const Header = () => {
+  const location = useLocation();
   const [showMobileSearch, setShowMobileSearch] = useState(false);
-
   const [time, setTime] = useState();
   const { balance } = useBalance();
   const { bonusBalance } = useBonusBalance();
@@ -30,7 +31,7 @@ const Header = () => {
   const token = useSelector(userToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { showAppPopUp, windowWidth } = useSelector((state) => state?.state);
 
   useEffect(() => {
     setTimeout(() => {
@@ -39,13 +40,31 @@ const Header = () => {
   }, [time]);
 
   useEffect(() => {
-    const expiryTime = localStorage.getItem("installPromptExpiryTime");
-    const currentTime = new Date().getTime();
-    if (!expiryTime || currentTime > expiryTime) {
-      localStorage.removeItem("installPromptExpiryTime");
-      setIsModalOpen(true);
+    const closePopupForForever = localStorage.getItem("closePopupForForever");
+    if (location?.state?.pathname === "/apk" || location.pathname === "/apk") {
+      localStorage.setItem("closePopupForForever", true);
+    } else {
+      if (!closePopupForForever) {
+        const expiryTime = localStorage.getItem("installPromptExpiryTime");
+        const currentTime = new Date().getTime();
+        if (windowWidth > 1024) {
+          dispatch(setShowAppPopUp(false));
+        } else if (
+          (!expiryTime || currentTime > expiryTime) &&
+          windowWidth < 1024
+        ) {
+          localStorage.removeItem("installPromptExpiryTime");
+          dispatch(setShowAppPopUp(true));
+        }
+      }
     }
-  }, [isModalOpen]);
+  }, [
+    dispatch,
+    windowWidth,
+    showAppPopUp,
+    location?.state?.pathname,
+    location.pathname,
+  ]);
 
   return (
     <>
@@ -55,9 +74,9 @@ const Header = () => {
         className=" fixed top-0 w-full  z-[100]"
         style={{ zIndex: 1000 }}
       >
-        {settings?.apkLink && isModalOpen && (
+        {settings?.apkLink && showAppPopUp && (
           <AndroidView>
-            <AppPopup setIsModalOpen={setIsModalOpen} />
+            <AppPopup />
           </AndroidView>
         )}
         <header>

@@ -58,8 +58,8 @@ const Fancy = ({ fancy }) => {
     <>
       <div className="text-base font-medium text-center py-1.5">
         <ul className="flex flex-wrap items-center justify-start gap-x-3">
-          <li className="px-[15px] py-2 rounded-[100px] flex items-center justify-center cursor-pointer active:scale-95 transition-all ease-in-out duration-100 bg-bg_Primary text-text_Quaternary border-borderOfFancyPremiumTab">
-            <span className="inline-block font-bold text-xs sm:text-sm md:text-base leading-4">
+          <li className="px-[15px] py-2 rounded-[100px] flex items-center justify-center cursor-pointer active:scale-95 transition-all ease-in-out duration-100">
+            <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
               Fancy Market
             </span>
           </li>

@@ -27,6 +27,7 @@ const LeftDeskSidebar = () => {
     dispatch(setGroupType(group));
     dispatch(setShowLeftSidebar(false));
     navigate("/");
+    window.scrollTo(0, 0);
   };
 
   const navigateAviatorCasinoVideo = () => {

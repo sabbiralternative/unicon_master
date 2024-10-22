@@ -20,6 +20,7 @@ import useCurrentBets from "../../../hooks/useCurrentBets";
 import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 
 const Events = () => {
+  const { showAppPopUp } = useSelector((state) => state.state);
   const [betsType, setBetsType] = useState("live");
   const dispatch = useDispatch();
   const { placeBetValues, price, stake } = useSelector((state) => state.event);
@@ -265,7 +266,11 @@ const Events = () => {
   };
 
   return (
-    <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
+    <div
+      className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 ${
+        showAppPopUp ? "pt-[122px]" : "pt-[54px]"
+      }`}
+    >
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
         <div
           className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
@@ -289,7 +294,7 @@ const Events = () => {
                 score={data?.score}
               />
             }
-            {match_odds?.[0]?.score && eventTypeId == 4 && (
+            {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
               <ScoreCard match_odds={match_odds} />
             )}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
