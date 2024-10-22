@@ -69,8 +69,8 @@ const OpenBets = ({ myBets }) => {
               );
             })
           ) : (
-            <div className="flex items-center justify-center py-3">
-              No open bets available!
+            <div className="flex items-center bg-white py-2 mb-3 mt-1 rounded-sm pl-2">
+              You have no Matched Bets.
             </div>
           )}
 
