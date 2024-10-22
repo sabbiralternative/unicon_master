@@ -39,7 +39,10 @@ const IFrameScore = ({ score, betType, setBetType }) => {
               className="
                       w-full flex items-center justify-center overflow-y-auto bg-transparent relative z-10 transition-all ease-in-out duration-100"
             >
-              <div className="absolute top-1 right-1 z-10 active:scale-90 transition-all duration-300 ease-in-out cursor-pointer">
+              <div
+                onClick={() => setBetType("live")}
+                className="absolute top-1 right-1 z-10 active:scale-90 transition-all duration-300 ease-in-out cursor-pointer"
+              >
                 <svg
                   height="24"
                   width="24"

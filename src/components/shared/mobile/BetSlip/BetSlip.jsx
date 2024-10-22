@@ -201,7 +201,7 @@ const BetSlip = ({ setRunnerId }) => {
                       )
                     )
                   }
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-maxBtnGrd text-text_Quaternary py-2 cursor-pointer"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-bg_Secondary text-text_Quaternary py-2 cursor-pointer"
                   type="button"
                 >
                   MAX
