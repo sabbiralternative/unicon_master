@@ -33,7 +33,7 @@ const IFrameScore = ({ score, betType, setBetType }) => {
     <>
       {betType === "video" || betType === "tracker" ? (
         <div className=" col-span-1 ">
-          <div className=" relative w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px] overflow-hidden h-[55vw] md:h-[58vw] bg-transparent ">
+          <div className=" relative w-full h-auto overflow-hidden bg-transparent ">
             <div
               draggable="false"
               className="
@@ -67,15 +67,17 @@ const IFrameScore = ({ score, betType, setBetType }) => {
                   </g>
                 </svg>
               </div>
-              {score && score?.tracker !== null && betType === "tracker" && (
-                <iframe
-                  id="videoComponent"
-                  className="w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px] relative overflow-hidden h-[55vw] md:h-[58vw] bg-transparent"
-                  src={iframeVideo}
-                  width="100%"
-                  allowfullscreen=""
-                ></iframe>
-              )}
+              <div className="w-full overflow-hidden h-[125px]">
+                {score && score?.tracker !== null && betType === "tracker" && (
+                  <iframe
+                    id="videoComponent"
+                    className="w-full h-auto relative overflow-hidden   bg-transparent"
+                    src={iframeVideo}
+                    width="100%"
+                    allowfullscreen=""
+                  ></iframe>
+                )}
+              </div>
               {score &&
                 iFrameUrl?.url &&
                 betType === "video" &&
@@ -89,7 +91,7 @@ const IFrameScore = ({ score, betType, setBetType }) => {
                   ></iframe>
                 )}
             </div>
-            <div className=" absolute top-0 w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px]  overflow-hidden h-[55vw] md:h-[58vw] bg-transparent z-0"></div>
+            {/* <div className=" absolute top-0 w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px]  overflow-hidden h-[55vw] md:h-[58vw] bg-transparent z-0"></div> */}
           </div>
         </div>
       ) : null}
