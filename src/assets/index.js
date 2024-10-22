@@ -33,6 +33,7 @@ import cogra from "./images/cograE.svg";
 import commision from "./images/gamblingCommission.svg";
 import appStar from "./images/app-star.svg";
 import playStore from "./images/playstore.svg";
+import kabbadi from "./images/kabbadi.svg";
 
 export default {
   commision,
@@ -70,4 +71,5 @@ export default {
   telegram,
   appStar,
   playStore,
+  kabbadi,
 };

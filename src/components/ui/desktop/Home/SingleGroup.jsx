@@ -7,7 +7,7 @@ import assets from "../../../../assets";
 import { useSelector } from "react-redux";
 
 const SingleGroup = ({ data, filterData, title, margin }) => {
-  const eventName = { 4: "Cricket", 2: "Tennis", 1: "Football" };
+  const eventName = { 4: "Cricket", 2: "Tennis", 1: "Football", 5: "Kabbadi" };
   const { group } = useSelector((state) => state.state);
   const navigate = useNavigate();
   const navigateGameList = (keys) => {
@@ -77,6 +77,9 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                       {group === 4 && <img src={assets.cricket} alt="" />}
                       {group === 2 && <img src={assets.tennis} alt="" />}
                       {group === 1 && <img src={assets.football} alt="" />}
+                      {group === 5 && (
+                        <img className="size-7" src={assets.kabbadi} alt="" />
+                      )}
                     </span>
                     <div className="text-text_Ternary md:text-[18px] text-base font-semibold leading-3 tracking-wide text-center">
                       {eventName[group]}

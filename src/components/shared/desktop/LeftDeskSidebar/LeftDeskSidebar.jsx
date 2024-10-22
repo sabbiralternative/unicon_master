@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { settings } from "../../../../api";
 import { userToken } from "../../../../redux/features/auth/authSlice";
 import { ImDice } from "react-icons/im";
+import assets from "../../../../assets";
 
 const LeftDeskSidebar = () => {
   const token = useSelector(userToken);
@@ -175,6 +176,20 @@ const LeftDeskSidebar = () => {
             </svg>
             <span className="font-medium text-start text-text_Ternary">
               Tennis
+            </span>
+          </span>
+        </li>
+        <li
+          onClick={() => {
+            navigate("/");
+            dispatch(setGroupType(5));
+          }}
+          className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
+        >
+          <span className="flex w-full items-center h-full px-6 justify-start gap-3">
+            <img className="size-6" src={assets.kabbadi} alt="" />
+            <span className="font-medium text-start text-text_Ternary">
+              Kabbadi
             </span>
           </span>
         </li>

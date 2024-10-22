@@ -120,7 +120,7 @@ const Home = () => {
               <FAQ />
             </div>
           )}
-          {group === 2 || group === 4 || group === 1 ? (
+          {group === 2 || group === 4 || group === 1 || group === 5 ? (
             <Group data={data} />
           ) : null}
           {group === "liveCasinoWolf" ||
