@@ -43,6 +43,7 @@ const Header = () => {
     const closePopupForForever = localStorage.getItem("closePopupForForever");
     if (location?.state?.pathname === "/apk" || location.pathname === "/apk") {
       localStorage.setItem("closePopupForForever", true);
+      localStorage.removeItem("installPromptExpiryTime");
     } else {
       if (!closePopupForForever) {
         const expiryTime = localStorage.getItem("installPromptExpiryTime");
