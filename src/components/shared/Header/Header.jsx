@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 import { settings } from "../../../api";
 import SearchBox from "./SearchBox";
 import MobileSearch from "./MobileSearch";
-import { AndroidView } from "react-device-detect";
+// import { MobileView, isMobile } from "react-device-detect";
 import AppPopup from "./AppPopUp";
 
 const Header = () => {
@@ -48,13 +48,10 @@ const Header = () => {
       if (!closePopupForForever) {
         const expiryTime = localStorage.getItem("installPromptExpiryTime");
         const currentTime = new Date().getTime();
-        if (windowWidth > 1024) {
-          dispatch(setShowAppPopUp(false));
-        } else if (
-          (!expiryTime || currentTime > expiryTime) &&
-          windowWidth < 1024
-        ) {
+
+        if (!expiryTime || currentTime > expiryTime) {
           localStorage.removeItem("installPromptExpiryTime");
+          console.log(expiryTime);
           dispatch(setShowAppPopUp(true));
         }
       }
@@ -75,10 +72,8 @@ const Header = () => {
         className=" fixed top-0 w-full  z-[100]"
         style={{ zIndex: 1000 }}
       >
-        {settings?.apkLink && showAppPopUp && (
-          <AndroidView>
-            <AppPopup />
-          </AndroidView>
+        {settings?.apkLink && showAppPopUp && windowWidth < 1040 && (
+          <AppPopup />
         )}
         <header>
           <div className="flex flex-col">
