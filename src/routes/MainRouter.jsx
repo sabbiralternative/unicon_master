@@ -15,6 +15,7 @@ import StakeSettings from "../pages/StakeSettings/StakeSettings.jsx";
 import BettingProfitLoss from "../pages/BettingProfitLoss/BettingProfitLoss.jsx";
 import SingleProfitLoss from "../pages/SingleProfitLoss/SingleProfitLoss.jsx";
 import APK from "../pages/APK/APK.jsx";
+import LiveCasinoTwo from "../pages/LiveCasinoTwo/LiveCasinoTwo.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -71,6 +72,10 @@ const MainRouter = () => {
           {
             path: "/betting-profit-loss/:marketId",
             element: <SingleProfitLoss />,
+          },
+          {
+            path: "/live-casino-two",
+            element: <LiveCasinoTwo />,
           },
           {
             path: "/apk",

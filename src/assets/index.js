@@ -34,6 +34,7 @@ import commision from "./images/gamblingCommission.svg";
 import appStar from "./images/app-star.svg";
 import playStore from "./images/playstore.svg";
 import kabbadi from "./images/kabbadi.svg";
+import artboard from "./images/Artboard.webp";
 
 export default {
   commision,
@@ -72,4 +73,5 @@ export default {
   appStar,
   playStore,
   kabbadi,
+  artboard,
 };
