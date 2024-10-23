@@ -43,6 +43,7 @@ export const API = {
   banner: "",
   exchangeGames: "",
   auraWolf: "",
+  liveCasinoLobby: "",
 };
 
 export const settings = {
