@@ -1,31 +1,51 @@
-import { useSelector } from "react-redux";
-import assets from "../../assets";
-import FAQ from "../../components/ui/desktop/Home/FAQ";
-import { useNavigate } from "react-router-dom";
-import useLiveCasinoLobby from "../../hooks/useLiveCasinoLobby";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import useLiveCasinoLobby from "../../../hooks/useLiveCasinoLobby";
+import assets from "../../../assets";
+import FAQ from "../desktop/Home/FAQ";
+import { setShowLoginModal } from "../../../redux/features/stateSlice";
 
-const LiveCasinoTwo = () => {
+const LiveSlotCrashFishing = ({ casinoType }) => {
+  const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const { showAppPopUp } = useSelector((state) => state.state);
-  const { data } = useLiveCasinoLobby();
+  const { data } = useLiveCasinoLobby(casinoType);
   const categories = data && Object.keys(data);
+  const [searchQuery, setSearchQuery] = useState("");
+  const dispatch = useDispatch();
 
   const handleCategoryClick = (category) => {
+    setSearchQuery("");
     setSelectedCategory(category);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value.toLowerCase());
   };
 
   const filteredGames =
     data && selectedCategory && selectedCategory !== "ALL"
       ? { [selectedCategory]: data[selectedCategory] }
       : data;
+
+  const getFilteredGamesByName = (games) =>
+    games.filter((game) => game.game_name.toLowerCase().includes(searchQuery));
+
+  const handleNavigate = (game) => {
+    if (token) {
+      navigate(`/casino/${game?.game_name.replace(/ /g, "")}/${game?.game_id}`);
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
   return (
     <>
       <div
         onClick={() => navigate(-1)}
         className="lg:hidden flex flex-col w-fit cursor-pointer"
-        style={{ paddingTop: showAppPopUp ? "120px" : "55px" }}
+        style={{ paddingTop: showAppPopUp ? "160px" : "90px" }}
       >
         <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
           <div className="app-bg flex-row w-full h-full flex">
@@ -91,6 +111,8 @@ const LiveCasinoTwo = () => {
                 </div>
                 <div className="px-[0.1rem] p-0.5 h-fit">
                   <input
+                    value={searchQuery}
+                    onChange={handleSearchChange}
                     id="default-search"
                     className="block w-full focus:outline-none rounded rounded-2 w-full p-2 pl-8 text-sm bg-bg_Quaternary text-text_Ternary"
                     placeholder="Search Games (Atleast 3 chars.....)"
@@ -160,6 +182,10 @@ const LiveCasinoTwo = () => {
                   {data &&
                     Object.entries(filteredGames)?.map(
                       ([category, games], idx) => {
+                        const filteredByName = getFilteredGamesByName(games); // Filter games by name
+                        console.log(filteredByName);
+                        // If no games match the search, show a message
+                        if (filteredByName.length === 0) return null;
                         return (
                           <div key={idx} className="flex flex-col">
                             <div className="w-full overflow-hidden mt-2">
@@ -169,7 +195,7 @@ const LiveCasinoTwo = () => {
                                     {category}
                                   </span>
                                 </div>
-                                <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
+                                {/* <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                                   <button
                                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato text-text_DepositTextColor font-semibold text-[12px] leading-[18px] cursor-pointer"
                                     type="button"
@@ -222,7 +248,7 @@ const LiveCasinoTwo = () => {
                                       <path d="M9 6l6 6l-6 6" />
                                     </svg>
                                   </button>
-                                </div>
+                                </div> */}
                               </div>
                               <div
                                 id="scrollShow-Live Dragon Tiger"
@@ -230,18 +256,11 @@ const LiveCasinoTwo = () => {
                                 style={{ scrollBehavior: "smooth" }}
                               >
                                 <div className="w-full flex gap-[8px] py-1">
-                                  {games?.map((game, i) => {
+                                  {filteredByName?.map((game, i) => {
                                     return (
                                       <div
                                         key={i}
-                                        onClick={() =>
-                                          navigate(
-                                            `/casino/${game?.game_name.replace(
-                                              / /g,
-                                              ""
-                                            )}/${game?.game_id}`
-                                          )
-                                        }
+                                        onClick={() => handleNavigate(game)}
                                         className="relative"
                                       >
                                         <div className="w-[129px] md:w-[140px] lg:w-[160px] xl:w-[180px] flex flex-col bg-bg_Quaternary1 items-start justify-center shadow-GameShadow rounded-[6px]">
@@ -761,4 +780,4 @@ const LiveCasinoTwo = () => {
   );
 };
 
-export default LiveCasinoTwo;
+export default LiveSlotCrashFishing;

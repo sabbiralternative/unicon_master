@@ -15,7 +15,10 @@ import StakeSettings from "../pages/StakeSettings/StakeSettings.jsx";
 import BettingProfitLoss from "../pages/BettingProfitLoss/BettingProfitLoss.jsx";
 import SingleProfitLoss from "../pages/SingleProfitLoss/SingleProfitLoss.jsx";
 import APK from "../pages/APK/APK.jsx";
-import LiveCasinoTwo from "../pages/LiveCasinoTwo/LiveCasinoTwo.jsx";
+import LiveCasino from "../pages/LiveCasino/LiveCasino.jsx";
+import Slots from "../pages/Slots/Slots.jsx";
+import CrashGames from "../pages/CrashGames/CrashGames.jsx";
+import FishingGames from "../pages/FishingGames/FishingGames.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -74,8 +77,20 @@ const MainRouter = () => {
             element: <SingleProfitLoss />,
           },
           {
-            path: "/live-casino-two",
-            element: <LiveCasinoTwo />,
+            path: "/live-casino",
+            element: <LiveCasino />,
+          },
+          {
+            path: "/slots",
+            element: <Slots />,
+          },
+          {
+            path: "/crash-games",
+            element: <CrashGames />,
+          },
+          {
+            path: "/fishing-games",
+            element: <FishingGames />,
           },
           {
             path: "/apk",

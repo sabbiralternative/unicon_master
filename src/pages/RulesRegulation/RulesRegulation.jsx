@@ -8,7 +8,7 @@ const RulesRegulation = () => {
   return (
     <div
       className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 ${
-        showAppPopUp ? "pt-[122px]" : "pt-[54px]"
+        showAppPopUp ? "pt-[160px]" : "pt-[90px]"
       }`}
     >
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">

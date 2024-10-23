@@ -20,6 +20,7 @@ import SearchBox from "./SearchBox";
 import MobileSearch from "./MobileSearch";
 // import { MobileView, isMobile } from "react-device-detect";
 import AppPopup from "./AppPopUp";
+import MobileHeader from "./MobileHeader";
 
 const Header = () => {
   const location = useLocation();
@@ -232,7 +233,8 @@ cursor-pointer
                   />
                 )}
               </div>
-              <div className=" hidden lg:block">
+              <MobileHeader />
+              <div className="hidden lg:block">
                 <div className="flex w-full overflow-y-auto no-scrollbar gap-0.5 bg-bg_Quaternary items-center p-1 justify-center ">
                   {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
                   <span className="font font-lato text-[12px]">SportsBook</span>
@@ -298,7 +300,7 @@ cursor-pointer
                       Indian Card Games
                     </span>
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => {
                       navigate("/");
                       dispatch(setGroupType("liveCasinoWolf"));
@@ -308,17 +310,7 @@ cursor-pointer
                     <span className="font font-lato text-[12px]">
                       Live Casino
                     </span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      navigate("/live-casino-two");
-                    }}
-                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
-                  >
-                    <span className="font font-lato text-[12px]">
-                      Live Casino 2
-                    </span>
-                  </button>
+                  </button> */}
                   <button
                     onClick={() => {
                       navigate("/");
@@ -328,6 +320,44 @@ cursor-pointer
                   >
                     <span className="font font-lato text-[12px]">
                       Slot Games
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate("/live-casino");
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
+                  >
+                    <span className="font font-lato text-[12px]">
+                      Live Casino
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate("/slots");
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
+                  >
+                    <span className="font font-lato text-[12px]">Slots</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate("/crash-games");
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
+                  >
+                    <span className="font font-lato text-[12px]">
+                      Crash Games
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate("/fishing-games");
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
+                  >
+                    <span className="font font-lato text-[12px]">
+                      Fishing Games
                     </span>
                   </button>
                 </div>

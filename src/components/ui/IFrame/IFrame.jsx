@@ -67,8 +67,8 @@ const IFrameScore = ({ score, betType, setBetType }) => {
                   </g>
                 </svg>
               </div>
-              <div className="w-full overflow-hidden h-[125px]">
-                {score && score?.tracker !== null && betType === "tracker" && (
+              {score && score?.tracker !== null && betType === "tracker" && (
+                <div className="w-full overflow-hidden h-[125px]">
                   <iframe
                     id="videoComponent"
                     className="w-full h-auto relative overflow-hidden   bg-transparent"
@@ -76,8 +76,9 @@ const IFrameScore = ({ score, betType, setBetType }) => {
                     width="100%"
                     allowfullscreen=""
                   ></iframe>
-                )}
-              </div>
+                </div>
+              )}
+
               {score &&
                 iFrameUrl?.url &&
                 betType === "video" &&
