@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 // import { useGetAllOddsEventsQuery } from "../../../../redux/features/events/events";
 import { settings } from "../../../../api";
 import { userToken } from "../../../../redux/features/auth/authSlice";
-import { ImDice } from "react-icons/im";
+// import { ImDice } from "react-icons/im";
 import assets from "../../../../assets";
 
 const LeftDeskSidebar = () => {
@@ -306,7 +306,7 @@ const LeftDeskSidebar = () => {
             </span>
           </span>
         </li> */}
-        <li
+        {/* <li
           onClick={() => {
             navigate("/");
             dispatch(setGroupType("slotWolf"));
@@ -319,7 +319,7 @@ const LeftDeskSidebar = () => {
               Slot Games
             </span>
           </span>
-        </li>
+        </li> */}
 
         <li
           onClick={() => {

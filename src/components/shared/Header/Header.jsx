@@ -311,7 +311,7 @@ cursor-pointer
                       Live Casino
                     </span>
                   </button> */}
-                  <button
+                  {/* <button
                     onClick={() => {
                       navigate("/");
                       dispatch(setGroupType("slotWolf"));
@@ -321,7 +321,7 @@ cursor-pointer
                     <span className="font font-lato text-[12px]">
                       Slot Games
                     </span>
-                  </button>
+                  </button> */}
                   <button
                     onClick={() => {
                       navigate("/live-casino");

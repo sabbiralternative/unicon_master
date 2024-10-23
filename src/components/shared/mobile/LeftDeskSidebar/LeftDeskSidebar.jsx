@@ -9,7 +9,7 @@ import {
 import { userToken } from "../../../../redux/features/auth/authSlice";
 import { settings } from "../../../../api";
 import { useNavigate } from "react-router-dom";
-import { ImDice } from "react-icons/im";
+// import { ImDice } from "react-icons/im";
 import assets from "../../../../assets";
 // import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 
@@ -307,7 +307,7 @@ const LeftDeskSidebar = () => {
                   Sportsbook(80+)
                 </span>
               </li> */}
-              <li
+              {/* <li
                 onClick={() => handleNavigate("slotWolf")}
                 className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
               >
@@ -317,7 +317,7 @@ const LeftDeskSidebar = () => {
                 <span className="font-medium text-sm xs:text-base">
                   Slot Games
                 </span>
-              </li>
+              </li> */}
               <li
                 onClick={() => {
                   navigate("/live-casino");
