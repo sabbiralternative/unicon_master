@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import useCloseModalClickOutside from "../../../../hooks/useCloseModalClickOutside";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   setGroupType,
   setShowLeftSidebar,
@@ -14,6 +14,7 @@ import assets from "../../../../assets";
 // import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 
 const LeftDeskSidebar = () => {
+  const [hideNavList, setHideNavList] = useState("");
   // const { socialLink } = useGetSocialLink();
   const navigate = useNavigate();
   const { showLeftSidebar } = useSelector((state) => state.state);
@@ -68,43 +69,34 @@ const LeftDeskSidebar = () => {
   //   }
   // };
 
+  useEffect(() => {
+    if (showLeftSidebar) {
+      setHideNavList("");
+    } else {
+      setTimeout(() => {
+        setHideNavList("hidden");
+      }, 100);
+    }
+  }, [showLeftSidebar]);
+
   return (
     <aside>
       <div
         className={`fixed top-0 left-0 z-50 w-full h-dvh  bg-opacity-50 block`}
-        style={{ visibility: `${showLeftSidebar ? "visible" : "hidden"}` }}
+        style={{ visibility: showLeftSidebar ? "visible" : "hidden" }}
       >
         <div className="undefined">
           <div
             ref={leftSidebarRef}
             className={`fixed transition-all ease-in-out ${
               showLeftSidebar ? "openDrawer" : "closeDrawer"
-            }  origin-left top-0 left-0  z-50 w-[70%] max-w-sm h-full overflow-y-auto bg-bg_Quaternary shadow-lg`}
+            }  origin-left top-0 left-0  z-50 w-[70%] max-w-sm h-full overflow-y-auto bg-bg_Quaternary shadow-lg `}
           >
             <ul
-              className={`overflow-y-auto h-max ${
-                showLeftSidebar ? "divide-y" : ""
+              className={` ${
+                showLeftSidebar ? "divide-y overflow-y-auto h-max" : hideNavList
               }`}
             >
-              {/* <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
-                <span className="w-3 h-auto xs:w-4">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 16 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15 2H11V1C11 0.45 10.55 0 10 0H6C5.45 0 5 0.45 5 1V2H1C0.45 2 0 2.45 0 3V12C0 12.55 0.45 13 1 13H15C15.55 13 16 12.55 16 12V3C16 2.45 15.55 2 15 2ZM6 1.002C6.001 1.001 6.001 1.001 6.002 1H9.998C9.999 1.001 9.999 1.001 10 1.002V2H6V1.002ZM15 6H13V7.5C13 7.775 12.775 8 12.5 8H11.5C11.225 8 11 7.775 11 7.5V6H5V7.5C5 7.775 4.775 8 4.5 8H3.5C3.225 8 3 7.775 3 7.5V6H1V5H15V6Z"
-                      fill="#2C4E82"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="font-medium text-sm xs:text-base">
-                  Election
-                </span>
-              </li> */}
               <li
                 onClick={() => handleNavigate(4)}
                 className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
@@ -235,25 +227,7 @@ const LeftDeskSidebar = () => {
                   Kabbadi
                 </span>
               </li>
-              {/* <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
-                <span className="w-3 h-auto xs:w-4">
-                  <svg
-                    width="21"
-                    height="20"
-                    viewBox="0 0 21 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.44232 8.90395C5.88416 8.90395 5.70714 16.1059 6.2631 20C6.2631 20 4.03942 19.4435 2.37117 18.3309C0.702907 17.2183 0.147685 15.5494 0.147685 15.5494C-0.741855 11.0991 2.77077 6.49335 4.43866 4.45361L6.31223 6.32907C5.08824 4.93769 3.77795 1.77694 4.99462 0.559553C6.32893 -0.775551 8.88636 0.559553 9.04291 1.64232C10.5542 1.11585 12.5557 1.89466 13.89 2.78473C15.5579 3.89731 16.6698 3.89731 20.0056 5.0099C17.2258 8.90395 13.89 8.90395 9.44232 8.90395Z"
-                      fill="#305765"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="font-medium text-sm xs:text-base">
-                  Greyhound Racing
-                </span>
-              </li> */}
+
               <li
                 onClick={() => handleNavigate("auraWolf")}
                 className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
@@ -276,48 +250,7 @@ const LeftDeskSidebar = () => {
                   Indian Card Games
                 </span>
               </li>
-              {/* <li className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer">
-                <span className="w-3 h-auto xs:w-4">
-                  <svg
-                    width="17"
-                    height="19"
-                    viewBox="0 0 17 19"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M11.7049 9.67407C11.4822 9.67407 11.3018 9.49359 11.3018 9.27097C11.3018 9.04835 11.4822 8.86787 11.7049 8.86787C13.9299 8.86522 15.7331 7.06211 15.7357 4.83703V1.61235H12.108C11.8853 1.61235 11.7049 1.43187 11.7049 1.20925C11.7049 0.986634 11.8853 0.806152 12.108 0.806152H16.1388C16.3615 0.806152 16.5419 0.986634 16.5419 1.20925V4.83703C16.5388 7.50715 14.375 9.67097 11.7049 9.67407Z"
-                      fill="#FFA000"
-                    ></path>
-                    <path
-                      d="M4.83704 9.67456C2.16692 9.67146 0.00309873 7.50764 0 4.83752V1.20974C0 0.987123 0.180482 0.806641 0.403099 0.806641H4.43394C4.65656 0.806641 4.83704 0.987123 4.83704 1.20974C4.83704 1.43236 4.65656 1.61284 4.43394 1.61284H0.80616V4.83752C0.808843 7.06259 2.61196 8.86571 4.83704 8.8684C5.05966 8.8684 5.24014 9.04888 5.24014 9.27149C5.2401 9.49407 5.05966 9.67456 4.83704 9.67456Z"
-                      fill="#FFA000"
-                    ></path>
-                    <path
-                      d="M10.4899 15.9049L10.3187 15.7393C9.65185 15.0925 9.46858 7.28414 9.45459 6.64213C9.45113 6.47879 9.30968 6.34812 9.1364 6.34814H7.86366C7.69062 6.34812 7.54929 6.47845 7.54547 6.64154C7.53211 7.28355 7.34883 15.0907 6.68128 15.7387L6.51009 15.9043C5.63635 16.7521 3 17.3647 3 18.0481C3 18.2138 3.14247 18.3481 3.31819 18.3481H13.6818C13.8575 18.3481 14 18.2138 14 18.0481C14 17.3647 11.3637 16.7521 10.4899 15.9049Z"
-                      fill="#FFA000"
-                    ></path>
-                    <path
-                      d="M13.1084 0H3.43435C3.21173 0 3.03125 0.180482 3.03125 0.403099V7.8525C3.06904 10.7307 5.39312 13.0548 8.27139 13.0926C11.1497 13.0548 13.4737 10.7307 13.5115 7.85246V0.403099C13.5115 0.180482 13.331 0 13.1084 0Z"
-                      fill="#FFC107"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="font-medium text-sm xs:text-base">
-                  Sportsbook(80+)
-                </span>
-              </li> */}
-              {/* <li
-                onClick={() => handleNavigate("slotWolf")}
-                className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
-              >
-                <span className="w-3 h-auto xs:w-4">
-                  <ImDice size={15} className="text-[#E84C4D]" />
-                </span>
-                <span className="font-medium text-sm xs:text-base">
-                  Slot Games
-                </span>
-              </li> */}
+
               <li
                 onClick={() => {
                   navigate("/live-casino");
