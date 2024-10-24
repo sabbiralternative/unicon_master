@@ -275,7 +275,7 @@ const LiveCasino = () => {
                           src={item?.img}
                         />
                       </a>
-                      <p _ngcontent-ng-c1965075897="" className="total-players">
+                      {/* <p _ngcontent-ng-c1965075897="" className="total-players">
                         <span
                           _ngcontent-ng-c1965075897=""
                           role="img"
@@ -286,7 +286,7 @@ const LiveCasino = () => {
                           group
                         </span>{" "}
                         {item?.active_players}
-                      </p>
+                      </p> */}
                       <div _ngcontent-ng-c1965075897="" className="game-detail">
                         {/* <p
                           _ngcontent-ng-c1965075897=""
