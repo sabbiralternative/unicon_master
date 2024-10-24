@@ -1,31 +1,51 @@
 import { useNavigate } from "react-router-dom";
-import { settings } from "../../../api";
-import useExchangeGame from "../../../hooks/useExchangeGame";
+import { API } from "../../../api";
 import { useDispatch, useSelector } from "react-redux";
-import { userToken } from "../../../redux/features/auth/authSlice";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
-const IndianCardGames = () => {
-  const { exchangeGame } = useExchangeGame();
+const AuraWolf = () => {
   const navigate = useNavigate();
-  const token = useSelector(userToken);
   const dispatch = useDispatch();
-  const navigateToIFrame = (id, name) => {
+  const { token, bonusToken } = useSelector((state) => state.auth);
+  const [data, setData] = useState([]);
+  const [warnMessage, setWarnMessage] = useState("");
+
+  useEffect(() => {
+    const getGames = async () => {
+      const res = await axios.post(API.auraWolf, {
+        gameList: "ALL",
+        product: "ALL",
+        isHome: false,
+      });
+
+      if (res?.status === 200) {
+        const result = res?.data;
+        setData(result);
+      }
+    };
+    getGames();
+  }, []);
+
+  const handleAuraCasino = (code, name) => {
     if (token) {
-      if (settings.casinoCurrency !== "AED") {
-        navigate(`/casino/${name}/${id}`);
+      if (bonusToken) {
+        return setWarnMessage("Bonus wallet is available only on sports.");
       } else {
-        // setShowModal(true);
-        // setCasinoInfo({
-        //   provider_name: "aviator",
-        //   game_id: "201206",
-        //   base: "casino",
-        // });
+        navigate(`/casino/${name.replace(/ /g, "")}/${code}`);
       }
     } else {
       dispatch(setShowLoginModal(true));
     }
   };
+
+  useEffect(() => {
+    if (warnMessage) {
+      return toast.error(warnMessage);
+    }
+  }, [warnMessage]);
 
   return (
     <div title="IndianCardGames" className="py-1 px-[6px] w-full">
@@ -104,28 +124,31 @@ const IndianCardGames = () => {
         </div>
         <div
           id="scrollShow"
-          className="py-2.5 px-2.5 transition-all ease-in-out duration-200 w-full h-max overflow-x-auto overflow-x-auto"
+          className="py-2.5 px-2.5 transition-all ease-in-out duration-200 w-full h-max overflow-x-auto"
         >
-          <div className="grid grid-rows-3 grid-flow-col gap-y-2 w-max md:w-full gap-x-[6px]">
-            {exchangeGame?.map((game, i) => {
+          <div className="grid grid-cols-2 md:grid-cols-4  gap-2 w-full ">
+            {data?.data?.map((item, i) => {
               return (
                 <div
                   onClick={() =>
-                    navigateToIFrame(game?.event?.id, game?.eventType)
+                    handleAuraCasino(item?.game_id, item?.game_name)
                   }
                   key={i}
-                  className="flex w-[120px] sm:w-[180px] md:w-[140px] flex-col items-center justify-center cursor-pointer transition-all ease-in-out duration-100"
+                  className="flex  flex-col items-center justify-center cursor-pointer transition-all ease-in-out duration-100 relative aura-wolf-container"
                 >
                   <div className="w-full bg-transparent flex flex-col transition-all ease-in-out duration-200 relative overflow-hidden rounded-[4px]">
-                    <div className="aspect-[1.00] w-[120px] sm:w-[180px] md:w-[140px]">
+                    <div className="aspect-[1.00]">
                       <img
-                        src={game?.image}
+                        src={item?.img}
                         height="auto"
                         className="w-full h-full object-cover rounded-[6px] hover:scale-[103%] transition-all ease-in-out duration-200"
                         alt="Live Teenpatti"
                         loading="lazy"
                         title="Live Teenpatti"
                       />
+                    </div>
+                    <div className="game-detail">
+                      <p className="game-name">{item?.game_name}</p>
                     </div>
                   </div>
                 </div>
@@ -138,4 +161,4 @@ const IndianCardGames = () => {
   );
 };
 
-export default IndianCardGames;
+export default AuraWolf;

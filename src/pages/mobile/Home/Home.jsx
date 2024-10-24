@@ -12,7 +12,7 @@ import Group from "../../../components/ui/mobile/home/Group";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import FAQ from "../../../components/ui/desktop/Home/FAQ";
 // import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
-import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
+import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
 // import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 import { userToken } from "../../../redux/features/auth/authSlice";
 import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
@@ -112,7 +112,7 @@ const Home = () => {
                 {token && <WithdrawDepositButton />}
                 {data && <InPlay data={data} />}
                 {/* <CasinoProvider /> */}
-                <IndianCardGames />
+                <AuraWolf />
                 {/* <PopularGames /> */}
                 {/* <UpcomingEvents /> */}
               </div>

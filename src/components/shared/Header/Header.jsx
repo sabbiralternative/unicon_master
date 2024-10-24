@@ -50,7 +50,7 @@ const Header = () => {
         const expiryTime = localStorage.getItem("installPromptExpiryTime");
         const currentTime = new Date().getTime();
 
-        if (!expiryTime || currentTime > expiryTime) {
+        if ((!expiryTime || currentTime > expiryTime) && settings?.apkLink) {
           localStorage.removeItem("installPromptExpiryTime");
           console.log(expiryTime);
           dispatch(setShowAppPopUp(true));

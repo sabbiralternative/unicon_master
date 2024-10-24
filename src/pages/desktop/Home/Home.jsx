@@ -19,6 +19,7 @@ import Group from "../../../components/ui/desktop/Home/Group";
 import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
 import useBalance from "../../../hooks/useBalance";
 import { useEffect } from "react";
+import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
 
 // import CardGames from "../../../components/ui/CardGames/CardGames";
 // import IndianLiveCasino from "../../../components/ui/IndianLiveCasino/IndianLiveCasino";
@@ -58,7 +59,7 @@ const Home = () => {
                   {/* <WithdrawAndDepositButton /> */}
                   {data && <InPlay data={data} />}
                   {/* <CasinoProvider /> */}
-                  {/* <IndianCardGames /> */}
+                  <AuraWolf />
                   {/* <PopularGames /> */}
                   {/* <UpcomingEvents /> */}
                   {/* <CardGames /> */}
