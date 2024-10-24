@@ -334,61 +334,7 @@ const RightDeskSidebar = () => {
                 </div>
               </div>
             </li>
-            <li className="divide-y flex items-start justify-start flex-col">
-              <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                Help &amp; Support
-              </span>
-              <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
-                {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
-                  <span className="w-4 h-auto xs:w-5 text-text_Primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="var(--color-iconsColor)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M8 9h8"></path>
-                      <path d="M8 13h6"></path>
-                      <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"></path>
-                    </svg>
-                  </span>
-                  <span className="font-medium text-sm xs:text-base">
-                    Chat With Us
-                  </span>
-                </div> */}
-                <div
-                  onClick={handleDownloadAPK}
-                  className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
-                >
-                  <span className="w-4 h-auto xs:w-5 text-text_Primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="var(--color-iconsColor)"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
-                      <path d="M7 11l5 5l5 -5"></path>
-                      <path d="M12 4l0 12"></path>
-                    </svg>
-                  </span>
-                  <span className="font-medium text-sm xs:text-base">
-                    Download APK
-                  </span>
-                </div>
-              </div>
-            </li>
+
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
                 Statements
@@ -638,6 +584,67 @@ const RightDeskSidebar = () => {
                 </div>
               </div>
             </li>
+            {settings?.apkLink && (
+              <li className="divide-y flex items-start justify-start flex-col">
+                <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
+                  Android App
+                </span>
+                <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
+                  {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
+                <span className="w-4 h-auto xs:w-5 text-text_Primary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--color-iconsColor)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M8 9h8"></path>
+                    <path d="M8 13h6"></path>
+                    <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"></path>
+                  </svg>
+                </span>
+                <span className="font-medium text-sm xs:text-base">
+                  Chat With Us
+                </span>
+              </div> */}
+                  <div
+                    onClick={handleDownloadAPK}
+                    className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                  >
+                    <span className="w-4 h-auto xs:w-5 text-text_Primary">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        strokeWidth="2"
+                        stroke="var(--color-iconsColor)"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path
+                          stroke="none"
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        ></path>
+                        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                        <path d="M7 11l5 5l5 -5"></path>
+                        <path d="M12 4l0 12"></path>
+                      </svg>
+                    </span>
+                    <span className="font-medium text-sm xs:text-base">
+                      Download APK
+                    </span>
+                  </div>
+                </div>
+              </li>
+            )}
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
                 Legal &amp; Compliance
