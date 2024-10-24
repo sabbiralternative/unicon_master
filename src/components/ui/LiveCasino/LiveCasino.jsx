@@ -288,21 +288,21 @@ const LiveCasino = () => {
                         {item?.active_players}
                       </p>
                       <div _ngcontent-ng-c1965075897="" className="game-detail">
-                        <p
+                        {/* <p
                           _ngcontent-ng-c1965075897=""
                           className="company-type"
                         >
                           {item?.provider_name}
-                        </p>
+                        </p> */}
                         <p _ngcontent-ng-c1965075897="" className="game-name">
                           {item?.game_name}
                         </p>
-                        <p
+                        {/* <p
                           _ngcontent-ng-c1965075897=""
                           className="coins-limit ng-star-inserted"
                         >
                           {item?.text}
-                        </p>
+                        </p> */}
                       </div>
                     </li>
                   );

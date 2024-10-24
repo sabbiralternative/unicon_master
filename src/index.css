@@ -257,7 +257,7 @@ input:-moz-autofill {
   display: flex;
   flex-direction: column;
   row-gap: 2px;
-  min-height: 80px;
+  min-height: 40px;
 }
 
 .page-body[_ngcontent-ng-c1965075897]

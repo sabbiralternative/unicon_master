@@ -127,7 +127,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                     onClick={() => handleCategoryClick("ALL")}
                     className={`${
                       selectedCategory === "ALL"
-                        ? "bg-bg_Primary"
+                        ? "bg-primary"
                         : " bg-bg_Quaternary gap-1"
                     }
                             inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out px-4 py-2 flex items-center justify-center border whitespace-nowrap uppercase font-lato font-[700] text-xs cursor-pointer rounded-full text-text_Quaternary
