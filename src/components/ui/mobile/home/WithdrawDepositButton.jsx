@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const WithdrawDepositButton = () => {
   const navigate = useNavigate();
   return (
-    <div className="pb-[5px] px-[6px] pt-[10px] w-full">
+    <div className="pb-[5px] px-[6px]  w-full">
       <div className="flex items-center p-3 rounded-lg bg-bg_Quaternary w-full shadow-sm">
         <div className="grid grid-cols-2 gap-x-2 w-full">
           <button
