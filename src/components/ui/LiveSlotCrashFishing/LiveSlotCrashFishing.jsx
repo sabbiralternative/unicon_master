@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useLiveCasinoLobby from "../../../hooks/useLiveCasinoLobby";
-import assets from "../../../assets";
+// import assets from "../../../assets";
 import FAQ from "../desktop/Home/FAQ";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
 
@@ -84,7 +84,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
           >
             <h1 className="hidden">Play Online games</h1>
             <div className="w-full px-2">
-              <div className="w-full pb-1">
+              {/* <div className="w-full pb-1">
                 <img
                   src={assets.artboard}
                   width={1641}
@@ -94,7 +94,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                   loading="lazy"
                   title="Play Live Casino And Win Big..."
                 />
-              </div>
+              </div> */}
               <label className="sr-only">Search</label>
               <div className="relative">
                 <div className="absolute left-0 pl-2 h-full flex items-center justify-center pointer-events-none">

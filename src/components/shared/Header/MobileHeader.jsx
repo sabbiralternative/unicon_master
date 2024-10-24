@@ -20,9 +20,7 @@ const MobileHeader = () => {
    
     w-max px-3  py-1     
  lg:hidden ${
-   group === 0 && pathname === "/"
-     ? "text-text_HeaderDeskNavMenuHover border border-primary"
-     : ""
+   group === 0 && pathname === "/" ? "text-secondary border border-primary" : ""
  }`}
           >
             <span className="font font-lato text-[12px]">Home</span>
@@ -40,7 +38,7 @@ const MobileHeader = () => {
           w-max px-3  py-1     
        lg:hidden ${
          group === 4 && pathname === "/"
-           ? "text-text_HeaderDeskNavMenuHover border border-primary"
+           ? "text-secondary border border-primary"
            : ""
        }`}
           >
@@ -59,7 +57,7 @@ const MobileHeader = () => {
                 w-max px-3  py-1     
              lg:hidden ${
                group === 1 && pathname === "/"
-                 ? "text-text_HeaderDeskNavMenuHover border border-primary"
+                 ? "text-secondary border border-primary"
                  : ""
              }`}
           >
@@ -78,7 +76,7 @@ const MobileHeader = () => {
         w-max px-3  py-1     
      lg:hidden ${
        group === 2 && pathname === "/"
-         ? "text-text_HeaderDeskNavMenuHover border border-primary"
+         ? "text-secondary border border-primary"
          : ""
      }`}
           >
@@ -97,7 +95,7 @@ const MobileHeader = () => {
         w-max px-3  py-1     
      lg:hidden ${
        group === "auraWolf" && pathname === "/"
-         ? "text-text_HeaderDeskNavMenuHover border border-primary"
+         ? "text-secondary border border-primary"
          : ""
      }`}
           >
@@ -134,9 +132,7 @@ const MobileHeader = () => {
    
         w-max px-3  py-1     
      lg:hidden ${
-       pathname === "/live-casino"
-         ? "text-text_HeaderDeskNavMenuHover border border-primary"
-         : ""
+       pathname === "/live-casino" ? "text-secondary border border-primary" : ""
      }`}
           >
             <span className="flex w-full items-center h-full gap-3">
@@ -213,7 +209,7 @@ const MobileHeader = () => {
   w-max px-3  py-1     
 lg:hidden ${
               pathname === "/slots"
-                ? "text-text_HeaderDeskNavMenuHover border border-primary"
+                ? "text-secondary border border-primary"
                 : ""
             }`}
           >
@@ -263,7 +259,7 @@ lg:hidden ${
   w-max px-3  py-1     
 lg:hidden ${
               pathname === "/crash-games"
-                ? "text-text_HeaderDeskNavMenuHover border border-primary"
+                ? "text-secondary border border-primary"
                 : ""
             }`}
           >
@@ -303,7 +299,7 @@ lg:hidden ${
   w-max px-3  py-1     
 lg:hidden ${
               pathname === "/fishing-games"
-                ? "text-text_HeaderDeskNavMenuHover border border-primary"
+                ? "text-secondary border border-primary"
                 : ""
             }`}
           >
