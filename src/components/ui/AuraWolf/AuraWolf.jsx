@@ -124,9 +124,9 @@ const AuraWolf = () => {
         </div>
         <div
           id="scrollShow"
-          className="py-2.5 px-2.5 transition-all ease-in-out duration-200 w-full h-max overflow-x-auto"
+          className="py-2.5 px-2.5 transition-all ease-in-out duration-200 w-full h-max overflow-x-auto overflow-x-auto"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4  gap-2 w-full ">
+          <div className="grid grid-rows-3 grid-flow-col gap-y-2 w-max md:w-full gap-x-[6px]">
             {data?.data?.map((item, i) => {
               return (
                 <div
@@ -134,10 +134,10 @@ const AuraWolf = () => {
                     handleAuraCasino(item?.game_id, item?.game_name)
                   }
                   key={i}
-                  className="flex  flex-col items-center justify-center cursor-pointer transition-all ease-in-out duration-100 relative aura-wolf-container"
+                  className="flex w-[120px] sm:w-[180px] md:w-[140px] flex-col items-center justify-center cursor-pointer transition-all ease-in-out duration-100"
                 >
                   <div className="w-full bg-transparent flex flex-col transition-all ease-in-out duration-200 relative overflow-hidden rounded-[4px]">
-                    <div className="aspect-[1.00]">
+                    <div className="aspect-[1.00] w-[120px] sm:w-[180px] md:w-[140px]">
                       <img
                         src={item?.img}
                         height="auto"
@@ -146,9 +146,6 @@ const AuraWolf = () => {
                         loading="lazy"
                         title="Live Teenpatti"
                       />
-                    </div>
-                    <div className="game-detail">
-                      <p className="game-name">{item?.game_name}</p>
                     </div>
                   </div>
                 </div>
