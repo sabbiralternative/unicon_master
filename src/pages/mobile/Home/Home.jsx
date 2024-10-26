@@ -18,6 +18,7 @@ import useBalance from "../../../hooks/useBalance";
 import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
 import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
+import Originals from "../../../components/ui/desktop/Home/Originals";
 
 const Home = () => {
   const { refetchBalance } = useBalance();
@@ -110,6 +111,7 @@ const Home = () => {
                 className="py-1 flex flex-col items-start justify-start"
               >
                 {token && <WithdrawDepositButton />}
+                <Originals />
                 {data && <InPlay data={data} />}
                 <CasinoProvider />
                 <AuraWolf />

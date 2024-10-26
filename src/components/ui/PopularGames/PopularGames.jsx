@@ -19,52 +19,6 @@ const PopularGames = () => {
             <span className="text-text_Ternary font-semibold capitalize">
               Popular Games
             </span>
-            <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
-              <button
-                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato text-text_DepositTextColor font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200 cursor-pointer"
-                type="button"
-              >
-                See All
-              </button>
-              <button
-                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex w-[22px] h-[22px] p-1 justify-center items-center gap-[10px] text-text_Primary border bg-bg_Foundation rounded cursor-pointer"
-                type="button"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="27"
-                  height="27"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="var(--color-primary)"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M15 6l-6 6l6 6"></path>
-                </svg>
-              </button>
-              <button
-                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex w-[22px] h-[22px] p-1 justify-center items-center gap-[10px] text-text_Primary border bg-bg_Foundation rounded cursor-pointer"
-                type="button"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="27"
-                  height="27"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="var(--color-primary)"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M9 6l6 6l-6 6"></path>
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
         <div
