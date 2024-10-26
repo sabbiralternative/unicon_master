@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
-import { setGroupType } from "../../../../redux/features/stateSlice";
+import {
+  setGroupType,
+  setSelectedCategory,
+} from "../../../../redux/features/stateSlice";
 
 import BannerSlider from "../../BannerSlider/BannerSlider";
 import { useNavigate } from "react-router-dom";
@@ -199,7 +202,10 @@ const Banner = () => {
             </div>
             <div title="QuickButtons-6" className=" grid grid-row-2">
               <span
-                onClick={() => navigate("/live-casino?category=GAME SHOW")}
+                onClick={() => {
+                  dispatch(setSelectedCategory("GAME SHOW"));
+                  navigate("/live-casino");
+                }}
                 title="Multiplayer Games"
                 className=" col-span-1 px-[3px] py-[3px]"
               >

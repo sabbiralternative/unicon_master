@@ -9,6 +9,7 @@ const initialState = {
   showForgetModal: false,
   showAppPopUp: false,
   windowWidth: window.innerWidth,
+  selectedCategory: "ALL",
 };
 
 const stateSlice = createSlice({
@@ -44,6 +45,9 @@ const stateSlice = createSlice({
     setWindowWidth: (state, action) => {
       state.windowWidth = action.payload;
     },
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    },
   },
 });
 
@@ -57,6 +61,7 @@ export const {
   setShowForgetModal,
   setShowAppPopUp,
   setWindowWidth,
+  setSelectedCategory,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

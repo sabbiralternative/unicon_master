@@ -1,18 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useLiveCasinoLobby from "../../../hooks/useLiveCasinoLobby";
 // import assets from "../../../assets";
 import FAQ from "../desktop/Home/FAQ";
-import { setShowLoginModal } from "../../../redux/features/stateSlice";
+import {
+  setSelectedCategory,
+  setShowLoginModal,
+} from "../../../redux/features/stateSlice";
 
 const LiveSlotCrashFishing = ({ casinoType }) => {
-  const location = useLocation();
-  const categoryRefs = useRef([]);
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState("ALL");
-  const { showAppPopUp } = useSelector((state) => state.state);
+  const { showAppPopUp, selectedCategory } = useSelector(
+    (state) => state.state
+  );
   const { data } = useLiveCasinoLobby(casinoType);
   const categories = data && Object.keys(data);
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,7 +22,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
 
   const handleCategoryClick = (category) => {
     setSearchQuery("");
-    setSelectedCategory(category);
+    dispatch(setSelectedCategory(category));
   };
 
   const handleSearchChange = (e) => {
@@ -42,23 +44,6 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
       dispatch(setShowLoginModal(true));
     }
   };
-
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const category = searchParams.get("category");
-    if (category && categories) {
-      const targetIndex = categories.findIndex(
-        (cat) => cat.toLowerCase() === category?.toLowerCase()
-      );
-      if (targetIndex !== -1) {
-        setTimeout(() => {
-          categoryRefs.current[targetIndex - 1]?.scrollIntoView({
-            behavior: "smooth",
-          });
-        }, 100);
-      }
-    }
-  }, [location.search, categories]);
 
   return (
     <>
@@ -207,11 +192,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                         // If no games match the search, show a message
                         if (filteredByName.length === 0) return null;
                         return (
-                          <div
-                            ref={(el) => (categoryRefs.current[idx] = el)}
-                            key={idx}
-                            className="flex flex-col"
-                          >
+                          <div key={idx} className="flex flex-col">
                             <div className="w-full overflow-hidden mt-2">
                               <div className="flex flex-wrap items-center mt-2 mb-2 justify-between gap-[5px] self-stretch text-text_Quaternary">
                                 <div className="flex items-center gap-2 px-1">
