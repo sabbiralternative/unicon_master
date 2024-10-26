@@ -11,14 +11,13 @@ import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/mobile/home/Group";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import FAQ from "../../../components/ui/desktop/Home/FAQ";
-// import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
-
-// import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 import { userToken } from "../../../redux/features/auth/authSlice";
 import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
 import { useEffect } from "react";
 import useBalance from "../../../hooks/useBalance";
 import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
+import PopularGames from "../../../components/ui/PopularGames/PopularGames";
+import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 
 const Home = () => {
   const { refetchBalance } = useBalance();
@@ -112,9 +111,9 @@ const Home = () => {
               >
                 {token && <WithdrawDepositButton />}
                 {data && <InPlay data={data} />}
-                {/* <CasinoProvider /> */}
+                <CasinoProvider />
                 <AuraWolf />
-                {/* <PopularGames /> */}
+                <PopularGames />
                 {/* <UpcomingEvents /> */}
               </div>
               <div className="px-[6px]"></div>

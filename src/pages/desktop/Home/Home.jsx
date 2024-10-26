@@ -4,7 +4,6 @@ import { useGetAllGroupEventsQuery } from "../../../redux/features/events/events
 
 import RightDeskSidebar from "../../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import Banner from "../../../components/ui/desktop/Home/Banner";
-// import Originals from "../../../components/ui/desktop/Home/Originals";
 import InPlay from "../../../components/ui/desktop/Home/InPlay";
 
 // import UpcomingEvents from "../../../components/ui/desktop/Home/UpcomingEvents";
@@ -20,6 +19,9 @@ import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
 import useBalance from "../../../hooks/useBalance";
 import { useEffect } from "react";
 import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
+import Originals from "../../../components/ui/desktop/Home/Originals";
+import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
+import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 
 // import CardGames from "../../../components/ui/CardGames/CardGames";
 // import IndianLiveCasino from "../../../components/ui/IndianLiveCasino/IndianLiveCasino";
@@ -55,12 +57,12 @@ const Home = () => {
                   id="home"
                   className="py-1 flex flex-col items-start justify-start"
                 >
-                  {/* <Originals /> */}
+                  <Originals />
                   {/* <WithdrawAndDepositButton /> */}
                   {data && <InPlay data={data} />}
-                  {/* <CasinoProvider /> */}
+                  <CasinoProvider />
                   <AuraWolf />
-                  {/* <PopularGames /> */}
+                  <PopularGames />
                   {/* <UpcomingEvents /> */}
                   {/* <CardGames /> */}
                   {/* <IndianLiveCasino />
