@@ -43,7 +43,11 @@ const Banner = () => {
         <div className="flex flex-col items-center justify-start w-full scrollSmooth no-scrollbar">
           <div className="flex overflow-auto w-full scrollSmooth no-scrollbar">
             <div title="QuickButtons-0" className=" grid grid-row-2">
-              <span title="Evolution" className=" col-span-1 px-[3px] py-[3px]">
+              <span
+                onClick={() => navigate("/casino/evolution/200296")}
+                title="Evolution"
+                className=" col-span-1 px-[3px] py-[3px]"
+              >
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{
