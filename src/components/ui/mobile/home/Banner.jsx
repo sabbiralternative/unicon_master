@@ -8,12 +8,14 @@ import {
 // import { useNavigate } from "react-router-dom";
 
 import BannerSlider from "../../BannerSlider/BannerSlider";
+import { useNavigate } from "react-router-dom";
 const Banner = () => {
   // const navigate = useNavigate();
   // const token = useSelector(userToken);
   const dispatch = useDispatch();
-  const handleNavigate = (group) => {
-    dispatch(setGroupType(group));
+  const navigate = useNavigate();
+  const handleNavigate = (link) => {
+    navigate(link);
   };
 
   // const navigateAviatorCasinoVideo = () => {
@@ -66,7 +68,11 @@ const Banner = () => {
                 </div>
               </span>
 
-              <span title="e-Cricket" className=" col-span-1 px-[3px] py-[3px]">
+              <span
+                onClick={() => handleNavigate("/crash-games")}
+                title="e-Cricket"
+                className=" col-span-1 px-[3px] py-[3px]"
+              >
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{
@@ -94,6 +100,7 @@ const Banner = () => {
             </div>
             <div title="QuickButtons-2" className=" grid grid-row-2">
               <span
+                onClick={() => handleNavigate("/live-casino")}
                 title="Live Casinos"
                 className=" col-span-1 px-[3px] py-[3px]"
               >
@@ -123,6 +130,9 @@ const Banner = () => {
               </span>
 
               <span
+                onClick={() => {
+                  dispatch(setGroupType("auraWolf"));
+                }}
                 title="Card Games"
                 className=" col-span-1 px-[3px] py-[3px]"
               >
@@ -153,6 +163,7 @@ const Banner = () => {
             </div>
             <div title="QuickButtons-4" className=" grid grid-row-2">
               <span
+                onClick={() => handleNavigate("/fishing-games")}
                 title="Fishing games"
                 className=" col-span-1 px-[3px] py-[3px]"
               >
@@ -182,6 +193,7 @@ const Banner = () => {
               </span>
 
               <span
+                onClick={() => handleNavigate("/slots")}
                 title="Slot Games"
                 className=" col-span-1 px-[3px] py-[3px]"
               >
@@ -212,6 +224,7 @@ const Banner = () => {
             </div>
             <div title="QuickButtons-6" className=" grid grid-row-2">
               <span
+                onClick={() => navigate("/live-casino?category=GAME SHOW")}
                 title="Multiplayer Games"
                 className=" col-span-1 px-[3px] py-[3px]"
               >
@@ -239,7 +252,11 @@ const Banner = () => {
                   <div className="absolute top-0 left-0 w-full h-full  min-h-9 rounded-[4px] "></div>
                 </div>
               </span>
-              <span title="Aura" className=" col-span-1 px-[3px] py-[3px]">
+              <span
+                onClick={() => dispatch(setGroupType("auraWolf"))}
+                title="Aura"
+                className=" col-span-1 px-[3px] py-[3px]"
+              >
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{

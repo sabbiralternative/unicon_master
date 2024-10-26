@@ -86,6 +86,25 @@ const MobileHeader = () => {
         <a
           onClick={() => {
             navigate("/");
+            dispatch(setGroupType(5));
+          }}
+        >
+          <button
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+        w-max px-3  py-1     
+     lg:hidden ${
+       group === 5 && pathname === "/"
+         ? "text-secondary border border-primary"
+         : ""
+     }`}
+          >
+            <span className="font font-lato text-[12px]">Kabbadi</span>
+          </button>
+        </a>
+        <a
+          onClick={() => {
+            navigate("/");
             dispatch(setGroupType("auraWolf"));
           }}
         >

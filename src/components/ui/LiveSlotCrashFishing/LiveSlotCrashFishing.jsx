@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useLiveCasinoLobby from "../../../hooks/useLiveCasinoLobby";
 // import assets from "../../../assets";
 import FAQ from "../desktop/Home/FAQ";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
 
 const LiveSlotCrashFishing = ({ casinoType }) => {
+  const location = useLocation();
+  const categoryRefs = useRef([]);
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("ALL");
@@ -40,6 +42,24 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
       dispatch(setShowLoginModal(true));
     }
   };
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const category = searchParams.get("category");
+    if (category && categories) {
+      const targetIndex = categories.findIndex(
+        (cat) => cat.toLowerCase() === category?.toLowerCase()
+      );
+      if (targetIndex !== -1) {
+        setTimeout(() => {
+          categoryRefs.current[targetIndex - 1]?.scrollIntoView({
+            behavior: "smooth",
+          });
+        }, 100);
+      }
+    }
+  }, [location.search, categories]);
+
   return (
     <>
       <div
@@ -183,11 +203,15 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                     Object.entries(filteredGames)?.map(
                       ([category, games], idx) => {
                         const filteredByName = getFilteredGamesByName(games); // Filter games by name
-                        console.log(filteredByName);
+
                         // If no games match the search, show a message
                         if (filteredByName.length === 0) return null;
                         return (
-                          <div key={idx} className="flex flex-col">
+                          <div
+                            ref={(el) => (categoryRefs.current[idx] = el)}
+                            key={idx}
+                            className="flex flex-col"
+                          >
                             <div className="w-full overflow-hidden mt-2">
                               <div className="flex flex-wrap items-center mt-2 mb-2 justify-between gap-[5px] self-stretch text-text_Quaternary">
                                 <div className="flex items-center gap-2 px-1">
