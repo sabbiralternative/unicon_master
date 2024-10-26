@@ -12,6 +12,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         const setting = data?.result?.settings;
         API.auraWolf = endPoints?.auraWolf;
         API.liveCasinoLobby = endPoints?.liveCasinoLobby;
+        API.lotusHomeLobby = endPoints?.lotusHomeLobby;
         API.exchangeGames = endPoints?.exchangeGames;
         API.banner = endPoints?.banner;
         API.uploadScreenshot = endPoints?.uploadScreenshot;

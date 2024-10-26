@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useLiveCasinoLobby from "../../../hooks/useLiveCasinoLobby";
@@ -8,9 +8,12 @@ import {
   setSelectedCategory,
   setShowLoginModal,
 } from "../../../redux/features/stateSlice";
+import toast from "react-hot-toast";
+import { settings } from "../../../api";
+import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 
 const LiveSlotCrashFishing = ({ casinoType }) => {
-  const { token } = useSelector((state) => state.auth);
+  const { token, bonusToken } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { showAppPopUp, selectedCategory } = useSelector(
     (state) => state.state
@@ -18,6 +21,9 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
   const { data } = useLiveCasinoLobby(casinoType);
   const categories = data && Object.keys(data);
   const [searchQuery, setSearchQuery] = useState("");
+  const [error, setError] = useState("");
+  const [showWarning, setShowWarning] = useState(false);
+  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
   const dispatch = useDispatch();
 
   const handleCategoryClick = (category) => {
@@ -39,14 +45,34 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
 
   const handleNavigate = (game) => {
     if (token) {
-      navigate(`/casino/${game?.game_name.replace(/ /g, "")}/${game?.game_id}`);
+      if (bonusToken) {
+        return setError("Bonus wallet is available only on sports.");
+      }
+      if (settings.casinoCurrency !== "AED") {
+        navigate(
+          `/casino/${game?.game_name.replace(/ /g, "")}/${game?.game_id}`
+        );
+      } else {
+        setGameInfo({ gameName: "", gameId: "" });
+        setGameInfo({ gameName: game?.game_name, gameId: game?.game_id });
+        setShowWarning(true);
+      }
     } else {
       dispatch(setShowLoginModal(true));
     }
   };
 
+  useEffect(() => {
+    if (error) {
+      return toast.error(error);
+    }
+  }, [error]);
+
   return (
     <>
+      {showWarning && (
+        <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
+      )}
       <div
         onClick={() => navigate(-1)}
         className="lg:hidden flex flex-col w-fit cursor-pointer"

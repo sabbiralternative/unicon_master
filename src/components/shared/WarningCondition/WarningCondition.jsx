@@ -93,7 +93,7 @@ const WarningCondition = ({ setShowWarning, gameInfo }) => {
                 dispatch(setShowLoginModal(true));
               }}
               type="button"
-              className="swal2-confirm swal2-styled"
+              className="swal2-confirm swal2-styled bg-primary"
               aria-label=""
               style={{
                 display: "inline-flex",

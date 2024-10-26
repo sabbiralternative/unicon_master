@@ -19,8 +19,10 @@ import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
 import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 import Originals from "../../../components/ui/desktop/Home/Originals";
+import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 
 const Home = () => {
+  const { lotusLobby } = useLotusHomeLobby();
   const { refetchBalance } = useBalance();
   const token = useSelector(userToken);
   const { socialLink } = useGetSocialLink();
@@ -111,11 +113,11 @@ const Home = () => {
                 className="py-1 flex flex-col items-start justify-start"
               >
                 {token && <WithdrawDepositButton />}
-                <Originals />
+                <Originals trendingGames={lotusLobby?.trendingGames} />
                 {data && <InPlay data={data} />}
-                <CasinoProvider />
+                <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} />
                 <AuraWolf />
-                <PopularGames />
+                <PopularGames popularGames={lotusLobby?.popularGames} />
                 {/* <UpcomingEvents /> */}
               </div>
               <div className="px-[6px]"></div>

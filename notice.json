@@ -95,7 +95,8 @@
       "withdrawBreakdown": "https://api7.live/api/exchange/diamond/withdrawBreakdown",
       "banner": "https://api7.live/api/exchange/diamond/banner",
       "exchangeGames": "https://cache7.live/api/exchange/diamond/exchangeGames",
-      "liveCasinoLobby": "https://api7.live/api/exchange/diamond/liveCasinoLobby"
+      "liveCasinoLobby": "https://api7.live/api/exchange/diamond/liveCasinoLobby",
+      "lotusHomeLobby": "https://api7.live/api/account/diamond/lotusHomeLobby"
     }
   },
   "success": true

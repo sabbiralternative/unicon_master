@@ -44,6 +44,7 @@ export const API = {
   exchangeGames: "",
   auraWolf: "",
   liveCasinoLobby: "",
+  lotusHomeLobby: "",
 };
 
 export const settings = {

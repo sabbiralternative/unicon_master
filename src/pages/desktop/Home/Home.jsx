@@ -22,6 +22,7 @@ import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
 import Originals from "../../../components/ui/desktop/Home/Originals";
 import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 import PopularGames from "../../../components/ui/PopularGames/PopularGames";
+import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 
 // import CardGames from "../../../components/ui/CardGames/CardGames";
 // import IndianLiveCasino from "../../../components/ui/IndianLiveCasino/IndianLiveCasino";
@@ -29,6 +30,7 @@ import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 // import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 
 const Home = () => {
+  const { lotusLobby } = useLotusHomeLobby();
   const { refetchBalance } = useBalance();
   const { group } = useSelector((state) => state.state);
   const { data } = useGetAllGroupEventsQuery(group, {
@@ -38,6 +40,7 @@ const Home = () => {
   useEffect(() => {
     refetchBalance();
   }, [refetchBalance]);
+
   return (
     <>
       <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
@@ -57,12 +60,14 @@ const Home = () => {
                   id="home"
                   className="py-1 flex flex-col items-start justify-start"
                 >
-                  <Originals />
+                  <Originals trendingGames={lotusLobby?.trendingGames} />
                   {/* <WithdrawAndDepositButton /> */}
                   {data && <InPlay data={data} />}
-                  <CasinoProvider />
+                  <CasinoProvider
+                    casinoProviders={lotusLobby?.casinoProviders}
+                  />
                   <AuraWolf />
-                  <PopularGames />
+                  <PopularGames popularGames={lotusLobby?.popularGames} />
                   {/* <UpcomingEvents /> */}
                   {/* <CardGames /> */}
                   {/* <IndianLiveCasino />
