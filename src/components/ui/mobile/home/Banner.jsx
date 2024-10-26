@@ -1,7 +1,8 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setGroupType,
   setSelectedCategory,
+  setShowLoginModal,
   // setShowLoginModal,
 } from "../../../../redux/features/stateSlice";
 // import { userToken } from "../../../../redux/features/auth/authSlice";
@@ -10,33 +11,48 @@ import {
 
 import BannerSlider from "../../BannerSlider/BannerSlider";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { settings } from "../../../../api";
+import toast from "react-hot-toast";
+import WarningCondition from "../../../shared/WarningCondition/WarningCondition";
 const Banner = () => {
-  // const navigate = useNavigate();
-  // const token = useSelector(userToken);
+  const [error, setError] = useState("");
+  const [showWarning, setShowWarning] = useState(false);
+  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
+  const { token, bonusToken } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleNavigate = (link) => {
     navigate(link);
   };
 
-  // const navigateAviatorCasinoVideo = () => {
-  //   if (token) {
-  //     if (settings.casinoCurrency !== "AED") {
-  //       navigate(`/casino/aviator/201206`);
-  //     } else {
-  //       // setShowModal(true);
-  //       // setCasinoInfo({
-  //       //   provider_name: "aviator",
-  //       //   game_id: "201206",
-  //       //   base: "casino",
-  //       // });
-  //     }
-  //   } else {
-  //     dispatch(setShowLoginModal(true));
-  //   }
-  // };
+  const handleNavigateToAviator = () => {
+    if (token) {
+      if (bonusToken) {
+        return setError("Bonus wallet is available only on sports.");
+      }
+      if (settings.casinoCurrency !== "AED") {
+        navigate(`/casino/aviator/201206`);
+      } else {
+        setGameInfo({ gameName: "", gameId: "" });
+        setGameInfo({ gameName: "aviator", gameId: "201206" });
+        setShowWarning(true);
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
+
+  useEffect(() => {
+    if (error) {
+      return toast.error(error);
+    }
+  }, [error]);
   return (
     <>
+      {showWarning && (
+        <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
+      )}
       <BannerSlider />
 
       <div className="py-1 px-[2px] w-full">
@@ -44,7 +60,7 @@ const Banner = () => {
           <div className="flex overflow-auto w-full scrollSmooth no-scrollbar">
             <div title="QuickButtons-0" className=" grid grid-row-2">
               <span
-                onClick={() => navigate("/casino/evolution/200296")}
+                onClick={handleNavigateToAviator}
                 title="Evolution"
                 className=" col-span-1 px-[3px] py-[3px]"
               >
