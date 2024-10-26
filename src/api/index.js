@@ -19,7 +19,7 @@ export const API = {
   activityLogs: "",
   ipDetails: "",
   changePassword: "",
-  group: "",
+  groupSportsBook: "",
   currentBets: "",
   depositIframe: "",
   fantasyGames: "",

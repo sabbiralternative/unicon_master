@@ -38,7 +38,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         API.activityLogs = endPoints?.activityLogs;
         API.ipDetails = endPoints?.ipDetails;
         API.changePassword = endPoints?.changePassword;
-        API.group = endPoints?.group;
+        API.groupSportsBook = endPoints?.groupSportsBook;
         API.currentBets = endPoints?.currentBets;
         API.depositIframe = endPoints?.depositIframe;
         API.fantasyGames = endPoints?.fantasyGames;

@@ -47,7 +47,7 @@
       "accessToken": "https://api7.live/api/exchange/diamond/accessToken",
       "orderList": "https://api7.live/api/exchange/diamond/open_bets.php",
       "inplayEvents": "https://cache.api7.live/api/exchange/diamond/inplayEvents",
-      "group": "https://cache.api7.live/api/exchange/diamond/group",
+      "groupSportsBook": "https://cache.api7.live/api/exchange/diamond/group/sportsbook",
       "pnl": "https://api7.live/api/exchange/diamond/exposure.php",
       "mobileStakes": "https://api7.live/api/account/settings/mobile-stakes",
       "oneClick": "https://api7.live/api/account/settings/one-click",

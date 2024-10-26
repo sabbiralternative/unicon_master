@@ -6,7 +6,7 @@ const filterInPlay = (data) => {
       Object.keys(data)
         .sort((keyA, keyB) => data[keyA].sort - data[keyB].sort)
         .filter((key) => {
-          return data[key]?.inPlay === 1;
+          return data[key]?.inPlay === 1 && data[key]?.visible === true;
         });
     return inPlay;
   }

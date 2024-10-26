@@ -158,14 +158,14 @@ const Login = () => {
             >
               <div title="loginFormMonileUserIdInput" className="w-full">
                 <div className="font-lato uppercase text-[10px] md:text-xs lg:text-sm ml-1">
-                  Username
+                  Username/Mobile no.
                 </div>
                 <div className="flex w-full items-center py-3.5 bg-auth rounded-lg border">
                   <input
                     {...register("username", { required: true })}
                     id="mobile-no-input"
                     className="px-2 block w-full focus:outline-none w-full font-lato bg-auth text-text_Ternary pr-2 text-sm xs:text-md"
-                    placeholder="username"
+                    placeholder="Username/Mobile no."
                   />
                   <span className="h-fit"> </span>
                 </div>

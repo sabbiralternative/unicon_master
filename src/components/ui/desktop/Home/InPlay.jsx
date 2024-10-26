@@ -123,6 +123,9 @@ const InPlay = ({ data }) => {
                     Object.keys(filteredData)
                       .sort((keyA, keyB) => data[keyA].sort - data[keyB].sort)
                       .map((keys) => {
+                        if (!data?.[keys]?.visible) {
+                          return null;
+                        }
                         return (
                           <>
                             <div
@@ -184,6 +187,7 @@ const InPlay = ({ data }) => {
                                 )}
                               </span>
                             </div>
+
                             {isOddSuspended(data[keys]) ? (
                               <SuspendedOdd colSpan={6} />
                             ) : (
