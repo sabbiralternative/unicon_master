@@ -6,6 +6,7 @@ import {
   setShowRegisterModal,
 } from "../../../redux/features/stateSlice";
 import ForgetPassword from "../../modal/ForgetPassword/ForgetPassword";
+import { settings } from "../../../api";
 
 const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
   const { showLoginModal, showRegisterModal, showForgetModal } = useSelector(
@@ -67,33 +68,35 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 Log In
               </span>
             </button>
-            <button
-              onClick={() => dispatch(setShowRegisterModal(true))}
-              className="flex rounded-full  gap-1 hover:opacity-100 w-max font-extrabold items-center justify-center px-5 py-2.5 bg-bg_Quaternary"
+            {settings.registration && (
+              <button
+                onClick={() => dispatch(setShowRegisterModal(true))}
+                className="flex rounded-full  gap-1 hover:opacity-100 w-max font-extrabold items-center justify-center px-5 py-2.5 bg-bg_Quaternary"
+              >
+                {/* <span className="w-max hidden md:block">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="var(--color-primary)"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              {/* <span className="w-max hidden md:block">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="var(--color-primary)"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-                  <path d="M16 19h6"></path>
-                  <path d="M19 16v6"></path>
-                  <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
-                </svg>
-              </span> */}
-              <span className="text-xxs text-text_Primary  font-lato md:font-semibold md:text-xs xs:text-xs">
-                Sign Up
-              </span>
-            </button>
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+              <path d="M16 19h6"></path>
+              <path d="M19 16v6"></path>
+              <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
+            </svg>
+          </span> */}
+                <span className="text-xxs text-text_Primary  font-lato md:font-semibold md:text-xs xs:text-xs">
+                  Sign Up
+                </span>
+              </button>
+            )}
           </div>
           <div className="w-max flex items-center gap-1 justify-center rounded lg:hidden">
             <button
@@ -105,14 +108,16 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 Log In
               </span>
             </button>
-            <button
-              onClick={() => dispatch(setShowRegisterModal(true))}
-              className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Quaternary"
-            >
-              <span className="text-x text-text_Primary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
-                Sign Up
-              </span>
-            </button>
+            {settings.registration && (
+              <button
+                onClick={() => dispatch(setShowRegisterModal(true))}
+                className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Quaternary"
+              >
+                <span className="text-x text-text_Primary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
+                  Sign Up
+                </span>
+              </button>
+            )}
           </div>
         </div>
       )}
