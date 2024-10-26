@@ -1,18 +1,22 @@
+import { useSelector } from "react-redux";
 import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 
 const WhatsApp = () => {
   const { socialLink } = useGetSocialLink();
+  const { token } = useSelector((state) => state.auth);
 
-  const openWhatsapp = () => {
-    if (socialLink?.whatsapplink) {
+  const navigateWhatsApp = () => {
+    if (token && socialLink?.branchWhatsapplink) {
+      window.open(socialLink?.branchWhatsapplink, "_blank");
+    } else {
       window.open(socialLink?.whatsapplink, "_blank");
     }
   };
   return (
     <>
-      {socialLink?.whatsapplink && (
+      {socialLink?.whatsapplink || socialLink?.branchWhatsapplink ? (
         <div
-          onClick={openWhatsapp}
+          onClick={navigateWhatsApp}
           title="WhatsAppContact"
           className="fixed cursor-pointer top-[calc(100dvh-64px)] left-3 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
         >
@@ -60,7 +64,7 @@ const WhatsApp = () => {
             </svg>
           </div>
         </div>
-      )}
+      ) : null}
     </>
   );
 };
