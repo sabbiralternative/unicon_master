@@ -110,7 +110,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
               !token &&
               socialLink?.whatsapplink && (
                 <button
-                  onClick={() => openWhatsapp}
+                  onClick={openWhatsapp}
                   className="flex rounded-full  gap-1 hover:opacity-100 w-max font-extrabold items-center justify-center px-5 py-2.5 bg-bg_Quaternary"
                 >
                   <span className="text-xxs text-text_Primary  font-lato md:font-semibold md:text-xs xs:text-xs">
@@ -143,7 +143,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
               !token &&
               socialLink?.whatsapplink && (
                 <button
-                  onClick={() => openWhatsapp}
+                  onClick={openWhatsapp}
                   className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Quaternary"
                 >
                   <span className="text-x text-text_Primary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">

@@ -104,7 +104,7 @@ const Register = () => {
       >
         <div
           onClick={() => dispatch(setShowRegisterModal(false))}
-          className="transition-all mb-2 ease-in-out duration-200 hover:scale-105 absolute top-2 right-2"
+          className="transition-all mb-2 ease-in-out duration-200 hover:scale-105 absolute -top-3 -right-3"
         >
           <svg
             className="cursor-pointer z-50"
