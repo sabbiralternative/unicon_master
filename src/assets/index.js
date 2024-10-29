@@ -35,6 +35,8 @@ import appStar from "./images/app-star.svg";
 import playStore from "./images/playstore.svg";
 import kabbadi from "./images/kabbadi.svg";
 import artboard from "./images/Artboard.webp";
+import default_notification from "./images/default_notification.svg";
+import warning from "./images/warning-yellow.svg";
 
 export default {
   commision,
@@ -74,4 +76,6 @@ export default {
   playStore,
   kabbadi,
   artboard,
+  default_notification,
+  warning,
 };

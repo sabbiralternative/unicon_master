@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userToken } from "../../../redux/features/auth/authSlice";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
+import assets from "../../../assets";
 
 const WarningCondition = ({ setShowWarning, gameInfo }) => {
   /* Close modal click out side */
@@ -44,11 +45,7 @@ const WarningCondition = ({ setShowWarning, gameInfo }) => {
       >
         <div className="swal2-icon swal2-icon-show" style={{ display: "flex" }}>
           <div className="swal2-icon-content">
-            <img
-              src={`/src/assets/images/${
-                token ? "default_notification.svg" : "warning-yellow.svg"
-              }`}
-            />
+            <img src={token ? assets.default_notification : assets.warning} />
           </div>
         </div>
 
