@@ -67,4 +67,5 @@ export const settings = {
   apkLink: "",
   betFairCashOut: "",
   registrationWhatsapp: "",
+  build: "",
 };

@@ -58,6 +58,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         settings.registrationWhatsapp = setting?.registrationWhatsapp;
         settings.casino = setting?.casino;
         settings.otp = setting?.otp;
+        settings.build = setting?.build;
         settings.siteTitle = setting?.siteTitle;
         settings.forceLogin = setting?.forceLogin;
         settings.registration = setting?.registration;
