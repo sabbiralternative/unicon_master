@@ -244,29 +244,58 @@ const LeftDeskSidebar = () => {
                     Kabbadi
                   </span>
                 </li>
+                {settings.casinoCurrency === "INR" && settings.mac88 && (
+                  <li
+                    onClick={() => {
+                      navigate("/mac88");
+                      dispatch(setShowLeftSidebar(false));
+                    }}
+                    className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
+                  >
+                    <span className="w-3 h-auto xs:w-4">
+                      <svg
+                        width="15"
+                        height="16"
+                        viewBox="0 0 15 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M11.7793 5.44C8.75526 3.192 7.71226 1.393 7.00526 0C6.29726 1.393 5.25526 3.192 2.23126 5.44C-2.92574 9.273 1.92826 14.622 6.19626 11.678C5.91826 13.505 4.96926 14.837 4.00526 15.411V16.001H10.0053V15.411C9.04126 14.837 8.09226 13.505 7.81426 11.678C12.0823 14.622 16.9363 9.273 11.7793 5.44Z"
+                          fill="#40424F"
+                        ></path>
+                      </svg>
+                    </span>
+                    <span className="font-medium text-sm xs:text-base">
+                      Mac88
+                    </span>
+                  </li>
+                )}
 
-                <li
-                  onClick={() => handleNavigate("auraWolf")}
-                  className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
-                >
-                  <span className="w-3 h-auto xs:w-4">
-                    <svg
-                      width="15"
-                      height="16"
-                      viewBox="0 0 15 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M11.7793 5.44C8.75526 3.192 7.71226 1.393 7.00526 0C6.29726 1.393 5.25526 3.192 2.23126 5.44C-2.92574 9.273 1.92826 14.622 6.19626 11.678C5.91826 13.505 4.96926 14.837 4.00526 15.411V16.001H10.0053V15.411C9.04126 14.837 8.09226 13.505 7.81426 11.678C12.0823 14.622 16.9363 9.273 11.7793 5.44Z"
-                        fill="#40424F"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="font-medium text-sm xs:text-base">
-                    Indian Card Games
-                  </span>
-                </li>
+                {settings.aura && (
+                  <li
+                    onClick={() => handleNavigate("auraWolf")}
+                    className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
+                  >
+                    <span className="w-3 h-auto xs:w-4">
+                      <svg
+                        width="15"
+                        height="16"
+                        viewBox="0 0 15 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M11.7793 5.44C8.75526 3.192 7.71226 1.393 7.00526 0C6.29726 1.393 5.25526 3.192 2.23126 5.44C-2.92574 9.273 1.92826 14.622 6.19626 11.678C5.91826 13.505 4.96926 14.837 4.00526 15.411V16.001H10.0053V15.411C9.04126 14.837 8.09226 13.505 7.81426 11.678C12.0823 14.622 16.9363 9.273 11.7793 5.44Z"
+                          fill="#40424F"
+                        ></path>
+                      </svg>
+                    </span>
+                    <span className="font-medium text-sm xs:text-base">
+                      Aura
+                    </span>
+                  </li>
+                )}
 
                 <li
                   onClick={() => {

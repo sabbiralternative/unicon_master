@@ -10,6 +10,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
       if (data?.result?.endpoint) {
         const endPoints = data?.result?.endpoint;
         const setting = data?.result?.settings;
+        API.mac88 = endPoints?.mac88;
         API.auraWolf = endPoints?.auraWolf;
         API.liveCasinoLobby = endPoints?.liveCasinoLobby;
         API.lotusHomeLobby = endPoints?.lotusHomeLobby;
@@ -58,6 +59,8 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         settings.registrationWhatsapp = setting?.registrationWhatsapp;
         settings.casino = setting?.casino;
         settings.otp = setting?.otp;
+        settings.aura = setting?.aura;
+        settings.mac88 = setting?.mac88;
         settings.build = setting?.build;
         settings.siteTitle = setting?.siteTitle;
         settings.forceLogin = setting?.forceLogin;

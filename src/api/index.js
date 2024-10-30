@@ -45,6 +45,7 @@ export const API = {
   auraWolf: "",
   liveCasinoLobby: "",
   lotusHomeLobby: "",
+  mac88: "",
 };
 
 export const settings = {
@@ -68,4 +69,6 @@ export const settings = {
   betFairCashOut: "",
   registrationWhatsapp: "",
   build: "",
+  mac88: "",
+  aura: "",
 };
