@@ -287,14 +287,16 @@ cursor-pointer
                     GreyHound Racing
                   </span>
                 </button> */}
-                  <button
-                    onClick={() => {
-                      navigate("/mac88");
-                    }}
-                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
-                  >
-                    <span className="font font-lato text-[12px]">Mac88</span>
-                  </button>
+                  {settings.mac88 && settings.casinoCurrency === "INR" && (
+                    <button
+                      onClick={() => {
+                        navigate("/mac88");
+                      }}
+                      className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                    >
+                      <span className="font font-lato text-[12px]">Mac88</span>
+                    </button>
+                  )}
                   {settings.aura && (
                     <button
                       onClick={() => {
