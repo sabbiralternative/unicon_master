@@ -224,16 +224,18 @@ const Login = () => {
                     </span>
                   </div>
                 </div>
-                <div
-                  onClick={() => {
-                    dispatch(setShowLoginModal(false));
-                    dispatch(setShowForgetModal(true));
-                  }}
-                  title="forgotPassword"
-                  className="w-full text-start text-xs cursor-pointer underline text-text_Primary font-lato md:text-xs lg:text-sm"
-                >
-                  Forgot Password
-                </div>
+                {settings.registration && (
+                  <div
+                    onClick={() => {
+                      dispatch(setShowLoginModal(false));
+                      dispatch(setShowForgetModal(true));
+                    }}
+                    title="forgotPassword"
+                    className="w-full text-start text-xs cursor-pointer underline text-text_Primary font-lato md:text-xs lg:text-sm"
+                  >
+                    Forgot Password
+                  </div>
+                )}
               </div>
               <div id="googleRecaptcha" className="hidden"></div>
               <div title="loginButton" className="w-full">
