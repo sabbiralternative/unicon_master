@@ -50,6 +50,7 @@ const Fancy = ({ fancy }) => {
       data: encryptedData,
     };
     const res = await getLadder(payload).unwrap();
+
     if (res.success) {
       setLadderData(res.result);
     }

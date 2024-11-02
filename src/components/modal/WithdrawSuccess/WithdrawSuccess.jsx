@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const WithdrawSuccess = ({ setWithdrawSuccess }) => {
+const WithdrawSuccess = ({ setWithdrawSuccess, amount }) => {
   const navigate = useNavigate();
   return (
     <div
@@ -482,7 +482,7 @@ const WithdrawSuccess = ({ setWithdrawSuccess }) => {
             <span className="font-normal  text-gray/80">
               We have your request to Withdraw{" "}
             </span>
-            <span className="font-semibold ">₹ 300.</span>
+            <span className="font-semibold ">₹ {amount}.</span>
           </span>
           <div className="w-full">
             <button

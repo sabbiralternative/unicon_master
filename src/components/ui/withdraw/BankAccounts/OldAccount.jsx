@@ -549,7 +549,10 @@ const OldAccount = ({ amount, bankAccounts }) => {
         <RemoveAccount setRemoveBank={setRemoveBank} removeBank={removeBank} />
       )}
       {withdrawSuccess && (
-        <WithdrawSuccess setWithdrawSuccess={setWithdrawSuccess} />
+        <WithdrawSuccess
+          amount={amount}
+          setWithdrawSuccess={setWithdrawSuccess}
+        />
       )}
     </>
   );
