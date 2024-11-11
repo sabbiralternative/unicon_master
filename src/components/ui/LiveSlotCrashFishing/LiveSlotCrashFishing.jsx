@@ -41,7 +41,10 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
       : data;
 
   const getFilteredGamesByName = (games) =>
-    games.filter((game) => game.game_name.toLowerCase().includes(searchQuery));
+    games &&
+    games?.filter((game) =>
+      game?.game_name?.toLowerCase().includes(searchQuery)
+    );
 
   const handleNavigate = (game) => {
     if (token) {
