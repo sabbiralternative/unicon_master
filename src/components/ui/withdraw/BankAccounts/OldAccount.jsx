@@ -11,11 +11,12 @@ const OldAccount = ({ amount, bankAccounts }) => {
   const [withdrawCoin] = useBankMutation();
   const [bankId, setBankId] = useState("");
   const [removeBank, setRemoveBank] = useState("");
-
+  const [disable, setDisable] = useState(false);
   const [withdrawSuccess, setWithdrawSuccess] = useState(false);
 
   const handleWithdraw = async (e) => {
     e.preventDefault();
+    setDisable(true);
     if (amount?.length > 0 && bankId) {
       const generatedToken = handleRandomToken();
       const bankData = {
@@ -146,7 +147,8 @@ const OldAccount = ({ amount, bankAccounts }) => {
           <div className="w-full text-center">
             <button
               type="submit"
-              disabled={!bankId}
+              style={{ cursor: !bankId || disable ? "not-allowed" : "pointer" }}
+              disabled={!bankId || disable}
               className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-text_Quaternary h-10 text-base shadow-lg font-lato rounded-md font-[900] leading-4 disabled:opacity-70 flex gap-x-1 items-center justify-center cursor-pointer"
             >
               <span>{bankId ? "SUBMIT" : "Please select bank account"}</span>
