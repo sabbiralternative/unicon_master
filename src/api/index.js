@@ -46,6 +46,7 @@ export const API = {
   liveCasinoLobby: "",
   lotusHomeLobby: "",
   mac88: "",
+  bonus: "",
 };
 
 export const settings = {

@@ -6,8 +6,8 @@
   "result": {
     "settings": {
       "otp": true,
-      "siteTitle": "a23money",
-      "siteUrl": "dollarsports365.com",
+      "siteTitle": "lotus365",
+      "siteUrl": "lotus365.zip",
       "interval": "600",
       "casino": "aura",
       "registration": true,
@@ -100,7 +100,8 @@
       "exchangeGames": "https://cache7.live/api/exchange/diamond/exchangeGames",
       "liveCasinoLobby": "https://api7.live/api/exchange/diamond/liveCasinoLobby",
       "lotusHomeLobby": "https://api7.live/api/account/diamond/lotusHomeLobby",
-      "mac88": "https://api7.live/api/exchange/diamond/mac88"
+      "mac88": "https://api7.live/api/exchange/diamond/mac88",
+      "bonus": "https://api7.live/api/exchange/diamond/bonus"
     }
   },
   "success": true

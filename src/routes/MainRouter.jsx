@@ -20,6 +20,7 @@ import Slots from "../pages/Slots/Slots.jsx";
 import CrashGames from "../pages/CrashGames/CrashGames.jsx";
 import FishingGames from "../pages/FishingGames/FishingGames.jsx";
 import Mac88 from "../pages/Mac88/Mac88.jsx";
+import BonusStatement from "../pages/BonusStatement/BonusStatement.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -96,6 +97,10 @@ const MainRouter = () => {
           {
             path: "/mac88",
             element: <Mac88 />,
+          },
+          {
+            path: "/bonus-statement",
+            element: <BonusStatement />,
           },
           {
             path: "/apk",
