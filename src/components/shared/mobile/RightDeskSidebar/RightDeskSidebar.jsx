@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowRightSidebar } from "../../../../redux/features/stateSlice";
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../../../hooks/useCloseModalClickOutside";
-import { logout, setUser } from "../../../../redux/features/auth/authSlice";
+import { logout } from "../../../../redux/features/auth/authSlice";
 import useBalance from "../../../../hooks/useBalance";
-import useBonusBalance from "../../../../hooks/useBonusBalance";
+// import useBonusBalance from "../../../../hooks/useBonusBalance";
 import { settings } from "../../../../api";
 // import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 import { useNavigate } from "react-router-dom";
@@ -12,9 +12,9 @@ import { useNavigate } from "react-router-dom";
 const RightDeskSidebar = () => {
   const navigate = useNavigate();
   // const { socialLink } = useGetSocialLink();
-  const { user, token, bonusToken } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const { balance } = useBalance();
-  const { bonusBalance } = useBonusBalance();
+  // const { bonusBalance } = useBonusBalance();
   const rightDeskSidebar = useRef();
   const dispatch = useDispatch();
   useCloseModalClickOutside(rightDeskSidebar, () => {
@@ -22,15 +22,15 @@ const RightDeskSidebar = () => {
   });
   const { showRightSidebar } = useSelector((state) => state.state);
 
-  const handleToggleBalance = (e) => {
-    const checked = e.target.checked;
-    if (checked) {
-      const bonusToken = localStorage.getItem("bonusToken");
-      dispatch(setUser({ user, token, bonusToken }));
-    } else {
-      dispatch(setUser({ user, token }));
-    }
-  };
+  // const handleToggleBalance = (e) => {
+  //   const checked = e.target.checked;
+  //   if (checked) {
+  //     const bonusToken = localStorage.getItem("bonusToken");
+  //     dispatch(setUser({ user, token, bonusToken }));
+  //   } else {
+  //     dispatch(setUser({ user, token }));
+  //   }
+  // };
 
   const handleDownloadAPK = (e) => {
     e.preventDefault();
@@ -150,19 +150,19 @@ const RightDeskSidebar = () => {
                     ₹ {balance?.availBalance}
                   </span>
                 </div>
-                <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-1">
+                {/* <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-1">
                   <span className="uppercase font-normal text-xxs">
                     Free Cash
                   </span>
                   <span className="font-lato text-sm font-medium text-text_Ternary">
                     ₹ 0
                   </span>
-                </div>
-                <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-1">
+                </div> */}
+                <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-2">
                   <span className="uppercase font-normal text-xxs">
                     Net Exposure
                   </span>
-                  <span className="font-lato text-sm font-medium text-text_Danger">
+                  <span className="font-lato text-sm font-medium text-text_Success">
                     ₹ {balance?.deductedExposure}
                   </span>
                 </div>
@@ -270,7 +270,7 @@ const RightDeskSidebar = () => {
                 </div>
               </div>
             </li>
-            <li className="px-3 py-2 flex items-start justify-start flex-col gap-2">
+            {/* <li className="px-3 py-2 flex items-start justify-start flex-col gap-2">
               <div className="flex items-center justify-start gap-x-2.5">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -337,7 +337,7 @@ const RightDeskSidebar = () => {
                   </span>
                 </div>
               </div>
-            </li>
+            </li> */}
 
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">

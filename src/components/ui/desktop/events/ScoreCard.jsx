@@ -1,7 +1,8 @@
 // import { useState } from "react";
 
-const ScoreCard = ({ match_odds }) => {
+const ScoreCard = ({ match_odds, score }) => {
   // const [show, setShow] = useState(true);
+
   return (
     <>
       {/* <div className="my-3">
@@ -124,7 +125,7 @@ const ScoreCard = ({ match_odds }) => {
                 //   display: show ? "block" : "none",
                 // }}
               >
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-md-12">
                   <p className="team-1 row">
                     <span className="team-name col-3">
                       {scoreInfo?.team1Name}
@@ -145,10 +146,10 @@ const ScoreCard = ({ match_odds }) => {
                     <span className="score col-4 text-end">
                       {scoreInfo?.team2Score}
                     </span>
-                    <span className="team-name col-5"></span>
+                    <span className="team-name col-5">{score?.timeStatus}</span>
                   </p>
                 </div>
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-md-12">
                   <div className="row">
                     <div className="col-12">
                       {scoreInfo.target !== null && (

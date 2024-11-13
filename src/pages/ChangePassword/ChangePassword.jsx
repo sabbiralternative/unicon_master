@@ -10,6 +10,7 @@ import { useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { useChangePasswordMutation } from "../../redux/features/auth/authApi";
 import { Lock } from "../../assets/Icon";
+import { useSelector } from "react-redux";
 
 const ChangePassword = () => {
   const [handleChangePassword] = useChangePasswordMutation();
@@ -17,7 +18,7 @@ const ChangePassword = () => {
   const [showPassword, setShowPassword] = useState(true);
   const [showNewPassword, setShowNewPassword] = useState(true);
   const [showConfirmPassword, setShowConfirmPassword] = useState(true);
-
+  const { showAppPopUp } = useSelector((state) => state.state);
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
@@ -44,7 +45,11 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
+    <div
+      className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 ${
+        showAppPopUp ? "pt-[160px]" : "pt-[90px]"
+      }`}
+    >
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24 change-password">
         <LeftDeskSidebar />
         <div
@@ -78,9 +83,15 @@ const ChangePassword = () => {
                         className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out undefined cursor-pointer"
                       >
                         {showPassword ? (
-                          <IoEyeOffOutline color="#b62243" size={23} />
+                          <IoEyeOffOutline
+                            color="var(--color-bg-primary)"
+                            size={23}
+                          />
                         ) : (
-                          <IoEyeOutline color="#b62243" size={23} />
+                          <IoEyeOutline
+                            color="var(--color-bg-primary)"
+                            size={23}
+                          />
                         )}
                       </button>
                     </span>
@@ -113,9 +124,15 @@ const ChangePassword = () => {
                             className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out undefined cursor-pointer"
                           >
                             {showNewPassword ? (
-                              <IoEyeOffOutline color="#b62243" size={23} />
+                              <IoEyeOffOutline
+                                color="var(--color-bg-primary)"
+                                size={23}
+                              />
                             ) : (
-                              <IoEyeOutline color="#b62243" size={23} />
+                              <IoEyeOutline
+                                color="var(--color-bg-primary)"
+                                size={23}
+                              />
                             )}
                           </button>
                         </span>
@@ -151,9 +168,15 @@ const ChangePassword = () => {
                             className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out undefined cursor-pointer"
                           >
                             {showConfirmPassword ? (
-                              <IoEyeOffOutline color="#b62243" size={23} />
+                              <IoEyeOffOutline
+                                color="var(--color-bg-primary)"
+                                size={23}
+                              />
                             ) : (
-                              <IoEyeOutline color="#b62243" size={23} />
+                              <IoEyeOutline
+                                color="var(--color-bg-primary)"
+                                size={23}
+                              />
                             )}
                           </button>
                         </span>

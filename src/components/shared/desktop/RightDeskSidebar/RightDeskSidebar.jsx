@@ -246,6 +246,9 @@ const RightDeskSidebar = () => {
                             MIN
                           </button>
                           <button
+                            style={{
+                              backgroundColor: "var(--color-bg-secondary)",
+                            }}
                             onClick={() =>
                               dispatch(
                                 setStake(
