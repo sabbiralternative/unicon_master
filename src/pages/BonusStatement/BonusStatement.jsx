@@ -7,6 +7,24 @@ const BonusStatement = () => {
   const { data } = useBonusStatement();
   const { showAppPopUp } = useSelector((state) => state.state);
 
+  const handleShowMessage = (item) => {
+    if (item?.is_claimed == 1) {
+      return <span className="text-text_Success">Bonus Claimed</span>;
+    } else if (item?.is_claimed == 2) {
+      return <span className="text-orange-500">Claim Pending</span>;
+    } else if (item?.is_claimed == 0) {
+      if (item?.is_wagering_complete == 1) {
+        return (
+          <button className="bg-[var(--color-bg-primary)] px-2 rounded-sm py-1 text-white">
+            Claim
+          </button>
+        );
+      } else if (item?.is_wagering_complete == 0) {
+        return <span className="text-text_Danger">Wagering Incomplete</span>;
+      }
+    }
+  };
+
   return (
     <div
       className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 ${
@@ -22,7 +40,6 @@ const BonusStatement = () => {
           <div className="flex flex-col h-full">
             {data?.length > 0 ? (
               data?.map((item, i) => {
-                console.log(item);
                 return (
                   <div
                     key={i}
@@ -77,14 +94,7 @@ const BonusStatement = () => {
                         <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
                           <span></span>
                           <span className={`font-semibold `}>
-                            {item?.is_wagering_complete == 1 &&
-                            item?.is_claimed == 0 ? (
-                              <button>Claim</button>
-                            ) : (
-                              <span className="text-text_Success">
-                                Already Claimed
-                              </span>
-                            )}
+                            {handleShowMessage(item)}
                           </span>
                         </span>
                       </div>
