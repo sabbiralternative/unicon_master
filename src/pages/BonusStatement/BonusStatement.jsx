@@ -22,6 +22,7 @@ const BonusStatement = () => {
           <div className="flex flex-col h-full">
             {data?.length > 0 ? (
               data?.map((item, i) => {
+                console.log(item);
                 return (
                   <div
                     key={i}
@@ -76,7 +77,7 @@ const BonusStatement = () => {
                         <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
                           <span></span>
                           <span className={`font-semibold `}>
-                            {item?.s_wagering_complete == 1 &&
+                            {item?.is_wagering_complete == 1 &&
                             item?.is_claimed == 0 ? (
                               <button>Claim</button>
                             ) : (
