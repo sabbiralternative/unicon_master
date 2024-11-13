@@ -21,7 +21,17 @@ export const paymentApi = baseApi.injectEndpoints({
         };
       },
     }),
+    bonus: builder.mutation({
+      query: (payload) => {
+        return {
+          url: `${API.bonus}`,
+          method: "POST",
+          body: payload,
+        };
+      },
+    }),
   }),
 });
 
-export const { usePgPaymentMutation, useBankMutation } = paymentApi;
+export const { usePgPaymentMutation, useBankMutation, useBonusMutation } =
+  paymentApi;

@@ -2,9 +2,13 @@ import { useSelector } from "react-redux";
 import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import useBonusStatement from "../../hooks/useBonusStatement";
+import { useBonusMutation } from "../../redux/features/payment/payment.api";
+import handleRandomToken from "../../utils/handleRandomToken";
+import toast from "react-hot-toast";
 
 const BonusStatement = () => {
-  const { data } = useBonusStatement();
+  const { data, refetch } = useBonusStatement();
+  const [claimBonus] = useBonusMutation();
   const { showAppPopUp } = useSelector((state) => state.state);
 
   const handleShowMessage = (item) => {
@@ -15,13 +19,32 @@ const BonusStatement = () => {
     } else if (item?.is_claimed == 0) {
       if (item?.is_wagering_complete == 1) {
         return (
-          <button className="bg-[var(--color-bg-primary)] px-2 rounded-sm py-1 text-white">
+          <button
+            onClick={() => handleClaimBonus(item)}
+            className="bg-[var(--color-bg-primary)] px-2 rounded-sm py-1 text-white"
+          >
             Claim
           </button>
         );
       } else if (item?.is_wagering_complete == 0) {
         return <span className="text-text_Danger">Wagering Incomplete</span>;
       }
+    }
+  };
+
+  const handleClaimBonus = async (item) => {
+    const generatedToken = handleRandomToken();
+    const payload = {
+      type: "claimBonus",
+      bonus_statement_id: item?.bonus_statement_id,
+      token: generatedToken,
+    };
+    const result = await claimBonus(payload).unwrap();
+    if (result?.success) {
+      refetch();
+      toast.success(result?.result);
+    } else {
+      toast.error(result?.result || "Something went wrong");
     }
   };
 
@@ -44,21 +67,21 @@ const BonusStatement = () => {
                   <div
                     key={i}
                     title="Profit &amp; Loss Statement"
-                    className="w-full px-1 my-1.5 cursor-pointer"
+                    className="w-full px-1 my-1.5"
                   >
                     <div
                       title="Cricket - 1.232257782-3066645.FY"
-                      className="w-full flex active:scale-95 transition-all ease-in-out duration-200 flex-col rounded-[4px] items-center justify-start gap-y-1 bg-bg_Quaternary my-1 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+                      className="w-full flex  transition-all ease-in-out duration-200 flex-col rounded-[4px] items-center justify-start gap-y-1 bg-bg_Quaternary my-1 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
                     >
                       <div className="w-full bg-bg_Quaternary1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">
                         <span className="text-text_Ternary w-1/2 border-r border-r-oddInputColor flex items-center justify-start gap-x-1">
-                          <span>Amount:</span>
+                          <span>Bonus Amount:</span>
                           <span className="font-semibold text-text_Success">
                             ₹ {item?.amount}
                           </span>
                         </span>
                         <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
-                          <span>Wagering Amount:</span>
+                          <span>Wagering Required:</span>
                           <span
                             className={`font-semibold ${
                               item?.wagering_amount > 0
@@ -73,7 +96,17 @@ const BonusStatement = () => {
                       <div className="w-full bg-bg_Quaternary1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">
                         <span className="text-text_Ternary w-1/2 border-r border-r-oddInputColor flex items-center justify-start gap-x-1">
                           <span>Wagering Complete Amount:</span>
-                          <span className="font-semibold">
+                          <span
+                            className={`font-semibold ${
+                              item?.is_wagering_complete == 0
+                                ? "text-orange-500"
+                                : ""
+                            } ${
+                              item?.is_wagering_complete == 1
+                                ? "text-text_Success"
+                                : ""
+                            }`}
+                          >
                             ₹ {item?.wagering_complete_amount}
                           </span>
                         </span>
