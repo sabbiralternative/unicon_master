@@ -5,6 +5,7 @@ import useBonusStatement from "../../hooks/useBonusStatement";
 import { useBonusMutation } from "../../redux/features/payment/payment.api";
 import handleRandomToken from "../../utils/handleRandomToken";
 import toast from "react-hot-toast";
+import moment from "moment";
 
 const BonusStatement = () => {
   const { data, refetch } = useBonusStatement();
@@ -16,6 +17,8 @@ const BonusStatement = () => {
       return <span className="text-text_Success">Bonus Claimed</span>;
     } else if (item?.is_claimed == 2) {
       return <span className="text-orange-500">Claim Pending</span>;
+    } else if (item?.is_claimed == 3) {
+      return <span className="text-text_Danger">Rejected</span>;
     } else if (item?.is_claimed == 0) {
       if (item?.is_wagering_complete == 1) {
         return (
@@ -45,6 +48,13 @@ const BonusStatement = () => {
       toast.success(result?.result);
     } else {
       toast.error(result?.result || "Something went wrong");
+    }
+  };
+
+  const formateDate = (date) => {
+    if (date) {
+      const formateDate = moment(date).format("DD-MM-YYYY, h:mm a");
+      return formateDate;
     }
   };
 
@@ -113,15 +123,15 @@ const BonusStatement = () => {
                         <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
                           <span>Date Added:</span>
                           <span className={`font-semibold `}>
-                            {item?.date_added}
+                            {formateDate(item?.date_added)}
                           </span>
                         </span>
                       </div>
                       <div className="w-full bg-bg_Quaternary1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">
                         <span className="text-text_Ternary w-1/2 border-r border-r-oddInputColor flex items-center justify-start gap-x-1">
-                          <span>Expirity Date:</span>
+                          <span>Expiry Date:</span>
                           <span className="font-semibold">
-                            {item?.expirity_date}
+                            {formateDate(item?.expiry_date)}
                           </span>
                         </span>
                         <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">

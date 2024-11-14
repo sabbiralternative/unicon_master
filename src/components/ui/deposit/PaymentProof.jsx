@@ -92,6 +92,19 @@ const PaymentProof = ({ paymentId, amount }) => {
     }
   };
 
+  const handleUTRChange = (e) => {
+    const value = e.target.value;
+    if (/^[0-9]*$/.test(value)) {
+      console.log(value);
+      setUtr(value);
+    }
+  };
+  const handleKeyDown = (e) => {
+    if (!/[0-9]/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div
       className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
@@ -214,10 +227,11 @@ const PaymentProof = ({ paymentId, amount }) => {
             </div>
             <div className="w-full relative font-lato">
               <input
-                onChange={(e) => setUtr(e.target.value)}
+                onChange={handleUTRChange}
+                onKeyDown={handleKeyDown}
                 className="block w-full focus:outline-none border-[1px] font-lato px-3 py-2.5 rounded-[4px] font-lato placeholder:font-lato font-semibold text-base border-quinary focus:border-ternary"
                 placeholder="6 to 23 Digit UTR/RRN Number"
-                type="text"
+                type="number"
                 value={utr}
               />
               <span className="text-text_Danger text-xs font-lato font-[450] leading-4"></span>
