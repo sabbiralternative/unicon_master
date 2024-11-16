@@ -257,23 +257,25 @@ const Login = () => {
               </div>
             </form>
 
-            <div
-              title="registerNowButton"
-              className="w-full flex justify-center items-center text-xs md:text-sm lg:text-base"
-            >
-              <div>
-                New User?{" "}
-                <span
-                  onClick={() => {
-                    dispatch(setShowLoginModal(false));
-                    dispatch(setShowRegisterModal(true));
-                  }}
-                  className="text-text_Primary cursor-pointer"
-                >
-                  Create an account
-                </span>
+            {settings.registration && (
+              <div
+                title="registerNowButton"
+                className="w-full flex justify-center items-center text-xs md:text-sm lg:text-base"
+              >
+                <div>
+                  New User?{" "}
+                  <span
+                    onClick={() => {
+                      dispatch(setShowLoginModal(false));
+                      dispatch(setShowRegisterModal(true));
+                    }}
+                    className="text-text_Primary cursor-pointer"
+                  >
+                    Create an account
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
