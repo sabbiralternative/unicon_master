@@ -47,6 +47,7 @@ export const API = {
   lotusHomeLobby: "",
   mac88: "",
   bonus: "",
+  index: "",
 };
 
 export const settings = {
@@ -72,4 +73,5 @@ export const settings = {
   build: "",
   mac88: "",
   aura: "",
+  referral: "",
 };

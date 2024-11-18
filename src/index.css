@@ -946,3 +946,47 @@ div:where(.swal2-container) div:where(.swal2-actions) {
   margin-right: 4px;
 }
 /*! Score card end */
+
+/* referral modal */
+
+.modal-body[_ngcontent-ng-c526813732] p[_ngcontent-ng-c526813732] {
+  font-size: 12px;
+  margin: 0;
+}
+
+.modal-body[_ngcontent-ng-c526813732] .referral-code[_ngcontent-ng-c526813732] {
+  background-color: rgb(212, 212, 212);
+  border-radius: 6px;
+  padding: 10px;
+  position: relative;
+  height: 45px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.modal-body[_ngcontent-ng-c526813732]
+  .referral-code[_ngcontent-ng-c526813732]
+  button[_ngcontent-ng-c526813732] {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 45px;
+  top: 0;
+  background-color: var(--color-bg-primary);
+}
+
+button.btn {
+  font-size: 12px;
+  white-space: nowrap;
+  border: none;
+  min-height: 25px;
+  border-radius: 10px;
+  min-width: 75px;
+  font-weight: 300;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* referral modal */

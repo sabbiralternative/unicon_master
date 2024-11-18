@@ -10,6 +10,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
       if (data?.result?.endpoint) {
         const endPoints = data?.result?.endpoint;
         const setting = data?.result?.settings;
+        API.index = endPoints?.index;
         API.bonus = endPoints?.bonus;
         API.mac88 = endPoints?.mac88;
         API.auraWolf = endPoints?.auraWolf;
@@ -79,6 +80,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         settings.logoWidth = setting?.logo?.width;
         settings.apkLink = setting?.apkLink;
         settings.betFairCashOut = setting?.betFairCashOut;
+        settings.referral = setting?.referral;
         setNoticeLoaded(true);
       }
     })
