@@ -21,6 +21,7 @@ import CrashGames from "../pages/CrashGames/CrashGames.jsx";
 import FishingGames from "../pages/FishingGames/FishingGames.jsx";
 import Mac88 from "../pages/Mac88/Mac88.jsx";
 import BonusStatement from "../pages/BonusStatement/BonusStatement.jsx";
+import NotFound from "../pages/NotFound/NotFound.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -36,6 +37,7 @@ const MainRouter = () => {
             <App />
           </>
         ),
+        errorElement: <NotFound />,
         children: [
           ...routes,
           {

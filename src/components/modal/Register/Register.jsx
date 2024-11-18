@@ -20,6 +20,7 @@ import useContextState from "../../../hooks/useContextState";
 import useBalance from "../../../hooks/useBalance";
 
 const Register = () => {
+  const referralCode = localStorage.getItem("referralCode");
   const { refetchBalance } = useBalance();
   const [passType, setPassType] = useState(true);
   const [confirmPassType, setConfirmPassType] = useState(true);
@@ -71,13 +72,14 @@ const Register = () => {
       token: generatedToken,
       otp: data?.otp,
       isOtpAvailable: settings.otp,
-      // referralCode: data?.referralCode,
+      referralCode: referralCode || data?.referralCode,
       orderId: OTP.orderId,
       otpMethod: OTP.otpMethod,
     };
     const encryptedData = handleEncryptData(registerData);
     const result = await handleRegister(encryptedData).unwrap();
     if (result.success) {
+      localStorage.removeItem("referralCode");
       const token = result?.result?.token;
       const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
@@ -339,7 +341,7 @@ const Register = () => {
                 >
                   <span className="text-xs text-text_Danger font-lato"></span>
                 </div>
-                {/* <div className="flex w-full items-center justify-between bg-auth rounded-lg border p-1 mt-4">
+                <div className="flex w-full items-center justify-between bg-auth rounded-lg border p-1 mt-4">
                   <div className="w-full h-full flex items-center justify-start pl-1">
                     <span className="mb-0">
                       <svg
@@ -364,13 +366,15 @@ const Register = () => {
                       </svg>
                     </span>
                     <input
+                      readOnly={referralCode}
                       {...register("referralCode")}
                       className="block w-full focus:outline-none w-full rounded-none text-text_Ternary px-2 py-1 text-sm xs:text-md font-lato bg-auth"
                       placeholder="Enter referral code(Optional)"
                       type="text"
+                      defaultValue={referralCode}
                     />
                   </div>
-                </div> */}
+                </div>
                 <div title="registerSubmitBtn" className="w-full mt-4">
                   <button
                     type="submit"

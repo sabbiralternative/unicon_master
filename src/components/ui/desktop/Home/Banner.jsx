@@ -28,10 +28,10 @@ const Banner = () => {
         return setError("Bonus wallet is available only on sports.");
       }
       if (settings.casinoCurrency !== "AED") {
-        navigate(`/casino/aviator/201206`);
+        navigate(`/casino/aviator/200000`);
       } else {
         setGameInfo({ gameName: "", gameId: "" });
-        setGameInfo({ gameName: "aviator", gameId: "201206" });
+        setGameInfo({ gameName: "aviator", gameId: "200000" });
         setShowWarning(true);
       }
     } else {
