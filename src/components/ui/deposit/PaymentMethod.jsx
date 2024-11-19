@@ -52,7 +52,7 @@ const PaymentMethod = ({
         //   window.location.href = data?.result?.link;
         // }
       } else {
-        toast.error(res?.result?.message);
+        toast.error(res?.result);
       }
     } else {
       const depositDetail = {
