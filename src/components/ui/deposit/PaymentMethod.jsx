@@ -31,6 +31,7 @@ const PaymentMethod = ({
     setTabs(method?.type);
     setPaymentId(method?.paymentId);
     const generatedToken = handleRandomToken();
+    console.log(method);
 
     if (method?.type === "pg") {
       const pgPayload = {
@@ -40,9 +41,8 @@ const PaymentMethod = ({
         amount,
       };
       const res = await handlePgPayment(pgPayload).unwrap();
-      const data = res?.data;
-      if (data?.success) {
-        window.location.href = data?.result?.link;
+      if (res?.success) {
+        window.location.href = res?.result?.link;
         // if (settings?.paymentIntent) {
         //   setPgPaymentMethods(data?.result);
         //   setTime(60 * 20);
@@ -52,7 +52,7 @@ const PaymentMethod = ({
         //   window.location.href = data?.result?.link;
         // }
       } else {
-        toast.error(data?.result?.message);
+        toast.error(res?.result?.message);
       }
     } else {
       const depositDetail = {
