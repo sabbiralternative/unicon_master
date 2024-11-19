@@ -150,7 +150,7 @@ const Login = () => {
             className="flex flex-col items-start gap-y-4 w-full"
           >
             <div className="auth-gradient logo w-full lg:hidden flex items-center justify-center">
-              <img src={logo} alt="logo" />
+              <img style={{ height: "45px" }} src={logo} alt="logo" />
             </div>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -217,9 +217,15 @@ const Login = () => {
                         ></circle>
                       </svg> */}
                       {passwordType ? (
-                        <IoEyeOffOutline color="#b62243" size={23} />
+                        <IoEyeOffOutline
+                          color="var(--color-bg-primary)"
+                          size={23}
+                        />
                       ) : (
-                        <IoEyeOutline color="#b62243" size={23} />
+                        <IoEyeOutline
+                          color="var(--color-bg-primary)"
+                          size={23}
+                        />
                       )}
                     </span>
                   </div>

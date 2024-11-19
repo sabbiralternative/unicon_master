@@ -87,7 +87,7 @@ const ForgetPassword = () => {
   return (
     <div
       id="popup-modal"
-      className="z-[1000] absolute top-0 right-[0.5px] md:right-0 overflow-hidden flex w-full h-screen min-h-[100dvh] items-center justify-center bg-bg_CasinoPopupBg"
+      className="z-[1000] absolute top-0 right-[0.5px] md:right-0 overflow-hidden flex w-full h-screen min-h-[100dvh] items-center justify-center bg-bg_CasinoPopupBg "
     >
       <div
         ref={forgotPassRef}
@@ -151,8 +151,8 @@ const ForgetPassword = () => {
                 title="Forgot Password"
                 className="flex w-full flex-col items-start justify-center gap-y-4"
               >
-                <div className="logo w-full lg:hidden flex items-center justify-center">
-                  <img src={logo} alt="logo" />
+                <div className="auth-gradient logo w-full lg:hidden flex items-center justify-center">
+                  <img style={{ height: "45px" }} src={logo} alt="logo" />
                 </div>
               </div>
               <form
@@ -218,7 +218,7 @@ const ForgetPassword = () => {
                           y="0px"
                           height="16"
                           width="16"
-                          fill="var(--color-primary)"
+                          fill="var(--color-bg-primary)"
                           viewBox="0 0 50 50"
                         >
                           <path d="M 25 3 C 18.363281 3 13 8.363281 13 15 L 13 20 L 9 20 C 7.300781 20 6 21.300781 6 23 L 6 47 C 6 48.699219 7.300781 50 9 50 L 41 50 C 42.699219 50 44 48.699219 44 47 L 44 23 C 44 21.300781 42.699219 20 41 20 L 37 20 L 37 15 C 37 8.363281 31.636719 3 25 3 Z M 25 5 C 30.566406 5 35 9.433594 35 15 L 35 20 L 15 20 L 15 15 C 15 9.433594 19.433594 5 25 5 Z M 25 30 C 26.699219 30 28 31.300781 28 33 C 28 33.898438 27.601563 34.6875 27 35.1875 L 27 38 C 27 39.101563 26.101563 40 25 40 C 23.898438 40 23 39.101563 23 38 L 23 35.1875 C 22.398438 34.6875 22 33.898438 22 33 C 22 31.300781 23.300781 30 25 30 Z"></path>
@@ -263,9 +263,15 @@ const ForgetPassword = () => {
                             ></circle>
                           </svg> */}
                           {passType ? (
-                            <IoEyeOffOutline color="#b62243" size={23} />
+                            <IoEyeOffOutline
+                              color="var(--color-bg-primary)"
+                              size={23}
+                            />
                           ) : (
-                            <IoEyeOutline color="#b62243" size={23} />
+                            <IoEyeOutline
+                              color="var(--color-bg-primary)"
+                              size={23}
+                            />
                           )}
                         </span>
                       </span>
@@ -284,7 +290,7 @@ const ForgetPassword = () => {
                           y="0px"
                           height="16"
                           width="16"
-                          fill="var(--color-primary)"
+                          fill="var(--color-bg-primary)"
                           viewBox="0 0 50 50"
                         >
                           <path d="M 25 3 C 18.363281 3 13 8.363281 13 15 L 13 20 L 9 20 C 7.300781 20 6 21.300781 6 23 L 6 47 C 6 48.699219 7.300781 50 9 50 L 41 50 C 42.699219 50 44 48.699219 44 47 L 44 23 C 44 21.300781 42.699219 20 41 20 L 37 20 L 37 15 C 37 8.363281 31.636719 3 25 3 Z M 25 5 C 30.566406 5 35 9.433594 35 15 L 35 20 L 15 20 L 15 15 C 15 9.433594 19.433594 5 25 5 Z M 25 30 C 26.699219 30 28 31.300781 28 33 C 28 33.898438 27.601563 34.6875 27 35.1875 L 27 38 C 27 39.101563 26.101563 40 25 40 C 23.898438 40 23 39.101563 23 38 L 23 35.1875 C 22.398438 34.6875 22 33.898438 22 33 C 22 31.300781 23.300781 30 25 30 Z"></path>
@@ -328,9 +334,15 @@ const ForgetPassword = () => {
                             ></circle>
                           </svg> */}
                           {confirmPassType ? (
-                            <IoEyeOffOutline color="#b62243" size={23} />
+                            <IoEyeOffOutline
+                              color="var(--color-bg-primary)"
+                              size={23}
+                            />
                           ) : (
-                            <IoEyeOutline color="#b62243" size={23} />
+                            <IoEyeOutline
+                              color="var(--color-bg-primary)"
+                              size={23}
+                            />
                           )}
                         </span>
                       </span>
