@@ -37,6 +37,7 @@ import kabbadi from "./images/kabbadi.svg";
 import artboard from "./images/Artboard.webp";
 import default_notification from "./images/default_notification.svg";
 import warning from "./images/warning-yellow.svg";
+import matchField from "./images/liveMatchField.jpg";
 
 export default {
   commision,
@@ -78,4 +79,5 @@ export default {
   artboard,
   default_notification,
   warning,
+  matchField,
 };

@@ -19,6 +19,7 @@ import {
 import IFrame from "../../../components/ui/IFrame/IFrame";
 import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 import IframeVideoTab from "../../../components/ui/mobile/events/IframeVideoTab";
+import LiveMatchTracker from "../../../components/ui/desktop/events/LiveMatchTracker";
 
 const Events = () => {
   const [tab, setTab] = useState("");
@@ -337,6 +338,7 @@ const Events = () => {
             {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
               <ScoreCard score={data?.score} match_odds={match_odds} />
             )}
+            <LiveMatchTracker />
 
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
