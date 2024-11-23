@@ -2,6 +2,17 @@ import useWithdrawBreakdown from "../../../hooks/useWithdrawBreakDown";
 
 const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
   const { withdrawBreakdown } = useWithdrawBreakdown();
+
+  const handleShowBank = () => {
+    if (
+      amount < withdrawBreakdown?.minimumWithdraw ||
+      amount > withdrawBreakdown?.mainWallet
+    ) {
+      return;
+    } else {
+      setShowBanks(true);
+    }
+  };
   return (
     <div className="px-2 pb-2 flex flex-col items-start justify-start gap-y-2 mt-1 md:mt-[0px]">
       <div className="w-full flex flex-col gap-2 pt-2 pb-1 px-4 rounded-lg bg-bg_Quaternary">
@@ -76,7 +87,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
                   value={amount}
                 />
                 <span className="px-2 absolute top-1/2 -translate-y-1/2 right-0">
-                  INR
+                  Minimum {withdrawBreakdown?.minimumWithdraw}
                 </span>
               </div>
               <div className="text-xs ml-1 text-text_Primary"></div>
@@ -122,21 +133,17 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
           </span>
         </div>
         <div className="w-full text-center">
-          <button
-            disabled={
+          <div
+            onClick={handleShowBank}
+            className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-text_Quaternary h-10 text-base shadow-lg font-lato rounded-md font-[900] leading-4  flex gap-x-1 items-center justify-center  ${
               amount < withdrawBreakdown?.minimumWithdraw ||
               amount > withdrawBreakdown?.mainWallet
-            }
-            onClick={() => setShowBanks(true)}
-            className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-text_Quaternary h-10 text-base shadow-lg font-lato rounded-md font-[900] leading-4 disabled:opacity-70 flex gap-x-1 items-center justify-center ${
-              amount < withdrawBreakdown?.minimumWithdraw ||
-              amount > withdrawBreakdown?.mainWallet
-                ? "cursor-not-allowed"
+                ? "cursor-not-allowed opacity-70"
                 : "cursor-pointer"
             }`}
           >
             <span>Continue to select account</span>
-          </button>
+          </div>
         </div>
       </div>
     </div>

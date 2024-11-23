@@ -21,7 +21,7 @@ const DepositReport = () => {
   return (
     <>
       {image && <ShowImage image={image} setShowImage={setImage} />}
-      <div className="rounded-lg flex flex-col gap-y-2 px-2 overflow-clip mt-2 font-lato">
+      <div className="rounded-lg flex flex-col gap-y-2 px-2 overflow-clip mt-2">
         {accountStatement?.length > 0 ? (
           <>
             {category?.map((category) => {
@@ -38,7 +38,7 @@ const DepositReport = () => {
                       return (
                         <div
                           key={i}
-                          className="flex active:scale-95 hover:scale-95 flex-col gap-2 border bg-bg_Quaternary rounded overflow-hidden shadow-lg"
+                          className="flex  flex-col gap-2 border bg-bg_Quaternary rounded overflow-hidden shadow-lg"
                         >
                           <div className="flex justify-between items-start text-[10px] font-bold h-full">
                             <div className="text-base px-3 py-1">Deposit</div>
@@ -81,7 +81,7 @@ const DepositReport = () => {
                                 />
                               </span>
                             )}
-                            <span className="text-start text-lg font-roboto flex items-end justify-end tracking-tighter font-bold flex-1">
+                            <span className="text-start text-lg flex items-end justify-end tracking-tighter font-bold flex-1">
                               ₹ {data?.amount}{" "}
                             </span>
                           </div>

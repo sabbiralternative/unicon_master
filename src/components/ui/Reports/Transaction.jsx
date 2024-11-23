@@ -82,7 +82,7 @@ const Transaction = () => {
               </div>
               <div
                 className={`absolute z-1 w-full h-full transition-all ease-in-out duration-150 bg-bg_Primary text-sm bg-bg_Primary rounded-full  ${
-                  tabs === "deposit" ? "left-0" : "left-[120px] "
+                  tabs === "deposit" ? "left-0" : "left-[125px] "
                 }`}
                 style={{
                   width: "110.234px",

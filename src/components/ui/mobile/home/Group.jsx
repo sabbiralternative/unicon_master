@@ -28,6 +28,11 @@ const Group = ({ data }) => {
                 title="Upcoming Events"
               />
             )}
+            {inPlay?.length === 0 && upComing?.length === 0 && (
+              <div className="flex items-center pl-5 bg-white py-3 rounded-sm font-[500]">
+                No event available right now!
+              </div>
+            )}
           </div>
         </div>
       </div>
