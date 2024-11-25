@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import useGetSocialLink from "../../../../hooks/useGetSocialLink";
+import { useEffect } from "react";
 
 const WhatsApp = () => {
-  const { socialLink } = useGetSocialLink();
+  const { socialLink, refetch } = useGetSocialLink();
   const { token } = useSelector((state) => state.auth);
 
   const navigateWhatsApp = () => {
@@ -12,6 +13,10 @@ const WhatsApp = () => {
       window.open(socialLink?.whatsapplink, "_blank");
     }
   };
+
+  useEffect(() => {
+    refetch();
+  }, [token, refetch]);
   return (
     <>
       {socialLink?.whatsapplink || socialLink?.branchWhatsapplink ? (

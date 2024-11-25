@@ -9,7 +9,7 @@ import { userToken } from "../redux/features/auth/authSlice";
 const useGetSocialLink = () => {
   const token = useSelector(userToken);
   /* get whats app link */
-  const { data: socialLink = {} } = useQuery({
+  const { data: socialLink = {}, refetch } = useQuery({
     queryKey: ["whatsApp"],
     queryFn: async () => {
       /* random token function */
@@ -31,7 +31,7 @@ const useGetSocialLink = () => {
     },
     refetchOnWindowFocus: false,
   });
-  return { socialLink };
+  return { socialLink, refetch };
 };
 
 export default useGetSocialLink;
