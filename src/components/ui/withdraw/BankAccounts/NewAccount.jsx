@@ -21,6 +21,7 @@ const NewAccount = ({ setTabs }) => {
   /* Handle add bank function */
   const handleAddBank = async (e) => {
     e.preventDefault();
+
     if (bankDetails.accountNumber !== bankDetails.confirmAccountNumber) {
       return toast.error("Account number not matched!");
     }
@@ -35,6 +36,7 @@ const NewAccount = ({ setTabs }) => {
       token: generatedToken,
       site: settings.siteUrl,
     };
+
     const encryptedData = handleEncryptData(bankData);
     const res = await addNewBank(encryptedData).unwrap();
 
@@ -75,7 +77,8 @@ const NewAccount = ({ setTabs }) => {
         <div className="w-full relative h-full">
           <div className="flex flex-col w-full">
             <div className="ml-1 text-sm">
-              UPI ID<span className="text-text_Primary"></span>
+              UPI ID (Optional)
+              <span className="text-text_Primary"></span>
             </div>
             <div className="relative">
               <input
@@ -85,7 +88,7 @@ const NewAccount = ({ setTabs }) => {
                     upiId: e.target.value,
                   });
                 }}
-                placeholder="Enter UPI Id"
+                placeholder="Enter UPI ID"
                 className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
                 type="text"
                 value={bankDetails.upiId}
@@ -109,7 +112,7 @@ const NewAccount = ({ setTabs }) => {
                 }}
                 id="ifsc"
                 label="IFSC Code"
-                required=""
+                required
                 placeholder="Enter IFSC Code"
                 className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
                 type="text"
@@ -133,7 +136,7 @@ const NewAccount = ({ setTabs }) => {
               }}
               id="accountNo"
               label="Account No"
-              required=""
+              required
               placeholder="Enter Account Number"
               className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
               type="text"
@@ -156,7 +159,7 @@ const NewAccount = ({ setTabs }) => {
                 });
               }}
               label="Confirm Account No"
-              required=""
+              required
               id="confirmAccountNo"
               placeholder="Re-enter Account Number"
               className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
@@ -180,7 +183,7 @@ const NewAccount = ({ setTabs }) => {
               }}
               id="accountName"
               label="Account Name"
-              required=""
+              required
               placeholder="Enter Account Name"
               className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
               type="text"
