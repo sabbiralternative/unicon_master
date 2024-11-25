@@ -49,7 +49,9 @@ const Login = () => {
       const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
       const game = result?.result?.buttonValue?.game;
+      const memberId = result?.result?.memberId;
       dispatch(setUser({ user, token }));
+      localStorage.setItem("memberId", memberId);
       localStorage.setItem("buttonValue", JSON.stringify(game));
       localStorage.setItem("bonusToken", bonusToken);
       if (token && user) {
@@ -79,8 +81,10 @@ const Login = () => {
       const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
       const game = result?.result?.buttonValue?.game;
+
       dispatch(setUser({ user, token }));
       localStorage.setItem("buttonValue", JSON.stringify(game));
+
       localStorage.setItem("bonusToken", bonusToken);
       if (token && user) {
         dispatch(setShowLoginModal(false));

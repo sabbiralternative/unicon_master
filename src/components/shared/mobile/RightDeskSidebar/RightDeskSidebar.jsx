@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import Referral from "../../../modal/Referral/Referral";
 
 const RightDeskSidebar = () => {
+  const memberId = localStorage.getItem("memberId");
   const navigate = useNavigate();
   const [showReferral, setShowReferral] = useState(false);
   // const { socialLink } = useGetSocialLink();
@@ -115,6 +116,31 @@ const RightDeskSidebar = () => {
                     ></path>
                   </svg>
                 </button>
+              </li>
+              <li className="px-3 py-2 flex items-center justify-between ">
+                <div className="flex items-center justify-start gap-x-1.5 ">
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="var(--color-iconsColor)"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14z"></path>
+                      <path d="M11 4h2"></path>
+                      <path d="M12 17v.01"></path>
+                    </svg>
+                  </span>
+                  <span className="font-lato-bold font-semibold text-sm xs:text-base text-text_Ternary">
+                    User ID : {memberId}
+                  </span>
+                </div>
               </li>
               <li className="px-3 py-2 flex items-start justify-start flex-col gap-2">
                 <div className="flex items-center justify-start gap-2.5">
