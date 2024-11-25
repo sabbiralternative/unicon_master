@@ -70,6 +70,9 @@ const OldAccount = ({ amount, bankAccounts }) => {
                       <span className="text-xs font-normal w-full truncate">
                         {account?.bankName}
                       </span>
+                      <span className="text-xs font-normal w-full truncate">
+                        {account?.upiId}
+                      </span>
                     </span>
                     <button
                       onClick={() => setRemoveBank(account?.bankId)}
