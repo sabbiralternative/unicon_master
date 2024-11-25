@@ -15,6 +15,7 @@ const NewAccount = ({ setTabs }) => {
     ifsc: "",
     accountNumber: "",
     confirmAccountNumber: "",
+    upiId: "",
   });
 
   /* Handle add bank function */
@@ -28,6 +29,7 @@ const NewAccount = ({ setTabs }) => {
     const bankData = {
       accountName: bankDetails.accountName,
       ifsc: bankDetails.ifsc,
+      upiId: bankDetails.upiId,
       accountNumber: bankDetails.accountNumber,
       type: "addBankAccount",
       token: generatedToken,
@@ -70,6 +72,28 @@ const NewAccount = ({ setTabs }) => {
       data-gtm-form-interact-id="0"
     >
       <div className="rounded-lg bg-bg_Quaternary py-2 px-3.5 pb-5 flex flex-col items-start justify-start w-full gap-y-2">
+        <div className="w-full relative h-full">
+          <div className="flex flex-col w-full">
+            <div className="ml-1 text-sm">
+              UPI ID<span className="text-text_Primary"></span>
+            </div>
+            <div className="relative">
+              <input
+                onChange={(e) => {
+                  setBankDetails({
+                    ...bankDetails,
+                    upiId: e.target.value,
+                  });
+                }}
+                placeholder="Enter UPI Id"
+                className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
+                type="text"
+                value={bankDetails.upiId}
+              />
+            </div>
+            <div className="text-xs ml-1 text-text_Primary"></div>
+          </div>
+        </div>
         <div className="w-full relative h-full">
           <div className="flex flex-col w-full">
             <div className="ml-1 text-sm">
