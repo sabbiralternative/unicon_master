@@ -106,6 +106,7 @@ const LeftDeskSidebar = () => {
               }  origin-left top-0 left-0  z-50 w-[70%] max-w-sm h-full overflow-y-auto bg-bg_Quaternary shadow-lg `}
             >
               <ul
+                style={{ paddingLeft: "0px" }}
                 className={` ${
                   showLeftSidebar
                     ? "divide-y overflow-y-auto h-max"

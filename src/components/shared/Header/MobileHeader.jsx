@@ -9,7 +9,7 @@ const MobileHeader = () => {
   const { pathname } = useLocation();
   return (
     <div className="lg:hidden">
-      <div className="flex w-full overflow-x-auto no-scrollbar     bg-bg_Quaternary p-1 items-start lg:items-center lg:justify-center ">
+      <div className="flex w-full overflow-x-auto no-scrollbar     bg-bg_Quaternary p-1 items-start lg:items-center lg:justify-center mobile-menu-list">
         <a
           onClick={() => {
             navigate("/");

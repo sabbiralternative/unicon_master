@@ -60,7 +60,10 @@ const LeftDeskSidebar = () => {
         id="leftDeskSideBar"
         className="hidden lg:flex p-2 overflow-y-auto z-10 w-[20%] h-[calc(100dvh-120px)] sticky top-[54px] lg:top-[110px]"
       >
-        <ul className="flex border rounded-lg border-ternary3 bg-bg_Quaternary overflow-x-hidden flex-col w-full">
+        <ul
+          style={{ paddingLeft: "0px" }}
+          className="flex border rounded-lg border-ternary3 bg-bg_Quaternary overflow-x-hidden flex-col w-full"
+        >
           <li
             onClick={() => {
               navigate("/");
