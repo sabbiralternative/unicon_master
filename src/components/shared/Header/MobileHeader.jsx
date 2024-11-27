@@ -103,6 +103,43 @@ const MobileHeader = () => {
             <span className="font font-lato text-[12px]">Kabbadi</span>
           </button>
         </a>
+        <a
+          onClick={() => {
+            navigate("/horse-racing");
+          }}
+        >
+          <button
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+        w-max px-3  py-1     
+     lg:hidden ${
+       pathname === "/horse-racing"
+         ? "text-secondary border border-primary"
+         : ""
+     }`}
+          >
+            <span className="font font-lato text-[12px]">Horse Racing</span>
+          </button>
+        </a>
+        <a
+          onClick={() => {
+            navigate("/greyhound-racing");
+          }}
+        >
+          <button
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+        w-max px-3  py-1     
+     lg:hidden ${
+       pathname === "/greyhound-racing"
+         ? "text-secondary border border-primary"
+         : ""
+     }`}
+          >
+            <span className="font font-lato text-[12px]">Greyhound Racing</span>
+          </button>
+        </a>
+
         {settings.casinoCurrency === "INR" && settings.mac88 && (
           <a
             onClick={() => {

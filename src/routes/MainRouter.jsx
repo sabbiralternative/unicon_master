@@ -23,6 +23,8 @@ import Mac88 from "../pages/Mac88/Mac88.jsx";
 import BonusStatement from "../pages/BonusStatement/BonusStatement.jsx";
 import NotFound from "../pages/NotFound/NotFound.jsx";
 import ReferralStatement from "../pages/ReferralStatement/ReferralStatement.jsx";
+import HorseRacing from "../pages/HorseRacing/HorseRacing.jsx";
+import GreyhoundRacing from "../pages/GreyhoundRacing/GreyhoundRacing.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -108,6 +110,14 @@ const MainRouter = () => {
           {
             path: "/referral-statement",
             element: <ReferralStatement />,
+          },
+          {
+            path: "/horse-racing",
+            element: <HorseRacing />,
+          },
+          {
+            path: "/greyhound-racing",
+            element: <GreyhoundRacing />,
           },
           {
             path: "/apk",
