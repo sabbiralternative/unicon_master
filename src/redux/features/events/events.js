@@ -25,6 +25,7 @@ export const eventsApi = baseApi.injectEndpoints({
       },
       transformResponse: (data) => {
         const decryptionData = handleDecryptData(JSON.stringify(data));
+
         return decryptionData;
       },
     }),

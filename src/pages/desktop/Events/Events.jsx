@@ -30,6 +30,7 @@ const Events = () => {
     eventTypeId,
     eventId,
   };
+
   const [match_odds, setMatch_odds] = useState([]);
   const [bookmaker, setBookmaker] = useState([]);
   // const [bookmaker2, setBookmaker2] = useState([]);

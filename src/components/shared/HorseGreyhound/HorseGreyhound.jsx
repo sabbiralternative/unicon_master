@@ -5,10 +5,11 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import LeftDeskSidebar from "../desktop/LeftDeskSidebar/LeftDeskSidebar";
 import RightDeskSidebar from "../desktop/RightDeskSidebar/RightDeskSidebar";
+import { useNavigate } from "react-router-dom";
 
-const HorseGreyhound = ({ data, title }) => {
+const HorseGreyhound = ({ data, title, eventTypeId }) => {
   const { showAppPopUp } = useSelector((state) => state.state);
-
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
@@ -117,157 +118,6 @@ const HorseGreyhound = ({ data, title }) => {
                     </li>
                   );
                 })}
-
-                {/* <li
-              _ngcontent-wne-c149=""
-              className="navItems nav-item ng-star-inserted"
-            >
-              <a
-                _ngcontent-wne-c149=""
-                href=""
-                ngbnavlink=""
-                className="race-region nav-link"
-                aria-labelledby="AU"
-                id="ngb-nav-10"
-                role="tab"
-                aria-selected="false"
-                aria-disabled="false"
-              >
-                <span
-                  _ngcontent-wne-c149=""
-                  className="flag_logo AU"
-                ></span>
-                <span _ngcontent-wne-c149="" className="city">
-                  {" "}
-                  AU{" "}
-                </span>
-              </a>
-            </li>
-            <li
-              _ngcontent-wne-c149=""
-              className="navItems nav-item ng-star-inserted"
-            >
-              <a
-                _ngcontent-wne-c149=""
-                href=""
-                ngbnavlink=""
-                className="race-region nav-link"
-                aria-labelledby="ZA"
-                id="ngb-nav-11"
-                role="tab"
-                aria-selected="false"
-                aria-disabled="false"
-              >
-                <span
-                  _ngcontent-wne-c149=""
-                  className="flag_logo ZA"
-                ></span>
-                <span _ngcontent-wne-c149="" className="city">
-                  {" "}
-                  ZA{" "}
-                </span>
-              </a>
-            </li>
-            <li
-              _ngcontent-wne-c149=""
-              className="navItems nav-item ng-star-inserted"
-            >
-              <a
-                _ngcontent-wne-c149=""
-                href=""
-                ngbnavlink=""
-                className="race-region nav-link"
-                aria-labelledby="GB"
-                id="ngb-nav-12"
-                role="tab"
-                aria-selected="false"
-                aria-disabled="false"
-              >
-                <span
-                  _ngcontent-wne-c149=""
-                  className="flag_logo GB"
-                ></span>
-                <span _ngcontent-wne-c149="" className="city">
-                  {" "}
-                  GB{" "}
-                </span>
-              </a>
-            </li>
-            <li
-              _ngcontent-wne-c149=""
-              className="navItems nav-item ng-star-inserted"
-            >
-              <a
-                _ngcontent-wne-c149=""
-                href=""
-                ngbnavlink=""
-                className="race-region nav-link"
-                aria-labelledby="FR"
-                id="ngb-nav-13"
-                role="tab"
-                aria-selected="false"
-                aria-disabled="false"
-              >
-                <span
-                  _ngcontent-wne-c149=""
-                  className="flag_logo FR"
-                ></span>
-                <span _ngcontent-wne-c149="" className="city">
-                  {" "}
-                  FR{" "}
-                </span>
-              </a>
-            </li>
-            <li
-              _ngcontent-wne-c149=""
-              className="navItems nav-item ng-star-inserted"
-            >
-              <a
-                _ngcontent-wne-c149=""
-                href=""
-                ngbnavlink=""
-                className="race-region nav-link"
-                aria-labelledby="IE"
-                id="ngb-nav-14"
-                role="tab"
-                aria-selected="false"
-                aria-disabled="false"
-              >
-                <span
-                  _ngcontent-wne-c149=""
-                  className="flag_logo IE"
-                ></span>
-                <span _ngcontent-wne-c149="" className="city">
-                  {" "}
-                  IE{" "}
-                </span>
-              </a>
-            </li>
-            <li
-              _ngcontent-wne-c149=""
-              className="navItems nav-item ng-star-inserted"
-            >
-              <a
-                _ngcontent-wne-c149=""
-                href=""
-                ngbnavlink=""
-                className="race-region nav-link"
-                aria-labelledby="US"
-                id="ngb-nav-15"
-                role="tab"
-                aria-selected="false"
-                aria-disabled="false"
-              >
-                <span
-                  _ngcontent-wne-c149=""
-                  className="flag_logo US"
-                ></span>
-                <span _ngcontent-wne-c149="" className="city">
-                  {" "}
-                  US{" "}
-                </span>
-              </a>
-            </li> */}
               </ul>
               <div _ngcontent-wne-c149="" className="mt-0 tab-content">
                 <div
@@ -277,27 +127,6 @@ const HorseGreyhound = ({ data, title }) => {
                   role="tabpanel"
                   aria-labelledby="ngb-nav-9"
                 >
-                  {/* <div
-                _ngcontent-wne-c149=""
-                className="row mx-0 item-box px-0 py-1 ng-star-inserted"
-              >
-                <div _ngcontent-wne-c149="" className="col-md-2">
-                  <span _ngcontent-wne-c149="" className="trackName">
-                    Ascot
-                  </span>
-                </div>
-                <div _ngcontent-wne-c149="" className="col-md-10">
-                  <span _ngcontent-wne-c149="" className="ng-star-inserted">
-                    <span
-                      _ngcontent-wne-c149=""
-                      className="startTime p-2"
-                      tabindex="0"
-                    >
-                      13:08
-                    </span>
-                  </span>
-                </div>
-              </div> */}
                   {findChildByCountryCode?.childs?.map((child) => {
                     return (
                       <div
@@ -314,6 +143,11 @@ const HorseGreyhound = ({ data, title }) => {
                           {child?.childs?.map((item) => {
                             return (
                               <span
+                                onClick={() =>
+                                  navigate(
+                                    `/game-details/${eventTypeId}/${item?.eventId}`
+                                  )
+                                }
                                 key={item?.eventId}
                                 _ngcontent-wne-c149=""
                                 className="ng-star-inserted"
@@ -328,91 +162,6 @@ const HorseGreyhound = ({ data, title }) => {
                               </span>
                             );
                           })}
-
-                          {/* <span
-                        _ngcontent-wne-c149=""
-                        className="ng-star-inserted"
-                      >
-                        <span
-                          _ngcontent-wne-c149=""
-                          className="startTime p-2"
-                          tabindex="0"
-                        >
-                          05:52
-                        </span>
-                      </span>
-                      <span
-                        _ngcontent-wne-c149=""
-                        className="ng-star-inserted"
-                      >
-                        <span
-                          _ngcontent-wne-c149=""
-                          className="startTime p-2"
-                          tabindex="0"
-                        >
-                          06:27
-                        </span>
-                      </span>
-                      <span
-                        _ngcontent-wne-c149=""
-                        className="ng-star-inserted"
-                      >
-                        <span
-                          _ngcontent-wne-c149=""
-                          className="startTime p-2"
-                          tabindex="0"
-                        >
-                          07:02
-                        </span>
-                      </span>
-                      <span
-                        _ngcontent-wne-c149=""
-                        className="ng-star-inserted"
-                      >
-                        <span
-                          _ngcontent-wne-c149=""
-                          className="startTime p-2"
-                          tabindex="0"
-                        >
-                          07:37
-                        </span>
-                      </span>
-                      <span
-                        _ngcontent-wne-c149=""
-                        className="ng-star-inserted"
-                      >
-                        <span
-                          _ngcontent-wne-c149=""
-                          className="startTime p-2"
-                          tabindex="0"
-                        >
-                          08:08
-                        </span>
-                      </span>
-                      <span
-                        _ngcontent-wne-c149=""
-                        className="ng-star-inserted"
-                      >
-                        <span
-                          _ngcontent-wne-c149=""
-                          className="startTime p-2"
-                          tabindex="0"
-                        >
-                          08:42
-                        </span>
-                      </span>
-                      <span
-                        _ngcontent-wne-c149=""
-                        className="ng-star-inserted"
-                      >
-                        <span
-                          _ngcontent-wne-c149=""
-                          className="startTime p-2"
-                          tabindex="0"
-                        >
-                          09:13
-                        </span>
-                      </span> */}
                         </div>
                       </div>
                     );

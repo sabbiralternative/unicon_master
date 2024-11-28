@@ -5,7 +5,9 @@ const GreyhoundRacing = () => {
   const { data } = useGetAllGroupEventsQuery(4339, {
     pollingInterval: 1000,
   });
-  return <HorseGreyhound data={data} title="Greyhound Racing" />;
+  return (
+    <HorseGreyhound data={data} title="Greyhound Racing" eventTypeId={4339} />
+  );
 };
 
 export default GreyhoundRacing;
