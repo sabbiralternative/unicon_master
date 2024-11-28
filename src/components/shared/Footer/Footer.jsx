@@ -11,7 +11,6 @@ const Footer = () => {
     }
   };
 
-  console.log(socialLink);
   return (
     <div id="footer" className="w-full ">
       <div className=" pb-12 pr-3 pl-3 mt-1 w-full  md:pr-0 mb:pb-0 md:pl-0">
