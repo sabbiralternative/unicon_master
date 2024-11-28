@@ -832,119 +832,120 @@ div:where(.swal2-container) div:where(.swal2-actions) {
   z-index: 10;
 }
 
-/* App pop up */
+/*! App pop up */
 
-/* Score card */
+/*! Score card */
 .scorecard {
-  /* width: calc(100% - 8px); */
-  padding: 5px;
-  background-image: url("/src/assets/images/scorecard-bg.png");
-  position: relative;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #fff;
-  z-index: 1;
-  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
-  /* margin-left: 4px;
-  margin-right: 4px; */
+  /* width: calc(100% - 8px) !important; */
+  padding: 5px !important;
+  background-image: url("/src/assets/images/scorecard-bg.png") !important;
+  position: relative !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  color: #fff !important;
+  z-index: 1 !important;
+  font-family: Helvetica Neue, sans-serif, BBAlpha Sans !important;
+  /* margin-left: 4px !important;
+  margin-right: 4px !important; */
 }
 
 .scorecard::before {
-  content: "";
-  background-color: rgba(0, 0, 0, 0.55);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  content: "" !important;
+  background-color: rgba(0, 0, 0, 0.55) !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1 !important;
 }
 
 .scorecard .row {
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: calc(-1 * var(--bs-gutter-y));
-  margin-right: calc(-0.5 * var(--bs-gutter-x));
-  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  --bs-gutter-x: 1.5rem !important;
+  --bs-gutter-y: 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin-top: calc(-1 * var(--bs-gutter-y)) !important;
+  margin-right: calc(-0.5 * var(--bs-gutter-x)) !important;
+  margin-left: calc(-0.5 * var(--bs-gutter-x)) !important;
 }
 
-.col-12 {
-  flex: 0 0 auto;
-  width: 100%;
+.scorecard .col-12 {
+  flex: 0 0 auto !important;
+  width: 100% !important;
 }
 
 @media (min-width: 768px) {
-  .col-md-6 {
-    flex: 0 0 auto;
+  .scorecard .col-md-6 {
+    flex: 0 0 auto !important;
     width: 50% !important;
   }
 }
 
-.row > * {
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%;
-  padding-right: calc(var(--bs-gutter-x) * 0.5);
-  padding-left: calc(var(--bs-gutter-x) * 0.5);
-  margin-top: var(--bs-gutter-y);
+.scorecard .row > * {
+  --bs-gutter-x: 1.5rem !important;
+  --bs-gutter-y: 0 !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-right: calc(var(--bs-gutter-x) * 0.5) !important;
+  padding-left: calc(var(--bs-gutter-x) * 0.5) !important;
+  margin-top: var(--bs-gutter-y) !important;
 }
 
 .scorecard p {
-  margin-bottom: 0;
-  font-size: 13px;
+  margin-bottom: 0 !important;
+  font-size: 13px !important;
 }
-.col-3 {
-  flex: 0 0 auto;
-  width: 25%;
+.scorecard .col-3 {
+  flex: 0 0 auto !important;
+  width: 25% !important;
 }
 
-.text-end {
+.scorecard .text-end {
   text-align: right !important;
 }
 
-.col-4 {
-  flex: 0 0 auto;
-  width: 33.33333333%;
+.scorecard .col-4 {
+  flex: 0 0 auto !important;
+  width: 33.33333333% !important;
 }
 
-.col-5 {
-  flex: 0 0 auto;
-  width: 41.66666667%;
+.scorecard .col-5 {
+  flex: 0 0 auto !important;
+  width: 41.66666667% !important;
 }
-.mt-2 {
+.scorecard .mt-2 {
   margin-top: 0.5rem !important;
 }
 
-.col-3 {
-  flex: 0 0 auto;
-  width: 25%;
+.scorecard .col-3 {
+  flex: 0 0 auto !important;
+  width: 25% !important;
 }
 
 @media (min-width: 1200px) {
-  .text-xl-end {
+  .scorecard .text-xl-end {
     text-align: right !important;
   }
 }
-.ball-runs.four {
-  background-color: #087f23;
+.scorecard .ball-runs.four {
+  background-color: #087f23 !important;
 }
 
-.ball-runs {
-  display: inline-block;
-  height: 25px;
-  line-height: 25px;
-  width: 25px;
-  border-radius: 50%;
-  font-size: 13px;
-  background-color: #08c;
-  color: #fff;
-  text-align: center;
-  margin-right: 4px;
+.scorecard .ball-runs {
+  display: inline-block !important;
+  height: 25px !important;
+  line-height: 25px !important;
+  width: 25px !important;
+  border-radius: 50% !important;
+  font-size: 13px !important;
+  background-color: #08c !important;
+  color: #fff !important;
+  text-align: center !important;
+  margin-right: 4px !important;
 }
+
 /*! Score card end */
 
 /* referral modal */
