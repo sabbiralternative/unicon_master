@@ -23,7 +23,7 @@ const HorseGreyhound = ({ data, title }) => {
     data?.[0]?.childs?.find((child) => child?.countryCode === selectedCategory);
 
   const convertToIST = (utc) => {
-    return moment(utc).tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss");
+    return moment(utc).tz("Asia/Kolkata").format("HH:mm");
   };
   return (
     <div
