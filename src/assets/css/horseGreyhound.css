@@ -451,6 +451,7 @@ body.dark-theme ::placeholder {
   border-radius: 2px;
   background-color: #f7f7f7;
   margin-right: 5px;
+  margin-bottom: 4px;
 }
 .startTime[_ngcontent-wne-c149]:hover {
   transform: scale(1.1);
