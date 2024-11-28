@@ -19,6 +19,7 @@ import {
 import IFrame from "../../../components/ui/IFrame/IFrame";
 import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 import IframeVideoTab from "../../../components/ui/mobile/events/IframeVideoTab";
+import HorseGreyhound from "../../../components/ui/desktop/events/HorseGreyhound";
 
 const Events = () => {
   const [tab, setTab] = useState("");
@@ -347,6 +348,10 @@ const Events = () => {
                 {bookmaker?.length > 0 && <Bookmaker bookmaker={bookmaker} />}
 
                 {fancy?.length > 0 && <Fancy fancy={fancy} />}
+
+                {eventTypeId == 7 || eventTypeId == 4339 ? (
+                  <HorseGreyhound data={data} />
+                ) : null}
               </div>
             </div>
           </div>

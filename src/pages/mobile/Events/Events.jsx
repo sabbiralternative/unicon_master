@@ -18,6 +18,7 @@ import OpenBets from "../../../components/ui/mobile/events/OpenBets";
 import IFrameScore from "../../../components/ui/IFrame/IFrame";
 import useCurrentBets from "../../../hooks/useCurrentBets";
 import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
+import HorseGreyhound from "../../../components/ui/mobile/events/HorseGreyhound";
 
 const Events = () => {
   const { showAppPopUp } = useSelector((state) => state.state);
@@ -304,6 +305,9 @@ const Events = () => {
                 )}
                 {bookmaker?.length > 0 && <Bookmaker bookmaker={bookmaker} />}
                 {fancy?.length > 0 && <Fancy fancy={fancy} />}
+                {eventTypeId == 7 || eventTypeId == 4339 ? (
+                  <HorseGreyhound data={data} />
+                ) : null}
               </div>
             </div>
           </div>

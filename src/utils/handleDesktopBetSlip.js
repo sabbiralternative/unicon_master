@@ -15,6 +15,9 @@ export const handleDesktopBetSlip = (
 ) => {
   if (token) {
     let pnlBySelection;
+    let selectionId;
+    let runnerId;
+    let eventTypeId;
     const updatedPnl = [];
 
     if (exposer?.pnlBySelection) {
@@ -23,13 +26,30 @@ export const handleDesktopBetSlip = (
     }
 
     if (games?.btype == "FANCY") {
+      selectionId = games?.id;
+      runnerId = games?.id;
+      eventTypeId = games?.eventTypeId;
       const pnl = pnlBySelection?.find((p) => p?.RunnerId === games?.id);
       if (pnl) {
         updatedPnl.push(pnl?.pnl);
       }
-    } else {
+    } else if (games?.btype && games?.btype !== "FANCY") {
+      selectionId = runner?.id;
+      runnerId = games.runners.map((runner) => runner.id);
+      eventTypeId = games?.eventTypeId;
       games?.runners?.forEach((runner) => {
         const pnl = pnlBySelection?.find((p) => p?.RunnerId === runner?.id);
+        if (pnl) {
+          updatedPnl.push(pnl?.pnl);
+        }
+      });
+    } else {
+      selectionId = runner?.selectionId;
+      eventTypeId = games?.marketId;
+      games?.runners?.forEach((runner) => {
+        const pnl = pnlBySelection?.find(
+          (p) => p?.RunnerId === runner?.selectionId
+        );
         if (pnl) {
           updatedPnl.push(pnl?.pnl);
         }
@@ -39,19 +59,16 @@ export const handleDesktopBetSlip = (
     const betData = {
       price: price,
       side: betType === "back" ? 0 : 1,
-      selectionId: games?.btype == "FANCY" ? games?.id : runner?.id,
+      selectionId,
       btype: games?.btype,
-      eventTypeId: games?.eventTypeId,
+      eventTypeId,
       betDelay: games?.betDelay,
       marketId: games?.id,
       lay: betType === "lay",
       back: betType === "back",
       selectedBetName: runner?.name,
       name: games.runners.map((runner) => runner.name),
-      runnerId:
-        games?.btype == "FANCY"
-          ? games?.id
-          : games.runners.map((runner) => runner.id),
+      runnerId,
       isWeak: games?.isWeak,
       maxLiabilityPerMarket: games?.maxLiabilityPerMarket,
       isBettable: games?.isBettable,
