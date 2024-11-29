@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom";
 import useExposer from "../../../../hooks/useExposure";
-import isOddSuspended from "../../../../utils/isOddSuspended";
+
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import { useDispatch, useSelector } from "react-redux";
 import { handleBetSlip } from "../../../../utils/handleBetSlip";
 import { useState } from "react";
 import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
+import { isHorseGreyhoundOddSuspended } from "../../../../utils/isOddSuspended";
 
 const HorseGreyhound = ({ data }) => {
   const [runnerId, setRunnerId] = useState("");
@@ -100,7 +101,7 @@ const HorseGreyhound = ({ data }) => {
                           ></span>
                         </div>
                       </div>
-                      {isOddSuspended(games, runner) ? (
+                      {isHorseGreyhoundOddSuspended(games, runner) ? (
                         <SuspendedOdd colSpan={5} />
                       ) : (
                         <div className="col-span-5 md:col-span-7 h-12 grid grid-cols-2 md:grid-cols-6 relative">

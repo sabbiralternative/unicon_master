@@ -139,7 +139,7 @@ const MatchOdds = ({ match_odds }) => {
           (profit) =>
             profit?.gameId === games?.id && profit?.isOnePositiveExposure
         );
-
+        console.log(games);
         return (
           <div key={i} className="py-1.5">
             <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] mb-1.5">

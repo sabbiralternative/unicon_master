@@ -7,7 +7,6 @@ import InPlay from "../../../components/ui/mobile/home/InPlay";
 
 import { useGetAllGroupEventsQuery } from "../../../redux/features/events/events";
 import WithdrawDepositButton from "../../../components/ui/mobile/home/WithdrawDepositButton";
-import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/mobile/home/Group";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import FAQ from "../../../components/ui/desktop/Home/FAQ";
@@ -28,7 +27,7 @@ const Home = () => {
   const { socialLink } = useGetSocialLink();
   const { group, showAppPopUp } = useSelector((state) => state.state);
   const { data } = useGetAllGroupEventsQuery(group, {
-    pollingInterval: isRefetchGroupData(group) ? 1000 : null,
+    pollingInterval: 1000,
   });
 
   const openWhatsapp = () => {

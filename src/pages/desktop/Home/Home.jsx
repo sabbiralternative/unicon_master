@@ -11,7 +11,6 @@ import FAQ from "../../../components/ui/desktop/Home/FAQ";
 import WhatsApp from "../../../components/ui/desktop/Home/WhatsApp";
 // import WithdrawAndDepositButton from "../../../components/ui/desktop/Home/WithdrawAndDepositButton";
 import LeftDeskSidebar from "../../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
-import isRefetchGroupData from "../../../utils/isRefetchGroupData";
 import Group from "../../../components/ui/desktop/Home/Group";
 // import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 // import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
@@ -34,7 +33,7 @@ const Home = () => {
   const { refetchBalance } = useBalance();
   const { group } = useSelector((state) => state.state);
   const { data } = useGetAllGroupEventsQuery(group, {
-    pollingInterval: isRefetchGroupData(group) ? 1000 : null,
+    pollingInterval: 1000,
   });
 
   useEffect(() => {
