@@ -944,6 +944,7 @@ const RightDeskSidebar = () => {
                     onClick={() => {
                       dispatch(logout());
                       dispatch(setShowRightSidebar(false));
+                      navigate("/");
                     }}
                     className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
                   >
