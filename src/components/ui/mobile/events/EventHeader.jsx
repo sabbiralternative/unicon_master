@@ -145,11 +145,11 @@ const EventHeader = ({ data, setBetsType, betType, myBets, score }) => {
       >
         <div
           id="step-selectMode"
-          className="relative flex  rounded-lg border shadow bg-bg_Quaternary  bg-bg_Quaternary w-full border-none overflow-clip gap-x-2.5"
+          className="relative flex  rounded-lg border shadow bg-bg_Quaternary  bg-bg_Quaternary w-full border-none overflow-clip "
         >
           <button
             onClick={() => setBetsType("live")}
-            className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase relative p-3    font-bold font-lato text-xs ${
+            className={`flex items-center justify-center w-full gap-1 tracking-wider font-lato py-2.5 uppercase relative     font-bold font-lato text-xs ${
               betType === "live" ? "text-text_Primary" : "text-text_Quinary "
             }`}
             style={{ zIndex: 10 }}
@@ -177,7 +177,7 @@ const EventHeader = ({ data, setBetsType, betType, myBets, score }) => {
                 setBetsType("video");
                 window.scrollTo(0, 0);
               }}
-              className={`flex items-center justify-center w-full gap-1.5 tracking-wider font-lato py-2.5 uppercase relative p-3    font-bold font-lato text-xs ${
+              className={`flex items-center justify-center w-full gap-1 tracking-wider font-lato py-2.5 uppercase relative    font-bold font-lato text-xs ${
                 betType === "video" ? "text-text_Primary" : "text-text_Quinary "
               }`}
               style={{ zIndex: 10 }}
@@ -204,7 +204,7 @@ const EventHeader = ({ data, setBetsType, betType, myBets, score }) => {
                 setBetsType("tracker");
                 window.scrollTo(0, 0);
               }}
-              className={`flex items-center justify-center w-full relative gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3    font-bold font-lato text-xs ${
+              className={`flex items-center justify-center w-full relative gap-1 tracking-wider font-lato py-2.5 uppercase  font-bold font-lato text-xs ${
                 betType === "tracker"
                   ? "text-text_Primary"
                   : "text-text_Quinary "
@@ -232,7 +232,7 @@ const EventHeader = ({ data, setBetsType, betType, myBets, score }) => {
               setBetsType("openBet");
               window.scrollTo(0, 0);
             }}
-            className={`flex items-center justify-center w-full relative gap-1.5 tracking-wider font-lato py-2.5 uppercase p-3  font-lato font-bold text-xs ${
+            className={`flex items-center justify-center w-full relative gap-1 tracking-wider font-lato py-2.5 uppercase  font-lato font-bold text-xs ${
               betType === "openBet" ? "text-text_Primary" : "text-text_Quinary "
             }`}
             style={{ zIndex: 10 }}
