@@ -1,4 +1,6 @@
-const EventHeader = ({ data }) => {
+const EventHeader = ({ data, eventTypeId }) => {
+  const score = data?.score;
+  console.log(score);
   return (
     <div className="flex flex-col w-full">
       <div className="flex flex-row w-full justify-between items-center px-2 mt-2 bg-bg_Quaternary rounded-sm py-2">
@@ -31,52 +33,74 @@ const EventHeader = ({ data }) => {
               </defs>
             </svg>
           </span>
-          <span className="text-primary text-transparent bg-clip-text font-lato text-xl font-bold">
-            <span className="capitalize w-max break-words ">
-              {data?.result?.length > 0 && data?.result?.[0]?.eventName}
-            </span>
-            {/* <span className="">vs</span>
-              <span className="capitalize w-max break-words">
-                Bangladesh
-              </span> */}
-          </span>
+          {/* <span className="text-primary text-transparent bg-clip-text font-lato text-xl font-bold"> */}
+          {/* <span className="text-primary capitalize w-max break-words ">
+            {data?.result?.length > 0 && data?.result?.[0]?.eventName}
+          </span> */}
+          <div className="text-primary w-full  bg-bg_color_quaternary1 px-3">
+            <div className="flex flex-col items-center justify-center my-[4px] w-full gap-y-[5px]">
+              <div className="flex justify-between items-center h-full w-full">
+                <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1">
+                  {score?.player1}
+                </span>
+                {eventTypeId == 2 && (
+                  <span className="flex h-full items-center">
+                    <span className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center">
+                      {score?.team1Score}
+                    </span>
+                    <div className="flex items-center justify-center gap-x-2">
+                      {score?.set1?.map((set, i) => (
+                        <span
+                          key={i}
+                          className="min-w-6 min-h-6 shadow-lg text-xs bg-bg_color_quaternary text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                        >
+                          {set}
+                        </span>
+                      ))}
+                    </div>
+                  </span>
+                )}
+              </div>
+              <div className="flex justify-between items-center h-full w-full">
+                <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1">
+                  {score?.player2}
+                </span>
+                {eventTypeId == 2 && (
+                  <span className="flex h-full items-center">
+                    <svg
+                      width="8"
+                      height="8"
+                      viewBox="0 0 8 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="mr-2"
+                    >
+                      <circle
+                        cx="4"
+                        cy="4"
+                        r="4"
+                        fill="var(--icon-color-brand-secondary)"
+                      ></circle>
+                    </svg>
+                    <span className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center">
+                      {score?.team2Score}
+                    </span>
+                    <div className="flex items-center justify-center gap-x-2">
+                      {score?.set2?.map((set, i) => (
+                        <span
+                          key={i}
+                          className="min-w-6 min-h-6 shadow-lg text-xs bg-bg_color_quaternary text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                        >
+                          {set}
+                        </span>
+                      ))}
+                    </div>
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-        {/* <div className="flex items-center justify-center gap-x-2">
-          <span>
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 17 17"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clipPath="url(#clip0_1717_31141)">
-                <path
-                  d="M8.5 0.5C4.07841 0.5 0.5 4.078 0.5 8.5C0.5 12.9215 4.078 16.5 8.5 16.5C12.9216 16.5 16.5 12.922 16.5 8.5C16.5 4.07847 12.922 0.5 8.5 0.5ZM8.5 15.3837C4.70431 15.3837 1.61628 12.2957 1.61628 8.5C1.61628 4.70428 4.70431 1.61628 8.5 1.61628C12.2957 1.61628 15.3837 4.70428 15.3837 8.5C15.3837 12.2957 12.2957 15.3837 8.5 15.3837Z"
-                  fill="#C10B32"
-                ></path>
-                <path
-                  d="M8.5003 7.1687C8.02642 7.1687 7.68945 7.36883 7.68945 7.66367V11.6757C7.68945 11.9285 8.02642 12.1812 8.5003 12.1812C8.95311 12.1812 9.32164 11.9285 9.32164 11.6757V7.66361C9.32164 7.36879 8.95311 7.1687 8.5003 7.1687Z"
-                  fill="#C10B32"
-                ></path>
-                <path
-                  d="M8.50019 4.69409C8.01578 4.69409 7.63672 5.04159 7.63672 5.44175C7.63672 5.84194 8.01581 6.19997 8.50019 6.19997C8.97406 6.19997 9.35319 5.84194 9.35319 5.44175C9.35319 5.04159 8.97403 4.69409 8.50019 4.69409Z"
-                  fill="#C10B32"
-                ></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_1717_31141">
-                  <rect
-                    width="16"
-                    height="16"
-                    fill="white"
-                    transform="translate(0.5 0.5)"
-                  ></rect>
-                </clipPath>
-              </defs>
-            </svg>
-          </span>
-        </div> */}
       </div>
     </div>
   );

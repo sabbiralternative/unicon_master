@@ -273,7 +273,7 @@ const Events = () => {
           style={{ minHeight: "calc(-54px + 100dvh)" }}
         >
           <div className="no-scrollbar min-h-[calc(100dvh-56px)] md:mb-3">
-            <EventHeader data={data} />
+            <EventHeader data={data} eventTypeId={eventTypeId} />
 
             {/* <div title="Open Bets" className="hidden">
               <div className="flex items-start justify-start flex-col w-full px-2 py-1">
