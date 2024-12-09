@@ -279,6 +279,7 @@ const Events = () => {
         >
           <div className="no-scrollbar min-h-[calc(100dvh-56px)] md:mb-3">
             <EventHeader
+              eventTypeId={eventTypeId}
               betType={betsType}
               setBetsType={setBetsType}
               data={data}
