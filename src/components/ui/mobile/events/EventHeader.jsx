@@ -1,6 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-const EventHeader = ({ setBetsType, betType, myBets, score, eventTypeId }) => {
+const EventHeader = ({
+  data,
+  setBetsType,
+  betType,
+  myBets,
+  score,
+  eventTypeId,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -10,13 +17,18 @@ const EventHeader = ({ setBetsType, betType, myBets, score, eventTypeId }) => {
       style={{ zIndex: 20 }}
     >
       <div
+        style={{
+          backgroundColor: "#eceaea",
+        }}
         className="w-full pl-[4px] pr-[4px] py-1.5 bg-bg_Quaternary flex flex-col items-center"
         id="eventPageHeader"
       >
         <div className="w-full flex items-center justify-between">
           <div
             id="playIcon"
-            className="flex items-start justify-center gap-x-3 w-max max-w-[92%]"
+            className={`flex items-start ${
+              eventTypeId != 4 ? "justify-center" : ""
+            } gap-x-3 w-full`}
           >
             <div
               onClick={() => navigate(-1)}
@@ -35,147 +47,113 @@ const EventHeader = ({ setBetsType, betType, myBets, score, eventTypeId }) => {
                 ></path>
               </svg>
             </div>
-            <span className="max-w-[10%] min-w-[6%] mt-0.5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="21"
-                height="20"
-                viewBox="0 0 21 20"
-                fill="none"
-              >
-                <g clipPath="url(#clip0_1717_31137)">
-                  <path
-                    d="M10.5 19.8571C8.55041 19.8571 6.64463 19.279 5.02363 18.1959C3.40264 17.1128 2.13922 15.5733 1.39316 13.7721C0.647093 11.971 0.451889 9.98903 0.832229 8.07694C1.21257 6.16484 2.15137 4.40846 3.52992 3.02992C4.90846 1.65137 6.66484 0.712569 8.57694 0.332229C10.489 -0.0481111 12.471 0.147093 14.2721 0.893157C16.0733 1.63922 17.6128 2.90264 18.6959 4.52363C19.779 6.14463 20.3571 8.05041 20.3571 9.99997C20.3541 12.6133 19.3146 15.1188 17.4667 16.9667C15.6188 18.8146 13.1133 19.8541 10.5 19.8571ZM10.5 1.5714C8.83296 1.5714 7.20338 2.06572 5.81731 2.99187C4.43123 3.91801 3.35092 5.23437 2.71298 6.77449C2.07505 8.31461 1.90813 10.0093 2.23335 11.6443C2.55857 13.2793 3.36131 14.7811 4.54007 15.9599C5.71883 17.1386 7.22065 17.9414 8.85564 18.2666C10.4906 18.5918 12.1853 18.4249 13.7254 17.787C15.2656 17.149 16.5819 16.0687 17.5081 14.6826C18.4342 13.2966 18.9285 11.667 18.9285 9.99997C18.926 7.76536 18.0371 5.62302 16.457 4.04291C14.8769 2.4628 12.7346 1.57397 10.5 1.5714Z"
-                    fill="var(--color-bg-primary)"
-                  ></path>
-                  <path
-                    d="M15.6915 11.5172H10.5629C10.3735 11.5172 10.1918 11.4419 10.0578 11.308C9.92389 11.174 9.84863 10.9923 9.84863 10.8029V5.67376C9.84863 5.48432 9.92389 5.30264 10.0578 5.16868C10.1918 5.03473 10.3735 4.95947 10.5629 4.95947C10.7524 4.95947 10.934 5.03473 11.068 5.16868C11.2019 5.30264 11.2772 5.48432 11.2772 5.67376V10.0886H15.6915C15.8809 10.0886 16.0626 10.1639 16.1966 10.2978C16.3305 10.4318 16.4058 10.6135 16.4058 10.8029C16.4058 10.9923 16.3305 11.174 16.1966 11.308C16.0626 11.4419 15.8809 11.5172 15.6915 11.5172Z"
-                    fill="var(--color-bg-primary)"
-                  ></path>
-                </g>
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_1717_31137"
-                    x1="0.642822"
-                    y1="21.0893"
-                    x2="22.3721"
-                    y2="18.475"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#C10B32"></stop>
-                    <stop offset="1" stopColor="#6A061C"></stop>
-                  </linearGradient>
-                  <linearGradient
-                    id="paint1_linear_1717_31137"
-                    x1="9.84863"
-                    y1="11.927"
-                    x2="17.076"
-                    y2="11.0576"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#C10B32"></stop>
-                    <stop offset="1" stopColor="#6A061C"></stop>
-                  </linearGradient>
-                  <clipPath id="clip0_1717_31137">
-                    <rect
-                      width="20"
-                      height="20"
-                      fill="white"
-                      transform="translate(0.5)"
-                    ></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-            </span>
+
             {/* <div className="flex flex-col items-start justify-start w-[95%] break-words gap-y-0"> */}
-            {/* <span className="w-full text-primary text-transparent text-start bg-clip-text font-lato text-base font-bold truncate "> */}
-            {/* <span className="capitalize break-words">
+            {eventTypeId == 1 && (
+              <span className="w-full text-primary text-transparent text-start bg-clip-text font-lato text-base font-bold truncate ">
+                <span className="capitalize break-words">
                   {data?.result?.length > 0 && data?.result?.[0]?.eventName}
-                </span> */}
-            <div className="text-primary w-full  bg-bg_color_quaternary1 px-3">
-              <div className="flex flex-col items-center justify-center my-[4px] w-full gap-y-[5px]">
-                <div className="flex justify-between items-center h-full w-full">
-                  <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1">
-                    {score?.player1}
-                  </span>
-                  {eventTypeId == 2 && (
-                    <span className="flex h-full items-center">
-                      <div className="flex items-center justify-center gap-x-2">
-                        {score?.set1?.map((set, i) => (
-                          <span
-                            key={i}
-                            className="min-w-6 min-h-6 shadow-lg text-xs bg-bg_color_quaternary text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
-                          >
-                            {set}
-                          </span>
-                        ))}
-                      </div>
-                      <svg
-                        width="8"
-                        height="8"
-                        viewBox="0 0 8 8"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="mr-2"
-                      >
-                        <circle
-                          cx="4"
-                          cy="4"
-                          r="4"
-                          fill={score?.service == 1 ? "#7ed321" : ""}
-                        ></circle>
-                      </svg>
-                      <span
-                        style={{ color: "#21a8f7" }}
-                        className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
-                      >
-                        {score?.team1Score}
-                      </span>
+                </span>
+              </span>
+            )}
+
+            {/* {eventTypeId == 1 && (
+              <span className="text-primary text-transparent bg-clip-text font-lato text-xl font-bold">
+                <span className="text-primary capitalize w-max break-words ">
+                  {data?.result?.length > 0 && data?.result?.[0]?.eventName}
+                </span>
+              </span>
+            )} */}
+
+            {eventTypeId == 2 && (
+              <div className="text-primary w-full  bg-bg_color_quaternary1 px-3">
+                <div className="flex flex-col items-center justify-between my-[4px] w-full gap-y-[5px]">
+                  <div className="flex justify-between items-center h-full w-full">
+                    <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1">
+                      {score?.player1}
                     </span>
-                  )}
-                </div>
-                <div className="flex justify-between items-center h-full w-full">
-                  <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1">
-                    {score?.player2}
-                  </span>
-                  {eventTypeId == 2 && (
-                    <span className="flex h-full items-center">
-                      <div className="flex items-center justify-center gap-x-2">
-                        {score?.set2?.map((set, i) => (
-                          <span
-                            key={i}
-                            className="min-w-6 min-h-6 shadow-lg text-xs bg-bg_color_quaternary text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                    {eventTypeId == 2 && (
+                      <span className="flex h-full items-center">
+                        <div className="flex items-center justify-center gap-x-2">
+                          <svg
+                            width="8"
+                            height="8"
+                            viewBox="0 0 8 8"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="mr-2"
                           >
-                            {set}
-                          </span>
-                        ))}
-                      </div>
-                      <svg
-                        width="8"
-                        height="8"
-                        viewBox="0 0 8 8"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="mr-2"
-                      >
-                        <circle
-                          cx="4"
-                          cy="4"
-                          r="4"
-                          fill={score?.service == 2 ? "#7ed321" : ""}
-                        ></circle>
-                      </svg>
-                      <span
-                        style={{ color: "#21a8f7" }}
-                        className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
-                      >
-                        {score?.team2Score}
+                            <circle
+                              cx="4"
+                              cy="4"
+                              r="4"
+                              fill={score?.service == 1 ? "#7ed321" : ""}
+                            ></circle>
+                          </svg>
+                          {score?.set1?.map((set, i) => (
+                            <span
+                              key={i}
+                              className="min-w-6 min-h-6 shadow-lg text-xs bg-bg_color_quaternary text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                            >
+                              {set}
+                            </span>
+                          ))}
+                        </div>
+
+                        <span
+                          style={{ color: "#21a8f7" }}
+                          className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                        >
+                          {score?.team1Score}
+                        </span>
                       </span>
+                    )}
+                  </div>
+                  <div className="flex justify-between items-center h-full w-full">
+                    <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1">
+                      {score?.player2}
                     </span>
-                  )}
+                    {eventTypeId == 2 && (
+                      <span className="flex h-full items-center">
+                        <div className="flex items-center justify-center gap-x-2">
+                          <svg
+                            width="8"
+                            height="8"
+                            viewBox="0 0 8 8"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="mr-2"
+                          >
+                            <circle
+                              cx="4"
+                              cy="4"
+                              r="4"
+                              fill={score?.service == 2 ? "#7ed321" : ""}
+                            ></circle>
+                          </svg>
+                          {score?.set2?.map((set, i) => (
+                            <span
+                              key={i}
+                              className="min-w-6 min-h-6 shadow-lg text-xs bg-bg_color_quaternary text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                            >
+                              {set}
+                            </span>
+                          ))}
+                        </div>
+
+                        <span
+                          style={{ color: "#21a8f7" }}
+                          className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                        >
+                          {score?.team2Score}
+                        </span>
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+
             {/* <span className="">vs</span>
                 <span className="capitalize break-words"> USA</span> */}
             {/* </span> */}

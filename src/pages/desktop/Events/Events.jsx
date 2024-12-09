@@ -273,7 +273,9 @@ const Events = () => {
           style={{ minHeight: "calc(-54px + 100dvh)" }}
         >
           <div className="no-scrollbar min-h-[calc(100dvh-56px)] md:mb-3">
-            <EventHeader data={data} eventTypeId={eventTypeId} />
+            {eventTypeId != 4 ? (
+              <EventHeader data={data} eventTypeId={eventTypeId} />
+            ) : null}
 
             {/* <div title="Open Bets" className="hidden">
               <div className="flex items-start justify-start flex-col w-full px-2 py-1">
@@ -333,12 +335,12 @@ const Events = () => {
                 </div>
               </div>
             </div> */}
-
-            <IframeVideoTab tab={tab} setTab={setTab} score={data?.score} />
-            <IFrame betType={tab} score={data?.score} setBetType={setTab} />
             {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
               <ScoreCard score={data?.score} match_odds={match_odds} />
             )}
+
+            <IframeVideoTab tab={tab} setTab={setTab} score={data?.score} />
+            <IFrame betType={tab} score={data?.score} setBetType={setTab} />
 
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
