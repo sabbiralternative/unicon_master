@@ -37,7 +37,7 @@ const EventHeader = ({ data, eventTypeId }) => {
               </defs>
             </svg>
           </span>
-          {eventTypeId == 1 && (
+          {eventTypeId != 2 && (
             <span className="text-primary text-transparent bg-clip-text font-lato text-xl font-bold">
               <span className="text-primary capitalize w-max break-words ">
                 {data?.result?.length > 0 && data?.result?.[0]?.eventName}
@@ -82,7 +82,7 @@ const EventHeader = ({ data, eventTypeId }) => {
 
                       <span
                         style={{ color: "#21a8f7" }}
-                        className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                        className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center ml-2"
                       >
                         {score?.team1Score}
                       </span>
@@ -123,7 +123,7 @@ const EventHeader = ({ data, eventTypeId }) => {
 
                       <span
                         style={{ color: "#21a8f7" }}
-                        className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                        className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center ml-2"
                       >
                         {score?.team2Score}
                       </span>

@@ -49,7 +49,7 @@ const EventHeader = ({
             </div>
 
             {/* <div className="flex flex-col items-start justify-start w-[95%] break-words gap-y-0"> */}
-            {eventTypeId == 1 && (
+            {eventTypeId != 2 && (
               <span className="w-full text-primary text-transparent text-start bg-clip-text font-lato text-base font-bold truncate ">
                 <span className="capitalize break-words">
                   {data?.result?.length > 0 && data?.result?.[0]?.eventName}
@@ -102,7 +102,7 @@ const EventHeader = ({
 
                         <span
                           style={{ color: "#21a8f7" }}
-                          className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                          className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center ml-2"
                         >
                           {score?.team1Score}
                         </span>
@@ -143,7 +143,7 @@ const EventHeader = ({
 
                         <span
                           style={{ color: "#21a8f7" }}
-                          className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                          className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center ml-2"
                         >
                           {score?.team2Score}
                         </span>
