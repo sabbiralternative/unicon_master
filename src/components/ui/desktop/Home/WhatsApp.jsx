@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const WhatsApp = () => {
   const { socialLink, refetch } = useGetSocialLink();
   const { token } = useSelector((state) => state.auth);
-
+  console.log(socialLink);
   const navigateWhatsApp = () => {
     if (token && socialLink?.branchWhatsapplink) {
       window.open(socialLink?.branchWhatsapplink, "_blank");

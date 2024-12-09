@@ -19,9 +19,11 @@ const useGetSocialLink = () => {
         site: settings.siteUrl,
         token: generatedToken,
       });
+
+      console.log(encryptedData);
       const res = await axios.post(API.whatsapp, encryptedData, {
         headers: {
-          Authorization: `bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       const data = res.data;
