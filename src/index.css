@@ -1013,7 +1013,7 @@ button.btn {
   align-items: center;
   padding: 3px 6px;
   min-height: 25px;
-  background-color: #ffffff;
+  background-color: #d5d5d5;
   position: relative;
   color: #000;
 }
@@ -1043,7 +1043,7 @@ button.btn {
 
 .last-balls-record.multiple-overs {
   padding: 5px;
-  background-color: #ffffff;
+  background-color: #d5d5d5;
   margin: 0;
 }
 .last-balls-record {

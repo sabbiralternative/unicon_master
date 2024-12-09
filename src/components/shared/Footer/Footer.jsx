@@ -1,13 +1,24 @@
+import { useSelector } from "react-redux";
 import assets from "../../../assets";
 import useContextState from "../../../hooks/useContextState";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
+import { userToken } from "../../../redux/features/auth/authSlice";
 
 const Footer = () => {
   const { logo } = useContextState();
+  const token = useSelector(userToken);
   const { socialLink } = useGetSocialLink();
   const handleOpenSocialLink = (link) => {
     if (link) {
       window.open(link, "_blank");
+    }
+  };
+
+  const openWhatsapp = () => {
+    if (token && socialLink?.branchWhatsapplink) {
+      window.open(socialLink?.branchWhatsapplink, "_blank");
+    } else {
+      window.open(socialLink?.whatsapplink, "_blank");
     }
   };
 
@@ -19,9 +30,9 @@ const Footer = () => {
           className="pt-5 w-full bg-bg_Quaternary gap-2 rounded-xl md:rounded-none"
         >
           <div className="flex w-full pb-[18px] items-center gap-x-[11px]  justify-center ">
-            {socialLink?.whatsapplink && (
+            {socialLink?.whatsapplink || socialLink?.branchWhatsapplink ? (
               <a
-                onClick={() => handleOpenSocialLink(socialLink?.whatsapplink)}
+                onClick={openWhatsapp}
                 title="whatsapp"
                 className="flex items-center justify-center rounded  w-[45px] h-[45px] md:w-20 md:h-20 cursor-pointer"
               >
@@ -57,7 +68,7 @@ const Footer = () => {
                   </defs>
                 </svg>
               </a>
-            )}
+            ) : null}
 
             {socialLink?.instagramLink && (
               <a

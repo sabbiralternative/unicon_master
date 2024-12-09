@@ -31,7 +31,9 @@ const Home = () => {
   });
 
   const openWhatsapp = () => {
-    if (socialLink?.whatsapplink) {
+    if (token && socialLink?.branchWhatsapplink) {
+      window.open(socialLink?.branchWhatsapplink, "_blank");
+    } else {
       window.open(socialLink?.whatsapplink, "_blank");
     }
   };

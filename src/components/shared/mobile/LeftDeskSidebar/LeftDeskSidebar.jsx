@@ -55,6 +55,14 @@ const LeftDeskSidebar = () => {
     }
   };
 
+  const openWhatsapp = () => {
+    if (token && socialLink?.branchWhatsapplink) {
+      window.open(socialLink?.branchWhatsapplink, "_blank");
+    } else {
+      window.open(socialLink?.whatsapplink, "_blank");
+    }
+  };
+
   useEffect(() => {
     if (showLeftSidebar) {
       setHideNavList("");
@@ -573,11 +581,10 @@ const LeftDeskSidebar = () => {
                         Contact Us
                       </span>
                       <div className="flex w-full items-center justify-center gap-1">
-                        {socialLink?.whatsapplink && (
+                        {socialLink?.whatsapplink ||
+                        socialLink?.branchWhatsapplink ? (
                           <a
-                            onClick={() =>
-                              handleOpenSocialLink(socialLink?.whatsapplink)
-                            }
+                            onClick={openWhatsapp}
                             title="whatsapp"
                             target="_blank"
                             className="flex items-center justify-center gap-1 w-10 h-10 cursor-pointer"
@@ -614,7 +621,7 @@ const LeftDeskSidebar = () => {
                               </defs>
                             </svg>
                           </a>
-                        )}
+                        ) : null}
 
                         {socialLink?.instagramLink && (
                           <a
