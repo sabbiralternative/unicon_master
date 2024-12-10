@@ -24,6 +24,7 @@
       "balanceApiLoop": false,
       "betFairCashOut": true,
       "referral": true,
+      "b2c": true,
       "logo": {
         "height": 55,
         "width": 125,

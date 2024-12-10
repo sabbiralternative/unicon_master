@@ -81,6 +81,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         settings.apkLink = setting?.apkLink;
         settings.betFairCashOut = setting?.betFairCashOut;
         settings.referral = setting?.referral;
+        settings.b2c = setting?.b2c;
         setNoticeLoaded(true);
       }
     })

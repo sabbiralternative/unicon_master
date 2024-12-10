@@ -74,4 +74,5 @@ export const settings = {
   mac88: "",
   aura: "",
   referral: "",
+  b2c: "",
 };

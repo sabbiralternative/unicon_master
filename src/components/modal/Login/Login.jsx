@@ -39,7 +39,7 @@ const Login = () => {
       password: password,
       token: generatedToken,
       site: settings.siteUrl,
-      b2c: true,
+      b2c: settings.b2c,
     };
     const encryptedData = handleEncryptData(loginData);
     const result = await handleLogin(encryptedData).unwrap();
@@ -73,7 +73,7 @@ const Login = () => {
       password: "",
       token: generatedToken,
       site: settings.siteUrl,
-      b2c: true,
+      b2c: settings.b2c,
     });
     const result = await handleLogin(loginData).unwrap();
     if (result.success) {
