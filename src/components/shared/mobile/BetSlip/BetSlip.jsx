@@ -14,10 +14,12 @@ import {
   setPrice,
   setStake,
 } from "../../../../redux/features/events/eventSlice";
+import useCurrentBets from "../../../../hooks/useCurrentBets";
 
 const BetSlip = ({ setRunnerId }) => {
   const dispatch = useDispatch();
   const { eventId } = useParams();
+  const { refetchCurrentBets } = useCurrentBets(eventId);
   const { refetchBalance } = useBalance();
   const { refetchExposure } = useExposer(eventId);
   const { placeBetValues, price, stake } = useSelector((state) => state?.event);
@@ -94,7 +96,7 @@ const BetSlip = ({ setRunnerId }) => {
       refetchExposure();
       refetchBalance();
       setRunnerId("");
-      // refetchCurrentBets();
+      refetchCurrentBets();
       setBetDelay("");
       toast.success(res?.result?.result?.placed?.[0]?.message);
     } else {
@@ -103,8 +105,8 @@ const BetSlip = ({ setRunnerId }) => {
       );
       setBetDelay("");
       setBetDelay(false);
-      refetchExposure();
-      refetchBalance();
+      // refetchExposure();
+      // refetchBalance();
       // refetchCurrentBets();
     }
   };

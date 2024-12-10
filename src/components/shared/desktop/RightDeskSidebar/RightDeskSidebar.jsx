@@ -18,6 +18,7 @@ import {
 import OpenBets from "./OpenBets";
 import { setShowLoginModal } from "../../../../redux/features/stateSlice";
 import BalanceInfo from "./BalanceInfo";
+import useCurrentBets from "../../../../hooks/useCurrentBets";
 
 const RightDeskSidebar = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const RightDeskSidebar = () => {
   );
   const { eventId } = useParams();
   const { refetchBalance, balance } = useBalance();
-
+  const { refetchCurrentBets } = useCurrentBets(eventId);
   const { refetchExposure } = useExposer(eventId);
   const [betDelay, setBetDelay] = useState(null);
   const [createOrder] = useOrderMutation();
@@ -108,8 +109,8 @@ const RightDeskSidebar = () => {
     if (res?.success) {
       refetchExposure();
       refetchBalance();
+      refetchCurrentBets();
       dispatch(setShowComponent(false));
-      // refetchCurrentBets();
       setBetDelay("");
       toast.success(res?.result?.result?.placed?.[0]?.message);
     } else {
@@ -117,8 +118,8 @@ const RightDeskSidebar = () => {
         res?.error?.status?.[0]?.description || res?.error?.errorMessage
       );
       setBetDelay(null);
-      refetchExposure();
-      refetchBalance();
+      // refetchExposure();
+      // refetchBalance();
       // refetchCurrentBets();
     }
   };
