@@ -1,25 +1,41 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useIFrame from "../../../hooks/useIFrame";
+import handleRandomToken from "../../../utils/handleRandomToken";
+import handleEncryptData from "../../../utils/handleEncryptData";
+import { settings } from "../../../api";
+import { useVideoMutation } from "../../../redux/features/video/video.api";
 
 const IFrameScore = ({ score, betType, setBetType }) => {
   const { eventId, eventTypeId } = useParams();
-  const { iFrameUrl, refetchIFrameUrl } = useIFrame(eventTypeId, eventId);
-  const [iframeVideo, setIframeVideo] = useState("");
+  const [sportsVideo] = useVideoMutation();
+  const [iFrame, setIframe] = useState("");
+
+  const handleGetVideo = async () => {
+    const generatedToken = handleRandomToken();
+    const encryptedVideoData = handleEncryptData({
+      eventTypeId: eventTypeId,
+      eventId: eventId,
+      type: "video",
+      token: generatedToken,
+      site: settings.siteUrl,
+      casinoCurrency: settings.casinoCurrency,
+    });
+    const res = await sportsVideo(encryptedVideoData).unwrap();
+    if (res?.success) {
+      setIframe(res?.result?.url);
+    }
+  };
 
   useEffect(() => {
     if (betType === "tracker") {
-      setIframeVideo(score?.tracker);
+      setIframe(score?.tracker);
     } else if (betType === "video") {
-      setIframeVideo(iFrameUrl?.url);
+      handleGetVideo();
     } else {
-      setIframeVideo("");
+      setIframe("");
     }
-  }, [betType, score, iFrameUrl]);
-
-  useEffect(() => {
-    refetchIFrameUrl();
-  }, [eventId, eventTypeId, refetchIFrameUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [betType, score]);
 
   useEffect(() => {
     if (betType === "video") {
@@ -72,25 +88,22 @@ const IFrameScore = ({ score, betType, setBetType }) => {
                   <iframe
                     id="videoComponent"
                     className="w-full h-auto relative overflow-hidden   bg-transparent"
-                    src={iframeVideo}
+                    src={iFrame}
                     width="100%"
                     allowfullscreen=""
                   ></iframe>
                 </div>
               )}
 
-              {score &&
-                iFrameUrl?.url &&
-                betType === "video" &&
-                score?.hasVideo && (
-                  <iframe
-                    id="videoComponent"
-                    className="w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px] relative overflow-hidden h-[55vw] md:h-[58vw] bg-transparent"
-                    src={iframeVideo}
-                    width="100%"
-                    allowfullscreen=""
-                  ></iframe>
-                )}
+              {score && iFrame && betType === "video" && score?.hasVideo && (
+                <iframe
+                  id="videoComponent"
+                  className="w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px] relative overflow-hidden h-[55vw] md:h-[58vw] bg-transparent"
+                  src={iFrame}
+                  width="100%"
+                  allowfullscreen=""
+                ></iframe>
+              )}
             </div>
             {/* <div className=" absolute top-0 w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px]  overflow-hidden h-[55vw] md:h-[58vw] bg-transparent z-0"></div> */}
           </div>
