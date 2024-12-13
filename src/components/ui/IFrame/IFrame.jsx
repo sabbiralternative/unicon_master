@@ -4,8 +4,11 @@ import handleRandomToken from "../../../utils/handleRandomToken";
 import handleEncryptData from "../../../utils/handleEncryptData";
 import { settings } from "../../../api";
 import { useVideoMutation } from "../../../redux/features/video/video.api";
+import { useSelector } from "react-redux";
+import { userToken } from "../../../redux/features/auth/authSlice";
 
 const IFrameScore = ({ score, betType, setBetType }) => {
+  const token = useSelector(userToken);
   const { eventId, eventTypeId } = useParams();
   const [sportsVideo] = useVideoMutation();
   const [iFrame, setIframe] = useState("");
@@ -35,7 +38,7 @@ const IFrameScore = ({ score, betType, setBetType }) => {
       setIframe("");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [betType, score]);
+  }, [betType, score, token]);
 
   useEffect(() => {
     if (betType === "video") {
