@@ -8,7 +8,11 @@ import { userToken } from "../redux/features/auth/authSlice";
 
 const useGetAllPaymentMethods = (amount) => {
   const token = useSelector(userToken);
-  const { data: paymentMethods, refetch: refetchPaymentMethods } = useQuery({
+  const {
+    data: paymentMethods,
+    refetch: refetchPaymentMethods,
+    isFetched,
+  } = useQuery({
     queryKey: ["paymentMethods"],
     queryFn: async () => {
       const generatedToken = handleRandomToken();
@@ -32,7 +36,7 @@ const useGetAllPaymentMethods = (amount) => {
 
     gcTime: 0,
   });
-  return { paymentMethods, refetchPaymentMethods };
+  return { paymentMethods, refetchPaymentMethods, isFetched };
 };
 
 export default useGetAllPaymentMethods;

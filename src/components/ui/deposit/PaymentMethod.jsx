@@ -23,7 +23,7 @@ const PaymentMethod = ({
   const [handlePgPayment] = usePgPaymentMutation();
   const [handleBankPayment] = useBankMutation();
   const [tabs, setTabs] = useState("");
-  const { paymentMethods } = useGetAllPaymentMethods(amount);
+  const { paymentMethods, isFetched } = useGetAllPaymentMethods(amount);
 
   const handleVisibleBankMethod = async (e, method) => {
     e.preventDefault();
@@ -82,7 +82,7 @@ const PaymentMethod = ({
               id="payMentOptions"
               className="flex items-center gap-x-1.5 pt-[18px] pb-[8px] overflow-x-auto no-scrollbar scroll-smooth cursor-pointer w-full transition-all ease-in-out duration-150"
             >
-              {paymentMethods?.length > 0 ? (
+              {paymentMethods?.length > 0 &&
                 paymentMethods?.map((method, i) => {
                   return (
                     <div
@@ -145,8 +145,8 @@ const PaymentMethod = ({
                       </div>
                     </div>
                   );
-                })
-              ) : (
+                })}
+              {isFetched && paymentMethods?.length === 0 && (
                 <div className="py-10 flex items-center justify-center w-full">
                   <h2>No payment method available right now.</h2>
                 </div>
