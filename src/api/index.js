@@ -75,4 +75,5 @@ export const settings = {
   aura: "",
   referral: "",
   b2c: "",
+  bookmakerCashOut: "",
 };

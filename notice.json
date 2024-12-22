@@ -23,6 +23,7 @@
       "aura": true,
       "balanceApiLoop": false,
       "betFairCashOut": true,
+      "bookmakerCashOut": true,
       "referral": true,
       "b2c": true,
       "logo": {

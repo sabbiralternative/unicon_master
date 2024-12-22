@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
@@ -6,13 +6,13 @@ import useExposer from "../../../../hooks/useExposure";
 import { useDispatch, useSelector } from "react-redux";
 import { handleDesktopBetSlip } from "../../../../utils/handleDesktopBetSlip";
 import { userToken } from "../../../../redux/features/auth/authSlice";
-// import { useEffect, useState } from "react";
-// import { settings } from "../../../../api";
-// import { handleCashOutPlaceBet } from "../../../../utils/handleCashoutPlaceBet";
+import { useEffect, useState } from "react";
+import { settings } from "../../../../api";
+import { handleCashOutPlaceBet } from "../../../../utils/handleCashoutPlaceBet";
 
 const Bookmaker = ({ bookmaker }) => {
-  // const navigate = useNavigate();
-  // const [teamProfit, setTeamProfit] = useState([]);
+  const navigate = useNavigate();
+  const [teamProfit, setTeamProfit] = useState([]);
   const token = useSelector(userToken);
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
@@ -36,111 +36,110 @@ const Bookmaker = ({ bookmaker }) => {
     );
   };
 
-  // const computeExposureAndStake = (
-  //   exposureA,
-  //   exposureB,
-  //   runner1,
-  //   runner2,
-  //   gameId
-  // ) => {
-  //   let runner, largerExposure, layValue, oppositeLayValue, lowerExposure;
+  const computeExposureAndStake = (
+    exposureA,
+    exposureB,
+    runner1,
+    runner2,
+    gameId
+  ) => {
+    let runner, largerExposure, layValue, oppositeLayValue, lowerExposure;
 
-  //   const pnlArr = [exposureA, exposureB];
-  //   const isOnePositiveExposure = onlyOnePositive(pnlArr);
+    const pnlArr = [exposureA, exposureB];
+    const isOnePositiveExposure = onlyOnePositive(pnlArr);
 
-  //   if (exposureA > exposureB) {
-  //     // Team A has a larger exposure.
-  //     runner = runner1;
-  //     largerExposure = 1 + exposureA / 100;
+    if (exposureA > exposureB) {
+      // Team A has a larger exposure.
+      runner = runner1;
+      largerExposure = 1 + exposureA / 100;
 
-  //     layValue = runner1?.lay?.[0]?.price;
-  //     oppositeLayValue = runner2?.lay?.[0]?.price;
-  //     lowerExposure = 1 + exposureB / 100;
+      layValue = runner1?.lay?.[0]?.price;
+      oppositeLayValue = runner2?.lay?.[0]?.price;
+      lowerExposure = 1 + exposureB / 100;
+    } else {
+      // Team B has a larger exposure.
+      runner = runner2;
+      largerExposure = 1 + exposureB / 100;
+      layValue = runner2?.lay?.[0]?.price;
+      oppositeLayValue = runner1?.lay?.[0]?.price;
+      lowerExposure = 1 + exposureA / 100;
+    }
 
-  //   } else {
-  //     // Team B has a larger exposure.
-  //     runner = runner2;
-  //     largerExposure = 1 + exposureB / 100;
-  //     layValue = runner2?.lay?.[0]?.price;
-  //     oppositeLayValue = runner1?.lay?.[0]?.price;
-  //     lowerExposure = 1 + exposureA / 100;
-  //   }
+    // Compute the absolute value of the lower exposure.
+    let absLowerExposure = Math.abs(lowerExposure);
 
-  //   // Compute the absolute value of the lower exposure.
-  //   let absLowerExposure = Math.abs(lowerExposure);
+    // Compute the liability for the team with the initially larger exposure.
+    let liability = absLowerExposure * (layValue - 1);
 
-  //   // Compute the liability for the team with the initially larger exposure.
-  //   let liability = absLowerExposure * (layValue - 1);
+    // Compute the new exposure of the team with the initially larger exposure.
+    let newExposure = largerExposure - liability;
 
-  //   // Compute the new exposure of the team with the initially larger exposure.
-  //   let newExposure = largerExposure - liability;
+    // Compute the profit using the new exposure and the lay odds of the opposite team.
+    let profit = newExposure / layValue;
 
-  //   // Compute the profit using the new exposure and the lay odds of the opposite team.
-  //   let profit = newExposure / layValue;
+    // Calculate the new stake value for the opposite team by adding profit to the absolute value of its exposure.
+    let newStakeValue = absLowerExposure + profit;
 
-  //   // Calculate the new stake value for the opposite team by adding profit to the absolute value of its exposure.
-  //   let newStakeValue = absLowerExposure + profit;
+    // Return the results.
+    return {
+      runner,
+      newExposure,
+      profit,
+      newStakeValue,
+      oppositeLayValue,
+      gameId,
+      isOnePositiveExposure,
+    };
+  };
+  function onlyOnePositive(arr) {
+    let positiveCount = arr?.filter((num) => num > 0).length;
+    return positiveCount === 1;
+  }
 
-  //   // Return the results.
-  //   return {
-  //     runner,
-  //     newExposure,
-  //     profit,
-  //     newStakeValue,
-  //     oppositeLayValue,
-  //     gameId,
-  //     isOnePositiveExposure,
-  //   };
-  // };
-  // function onlyOnePositive(arr) {
-  //   let positiveCount = arr?.filter((num) => num > 0).length;
-  //   return positiveCount === 1;
-  // }
+  useEffect(() => {
+    let results = [];
+    if (
+      bookmaker?.length > 0 &&
+      exposer?.pnlBySelection &&
+      Object.keys(exposer?.pnlBySelection)?.length > 0
+    ) {
+      bookmaker.forEach((game) => {
+        const runners = game?.runners || [];
+        if (runners?.length === 2) {
+          const runner1 = runners[0];
+          const runner2 = runners[1];
+          const pnl1 = pnlBySelection?.find(
+            (pnl) => pnl?.RunnerId === runner1?.id
+          )?.pnl;
+          const pnl2 = pnlBySelection?.find(
+            (pnl) => pnl?.RunnerId === runner2?.id
+          )?.pnl;
 
-  // useEffect(() => {
-  //   let results = [];
-  //   if (
-  //     bookmaker?.length > 0 &&
-  //     exposer?.pnlBySelection &&
-  //     Object.keys(exposer?.pnlBySelection)?.length > 0
-  //   ) {
-  //     bookmaker.forEach((game) => {
-  //       const runners = game?.runners || [];
-  //       if (runners?.length === 2) {
-  //         const runner1 = runners[0];
-  //         const runner2 = runners[1];
-  //         const pnl1 = pnlBySelection?.find(
-  //           (pnl) => pnl?.RunnerId === runner1?.id
-  //         )?.pnl;
-  //         const pnl2 = pnlBySelection?.find(
-  //           (pnl) => pnl?.RunnerId === runner2?.id
-  //         )?.pnl;
-
-  //         if (pnl1 && pnl2 && runner1 && runner2) {
-  //           const result = computeExposureAndStake(
-  //             pnl1,
-  //             pnl2,
-  //             runner1,
-  //             runner2,
-  //             game?.id
-  //           );
-  //           results.push(result);
-  //         }
-  //       }
-  //     });
-  //     setTeamProfit(results);
-  //   } else {
-  //     setTeamProfit([]);
-  //   }
-  // }, [bookmaker, eventId, exposer]);
+          if (pnl1 && pnl2 && runner1 && runner2) {
+            const result = computeExposureAndStake(
+              pnl1,
+              pnl2,
+              runner1,
+              runner2,
+              game?.id
+            );
+            results.push(result);
+          }
+        }
+      });
+      setTeamProfit(results);
+    } else {
+      setTeamProfit([]);
+    }
+  }, [bookmaker, eventId, exposer]);
 
   return (
     <>
       {bookmaker?.map((games, i) => {
-        // const teamProfitForGame = teamProfit?.find(
-        //   (profit) =>
-        //     profit?.gameId === games?.id && profit?.isOnePositiveExposure
-        // );
+        const teamProfitForGame = teamProfit?.find(
+          (profit) =>
+            profit?.gameId === games?.id && profit?.isOnePositiveExposure
+        );
 
         return (
           <div key={i} className="py-1.5">
@@ -150,7 +149,7 @@ const Bookmaker = ({ bookmaker }) => {
                 <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
                   {games?.name}
                 </span>
-                {/* {settings.betFairCashOut &&
+                {settings.bookmakerCashOut &&
                   games?.runners?.length !== 3 &&
                   games?.name === "bookmaker" &&
                   games?.status === "OPEN" && (
@@ -176,8 +175,8 @@ const Bookmaker = ({ bookmaker }) => {
                       type="button"
                       className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-fit max-w-[74%] mr-1 cursor-pointer ${
                         teamProfitForGame?.profit > 0
-                          ? "bg-maxBtnGrd"
-                          : " bg-bg_lossGrd"
+                          ? "bg-bg_Secondary"
+                          : "bg-bg_Secondary"
                       }`}
                     >
                       <div className="text-[10px] md:text-sm text-text_Quaternary whitespace-nowrap font-semibold">
@@ -191,7 +190,7 @@ const Bookmaker = ({ bookmaker }) => {
                         </div>
                       )}
                     </button>
-                  )} */}
+                  )}
                 {/* <span className="text-xs font-light">
                   Min: {games?.minLiabilityPerBet}
                 </span> */}

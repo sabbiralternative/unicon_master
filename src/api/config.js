@@ -82,6 +82,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         settings.betFairCashOut = setting?.betFairCashOut;
         settings.referral = setting?.referral;
         settings.b2c = setting?.b2c;
+        settings.bookmakerCashOut = setting?.bookmakerCashOut;
         setNoticeLoaded(true);
       }
     })
