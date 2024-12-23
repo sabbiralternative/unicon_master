@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import isOddSuspended from "../../../../utils/isOddSuspended";
+import isOddSuspended, {
+  isGameSuspended,
+} from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import { handleBetSlip } from "../../../../utils/handleBetSlip";
@@ -51,17 +53,17 @@ const Bookmaker = ({ bookmaker }) => {
     if (exposureA > exposureB) {
       // Team A has a larger exposure.
       runner = runner1;
-      largerExposure = 1 + exposureA / 100;
-      layValue = runner1?.lay?.[0]?.price;
-      oppositeLayValue = runner2?.lay?.[0]?.price;
-      lowerExposure = 1 + exposureB / 100;
+      largerExposure = exposureA;
+      layValue = 1 + Number(runner1?.lay?.[0]?.price) / 100;
+      oppositeLayValue = 1 + Number(runner2?.lay?.[0]?.price) / 100;
+      lowerExposure = exposureB;
     } else {
       // Team B has a larger exposure.
       runner = runner2;
-      largerExposure = 1 + exposureB / 100;
-      layValue = runner2?.lay?.[0]?.price;
-      oppositeLayValue = runner1?.lay?.[0]?.price;
-      lowerExposure = 1 + exposureA / 100;
+      largerExposure = exposureB;
+      layValue = 1 + Number(runner2?.lay?.[0]?.price) / 100;
+      oppositeLayValue = 1 + Number(runner1?.lay?.[0]?.price) / 100;
+      lowerExposure = exposureA;
     }
 
     // Compute the absolute value of the lower exposure.
@@ -90,10 +92,12 @@ const Bookmaker = ({ bookmaker }) => {
       isOnePositiveExposure,
     };
   };
+
   function onlyOnePositive(arr) {
     let positiveCount = arr?.filter((num) => num > 0).length;
     return positiveCount === 1;
   }
+
   useEffect(() => {
     let results = [];
     if (
@@ -106,6 +110,12 @@ const Bookmaker = ({ bookmaker }) => {
         if (runners?.length === 2) {
           const runner1 = runners[0];
           const runner2 = runners[1];
+
+          const runner1back = runner1?.back?.[0]?.price;
+          const runner1Lay = runner1?.lay?.[0]?.price;
+          const runner2back = runner2?.back?.[0]?.price;
+          const runner2Lay = runner2?.lay?.[0]?.price;
+
           const pnl1 = pnlBySelection?.find(
             (pnl) => pnl?.RunnerId === runner1?.id
           )?.pnl;
@@ -113,7 +123,16 @@ const Bookmaker = ({ bookmaker }) => {
             (pnl) => pnl?.RunnerId === runner2?.id
           )?.pnl;
 
-          if (pnl1 && pnl2 && runner1 && runner2) {
+          if (
+            pnl1 &&
+            pnl2 &&
+            runner1 &&
+            runner2 &&
+            runner1back &&
+            runner1Lay &&
+            runner2back &&
+            runner2Lay
+          ) {
             const result = computeExposureAndStake(
               pnl1,
               pnl2,
@@ -130,7 +149,7 @@ const Bookmaker = ({ bookmaker }) => {
       setTeamProfit([]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bookmaker, eventId]);
+  }, [bookmaker, eventId, exposer]);
   return (
     <>
       {bookmaker?.map((games, i) => {
@@ -163,11 +182,25 @@ const Bookmaker = ({ bookmaker }) => {
                       }
                       style={{
                         cursor: `${
-                          !teamProfitForGame ? "not-allowed" : "pointer"
+                          !teamProfitForGame ||
+                          isGameSuspended(games) ||
+                          teamProfitForGame?.profit === 0
+                            ? "not-allowed"
+                            : "pointer"
                         }`,
-                        opacity: `${!teamProfitForGame ? "0.6" : "1"}`,
+                        opacity: `${
+                          !teamProfitForGame ||
+                          isGameSuspended(games) ||
+                          teamProfitForGame?.profit === 0
+                            ? "0.6"
+                            : "1"
+                        }`,
                       }}
-                      disabled={!teamProfitForGame}
+                      disabled={
+                        !teamProfitForGame ||
+                        isGameSuspended(games) ||
+                        teamProfitForGame?.profit === 0
+                      }
                       type="button"
                       className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-max max-w-[74%] mr-1 cursor-pointer ${
                         teamProfitForGame?.profit > 0
@@ -178,7 +211,7 @@ const Bookmaker = ({ bookmaker }) => {
                       <div className="text-[10px] md:text-sm text-text_Quaternary whitespace-nowrap font-semibold">
                         Cashout
                       </div>
-                      {teamProfitForGame?.profit && (
+                      {teamProfitForGame?.profit !== 0 && (
                         <div className="capitalize text-[10px] md:text-sm ml-1 text-text_Quaternary whitespace-nowrap font-semibold">
                           <span> : </span>
                           <span className="font-roboto">₹ </span>
