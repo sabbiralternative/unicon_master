@@ -25,12 +25,7 @@ const Login = () => {
   useCloseModalClickOutside(loginRef, () => {
     dispatch(setShowLoginModal(false));
   });
-  const { register, handleSubmit } = useForm({
-    // defaultValues: {
-    //   username: "8888884000",
-    //   password: "avinya123",
-    // },
-  });
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = async ({ username, password }) => {
     const generatedToken = handleRandomToken();

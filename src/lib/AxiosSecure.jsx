@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
-import { userToken } from "../redux/features/auth/authSlice";
 
 export const AxiosSecure = axios.create({
   baseURL: "",
@@ -9,7 +7,7 @@ export const AxiosSecure = axios.create({
 // Add a request interceptor
 AxiosSecure.interceptors.request.use(
   (config) => {
-    const token = useSelector(userToken);
+    const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

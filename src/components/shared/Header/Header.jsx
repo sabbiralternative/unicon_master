@@ -21,6 +21,9 @@ import MobileSearch from "./MobileSearch";
 // import { MobileView, isMobile } from "react-device-detect";
 import AppPopup from "./AppPopUp";
 import MobileHeader from "./MobileHeader";
+import useGetNotification from "../../../hooks/useGetNotification";
+import { RxCross2 } from "react-icons/rx";
+import Marquee from "react-fast-marquee";
 
 const Header = () => {
   const location = useLocation();
@@ -28,11 +31,38 @@ const Header = () => {
   const [time, setTime] = useState();
   const { balance } = useBalance();
   const { bonusBalance } = useBonusBalance();
+  const { notification, isFetchingNotification, isFetched } =
+    useGetNotification();
   const { logo } = useContextState();
   const token = useSelector(userToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { showAppPopUp, windowWidth } = useSelector((state) => state?.state);
+  const storedNotification = sessionStorage.getItem("notification");
+  const [showNotification, setShowNotification] = useState(false);
+
+  useEffect(() => {
+    if (!storedNotification) {
+      setShowNotification(true);
+    }
+    if (notification?.length > 0 && storedNotification && !showNotification) {
+      const apiNotification = JSON.stringify(notification);
+      if (apiNotification != storedNotification) {
+        setShowNotification(true);
+      }
+    }
+  }, [
+    notification,
+    showNotification,
+    storedNotification,
+    isFetched,
+    isFetchingNotification,
+  ]);
+
+  const closeNotification = () => {
+    setShowNotification(false);
+    sessionStorage.setItem("notification", JSON.stringify(notification));
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -73,6 +103,21 @@ const Header = () => {
         className=" fixed top-0 w-full  z-[100]"
         style={{ zIndex: 1000 }}
       >
+        {showNotification && notification && (
+          <div
+            style={{
+              padding: "2px 5px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "20px",
+              fontSize: "11px",
+            }}
+          >
+            <Marquee>{notification?.[0]?.text} </Marquee>
+            <RxCross2 onClick={closeNotification} size={20} cursor="pointer" />
+          </div>
+        )}
         {settings?.apkLink && showAppPopUp && windowWidth < 1040 && (
           <AppPopup />
         )}
