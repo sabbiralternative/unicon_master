@@ -106,7 +106,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
       </div>
 
       <div
-        className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[2px]`}
+        className={`flex flex-col transition-all  ease-in-out duration-100 pt-[2px]`}
       >
         <div className="flex items-start justify-start w-full">
           <div

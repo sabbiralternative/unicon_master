@@ -63,6 +63,7 @@ const Header = () => {
     storedNotification,
     isFetched,
     isFetchingNotification,
+    dispatch,
   ]);
 
   const closeNotification = () => {
@@ -120,7 +121,7 @@ const Header = () => {
               fontSize: "11px",
             }}
           >
-            <Marquee>{notification?.[0]?.text} </Marquee>
+            <Marquee>{notification?.[0]} </Marquee>
             <RxCross2 onClick={closeNotification} size={20} cursor="pointer" />
           </div>
         )}
