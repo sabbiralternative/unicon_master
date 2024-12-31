@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import handleRandomToken from "../../../utils/handleRandomToken";
-import handleEncryptData from "../../../utils/handleEncryptData";
 import { settings } from "../../../api";
 import { useVideoMutation } from "../../../redux/features/video/video.api";
 import { useSelector } from "react-redux";
@@ -14,16 +12,13 @@ const IFrameScore = ({ score, betType, setBetType }) => {
   const [iFrame, setIframe] = useState("");
 
   const handleGetVideo = async () => {
-    const generatedToken = handleRandomToken();
-    const encryptedVideoData = handleEncryptData({
+    const payload = {
       eventTypeId: eventTypeId,
       eventId: eventId,
       type: "video",
-      token: generatedToken,
-      site: settings.siteUrl,
       casinoCurrency: settings.casinoCurrency,
-    });
-    const res = await sportsVideo(encryptedVideoData).unwrap();
+    };
+    const res = await sportsVideo(payload).unwrap();
     if (res?.success) {
       setIframe(res?.result?.url);
     }

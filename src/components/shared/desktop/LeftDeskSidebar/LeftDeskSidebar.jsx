@@ -12,8 +12,12 @@ import assets from "../../../../assets";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import WarningCondition from "../../WarningCondition/WarningCondition";
+import useLanguage from "../../../../hooks/useLanguage";
+import { languageValue } from "../../../../utils/language";
+import { LanguageKey } from "../../../../const";
 
 const LeftDeskSidebar = () => {
+  const { valueByLanguage } = useLanguage();
   const [error, setError] = useState("");
   const [showWarning, setShowWarning] = useState(false);
   const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
@@ -92,7 +96,7 @@ const LeftDeskSidebar = () => {
                 ></path>
               </svg>
               <span className="font-medium text-start text-text_Ternary">
-                Cricket
+                {languageValue(valueByLanguage, LanguageKey.CRICKET)}
               </span>
             </span>
           </li>
@@ -157,7 +161,7 @@ const LeftDeskSidebar = () => {
                 ></path>
               </svg>
               <span className="font-medium text-start text-text_Ternary">
-                Football
+                {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
               </span>
             </span>
           </li>
@@ -191,7 +195,7 @@ const LeftDeskSidebar = () => {
                 ></path>
               </svg>
               <span className="font-medium text-start text-text_Ternary">
-                Tennis
+                {languageValue(valueByLanguage, LanguageKey.TENNIS)}
               </span>
             </span>
           </li>
@@ -205,7 +209,7 @@ const LeftDeskSidebar = () => {
             <span className="flex w-full items-center h-full px-6 justify-start gap-3">
               <img className="size-6" src={assets.kabbadi} alt="" />
               <span className="font-medium text-start text-text_Ternary">
-                Kabbadi
+                {languageValue(valueByLanguage, LanguageKey.KABADDI)}
               </span>
             </span>
           </li>
@@ -246,7 +250,7 @@ const LeftDeskSidebar = () => {
                 ></path>
               </svg>
               <span className="font-medium text-start text-text_Ternary">
-                Horse Racing
+                {languageValue(valueByLanguage, LanguageKey.HORSE)}
               </span>
             </span>
           </li>
@@ -268,7 +272,7 @@ const LeftDeskSidebar = () => {
                 ></path>
               </svg>
               <span className="font-medium text-start text-text_Ternary">
-                Greyhound Racing
+                {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
               </span>
             </span>
           </li>
@@ -294,7 +298,7 @@ const LeftDeskSidebar = () => {
                   ></path>
                 </svg>
                 <span className="font-medium text-start text-text_Ternary">
-                  Mac88
+                  {languageValue(valueByLanguage, LanguageKey.MAC88)}
                 </span>
               </span>
             </li>
@@ -444,7 +448,7 @@ const LeftDeskSidebar = () => {
                 ></path>
               </svg>
               <span className="font-medium text-start text-text_Ternary">
-                Live Casino
+                {languageValue(valueByLanguage, LanguageKey.LIVE_CASINO)}
               </span>
             </span>
           </li>

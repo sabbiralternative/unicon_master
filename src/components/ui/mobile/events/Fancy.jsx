@@ -8,9 +8,6 @@ import { handleBetSlip } from "../../../../utils/handleBetSlip";
 import { useState } from "react";
 import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
 import { useGetLadderMutation } from "../../../../redux/features/events/events";
-import handleRandomToken from "../../../../utils/handleRandomToken";
-import handleEncryptData from "../../../../utils/handleEncryptData";
-import { settings } from "../../../../api";
 import Ladder from "../../../modal/Ladder/Ladder";
 import { userToken } from "../../../../redux/features/auth/authSlice";
 
@@ -43,16 +40,7 @@ const Fancy = ({ fancy }) => {
 
   const handleGetLadder = async (marketId, games) => {
     setEventName(games?.name);
-    const generatedToken = handleRandomToken();
-    const encryptedData = handleEncryptData({
-      token: generatedToken,
-      site: settings.siteUrl,
-    });
-    const payload = {
-      marketId,
-      data: encryptedData,
-    };
-    const res = await getLadder(payload).unwrap();
+    const res = await getLadder({ marketId }).unwrap();
     if (res.success) {
       setLadderData(res.result);
     }

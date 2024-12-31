@@ -26,6 +26,7 @@
       "bookmakerCashOut": true,
       "referral": true,
       "b2c": true,
+      "language": true,
       "logo": {
         "height": 55,
         "width": 125,
@@ -105,7 +106,8 @@
       "lotusHomeLobby": "https://api7.live/api/account/diamond/lotusHomeLobby",
       "mac88": "https://api7.live/api/exchange/diamond/mac88",
       "bonus": "https://api7.live/api/exchange/diamond/bonus",
-      "index": "https://api7.live/api/exchange/diamond/index"
+      "index": "https://api7.live/api/exchange/diamond/index",
+      "language": "https://api7.live/api/exchange/diamond/language"
     }
   },
   "success": true

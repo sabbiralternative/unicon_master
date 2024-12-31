@@ -1,10 +1,7 @@
 import { useState } from "react";
 import RemoveAccount from "../../../modal/RemoveAccount/RemoveAccount";
-import handleRandomToken from "../../../../utils/handleRandomToken";
 import { useBankMutation } from "../../../../redux/features/payment/payment.api";
-import handleEncryptData from "../../../../utils/handleEncryptData";
 import toast from "react-hot-toast";
-import { settings } from "../../../../api";
 import WithdrawSuccess from "../../../modal/WithdrawSuccess/WithdrawSuccess";
 
 const OldAccount = ({ amount, bankAccounts }) => {
@@ -18,16 +15,12 @@ const OldAccount = ({ amount, bankAccounts }) => {
     e.preventDefault();
     setDisable(true);
     if (amount?.length > 0 && bankId) {
-      const generatedToken = handleRandomToken();
       const bankData = {
         type: "withdrawCoins",
         amount: amount,
         bankId,
-        token: generatedToken,
-        site: settings.siteUrl,
       };
-      const encryptedData = handleEncryptData(bankData);
-      const res = await withdrawCoin(encryptedData).unwrap();
+      const res = await withdrawCoin(bankData).unwrap();
       if (res?.success) {
         setWithdrawSuccess(true);
       } else {

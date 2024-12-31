@@ -6,8 +6,6 @@ import {
   useRegisterMutation,
 } from "../../../redux/features/auth/authApi";
 import { settings } from "../../../api";
-import handleRandomToken from "../../../utils/handleRandomToken";
-import handleEncryptData from "../../../utils/handleEncryptData";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/features/auth/authSlice";
 import toast from "react-hot-toast";
@@ -42,14 +40,7 @@ const Register = () => {
     }
   };
   const handleOTP = async () => {
-    const generatedToken = handleRandomToken();
-    const otpData = {
-      mobile,
-      token: generatedToken,
-      site: settings?.siteUrl,
-    };
-    const encryptedData = handleEncryptData(otpData);
-    const res = await getOTP(encryptedData).unwrap();
+    const res = await getOTP({ mobile }).unwrap();
     if (res?.success) {
       setOTP({
         orderId: res?.result?.orderId,
@@ -62,22 +53,19 @@ const Register = () => {
   };
 
   const onSubmit = async (data) => {
-    const generatedToken = handleRandomToken();
     const registerData = {
       username: "",
       password: data?.password,
       confirmPassword: data?.confirmPassword,
       mobile: mobile,
-      site: settings.siteUrl,
-      token: generatedToken,
       otp: data?.otp,
       isOtpAvailable: settings.otp,
       referralCode: referralCode || data?.referralCode,
       orderId: OTP.orderId,
       otpMethod: OTP.otpMethod,
     };
-    const encryptedData = handleEncryptData(registerData);
-    const result = await handleRegister(encryptedData).unwrap();
+
+    const result = await handleRegister(registerData).unwrap();
     if (result.success) {
       localStorage.removeItem("referralCode");
       const token = result?.result?.token;

@@ -4,6 +4,7 @@ import {
   setGroupType,
   setShowAppPopUp,
   setShowLeftSidebar,
+  setShowNotification,
 } from "../../../redux/features/stateSlice";
 import useContextState from "../../../hooks/useContextState";
 import LoggedIn from "./LoggedIn";
@@ -24,8 +25,12 @@ import MobileHeader from "./MobileHeader";
 import useGetNotification from "../../../hooks/useGetNotification";
 import { RxCross2 } from "react-icons/rx";
 import Marquee from "react-fast-marquee";
+import useLanguage from "../../../hooks/useLanguage";
+import { LanguageKey } from "../../../const";
+import { languageValue } from "../../../utils/language";
 
 const Header = () => {
+  const { valueByLanguage } = useLanguage();
   const location = useLocation();
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [time, setTime] = useState();
@@ -37,18 +42,19 @@ const Header = () => {
   const token = useSelector(userToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { showAppPopUp, windowWidth } = useSelector((state) => state?.state);
+  const { showAppPopUp, windowWidth, showNotification } = useSelector(
+    (state) => state?.state
+  );
   const storedNotification = sessionStorage.getItem("notification");
-  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
     if (!storedNotification) {
-      setShowNotification(true);
+      dispatch(setShowNotification(true));
     }
     if (notification?.length > 0 && storedNotification && !showNotification) {
       const apiNotification = JSON.stringify(notification);
       if (apiNotification != storedNotification) {
-        setShowNotification(true);
+        dispatch(setShowNotification(true));
       }
     }
   }, [
@@ -60,7 +66,7 @@ const Header = () => {
   ]);
 
   const closeNotification = () => {
-    setShowNotification(false);
+    dispatch(setShowNotification(false));
     sessionStorage.setItem("notification", JSON.stringify(notification));
   };
 
@@ -101,7 +107,7 @@ const Header = () => {
         id="header"
         title="header"
         className=" fixed top-0 w-full  z-[100]"
-        style={{ zIndex: 1000 }}
+        style={{ zIndex: 1000, backgroundColor: "white" }}
       >
         {showNotification && notification && (
           <div
@@ -291,7 +297,10 @@ cursor-pointer
                     }}
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
-                    <span className="font font-lato text-[12px]">Cricket</span>
+                    <span className="font font-lato text-[12px]">
+                      {" "}
+                      {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+                    </span>
                   </button>
                   <button
                     onClick={() => {
@@ -300,7 +309,10 @@ cursor-pointer
                     }}
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
-                    <span className="font font-lato text-[12px]">Football</span>
+                    <span className="font font-lato text-[12px]">
+                      {" "}
+                      {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+                    </span>
                   </button>
 
                   <button
@@ -310,7 +322,9 @@ cursor-pointer
                     }}
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
-                    <span className="font font-lato text-[12px]">Tennis</span>
+                    <span className="font font-lato text-[12px]">
+                      {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+                    </span>
                   </button>
                   <button
                     onClick={() => {
@@ -319,7 +333,9 @@ cursor-pointer
                     }}
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
-                    <span className="font font-lato text-[12px]">Kabbadi</span>
+                    <span className="font font-lato text-[12px]">
+                      {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+                    </span>
                   </button>
                   <button
                     onClick={() => {
@@ -328,7 +344,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
                     <span className="font font-lato text-[12px]">
-                      Horse Racing
+                      {languageValue(valueByLanguage, LanguageKey.HORSE)}
                     </span>
                   </button>
                   <button
@@ -338,7 +354,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
                     <span className="font font-lato text-[12px]">
-                      Greyhound Racing
+                      {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
                     </span>
                   </button>
 
@@ -359,7 +375,9 @@ cursor-pointer
                       }}
                       className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                     >
-                      <span className="font font-lato text-[12px]">Mac88</span>
+                      <span className="font font-lato text-[12px]">
+                        {languageValue(valueByLanguage, LanguageKey.MAC88)}
+                      </span>
                     </button>
                   )}
                   {settings.aura && (
@@ -402,7 +420,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
                   >
                     <span className="font font-lato text-[12px]">
-                      Live Casino
+                      {languageValue(valueByLanguage, LanguageKey.LIVE_CASINO)}
                     </span>
                   </button>
                   <button

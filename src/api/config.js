@@ -11,6 +11,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         const endPoints = data?.result?.endpoint;
         const setting = data?.result?.settings;
         API.index = endPoints?.index;
+        API.language = endPoints?.language;
         API.bonus = endPoints?.bonus;
         API.mac88 = endPoints?.mac88;
         API.auraWolf = endPoints?.auraWolf;
@@ -82,6 +83,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         settings.betFairCashOut = setting?.betFairCashOut;
         settings.referral = setting?.referral;
         settings.b2c = setting?.b2c;
+        settings.language = setting?.language;
         settings.bookmakerCashOut = setting?.bookmakerCashOut;
         setNoticeLoaded(true);
       }

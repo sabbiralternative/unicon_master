@@ -2,7 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setGroupType } from "../../../redux/features/stateSlice";
 import { settings } from "../../../api";
+import useLanguage from "../../../hooks/useLanguage";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 const MobileHeader = () => {
+  const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { group } = useSelector((state) => state.state);
@@ -24,7 +28,10 @@ const MobileHeader = () => {
    group === 0 && pathname === "/" ? "text-secondary border border-primary" : ""
  }`}
           >
-            <span className="font font-lato text-[12px]">Home</span>
+            <span className="font font-lato text-[12px]">
+              {" "}
+              {languageValue(valueByLanguage, LanguageKey.HOME)}
+            </span>
           </button>
         </a>
         <a
@@ -43,7 +50,9 @@ const MobileHeader = () => {
            : ""
        }`}
           >
-            <span className="font font-lato text-[12px]">Cricket</span>
+            <span className="font font-lato text-[12px]">
+              {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+            </span>
           </button>
         </a>
         <a
@@ -62,7 +71,9 @@ const MobileHeader = () => {
                  : ""
              }`}
           >
-            <span className="font font-lato text-[12px]">Football</span>
+            <span className="font font-lato text-[12px]">
+              {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+            </span>
           </button>
         </a>
         <a
@@ -100,7 +111,9 @@ const MobileHeader = () => {
          : ""
      }`}
           >
-            <span className="font font-lato text-[12px]">Kabbadi</span>
+            <span className="font font-lato text-[12px]">
+              {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+            </span>
           </button>
         </a>
         <a
@@ -118,7 +131,9 @@ const MobileHeader = () => {
          : ""
      }`}
           >
-            <span className="font font-lato text-[12px]">Horse Racing</span>
+            <span className="font font-lato text-[12px]">
+              {languageValue(valueByLanguage, LanguageKey.HORSE)}
+            </span>
           </button>
         </a>
         <a
@@ -136,7 +151,9 @@ const MobileHeader = () => {
          : ""
      }`}
           >
-            <span className="font font-lato text-[12px]">Greyhound Racing</span>
+            <span className="font font-lato text-[12px]">
+              {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+            </span>
           </button>
         </a>
 
@@ -171,7 +188,7 @@ const MobileHeader = () => {
                     </svg>
                   </span>
                   <span className="font font-lato text-[12px] ml-[4px]">
-                    Mac88
+                    {languageValue(valueByLanguage, LanguageKey.MAC88)}
                   </span>
                 </span>
               </span>
@@ -290,7 +307,7 @@ const MobileHeader = () => {
                   </svg>
                 </span>
                 <span className="font font-lato text-[12px] ml-[4px]">
-                  Live Casino
+                  {languageValue(valueByLanguage, LanguageKey.LIVE_CASINO)}
                 </span>
               </span>
             </span>

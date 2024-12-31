@@ -9,8 +9,12 @@ import { settings } from "../../../../api";
 // import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 import { useNavigate } from "react-router-dom";
 import Referral from "../../../modal/Referral/Referral";
+import useLanguage from "../../../../hooks/useLanguage";
+import { languageValue } from "../../../../utils/language";
+import { LanguageKey } from "../../../../const";
 
 const RightDeskSidebar = () => {
+  const { valueByLanguage } = useLanguage();
   const memberId = localStorage.getItem("memberId");
   const navigate = useNavigate();
   const [showReferral, setShowReferral] = useState(false);
@@ -143,7 +147,8 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-lato-bold font-semibold text-sm xs:text-base text-text_Ternary">
-                    User ID : {memberId}
+                    {languageValue(valueByLanguage, LanguageKey.USER_ID)} :{" "}
+                    {memberId}
                   </span>
                 </div>
               </li>
@@ -179,7 +184,7 @@ const RightDeskSidebar = () => {
                 <div className="grid grid-cols-2 gap-0.5 w-full">
                   <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-2">
                     <span className="uppercase font-normal text-xxs">
-                      Balance
+                      {languageValue(valueByLanguage, LanguageKey.BALANCE)}
                     </span>
                     <span className="font-lato text-sm font-medium text-text_Success">
                       ₹ {balance?.availBalance}
@@ -251,7 +256,7 @@ const RightDeskSidebar = () => {
                               fill="var(--color-quaternary)"
                             ></path>
                           </svg>
-                          deposit
+                          {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
                         </span>
                       </button>
                     )}
@@ -298,7 +303,7 @@ const RightDeskSidebar = () => {
                               fill="var(--color-quaternary)"
                             ></path>
                           </svg>
-                          withdraw
+                          {languageValue(valueByLanguage, LanguageKey.WITHDRAW)}
                         </span>
                       </button>
                     )}
@@ -556,7 +561,10 @@ const RightDeskSidebar = () => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      Bonus Statement
+                      {languageValue(
+                        valueByLanguage,
+                        LanguageKey.BONUS_STATEMENT
+                      )}
                     </span>
                   </div>
                   {settings.referral && (
@@ -937,7 +945,10 @@ const RightDeskSidebar = () => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      Change Password
+                      {languageValue(
+                        valueByLanguage,
+                        LanguageKey.CHANGE_PASSWORD
+                      )}
                     </span>
                   </div>
                   <div
@@ -971,7 +982,7 @@ const RightDeskSidebar = () => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      Sign Out
+                      {languageValue(valueByLanguage, LanguageKey.LOGOUT)}
                     </span>
                   </div>
                 </div>

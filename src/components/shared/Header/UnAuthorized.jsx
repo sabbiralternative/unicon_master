@@ -8,8 +8,15 @@ import {
 import ForgetPassword from "../../modal/ForgetPassword/ForgetPassword";
 import { settings } from "../../../api";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
+import useLanguage from "../../../hooks/useLanguage";
+import { useState } from "react";
+import Language from "../../modal/Language/Language";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
+  const { language, valueByLanguage } = useLanguage();
+  const [showLanguage, setShowLanguage] = useState(false);
   const { socialLink } = useGetSocialLink();
   const { showLoginModal, showRegisterModal, showForgetModal } = useSelector(
     (state) => state.state
@@ -28,6 +35,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
       {showLoginModal && <Login />}
       {showRegisterModal && <Register />}
       {showForgetModal && <ForgetPassword />}
+      {showLanguage && <Language setShowLanguage={setShowLanguage} />}
       {!showMobileSearch && (
         <div className="w-max flex items-center justify-center">
           <div
@@ -74,7 +82,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 </svg>
               </span>
               <span className="text-xxs text-text_Quaternary md:text-text_LoginTextColor font-normal font-lato md:font-semibold md:text-xs xs:text-xs">
-                Log In
+                {languageValue(valueByLanguage, LanguageKey.LOGIN)}
               </span>
             </button>
             {settings.registration && (
@@ -102,7 +110,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
             </svg>
           </span> */}
                 <span className="text-xxs text-text_Primary  font-lato md:font-semibold md:text-xs xs:text-xs">
-                  Sign Up
+                  {languageValue(valueByLanguage, LanguageKey.REGISTER)}
                 </span>
               </button>
             )}
@@ -118,6 +126,42 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                   </span>
                 </button>
               )}
+
+            {settings.language && (
+              <button
+                onClick={() => setShowLanguage((prev) => !prev)}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "end",
+                  background: "transparent",
+                  border: "none",
+                  marginTop: "14px",
+                }}
+              >
+                <div className="flex flex-col justify-center items-center">
+                  <img
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                    }}
+                    src="/src/assets/images/globe.gif"
+                    alt=""
+                  />
+                  <p
+                    style={{
+                      margin: "0px",
+                      fontSize: "10px",
+                      color: "white",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    {language || "EN"}
+                  </p>
+                </div>
+              </button>
+            )}
           </div>
           <div className="w-max flex items-center gap-1 justify-center rounded lg:hidden">
             <button
@@ -126,7 +170,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
               className="flex rounded-full border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Secondary"
             >
               <span className="text-x text-text_Quaternary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
-                Log In
+                {languageValue(valueByLanguage, LanguageKey.LOGIN)}
               </span>
             </button>
             {settings.registration && (
@@ -135,7 +179,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Quaternary"
               >
                 <span className="text-x text-text_Primary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
-                  Sign Up
+                  {languageValue(valueByLanguage, LanguageKey.REGISTER)}
                 </span>
               </button>
             )}
@@ -151,6 +195,42 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                   </span>
                 </button>
               )}
+
+            {settings.language && (
+              <button
+                onClick={() => setShowLanguage((prev) => !prev)}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "end",
+                  background: "transparent",
+                  border: "none",
+                  marginTop: "14px",
+                }}
+              >
+                <div className="flex flex-col justify-center items-center">
+                  <img
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                    }}
+                    src="/src/assets/images/globe.gif"
+                    alt=""
+                  />
+                  <p
+                    style={{
+                      margin: "0px",
+                      fontSize: "10px",
+                      color: "white",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    {language || "EN"}
+                  </p>
+                </div>
+              </button>
+            )}
           </div>
         </div>
       )}

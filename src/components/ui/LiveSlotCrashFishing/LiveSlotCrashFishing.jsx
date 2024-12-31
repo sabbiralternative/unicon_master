@@ -15,9 +15,7 @@ import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 const LiveSlotCrashFishing = ({ casinoType }) => {
   const { token, bonusToken } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  const { showAppPopUp, selectedCategory } = useSelector(
-    (state) => state.state
-  );
+  const { selectedCategory } = useSelector((state) => state.state);
   const { data } = useLiveCasinoLobby(casinoType);
   const categories = data && Object.keys(data);
   const [searchQuery, setSearchQuery] = useState("");
@@ -76,38 +74,37 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
       {showWarning && (
         <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
       )}
+
       <div
         onClick={() => navigate(-1)}
-        className="lg:hidden flex flex-col w-fit cursor-pointer"
-        style={{ paddingTop: showAppPopUp ? "160px" : "90px" }}
+        className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative"
       >
-        <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
-          <div className="app-bg flex-row w-full h-full flex">
-            <div className="w-[34px] h-full flex items-center justify-center">
-              <button
-                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
-                type="button"
+        <div className="app-bg flex-row w-full h-full flex">
+          <div className="w-[34px] h-full flex items-center justify-center">
+            <button
+              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="7"
+                height="12"
+                viewBox="0 0 7 12"
+                fill="var(--color-iconsColor)"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="7"
-                  height="12"
-                  viewBox="0 0 7 12"
+                <path
+                  d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
                   fill="var(--color-iconsColor)"
-                >
-                  <path
-                    d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
-                    fill="var(--color-iconsColor)"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-            <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary font-lato font-bold text-[16px] leading-5">
-              <span>Casino</span>
-            </span>
+                ></path>
+              </svg>
+            </button>
           </div>
+          <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary font-lato font-bold text-[16px] leading-5">
+            <span>Casino</span>
+          </span>
         </div>
       </div>
+
       <div
         className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[2px]`}
       >

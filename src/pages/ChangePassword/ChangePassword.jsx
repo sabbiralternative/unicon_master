@@ -3,14 +3,10 @@ import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/Lef
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import handleRandomToken from "../../utils/handleRandomToken";
-import handleEncryptData from "../../utils/handleEncryptData";
-import { settings } from "../../api";
 import { useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { useChangePasswordMutation } from "../../redux/features/auth/authApi";
 import { Lock } from "../../assets/Icon";
-import { useSelector } from "react-redux";
 
 const ChangePassword = () => {
   const [handleChangePassword] = useChangePasswordMutation();
@@ -18,22 +14,19 @@ const ChangePassword = () => {
   const [showPassword, setShowPassword] = useState(true);
   const [showNewPassword, setShowNewPassword] = useState(true);
   const [showConfirmPassword, setShowConfirmPassword] = useState(true);
-  const { showAppPopUp } = useSelector((state) => state.state);
+
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
   /* Change password function */
   const onSubmit = async ({ password, newPassword, newPasswordConfirm }) => {
-    const generatedToken = handleRandomToken();
-    const encryptedData = handleEncryptData({
+    const payload = {
       oldPassword: password,
       password: newPassword,
       passVerify: newPasswordConfirm,
-      token: generatedToken,
-      site: settings.siteUrl,
-    });
+    };
 
-    const res = await handleChangePassword(encryptedData).unwrap();
+    const res = await handleChangePassword(payload).unwrap();
     if (res.success) {
       toast.success(res?.result?.message);
       setTimeout(() => {
@@ -45,11 +38,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <div
-      className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 ${
-        showAppPopUp ? "pt-[160px]" : "pt-[90px]"
-      }`}
-    >
+    <div className={`flex flex-col transition-all ease-in-out duration-100 `}>
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24 change-password">
         <LeftDeskSidebar />
         <div

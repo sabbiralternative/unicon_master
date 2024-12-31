@@ -4,8 +4,6 @@ import { useOrderMutation } from "../../../../redux/features/events/events";
 import { useEffect, useState } from "react";
 import useExposer from "../../../../hooks/useExposure";
 import useBalance from "../../../../hooks/useBalance";
-import handleEncryptData from "../../../../utils/handleEncryptData";
-import handleRandomToken from "../../../../utils/handleRandomToken";
 import { settings } from "../../../../api";
 import toast from "react-hot-toast";
 import BetLoading from "../../mobile/BetSlip/BetLoading";
@@ -95,16 +93,14 @@ const RightDeskSidebar = () => {
 
   /* Handle bets */
   const handleOrderBets = async () => {
-    const generatedToken = handleRandomToken();
-    const encryptedData = handleEncryptData([
+    const payloadData = [
       {
         ...payload,
-        token: generatedToken,
         site: settings.siteUrl,
       },
-    ]);
+    ];
     setBetDelay(placeBetValues?.betDelay);
-    const res = await createOrder(encryptedData).unwrap();
+    const res = await createOrder(payloadData).unwrap();
 
     if (res?.success) {
       refetchExposure();

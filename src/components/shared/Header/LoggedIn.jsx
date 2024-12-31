@@ -2,6 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowRightSidebar } from "../../../redux/features/stateSlice";
 import { useNavigate } from "react-router-dom";
 import { settings } from "../../../api";
+import useLanguage from "../../../hooks/useLanguage";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const LoggedIn = ({
   balance,
@@ -9,6 +12,7 @@ const LoggedIn = ({
   setShowMobileSearch,
   showMobileSearch,
 }) => {
+  const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
   const { user, bonusToken } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -20,7 +24,7 @@ const LoggedIn = ({
         className=" text-text_Quaternary text-[10px] lg:text-[12px] xl:flex flex-col px-2 "
       >
         <div className="flex gap-0.5 text-white/80  text-nowrap whitespace-nowrap hidden lg:block">
-          Login as{" "}
+          {languageValue(valueByLanguage, LanguageKey.LOGIN)} as{" "}
           <span className="font-medium text-text_Quaternary">{user}</span>
         </div>
         {/* <div className="flex  gap-0.5 text-white/80  text-nowrap whitespace-nowrap">
@@ -93,7 +97,7 @@ cursor-pointer
                   fill="var(--color-quaternary)"
                 ></path>
               </svg>
-              deposit
+              {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
             </span>
           </button>
         )}
@@ -142,7 +146,7 @@ cursor-pointer
                   fill="var(--color-quaternary)"
                 ></path>
               </svg>
-              withdraw
+              {languageValue(valueByLanguage, LanguageKey.WITHDRAW)}
             </span>
           </button>
         )}

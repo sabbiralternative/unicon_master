@@ -1,14 +1,12 @@
 import toast from "react-hot-toast";
-import handleEncryptData from "../../../utils/handleEncryptData";
-import axios from "axios";
-import { API, settings } from "../../../api";
-import handleRandomToken from "../../../utils/handleRandomToken";
+import { API } from "../../../api";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { userToken } from "../../../redux/features/auth/authSlice";
 import { FaSpinner } from "react-icons/fa";
 import { useBankMutation } from "../../../redux/features/payment/payment.api";
+import { AxiosInstance } from "../../../lib/AxiosInstance";
 
 const PaymentProof = ({ paymentId, amount }) => {
   const [handleBankDeposit] = useBankMutation();
@@ -26,11 +24,7 @@ const PaymentProof = ({ paymentId, amount }) => {
       const handleSubmitImage = async () => {
         const formData = new FormData();
         formData.append("image", image);
-        const res = await axios.post(API.uploadScreenshot, formData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await AxiosInstance.post(API.uploadScreenshot, formData);
         const data = res.data;
 
         if (data?.success) {
@@ -62,18 +56,15 @@ const PaymentProof = ({ paymentId, amount }) => {
       return;
     }
     if (uploadedImage || utr) {
-      const generatedToken = handleRandomToken();
       const screenshotPostData = {
         type: "depositSubmit",
         paymentId,
         amount: amount,
         fileName: uploadedImage,
         utr: parseFloat(utr),
-        token: generatedToken,
-        site: settings.siteUrl,
       };
-      const encryptedData = handleEncryptData(screenshotPostData);
-      const res = await handleBankDeposit(encryptedData).unwrap();
+
+      const res = await handleBankDeposit(screenshotPostData).unwrap();
 
       if (res?.success) {
         setUtr(null);

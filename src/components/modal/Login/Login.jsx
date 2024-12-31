@@ -2,9 +2,7 @@ import { useRef, useState } from "react";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
 import { useLoginMutation } from "../../../redux/features/auth/authApi";
 import { useForm } from "react-hook-form";
-import handleRandomToken from "../../../utils/handleRandomToken";
 import { settings } from "../../../api";
-import handleEncryptData from "../../../utils/handleEncryptData";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/features/auth/authSlice";
@@ -28,16 +26,12 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async ({ username, password }) => {
-    const generatedToken = handleRandomToken();
     const loginData = {
       username: username,
       password: password,
-      token: generatedToken,
-      site: settings.siteUrl,
       b2c: settings.b2c,
     };
-    const encryptedData = handleEncryptData(loginData);
-    const result = await handleLogin(encryptedData).unwrap();
+    const result = await handleLogin(loginData).unwrap();
 
     if (result.success) {
       const token = result?.result?.token;
@@ -61,15 +55,12 @@ const Login = () => {
   /* handle login demo user */
   const loginWithDemo = async () => {
     /* Random token generator */
-    const generatedToken = handleRandomToken();
     /* Encrypted the post data */
-    const loginData = handleEncryptData({
+    const loginData = {
       username: "demo",
       password: "",
-      token: generatedToken,
-      site: settings.siteUrl,
       b2c: settings.b2c,
-    });
+    };
     const result = await handleLogin(loginData).unwrap();
     if (result.success) {
       const token = result?.result?.token;

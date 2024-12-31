@@ -42,59 +42,55 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
-        <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
-          <LeftDeskSidebar />
-          {group === 0 && (
-            <>
-              <div
-                className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
-                style={{ minHeight: "calc(-54px + 100dvh)" }}
-              >
-                <WhatsApp />
-
-                <Banner />
-
-                <div
-                  id="home"
-                  className="py-1 flex flex-col items-start justify-start"
-                >
-                  <Originals trendingGames={lotusLobby?.trendingGames} />
-                  {/* <WithdrawAndDepositButton /> */}
-                  {data && <InPlay data={data} />}
-                  <CasinoProvider
-                    casinoProviders={lotusLobby?.casinoProviders}
-                  />
-                  <AuraWolf />
-                  <PopularGames popularGames={lotusLobby?.popularGames} />
-                  {/* <UpcomingEvents /> */}
-                  {/* <CardGames /> */}
-                  {/* <IndianLiveCasino />
-                  <Casino /> */}
-                </div>
-                <FAQ />
-              </div>
-            </>
-          )}
-
-          {group === 2 || group === 4 || group === 1 || group === 5 ? (
-            <Group data={data} />
-          ) : null}
-
-          {group === "liveCasinoWolf" ||
-          group === "slotWolf" ||
-          group === "auraWolf" ? (
+      <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
+        <LeftDeskSidebar />
+        {group === 0 && (
+          <>
             <div
-              className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%] page-body"
-              style={{ minHeight: "calc(-110px + 100dvh)" }}
-              _ngcontent-ng-c1965075897=""
+              className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
+              style={{ minHeight: "calc(-54px + 100dvh)" }}
             >
-              <LiveCasino />
-            </div>
-          ) : null}
+              <WhatsApp />
 
-          <RightDeskSidebar />
-        </div>
+              <Banner />
+
+              <div
+                id="home"
+                className="py-1 flex flex-col items-start justify-start"
+              >
+                <Originals trendingGames={lotusLobby?.trendingGames} />
+                {/* <WithdrawAndDepositButton /> */}
+                {data && <InPlay data={data} />}
+                <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} />
+                <AuraWolf />
+                <PopularGames popularGames={lotusLobby?.popularGames} />
+                {/* <UpcomingEvents /> */}
+                {/* <CardGames /> */}
+                {/* <IndianLiveCasino />
+                  <Casino /> */}
+              </div>
+              <FAQ />
+            </div>
+          </>
+        )}
+
+        {group === 2 || group === 4 || group === 1 || group === 5 ? (
+          <Group data={data} />
+        ) : null}
+
+        {group === "liveCasinoWolf" ||
+        group === "slotWolf" ||
+        group === "auraWolf" ? (
+          <div
+            className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%] page-body"
+            style={{ minHeight: "calc(-110px + 100dvh)" }}
+            _ngcontent-ng-c1965075897=""
+          >
+            <LiveCasino />
+          </div>
+        ) : null}
+
+        <RightDeskSidebar />
       </div>
     </>
   );

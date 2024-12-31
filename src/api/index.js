@@ -48,6 +48,7 @@ export const API = {
   mac88: "",
   bonus: "",
   index: "",
+  language: "",
 };
 
 export const settings = {
@@ -76,4 +77,5 @@ export const settings = {
   referral: "",
   b2c: "",
   bookmakerCashOut: "",
+  language: "",
 };

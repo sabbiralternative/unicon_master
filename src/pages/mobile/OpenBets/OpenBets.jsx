@@ -5,7 +5,7 @@ const OpenBets = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="lg:hidden flex flex-col" style={{ paddingTop: "60px" }}>
+      <div className="lg:hidden flex flex-col">
         <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
           <div className="app-bg flex-row w-full h-full flex ">
             <div className="w-[34px] h-full flex items-center justify-center primary-icons">

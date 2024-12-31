@@ -21,10 +21,10 @@ import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 import HorseGreyhound from "../../../components/ui/mobile/events/HorseGreyhound";
 
 const Events = () => {
-  const { showAppPopUp } = useSelector((state) => state.state);
   const [betsType, setBetsType] = useState("live");
   const dispatch = useDispatch();
   const { placeBetValues, price, stake } = useSelector((state) => state.event);
+
   const { refetchBalance } = useBalance();
   const { eventTypeId, eventId } = useParams();
   const payload = {
@@ -267,11 +267,7 @@ const Events = () => {
   };
 
   return (
-    <div
-      className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 ${
-        showAppPopUp ? "pt-[160px]" : "pt-[90px]"
-      }`}
-    >
+    <div className={`flex flex-col transition-all ease-in-out duration-100 `}>
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
         <div
           className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"

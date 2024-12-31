@@ -10,6 +10,7 @@ const initialState = {
   showAppPopUp: false,
   windowWidth: window.innerWidth,
   selectedCategory: "ALL",
+  showNotification: false,
 };
 
 const stateSlice = createSlice({
@@ -48,6 +49,9 @@ const stateSlice = createSlice({
     setSelectedCategory: (state, action) => {
       state.selectedCategory = action.payload;
     },
+    setShowNotification: (state, action) => {
+      state.showNotification = action.payload;
+    },
   },
 });
 
@@ -62,6 +66,7 @@ export const {
   setShowAppPopUp,
   setWindowWidth,
   setSelectedCategory,
+  setShowNotification,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

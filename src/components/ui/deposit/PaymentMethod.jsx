@@ -2,9 +2,7 @@ import { FaQrcode } from "react-icons/fa";
 import useGetAllPaymentMethods from "../../../hooks/useGetAllPaymentMethods";
 import { CiBank } from "react-icons/ci";
 import assets from "../../../assets";
-import handleEncryptData from "../../../utils/handleEncryptData";
 import { useState } from "react";
-import handleRandomToken from "../../../utils/handleRandomToken";
 import { settings } from "../../../api";
 import {
   useBankMutation,
@@ -30,13 +28,10 @@ const PaymentMethod = ({
 
     setTabs(method?.type);
     setPaymentId(method?.paymentId);
-    const generatedToken = handleRandomToken();
-    console.log(method);
 
     if (method?.type === "pg") {
       const pgPayload = {
         paymentId: method?.paymentId,
-        token: generatedToken,
         site: settings.siteUrl,
         amount,
       };
@@ -58,12 +53,10 @@ const PaymentMethod = ({
       const depositDetail = {
         type: "depositDetails",
         paymentId: method?.paymentId,
-        token: generatedToken,
         site: settings.siteUrl,
       };
 
-      const encryptedData = handleEncryptData(depositDetail);
-      const res = await handleBankPayment(encryptedData).unwrap();
+      const res = await handleBankPayment(depositDetail).unwrap();
       if (res?.success) {
         setDepositData(res?.result);
       }

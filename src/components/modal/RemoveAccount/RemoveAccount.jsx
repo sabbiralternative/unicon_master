@@ -1,9 +1,6 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
 import { useBankMutation } from "../../../redux/features/payment/payment.api";
-import handleRandomToken from "../../../utils/handleRandomToken";
-import { settings } from "../../../api";
-import handleEncryptData from "../../../utils/handleEncryptData";
 import toast from "react-hot-toast";
 import useGetAllBankAccount from "../../../hooks/useGetAllBankAccount";
 
@@ -16,15 +13,11 @@ const RemoveAccount = ({ setRemoveBank, removeBank }) => {
   });
 
   const handleDeleteBank = async () => {
-    const generatedToken = handleRandomToken();
     const bankData = {
       type: "deleteBankAccount",
       bankId: removeBank,
-      token: generatedToken,
-      site: settings.siteUrl,
     };
-    const encryptedData = handleEncryptData(bankData);
-    const res = await deleteBank(encryptedData).unwrap();
+    const res = await deleteBank(bankData).unwrap();
     if (res?.success) {
       setRemoveBank("");
       toast.success(res?.result?.message);

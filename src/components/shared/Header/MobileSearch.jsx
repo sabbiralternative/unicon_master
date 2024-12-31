@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import handleRandomToken from "../../../utils/handleRandomToken";
-import handleEncryptData from "../../../utils/handleEncryptData";
 import { API } from "../../../api";
 import { useSelector } from "react-redux";
 import { userToken } from "../../../redux/features/auth/authSlice";
 import { Link } from "react-router-dom";
+import { AxiosSecure } from "../../../lib/AxiosSecure";
 
 const MobileSearch = ({ setShowMobileSearch }) => {
   const [searchText, setSearchText] = useState("");
@@ -14,20 +13,10 @@ const MobileSearch = ({ setShowMobileSearch }) => {
 
   useEffect(() => {
     if (searchText?.length > 2) {
-      const generatedToken = handleRandomToken();
-      const encryptedData = handleEncryptData(generatedToken);
       const getSearchData = async () => {
-        const res = await fetch(API.searchEvent, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            name: searchText,
-            token: encryptedData,
-          }),
+        const { data } = await AxiosSecure.post(API.searchEvent, {
+          name: searchText,
         });
-        const data = await res.json();
 
         if (data?.result?.length > 0) {
           setData(data?.result);

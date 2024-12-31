@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import handleRandomToken from "../../../../utils/handleRandomToken";
-import handleEncryptData from "../../../../utils/handleEncryptData";
 import { settings } from "../../../../api";
 import { useOrderMutation } from "../../../../redux/features/events/events";
 import useExposer from "../../../../hooks/useExposure";
@@ -81,16 +79,14 @@ const BetSlip = ({ setRunnerId }) => {
 
   /* Handle bets */
   const handleOrderBets = async () => {
-    const generatedToken = handleRandomToken();
-    const encryptedData = handleEncryptData([
+    const payloadData = [
       {
         ...payload,
-        token: generatedToken,
         site: settings.siteUrl,
       },
-    ]);
+    ];
     setBetDelay(placeBetValues?.betDelay);
-    const res = await createOrder(encryptedData).unwrap();
+    const res = await createOrder(payloadData).unwrap();
 
     if (res?.success) {
       refetchExposure();

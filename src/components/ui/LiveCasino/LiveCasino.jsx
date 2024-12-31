@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unknown-property */
 import { useEffect, useState } from "react";
 import { API, settings } from "../../../api";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import toast from "react-hot-toast";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
+import { AxiosInstance } from "../../../lib/AxiosInstance";
 
 const LiveCasino = () => {
   const [showLeftDropdown, setShowLeftDropdown] = useState(false);
@@ -31,7 +31,7 @@ const LiveCasino = () => {
       auraWolf: API.auraWolf,
     };
     const getGames = async () => {
-      const res = await axios.post(apiMapping[group], {
+      const res = await AxiosInstance.post(apiMapping[group], {
         gameList,
         product,
         isHome: false,

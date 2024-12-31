@@ -7,8 +7,6 @@ import {
 import { useForm } from "react-hook-form";
 import useContextState from "../../../hooks/useContextState";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
-import handleRandomToken from "../../../utils/handleRandomToken";
-import handleEncryptData from "../../../utils/handleEncryptData";
 import { settings } from "../../../api";
 import toast from "react-hot-toast";
 import {
@@ -39,14 +37,7 @@ const ForgetPassword = () => {
   };
   const handleOTP = async () => {
     if (mobile.length > 0) {
-      const generatedToken = handleRandomToken();
-      const otpData = {
-        mobile,
-        token: generatedToken,
-        site: settings?.siteUrl,
-      };
-      const encryptedData = handleEncryptData(otpData);
-      const res = await getOTP(encryptedData).unwrap();
+      const res = await getOTP({ mobile }).unwrap();
 
       if (res?.success) {
         setOTP({
@@ -61,21 +52,17 @@ const ForgetPassword = () => {
   };
 
   const onSubmit = async (data) => {
-    const generatedToken = handleRandomToken();
     const forgotPasswordData = {
       username: mobile,
       password: data?.password,
       confirmPassword: data?.confirmPassword,
-      site: settings.siteUrl,
-      token: generatedToken,
       otp: data?.otp,
       isOtpAvailable: settings.otp,
       orderId: OTP.orderId,
       otpMethod: OTP.otpMethod,
     };
 
-    const encryptedData = handleEncryptData(forgotPasswordData);
-    const result = await handleForgotPassword(encryptedData).unwrap();
+    const result = await handleForgotPassword(forgotPasswordData).unwrap();
     if (result.success) {
       toast.success("Password updated successfully");
       dispatch(setShowForgetModal(false));

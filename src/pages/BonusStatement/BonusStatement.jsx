@@ -3,7 +3,6 @@ import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/Lef
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import useBonusStatement from "../../hooks/useBonusStatement";
 import { useBonusMutation } from "../../redux/features/payment/payment.api";
-import handleRandomToken from "../../utils/handleRandomToken";
 import toast from "react-hot-toast";
 import moment from "moment";
 
@@ -36,11 +35,9 @@ const BonusStatement = () => {
   };
 
   const handleClaimBonus = async (item) => {
-    const generatedToken = handleRandomToken();
     const payload = {
       type: "claimBonus",
       bonus_statement_id: item?.bonus_statement_id,
-      token: generatedToken,
     };
     const result = await claimBonus(payload).unwrap();
     if (result?.success) {

@@ -4,7 +4,7 @@ import DepositWithdrawReport from "../../../components/ui/Reports/Transaction";
 
 const Transaction = () => {
   return (
-    <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[54px]">
+    <div className="flex flex-col transition-all">
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
         <LeftDeskSidebar />
         <DepositWithdrawReport />

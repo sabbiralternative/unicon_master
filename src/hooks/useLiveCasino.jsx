@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 
 import { API } from "../api";
+import { AxiosInstance } from "../lib/AxiosInstance";
 /* live casino api */
 const useLiveCasino = () => {
   const {
@@ -12,7 +12,7 @@ const useLiveCasino = () => {
     queryKey: ["liveCasinoWolf"],
 
     queryFn: async () => {
-      const res = await axios.post(API.liveCasinoWolf, {
+      const res = await AxiosInstance.post(API.liveCasinoWolf, {
         gameList: "All",
         product: "All",
         isHome: true,

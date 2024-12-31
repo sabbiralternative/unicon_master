@@ -5,19 +5,25 @@ import handleRandomToken from "../utils/handleRandomToken";
 import handleEncryptData from "../utils/handleEncryptData";
 import { logout } from "../redux/features/auth/authSlice";
 import { useDispatch } from "react-redux";
+import useLanguage from "./useLanguage";
 
 const useBonusBalance = () => {
+  const { language } = useLanguage();
   const dispatch = useDispatch();
   const bonusToken = localStorage.getItem("bonusToken");
   const { data: bonusBalance = {}, refetch: refetchBonusBalance } = useQuery({
     queryKey: ["bonusBalance"],
     enabled: bonusToken ? true : false,
     queryFn: async () => {
-      const generatedToken = handleRandomToken();
-      const encryptedData = handleEncryptData({
+      let payload = {
         token: generatedToken,
         site: settings.siteUrl,
-      });
+      };
+      if (settings.language) {
+        payload.language = language;
+      }
+      const generatedToken = handleRandomToken();
+      const encryptedData = handleEncryptData(payload);
       const res = await axios.post(API.balance, encryptedData, {
         headers: {
           Authorization: `Bearer ${bonusToken}`,

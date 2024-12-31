@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import handleRandomToken from "../../../../utils/handleRandomToken";
-import { settings } from "../../../../api";
-import handleEncryptData from "../../../../utils/handleEncryptData";
 import { useBankMutation } from "../../../../redux/features/payment/payment.api";
 import toast from "react-hot-toast";
 import useGetAllBankAccount from "../../../../hooks/useGetAllBankAccount";
@@ -26,19 +23,16 @@ const NewAccount = ({ setTabs }) => {
       return toast.error("Account number not matched!");
     }
     /* generating random token for post data */
-    const generatedToken = handleRandomToken();
+
     const bankData = {
       accountName: bankDetails.accountName,
       ifsc: bankDetails.ifsc,
       upiId: bankDetails.upiId,
       accountNumber: bankDetails.accountNumber,
       type: "addBankAccount",
-      token: generatedToken,
-      site: settings.siteUrl,
     };
 
-    const encryptedData = handleEncryptData(bankData);
-    const res = await addNewBank(encryptedData).unwrap();
+    const res = await addNewBank(bankData).unwrap();
 
     if (res?.success) {
       setBankDetails({
