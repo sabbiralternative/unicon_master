@@ -38,6 +38,7 @@ import artboard from "./images/Artboard.webp";
 import default_notification from "./images/default_notification.svg";
 import warning from "./images/warning-yellow.svg";
 import matchField from "./images/liveMatchField.jpg";
+import usdt from "./images/usdt.png";
 
 export default {
   commision,
@@ -80,4 +81,5 @@ export default {
   default_notification,
   warning,
   matchField,
+  usdt,
 };
