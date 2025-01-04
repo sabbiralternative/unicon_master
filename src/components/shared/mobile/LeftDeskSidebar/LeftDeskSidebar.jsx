@@ -151,10 +151,7 @@ const LeftDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.BONUS_STATEMENT
-                    )}
+                    {languageValue(valueByLanguage, LanguageKey.CRICKET)}
                   </span>
                 </li>
                 <li
@@ -260,7 +257,7 @@ const LeftDeskSidebar = () => {
                     {languageValue(valueByLanguage, LanguageKey.KABADDI)}
                   </span>
                 </li>
-                <li
+                {/* <li
                   onClick={() => {
                     navigate("/horse-racing");
                     dispatch(setShowLeftSidebar(false));
@@ -309,7 +306,7 @@ const LeftDeskSidebar = () => {
                   <span className="font-medium text-sm xs:text-base">
                     {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
                   </span>
-                </li>
+                </li> */}
 
                 {/* {settings.casinoCurrency === "INR" && settings.mac88 && (
                   <li

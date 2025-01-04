@@ -20,8 +20,8 @@ import { useEffect } from "react";
 // import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
 // import Originals from "../../../components/ui/desktop/Home/Originals";
 // import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
-import PopularGames from "../../../components/ui/PopularGames/PopularGames";
-import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
+// import PopularGames from "../../../components/ui/PopularGames/PopularGames";
+// import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 
 // import CardGames from "../../../components/ui/CardGames/CardGames";
 // import IndianLiveCasino from "../../../components/ui/IndianLiveCasino/IndianLiveCasino";
@@ -29,7 +29,7 @@ import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 // import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 
 const Home = () => {
-  const { lotusLobby } = useLotusHomeLobby();
+  // const { lotusLobby } = useLotusHomeLobby();
   const { refetchBalance } = useBalance();
   const { group } = useSelector((state) => state.state);
   const { data } = useGetAllGroupEventsQuery(group, {
@@ -63,7 +63,7 @@ const Home = () => {
                 {data && <InPlay data={data} />}
                 {/* <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} />
                 <AuraWolf /> */}
-                <PopularGames popularGames={lotusLobby?.popularGames} />
+                {/* <PopularGames popularGames={lotusLobby?.popularGames} /> */}
                 {/* <UpcomingEvents /> */}
                 {/* <CardGames /> */}
                 {/* <IndianLiveCasino />

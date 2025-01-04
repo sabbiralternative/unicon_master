@@ -232,7 +232,7 @@ const LeftDeskSidebar = () => {
               </span>
             </span>
           </li> */}
-          <li
+          {/* <li
             onClick={() => navigate("/horse-racing")}
             className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
           >
@@ -253,8 +253,8 @@ const LeftDeskSidebar = () => {
                 {languageValue(valueByLanguage, LanguageKey.HORSE)}
               </span>
             </span>
-          </li>
-          <li
+          </li> */}
+          {/* <li
             onClick={() => navigate("/greyhound-racing")}
             className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
           >
@@ -275,7 +275,7 @@ const LeftDeskSidebar = () => {
                 {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
               </span>
             </span>
-          </li>
+          </li> */}
 
           {/* {settings.casinoCurrency === "INR" && settings.aura && (
             <li

@@ -15,13 +15,13 @@ import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
 import { useEffect } from "react";
 import useBalance from "../../../hooks/useBalance";
 // import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
-import PopularGames from "../../../components/ui/PopularGames/PopularGames";
+// import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 // import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 // import Originals from "../../../components/ui/desktop/Home/Originals";
-import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
+// import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 
 const Home = () => {
-  const { lotusLobby } = useLotusHomeLobby();
+  // const { lotusLobby } = useLotusHomeLobby();
   const { refetchBalance } = useBalance();
   const token = useSelector(userToken);
   const { socialLink } = useGetSocialLink();
@@ -113,7 +113,7 @@ const Home = () => {
               {data && <InPlay data={data} />}
               {/* <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} /> */}
               {/* <AuraWolf /> */}
-              <PopularGames popularGames={lotusLobby?.popularGames} />
+              {/* <PopularGames popularGames={lotusLobby?.popularGames} /> */}
               {/* <UpcomingEvents /> */}
             </div>
             <div className="px-[6px]"></div>
