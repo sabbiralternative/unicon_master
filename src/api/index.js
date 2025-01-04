@@ -49,6 +49,7 @@ export const API = {
   bonus: "",
   index: "",
   language: "",
+  edit: "",
 };
 
 export const settings = {

@@ -39,6 +39,8 @@ import default_notification from "./images/default_notification.svg";
 import warning from "./images/warning-yellow.svg";
 import matchField from "./images/liveMatchField.jpg";
 import usdt from "./images/usdt.png";
+import check from "./images/check.png";
+import close from "./images/close.png";
 
 export default {
   commision,
@@ -82,4 +84,6 @@ export default {
   warning,
   matchField,
   usdt,
+  check,
+  close,
 };

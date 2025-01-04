@@ -64,10 +64,20 @@ export const eventsApi = baseApi.injectEndpoints({
         };
       },
     }),
+    editFancy: builder.mutation({
+      query: (payload) => {
+        return {
+          url: `${API.edit}`,
+          method: "POST",
+          body: payload,
+        };
+      },
+    }),
   }),
 });
 
 export const {
+  useEditFancyMutation,
   useGetAllGroupEventsQuery,
   useGetAllOddsEventsQuery,
   useOrderMutation,

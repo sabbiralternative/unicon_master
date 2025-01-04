@@ -9,8 +9,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { settings } from "../../../../api";
 import { handleCashOutPlaceBet } from "../../../../utils/handleCashoutPlaceBet";
+import { useEditFancyMutation } from "../../../../redux/features/events/events";
+import toast from "react-hot-toast";
+import assets from "../../../../assets";
 
 const MatchOdds = ({ match_odds }) => {
+  const [editFancy] = useEditFancyMutation();
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
   const { predictOdd, stake } = useSelector((state) => state?.event);
@@ -132,6 +136,20 @@ const MatchOdds = ({ match_odds }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [match_odds, eventId]);
 
+  const handleEditBookmaker = async (game) => {
+    const payload = {
+      id: game?.id,
+      visible: game?.visible ? 0 : 1,
+      type: "changeName",
+    };
+    const res = await editFancy(payload).unwrap();
+    if (res?.success) {
+      toast.success(res?.result?.message);
+    } else {
+      toast.error(res?.error?.errorMessage);
+    }
+  };
+
   return (
     <>
       {match_odds?.map((games, i) => {
@@ -191,9 +209,16 @@ const MatchOdds = ({ match_odds }) => {
                 {/* <span className="text-xs font-light">
                   Min: {games?.minLiabilityPerBet}
                 </span> */}
-                <span className="text-xs font-light">
-                  Max: {games?.maxLiabilityPerBet}
-                </span>
+                <button
+                  onClick={() => handleEditBookmaker(games)}
+                  className="flex items-center justify-center ml-4"
+                >
+                  {games?.visible ? (
+                    <img src={assets.check} alt="" />
+                  ) : (
+                    <img src={assets?.close} alt="" />
+                  )}
+                </button>
               </div>
               <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">
                 <span className="hidden md:flex col-span-1 text-center font-semibold h-full items-end justify-center"></span>

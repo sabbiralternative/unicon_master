@@ -11,8 +11,12 @@ import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
 import { FaPen } from "react-icons/fa";
 // import Ladder from "../../../modal/Ladder/Ladder";
 import { userToken } from "../../../../redux/features/auth/authSlice";
+import { useEditFancyMutation } from "../../../../redux/features/events/events";
+import toast from "react-hot-toast";
 
 const Fancy = ({ fancy }) => {
+  const [fancyName, setFancyName] = useState("");
+  const [editFancy] = useEditFancyMutation();
   const token = useSelector(userToken);
   // const [eventName, setEventName] = useState("");
   // const [ladderData, setLadderData] = useState([]);
@@ -48,6 +52,22 @@ const Fancy = ({ fancy }) => {
   //     setLadderData(res.result);
   //   }
   // };
+
+  const handleEditFancy = async (game) => {
+    const payload = {
+      id: game?.id,
+      name: fancyName,
+      type: "changeName",
+    };
+
+    const res = await editFancy(payload).unwrap();
+    if (res?.success) {
+      toast.success(res?.result?.message);
+      setEditId("");
+    } else {
+      toast.error(res?.error?.errorMessage);
+    }
+  };
 
   return (
     <>
@@ -86,7 +106,8 @@ const Fancy = ({ fancy }) => {
                           <input
                             className="border border-black py-1 rounded-sm px-2"
                             type="text"
-                            defaultValue={games?.name}
+                            onChange={(e) => setFancyName(e.target.value)}
+                            value={fancyName}
                           />
                         ) : (
                           games?.name
@@ -130,13 +151,18 @@ const Fancy = ({ fancy }) => {
                     </span>
                   </div>
                   <div className="col-span-4 md:col-span-1 flex flex-row items-center justify-end gap-5 w-full">
-                    <button onClick={() => setEditId(games?.id)}>
+                    <button
+                      onClick={() => {
+                        setEditId(games?.id);
+                        setFancyName(games?.name);
+                      }}
+                    >
                       <FaPen />
                     </button>
                     {editId === games?.id && (
                       <button
+                        onClick={() => handleEditFancy(games)}
                         className="bg-[var(--color-bg-primary)] text-white px-2 py-1 rounded-sm"
-                        onClick={() => setEditId("")}
                       >
                         Submit
                       </button>

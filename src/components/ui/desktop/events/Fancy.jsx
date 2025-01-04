@@ -10,8 +10,13 @@ import { useState } from "react";
 // import Ladder from "../../../modal/Ladder/Ladder";
 import { userToken } from "../../../../redux/features/auth/authSlice";
 import { FaPen } from "react-icons/fa";
+import { useEditFancyMutation } from "../../../../redux/features/events/events";
+import toast from "react-hot-toast";
+import assets from "../../../../assets";
 
 const Fancy = ({ fancy }) => {
+  const [fancyName, setFancyName] = useState("");
+  const [editFancy] = useEditFancyMutation();
   const [editId, setEditId] = useState("");
   const token = useSelector(userToken);
   // const [eventName, setEventName] = useState("");
@@ -46,6 +51,17 @@ const Fancy = ({ fancy }) => {
   //     setLadderData(res.result);
   //   }
   // };
+
+  const handleEditFancy = async (payload) => {
+    const res = await editFancy(payload).unwrap();
+    if (res?.success) {
+      toast.success(res?.result?.message);
+      setEditId("");
+    } else {
+      toast.error(res?.error?.errorMessage);
+    }
+  };
+
   return (
     <>
       <div className="text-base font-medium text-center py-1.5">
@@ -184,9 +200,10 @@ const Fancy = ({ fancy }) => {
                       <span className="w-full truncate capitalize text-text_Ternary text-[13px] md:text-sm font-semibold">
                         {games?.id === editId ? (
                           <input
+                            onChange={(e) => setFancyName(e.target.value)}
                             className="border border-black py-1 rounded-sm px-2"
                             type="text"
-                            defaultValue={games?.name}
+                            value={fancyName}
                           />
                         ) : (
                           games?.name
@@ -231,13 +248,24 @@ const Fancy = ({ fancy }) => {
                   </div>
 
                   <div className="col-span-3 md:col-span-2 flex flex-row items-center justify-end gap-5 w-full">
-                    <button onClick={() => setEditId(games?.id)}>
+                    <button
+                      onClick={() => {
+                        setEditId(games?.id);
+                        setFancyName(games?.name);
+                      }}
+                    >
                       <FaPen />
                     </button>
                     {editId === games?.id && (
                       <button
                         className="bg-[var(--color-bg-primary)] text-white px-2 py-1 rounded-sm"
-                        onClick={() => setEditId("")}
+                        onClick={() =>
+                          handleEditFancy({
+                            id: games?.id,
+                            name: fancyName,
+                            type: "changeName",
+                          })
+                        }
                       >
                         Submit
                       </button>
@@ -328,22 +356,22 @@ const Fancy = ({ fancy }) => {
 
                   <span className="hidden md:block col-span-2 text-center min-h-12">
                     <div className="flex flex-col gap-y-1 items-center h-full w-full justify-center px-1">
-                      <div className="flex items-center justify-center">
-                        <span className="text-[10px] text-center text-text_MaxMarketTextColor">
-                          Max Bet :
-                        </span>
-                        <span className="text-[10px] text-center text-text_MaxMarketTextColor">
-                          {games?.maxLiabilityPerBet}
-                        </span>
-                      </div>
-                      <div className="flex items-center justify-start">
-                        <span className="text-[10px] text-center text-text_MaxMarketTextColor">
-                          Min :
-                        </span>
-                        <span className="text-[10px] text-center text-text_MaxMarketTextColor">
-                          {games?.minLiabilityPerBet}
-                        </span>
-                      </div>
+                      <button
+                        onClick={() =>
+                          handleEditFancy({
+                            id: games?.id,
+                            visible: games?.visible ? 0 : 1,
+                            type: "visible",
+                          })
+                        }
+                        className="flex items-center justify-center"
+                      >
+                        {games?.visible ? (
+                          <img src={assets.check} alt="" />
+                        ) : (
+                          <img src={assets?.close} alt="" />
+                        )}
+                      </button>
                     </div>
                   </span>
                 </div>

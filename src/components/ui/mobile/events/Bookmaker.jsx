@@ -12,8 +12,12 @@ import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
 import { userToken } from "../../../../redux/features/auth/authSlice";
 import { settings } from "../../../../api";
 import { handleCashoutBetMobile } from "../../../../utils/handleCashoutBetMobile";
+import { useEditFancyMutation } from "../../../../redux/features/events/events";
+import toast from "react-hot-toast";
+import assets from "../../../../assets";
 
 const Bookmaker = ({ bookmaker }) => {
+  const [editFancy] = useEditFancyMutation();
   const [teamProfit, setTeamProfit] = useState([]);
   const token = useSelector(userToken);
   const { predictOdd, stake } = useSelector((state) => state?.event);
@@ -150,6 +154,20 @@ const Bookmaker = ({ bookmaker }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bookmaker, eventId]);
+
+  const handleEditBookmaker = async (game) => {
+    const payload = {
+      id: game?.id,
+      visible: game?.visible ? 0 : 1,
+      type: "changeName",
+    };
+    const res = await editFancy(payload).unwrap();
+    if (res?.success) {
+      toast.success(res?.result?.message);
+    } else {
+      toast.error(res?.error?.errorMessage);
+    }
+  };
   return (
     <>
       {bookmaker?.map((games, i) => {
@@ -223,9 +241,16 @@ const Bookmaker = ({ bookmaker }) => {
                 {/* <span className="text-xs font-light">
                   Min: {games?.minLiabilityPerBet}
                 </span> */}
-                <span className="text-xs font-light">
-                  Max: {games?.maxLiabilityPerBet}
-                </span>
+                <button
+                  onClick={() => handleEditBookmaker(games)}
+                  className="flex items-center justify-center ml-3"
+                >
+                  {games?.visible ? (
+                    <img src={assets.check} alt="" />
+                  ) : (
+                    <img src={assets?.close} alt="" />
+                  )}
+                </button>
               </div>
               <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">
                 <span className="hidden md:flex col-span-1 text-center font-semibold h-full items-end justify-center"></span>
