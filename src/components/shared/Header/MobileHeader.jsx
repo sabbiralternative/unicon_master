@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setGroupType } from "../../../redux/features/stateSlice";
-import { settings } from "../../../api";
+// import { settings } from "../../../api";
 import useLanguage from "../../../hooks/useLanguage";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
@@ -157,7 +157,7 @@ const MobileHeader = () => {
           </button>
         </a>
 
-        {settings.casinoCurrency === "INR" && settings.mac88 && (
+        {/* {settings.casinoCurrency === "INR" && settings.mac88 && (
           <a
             onClick={() => {
               navigate("/mac88");
@@ -194,9 +194,9 @@ const MobileHeader = () => {
               </span>
             </button>
           </a>
-        )}
+        )} */}
 
-        {settings.aura && (
+        {/* {settings.aura && (
           <a
             onClick={() => {
               navigate("/");
@@ -236,8 +236,8 @@ const MobileHeader = () => {
               </span>
             </button>
           </a>
-        )}
-        <a
+        )} */}
+        {/* <a
           onClick={() => {
             navigate("/live-casino");
           }}
@@ -444,7 +444,7 @@ lg:hidden ${
               </span>
             </span>
           </button>
-        </a>
+        </a> */}
       </div>
     </div>
   );

@@ -369,7 +369,7 @@ cursor-pointer
                     GreyHound Racing
                   </span>
                 </button> */}
-                  {settings.mac88 && settings.casinoCurrency === "INR" && (
+                  {/* {settings.mac88 && settings.casinoCurrency === "INR" && (
                     <button
                       onClick={() => {
                         navigate("/mac88");
@@ -380,8 +380,8 @@ cursor-pointer
                         {languageValue(valueByLanguage, LanguageKey.MAC88)}
                       </span>
                     </button>
-                  )}
-                  {settings.aura && (
+                  )} */}
+                  {/* {settings.aura && (
                     <button
                       onClick={() => {
                         navigate("/");
@@ -391,7 +391,7 @@ cursor-pointer
                     >
                       <span className="font font-lato text-[12px]">Aura</span>
                     </button>
-                  )}
+                  )} */}
                   {/* <button
                     onClick={() => {
                       navigate("/");
@@ -414,7 +414,7 @@ cursor-pointer
                       Slot Games
                     </span>
                   </button> */}
-                  <button
+                  {/* <button
                     onClick={() => {
                       navigate("/live-casino");
                     }}
@@ -423,16 +423,16 @@ cursor-pointer
                     <span className="font font-lato text-[12px]">
                       {languageValue(valueByLanguage, LanguageKey.LIVE_CASINO)}
                     </span>
-                  </button>
-                  <button
+                  </button> */}
+                  {/* <button
                     onClick={() => {
                       navigate("/slots");
                     }}
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
                   >
                     <span className="font font-lato text-[12px]">Slots</span>
-                  </button>
-                  <button
+                  </button> */}
+                  {/* <button
                     onClick={() => {
                       navigate("/crash-games");
                     }}
@@ -441,8 +441,8 @@ cursor-pointer
                     <span className="font font-lato text-[12px]">
                       Crash Games
                     </span>
-                  </button>
-                  <button
+                  </button> */}
+                  {/* <button
                     onClick={() => {
                       navigate("/fishing-games");
                     }}
@@ -451,7 +451,7 @@ cursor-pointer
                     <span className="font font-lato text-[12px]">
                       Fishing Games
                     </span>
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

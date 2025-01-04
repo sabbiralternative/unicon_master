@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "../shared/Header/Header";
-import Footer from "../shared/Footer/Footer";
+// import Footer from "../shared/Footer/Footer";
 import { useSelector } from "react-redux";
 
 const MainLayout = () => {
@@ -22,7 +22,7 @@ const MainLayout = () => {
       >
         <Outlet />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

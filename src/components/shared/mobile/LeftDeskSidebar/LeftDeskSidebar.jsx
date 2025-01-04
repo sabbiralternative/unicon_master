@@ -4,15 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import {
   setGroupType,
   setShowLeftSidebar,
-  setShowLoginModal,
+  // setShowLoginModal,
 } from "../../../../redux/features/stateSlice";
-import { settings } from "../../../../api";
+// import { settings } from "../../../../api";
 import { useNavigate } from "react-router-dom";
 // import { ImDice } from "react-icons/im";
 import assets from "../../../../assets";
-import toast from "react-hot-toast";
-import WarningCondition from "../../WarningCondition/WarningCondition";
-import useGetSocialLink from "../../../../hooks/useGetSocialLink";
+// import toast from "react-hot-toast";
+// import WarningCondition from "../../WarningCondition/WarningCondition";
+// import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 import useLanguage from "../../../../hooks/useLanguage";
 import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
@@ -20,13 +20,13 @@ import { LanguageKey } from "../../../../const";
 const LeftDeskSidebar = () => {
   const { valueByLanguage } = useLanguage();
   const [hideNavList, setHideNavList] = useState("");
-  const { socialLink } = useGetSocialLink();
+  // const { socialLink } = useGetSocialLink();
   const navigate = useNavigate();
-  const [error, setError] = useState("");
-  const [showWarning, setShowWarning] = useState(false);
-  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
+  // const [error, setError] = useState("");
+  // const [showWarning, setShowWarning] = useState(false);
+  // const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
   const { showLeftSidebar } = useSelector((state) => state.state);
-  const { token, bonusToken } = useSelector((state) => state.auth);
+  // const { token, bonusToken } = useSelector((state) => state.auth);
   const leftSidebarRef = useRef();
   const dispatch = useDispatch();
   useCloseModalClickOutside(leftSidebarRef, () => {
@@ -40,32 +40,32 @@ const LeftDeskSidebar = () => {
     window.scrollTo(0, 0);
   };
 
-  const handleDownloadAPK = (e) => {
-    e.preventDefault();
-    if (settings.apkLink) {
-      const fileUrl = settings.apkLink;
-      const link = document.createElement("a");
-      link.href = fileUrl;
-      link.setAttribute("download", "site.apk");
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode.removeChild(link);
-    }
-  };
+  // const handleDownloadAPK = (e) => {
+  //   e.preventDefault();
+  //   if (settings.apkLink) {
+  //     const fileUrl = settings.apkLink;
+  //     const link = document.createElement("a");
+  //     link.href = fileUrl;
+  //     link.setAttribute("download", "site.apk");
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     link.parentNode.removeChild(link);
+  //   }
+  // };
 
-  const handleOpenSocialLink = (link) => {
-    if (link) {
-      window.open(link, "_blank");
-    }
-  };
+  // const handleOpenSocialLink = (link) => {
+  //   if (link) {
+  //     window.open(link, "_blank");
+  //   }
+  // };
 
-  const openWhatsapp = () => {
-    if (token && socialLink?.branchWhatsapplink) {
-      window.open(socialLink?.branchWhatsapplink, "_blank");
-    } else {
-      window.open(socialLink?.whatsapplink, "_blank");
-    }
-  };
+  // const openWhatsapp = () => {
+  //   if (token && socialLink?.branchWhatsapplink) {
+  //     window.open(socialLink?.branchWhatsapplink, "_blank");
+  //   } else {
+  //     window.open(socialLink?.whatsapplink, "_blank");
+  //   }
+  // };
 
   useEffect(() => {
     if (showLeftSidebar) {
@@ -77,34 +77,34 @@ const LeftDeskSidebar = () => {
     }
   }, [showLeftSidebar]);
 
-  const handleNavigateToAviator = () => {
-    if (token) {
-      if (bonusToken) {
-        return setError("Bonus wallet is available only on sports.");
-      }
-      if (settings.casinoCurrency !== "AED") {
-        navigate(`/casino/EvolutionGaming/200296`);
-      } else {
-        setGameInfo({ gameName: "", gameId: "" });
-        setGameInfo({ gameName: "EvolutionGaming", gameId: "200296" });
-        setShowWarning(true);
-      }
-    } else {
-      dispatch(setShowLoginModal(true));
-    }
-  };
+  // const handleNavigateToAviator = () => {
+  //   if (token) {
+  //     if (bonusToken) {
+  //       return setError("Bonus wallet is available only on sports.");
+  //     }
+  //     if (settings.casinoCurrency !== "AED") {
+  //       navigate(`/casino/EvolutionGaming/200296`);
+  //     } else {
+  //       setGameInfo({ gameName: "", gameId: "" });
+  //       setGameInfo({ gameName: "EvolutionGaming", gameId: "200296" });
+  //       setShowWarning(true);
+  //     }
+  //   } else {
+  //     dispatch(setShowLoginModal(true));
+  //   }
+  // };
 
-  useEffect(() => {
-    if (error) {
-      return toast.error(error);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     return toast.error(error);
+  //   }
+  // }, [error]);
 
   return (
     <>
-      {showWarning && (
+      {/* {showWarning && (
         <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
-      )}
+      )} */}
       <aside>
         <div
           className={`fixed top-0 left-0 z-50 w-full h-dvh  bg-opacity-50 block`}
@@ -311,7 +311,7 @@ const LeftDeskSidebar = () => {
                   </span>
                 </li>
 
-                {settings.casinoCurrency === "INR" && settings.mac88 && (
+                {/* {settings.casinoCurrency === "INR" && settings.mac88 && (
                   <li
                     onClick={() => {
                       navigate("/mac88");
@@ -525,9 +525,9 @@ const LeftDeskSidebar = () => {
                     {" "}
                     Fishing Games
                   </span>
-                </li>
+                </li> */}
 
-                <li
+                {/* <li
                   onClick={handleNavigateToAviator}
                   className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
                 >
@@ -550,8 +550,8 @@ const LeftDeskSidebar = () => {
                   <span className="font-medium text-sm xs:text-base">
                     Aviator
                   </span>
-                </li>
-                {settings?.apkLink && (
+                </li> */}
+                {/* {settings?.apkLink && (
                   <li
                     onClick={handleDownloadAPK}
                     className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
@@ -726,7 +726,7 @@ const LeftDeskSidebar = () => {
                       </div>
                     </div>
                   </li>
-                ) : null}
+                ) : null} */}
               </ul>
             </div>
           </div>

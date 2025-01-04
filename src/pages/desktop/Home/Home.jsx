@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import { useGetAllGroupEventsQuery } from "../../../redux/features/events/events";
 
 import RightDeskSidebar from "../../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
-import Banner from "../../../components/ui/desktop/Home/Banner";
+// import Banner from "../../../components/ui/desktop/Home/Banner";
 import InPlay from "../../../components/ui/desktop/Home/InPlay";
 
 // import UpcomingEvents from "../../../components/ui/desktop/Home/UpcomingEvents";
-import FAQ from "../../../components/ui/desktop/Home/FAQ";
+// import FAQ from "../../../components/ui/desktop/Home/FAQ";
 import WhatsApp from "../../../components/ui/desktop/Home/WhatsApp";
 // import WithdrawAndDepositButton from "../../../components/ui/desktop/Home/WithdrawAndDepositButton";
 import LeftDeskSidebar from "../../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
@@ -17,9 +17,9 @@ import Group from "../../../components/ui/desktop/Home/Group";
 import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
 import useBalance from "../../../hooks/useBalance";
 import { useEffect } from "react";
-import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
-import Originals from "../../../components/ui/desktop/Home/Originals";
-import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
+// import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
+// import Originals from "../../../components/ui/desktop/Home/Originals";
+// import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 
@@ -52,24 +52,24 @@ const Home = () => {
             >
               <WhatsApp />
 
-              <Banner />
+              {/* <Banner /> */}
 
               <div
                 id="home"
                 className="py-1 flex flex-col items-start justify-start"
               >
-                <Originals trendingGames={lotusLobby?.trendingGames} />
+                {/* <Originals trendingGames={lotusLobby?.trendingGames} /> */}
                 {/* <WithdrawAndDepositButton /> */}
                 {data && <InPlay data={data} />}
-                <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} />
-                <AuraWolf />
+                {/* <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} />
+                <AuraWolf /> */}
                 <PopularGames popularGames={lotusLobby?.popularGames} />
                 {/* <UpcomingEvents /> */}
                 {/* <CardGames /> */}
                 {/* <IndianLiveCasino />
                   <Casino /> */}
               </div>
-              <FAQ />
+              {/* <FAQ /> */}
             </div>
           </>
         )}

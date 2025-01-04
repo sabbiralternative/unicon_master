@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { useSelector } from "react-redux";
-import Banner from "../../../components/ui/mobile/home/Banner";
+// import Banner from "../../../components/ui/mobile/home/Banner";
 import InPlay from "../../../components/ui/mobile/home/InPlay";
 
 // import UpcomingEvents from "../../../components/ui/mobile/home/UpcomingEvents";
@@ -9,15 +9,15 @@ import { useGetAllGroupEventsQuery } from "../../../redux/features/events/events
 import WithdrawDepositButton from "../../../components/ui/mobile/home/WithdrawDepositButton";
 import Group from "../../../components/ui/mobile/home/Group";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
-import FAQ from "../../../components/ui/desktop/Home/FAQ";
+// import FAQ from "../../../components/ui/desktop/Home/FAQ";
 import { userToken } from "../../../redux/features/auth/authSlice";
 import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
 import { useEffect } from "react";
 import useBalance from "../../../hooks/useBalance";
-import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
+// import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
 import PopularGames from "../../../components/ui/PopularGames/PopularGames";
-import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
-import Originals from "../../../components/ui/desktop/Home/Originals";
+// import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
+// import Originals from "../../../components/ui/desktop/Home/Originals";
 import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 
 const Home = () => {
@@ -102,22 +102,22 @@ const Home = () => {
               </div>
             )}
 
-            <Banner />
+            {/* <Banner /> */}
 
             <div
               id="home"
               className="py-1 flex flex-col items-start justify-start"
             >
               {token && <WithdrawDepositButton />}
-              <Originals trendingGames={lotusLobby?.trendingGames} />
+              {/* <Originals trendingGames={lotusLobby?.trendingGames} /> */}
               {data && <InPlay data={data} />}
-              <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} />
-              <AuraWolf />
+              {/* <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} /> */}
+              {/* <AuraWolf /> */}
               <PopularGames popularGames={lotusLobby?.popularGames} />
               {/* <UpcomingEvents /> */}
             </div>
             <div className="px-[6px]"></div>
-            <FAQ />
+            {/* <FAQ /> */}
           </div>
         )}
         {group === 2 || group === 4 || group === 1 || group === 5 ? (

@@ -1,27 +1,27 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   setGroupType,
-  setShowLoginModal,
+  // setShowLoginModal,
 } from "../../../../redux/features/stateSlice";
 import { useNavigate } from "react-router-dom";
 // import { groupTitle } from "../../../../const";
 // import { useGetAllOddsEventsQuery } from "../../../../redux/features/events/events";
-import { settings } from "../../../../api";
+// import { settings } from "../../../../api";
 // import { ImDice } from "react-icons/im";
 import assets from "../../../../assets";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import WarningCondition from "../../WarningCondition/WarningCondition";
+// import { useEffect, useState } from "react";
+// import toast from "react-hot-toast";
+// import WarningCondition from "../../WarningCondition/WarningCondition";
 import useLanguage from "../../../../hooks/useLanguage";
 import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
 
 const LeftDeskSidebar = () => {
   const { valueByLanguage } = useLanguage();
-  const [error, setError] = useState("");
-  const [showWarning, setShowWarning] = useState(false);
-  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
-  const { token, bonusToken } = useSelector((state) => state.auth);
+  // const [error, setError] = useState("");
+  // const [showWarning, setShowWarning] = useState(false);
+  // const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
+  // const { token, bonusToken } = useSelector((state) => state.auth);
   // const { group } = useSelector((state) => state.state);
   const dispatch = useDispatch();
   // const location = useLocation();
@@ -33,32 +33,32 @@ const LeftDeskSidebar = () => {
   // };
   // const { data } = useGetAllOddsEventsQuery(payload);
 
-  const handleNavigateToAviator = () => {
-    if (token) {
-      if (bonusToken) {
-        return setError("Bonus wallet is available only on sports.");
-      }
-      if (settings.casinoCurrency !== "AED") {
-        navigate(`/casino/EvolutionGaming/200296`);
-      } else {
-        setGameInfo({ gameName: "", gameId: "" });
-        setGameInfo({ gameName: "EvolutionGaming", gameId: "200296" });
-        setShowWarning(true);
-      }
-    } else {
-      dispatch(setShowLoginModal(true));
-    }
-  };
-  useEffect(() => {
-    if (error) {
-      return toast.error(error);
-    }
-  }, [error]);
+  // const handleNavigateToAviator = () => {
+  //   if (token) {
+  //     if (bonusToken) {
+  //       return setError("Bonus wallet is available only on sports.");
+  //     }
+  //     if (settings.casinoCurrency !== "AED") {
+  //       navigate(`/casino/EvolutionGaming/200296`);
+  //     } else {
+  //       setGameInfo({ gameName: "", gameId: "" });
+  //       setGameInfo({ gameName: "EvolutionGaming", gameId: "200296" });
+  //       setShowWarning(true);
+  //     }
+  //   } else {
+  //     dispatch(setShowLoginModal(true));
+  //   }
+  // };
+  // useEffect(() => {
+  //   if (error) {
+  //     return toast.error(error);
+  //   }
+  // }, [error]);
   return (
     <>
-      {showWarning && (
+      {/* {showWarning && (
         <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
-      )}
+      )} */}
       <div
         title="Menu"
         id="leftDeskSideBar"
@@ -277,7 +277,7 @@ const LeftDeskSidebar = () => {
             </span>
           </li>
 
-          {settings.casinoCurrency === "INR" && settings.aura && (
+          {/* {settings.casinoCurrency === "INR" && settings.aura && (
             <li
               onClick={() => {
                 navigate("/mac88");
@@ -329,7 +329,7 @@ const LeftDeskSidebar = () => {
                 </span>
               </span>
             </li>
-          )}
+          )} */}
           {/* <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
           <span className="flex w-full items-center h-full px-6 justify-start gap-3">
             <svg
@@ -376,7 +376,7 @@ const LeftDeskSidebar = () => {
           </span>
         </li> */}
 
-          <li
+          {/* <li
             onClick={() => {
               navigate("/live-casino");
             }}
@@ -566,7 +566,7 @@ const LeftDeskSidebar = () => {
                 Aviator
               </span>
             </span>
-          </li>
+          </li> */}
         </ul>
       </div>
     </>

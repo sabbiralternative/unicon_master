@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Footer from "../shared/Footer/Footer";
+// import Footer from "../shared/Footer/Footer";
 import Header from "../shared/Header/Header";
 import { useSelector } from "react-redux";
 
@@ -30,7 +30,7 @@ const MobileLayout = () => {
         >
           <Outlet />
         </div>
-        {!pathname.includes("/casino") && <Footer />}
+        {/* {!pathname.includes("/casino") && <Footer />} */}
       </div>
     </>
   );

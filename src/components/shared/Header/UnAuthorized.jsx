@@ -1,13 +1,14 @@
+/* eslint-disable no-unused-vars */
 import Login from "../../modal/Login/Login";
 import Register from "../../modal/Register/Register";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setShowLoginModal,
-  setShowRegisterModal,
+  // setShowRegisterModal,
 } from "../../../redux/features/stateSlice";
 import ForgetPassword from "../../modal/ForgetPassword/ForgetPassword";
-import { settings } from "../../../api";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
+// import { settings } from "../../../api";
+// import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import useLanguage from "../../../hooks/useLanguage";
 import { useState } from "react";
 import Language from "../../modal/Language/Language";
@@ -17,18 +18,18 @@ import { LanguageKey } from "../../../const";
 const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
   const { language, valueByLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
-  const { socialLink } = useGetSocialLink();
+  // const { socialLink } = useGetSocialLink();
   const { showLoginModal, showRegisterModal, showForgetModal } = useSelector(
     (state) => state.state
   );
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
+  // const { token } = useSelector((state) => state.auth);
 
-  const openWhatsapp = () => {
-    if (socialLink?.whatsapplink) {
-      window.open(socialLink?.whatsapplink, "_blank");
-    }
-  };
+  // const openWhatsapp = () => {
+  //   if (socialLink?.whatsapplink) {
+  //     window.open(socialLink?.whatsapplink, "_blank");
+  //   }
+  // };
 
   return (
     <>
@@ -85,36 +86,17 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 {languageValue(valueByLanguage, LanguageKey.LOGIN)}
               </span>
             </button>
-            {settings.registration && (
+            {/* {settings.registration && (
               <button
                 onClick={() => dispatch(setShowRegisterModal(true))}
                 className="flex rounded-full  gap-1 hover:opacity-100 w-max font-extrabold items-center justify-center px-5 py-2.5 bg-bg_Quaternary"
               >
-                {/* <span className="w-max hidden md:block">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="var(--color-primary)"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-              <path d="M16 19h6"></path>
-              <path d="M19 16v6"></path>
-              <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
-            </svg>
-          </span> */}
                 <span className="text-xxs text-text_Primary  font-lato md:font-semibold md:text-xs xs:text-xs">
                   {languageValue(valueByLanguage, LanguageKey.REGISTER)}
                 </span>
               </button>
-            )}
-            {settings.registrationWhatsapp &&
+            )} */}
+            {/* {settings.registrationWhatsapp &&
               !token &&
               socialLink?.whatsapplink && (
                 <button
@@ -125,9 +107,9 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                     Get Id
                   </span>
                 </button>
-              )}
+              )} */}
 
-            {settings.language && (
+            {/* {settings.language && (
               <button
                 onClick={() => setShowLanguage((prev) => !prev)}
                 style={{
@@ -161,7 +143,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                   </p>
                 </div>
               </button>
-            )}
+            )} */}
           </div>
           <div className="w-max flex items-center gap-1 justify-center rounded lg:hidden">
             <button
@@ -173,7 +155,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 {languageValue(valueByLanguage, LanguageKey.LOGIN)}
               </span>
             </button>
-            {settings.registration && (
+            {/* {settings.registration && (
               <button
                 onClick={() => dispatch(setShowRegisterModal(true))}
                 className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Quaternary"
@@ -230,7 +212,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                   </p>
                 </div>
               </button>
-            )}
+            )} */}
           </div>
         </div>
       )}
