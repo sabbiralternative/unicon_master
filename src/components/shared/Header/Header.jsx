@@ -110,7 +110,7 @@ const Header = () => {
         className=" fixed top-0 w-full  z-[100]"
         style={{ zIndex: 1000, backgroundColor: "white" }}
       >
-        {showNotification && notification && (
+        {showNotification && notification?.length > 0 && (
           <div
             style={{
               padding: "2px 5px",
