@@ -175,7 +175,7 @@ const MatchOdds = ({ match_odds }) => {
         return (
           <div key={i} className="py-1.5">
             <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] mb-1.5">
-              <div className="pl-1 flex items-center justify-start gap-x-1 md:gap-x-1 col-span-7 md:col-span-5">
+              <div className="flex items-center justify-start gap-x-2 md:gap-x-1 col-span-12 md:col-span-5">
                 <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
                   {games?.name}
                 </span>
@@ -233,7 +233,7 @@ const MatchOdds = ({ match_odds }) => {
                 </span> */}
                 <button
                   onClick={() => handleEditBookmaker(games)}
-                  className="flex items-center justify-center ml-3"
+                  className="flex items-center justify-center h-full"
                 >
                   {games?.visible ? (
                     <img src={assets.check} alt="" />
@@ -244,8 +244,17 @@ const MatchOdds = ({ match_odds }) => {
                 <span className="text-xs font-light">
                   Max: {games?.maxLiabilityPerBet}
                 </span>
-                <div className="ml-5 flex items-center gap-3">
-                  <div className="flex items-center gap-1">
+                <div className="flex items-center gap-x-1">
+                  <div className="flex items-center gap-x-0.5">
+                    <span>1</span>
+                    <input
+                      onClick={() => changeLimit(games, "1")}
+                      checked={games?.maxLiabilityPerBet === "1"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                  </div>
+                  <div className="flex items-center gap-x-0.5">
                     <span>10k</span>
                     <input
                       onClick={() => changeLimit(games, "10k")}
@@ -254,7 +263,7 @@ const MatchOdds = ({ match_odds }) => {
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
                   </div>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-x-0.5">
                     <span>50k</span>
                     <input
                       onClick={() => changeLimit(games, "50k")}
@@ -263,7 +272,7 @@ const MatchOdds = ({ match_odds }) => {
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
                   </div>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-x-0.5">
                     <span>100k</span>
                     <input
                       onClick={() => changeLimit(games, "100k")}
@@ -272,7 +281,16 @@ const MatchOdds = ({ match_odds }) => {
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
                   </div>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-x-0.5">
+                    <span>200k</span>
+                    <input
+                      onClick={() => changeLimit(games, "200k")}
+                      checked={games?.maxLiabilityPerBet === "200k"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                  </div>
+                  <div className="flex items-center gap-x-0.5">
                     <span>500k</span>
                     <input
                       onClick={() => changeLimit(games, "500k")}
