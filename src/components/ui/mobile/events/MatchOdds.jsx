@@ -150,6 +150,20 @@ const MatchOdds = ({ match_odds }) => {
     }
   };
 
+  const changeLimit = async (game, limit) => {
+    const payload = {
+      id: game?.id,
+      limit,
+      type: "changeLimit",
+    };
+    const res = await editFancy(payload).unwrap();
+    if (res?.success) {
+      toast.success(res?.result?.message);
+    } else {
+      toast.error(res?.error?.errorMessage);
+    }
+  };
+
   return (
     <>
       {match_odds?.map((games, i) => {
@@ -230,8 +244,46 @@ const MatchOdds = ({ match_odds }) => {
                 <span className="text-xs font-light">
                   Max: {games?.maxLiabilityPerBet}
                 </span>
+                <div className="ml-5 flex items-center gap-3">
+                  <div className="flex items-center gap-1">
+                    <span>10k</span>
+                    <input
+                      onClick={() => changeLimit(games, "10k")}
+                      checked={games?.maxLiabilityPerBet === "10k"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span>50k</span>
+                    <input
+                      onClick={() => changeLimit(games, "50k")}
+                      checked={games?.maxLiabilityPerBet === "50k"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span>100k</span>
+                    <input
+                      onClick={() => changeLimit(games, "100k")}
+                      checked={games?.maxLiabilityPerBet === "100k"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span>500k</span>
+                    <input
+                      onClick={() => changeLimit(games, "500k")}
+                      checked={games?.maxLiabilityPerBet === "500k"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">
+              {/* <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">
                 <span className="hidden md:flex col-span-1 text-center font-semibold h-full items-end justify-center"></span>
                 <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
                 <span className="col-span-1 text-center text-[10px] sm:text-xs md:text-sm leading-3 text-text_Ternary font-bold h-full flex items-end justify-center">
@@ -242,7 +294,7 @@ const MatchOdds = ({ match_odds }) => {
                 </span>
                 <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
                 <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
-              </div>
+              </div> */}
             </div>
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
               {games?.runners?.map((runner, idx) => {
