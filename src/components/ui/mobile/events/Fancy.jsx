@@ -57,7 +57,7 @@ const Fancy = ({ fancy }) => {
     const payload = {
       id: game?.id,
       name: fancyName,
-      type: "changeName",
+      type: "changeVisible",
     };
 
     const res = await editFancy(payload).unwrap();

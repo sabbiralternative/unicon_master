@@ -263,7 +263,7 @@ const Fancy = ({ fancy }) => {
                           handleEditFancy({
                             id: games?.id,
                             name: fancyName,
-                            type: "changeName",
+                            type: "changeVisible",
                           })
                         }
                       >

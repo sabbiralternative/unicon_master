@@ -5,7 +5,7 @@ import {
   setShowAppPopUp,
   setShowLeftSidebar,
 } from "../../../redux/features/stateSlice";
-import useContextState from "../../../hooks/useContextState";
+// import useContextState from "../../../hooks/useContextState";
 import LoggedIn from "./LoggedIn";
 import UnAuthorized from "./UnAuthorized";
 import { userToken } from "../../../redux/features/auth/authSlice";
@@ -24,7 +24,7 @@ import MobileHeader from "./MobileHeader";
 import useLanguage from "../../../hooks/useLanguage";
 import { LanguageKey } from "../../../const";
 import { languageValue } from "../../../utils/language";
-import Notification from "./Notification";
+// import Notification from "./Notification";
 
 const Header = () => {
   const { valueByLanguage } = useLanguage();
@@ -33,7 +33,7 @@ const Header = () => {
   const [time, setTime] = useState();
   const { balance } = useBalance();
   const { bonusBalance } = useBonusBalance();
-  const { logo } = useContextState();
+  // const { logo } = useContextState();
   const token = useSelector(userToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -78,7 +78,7 @@ const Header = () => {
         className=" fixed top-0 w-full  z-[100]"
         style={{ zIndex: 1000, backgroundColor: "white" }}
       >
-        <Notification />
+        {/* <Notification /> */}
         {settings?.apkLink && showAppPopUp && windowWidth < 1040 && (
           <AppPopup />
         )}
@@ -130,13 +130,14 @@ cursor-pointer
                       showMobileSearch ? "hidden" : ""
                     }`}
                   >
-                    <div className="   cursor-pointer">
-                      <img
+                    <div className="   cursor-pointer text-white">
+                      {/* <img
                         height={settings.logoHeight}
                         width={settings.logoWidth}
                         src={logo}
                         alt=""
-                      />
+                      /> */}
+                      {/* Home */}
                       {/* <svg
                       width="3778"
                       height="652"

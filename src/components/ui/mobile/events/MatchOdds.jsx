@@ -140,7 +140,7 @@ const MatchOdds = ({ match_odds }) => {
     const payload = {
       id: game?.id,
       visible: game?.visible ? 0 : 1,
-      type: "changeName",
+      type: "changeVisible",
     };
     const res = await editFancy(payload).unwrap();
     if (res?.success) {
@@ -227,6 +227,9 @@ const MatchOdds = ({ match_odds }) => {
                     <img src={assets?.close} alt="" />
                   )}
                 </button>
+                <span className="text-xs font-light">
+                  Max: {games?.maxLiabilityPerBet}
+                </span>
               </div>
               <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">
                 <span className="hidden md:flex col-span-1 text-center font-semibold h-full items-end justify-center"></span>
