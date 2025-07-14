@@ -266,7 +266,7 @@ const Fancy = ({ fancy }) => {
                           handleEditFancy({
                             id: games?.id,
                             name: fancyName,
-                            type: "changeVisible",
+                            type: "changeName",
                           })
                         }
                       >
@@ -364,7 +364,7 @@ const Fancy = ({ fancy }) => {
                           handleEditFancy({
                             id: games?.id,
                             visible: games?.visible ? 0 : 1,
-                            type: "visible",
+                            type: "changeVisible",
                           })
                         }
                         className="flex items-center justify-center"

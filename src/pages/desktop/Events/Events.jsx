@@ -16,13 +16,13 @@ import {
   setSecondOdd,
   setThirdOdd,
 } from "../../../redux/features/events/eventSlice";
-import IFrame from "../../../components/ui/IFrame/IFrame";
+// import IFrame from "../../../components/ui/IFrame/IFrame";
 import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
-import IframeVideoTab from "../../../components/ui/mobile/events/IframeVideoTab";
+// import IframeVideoTab from "../../../components/ui/mobile/events/IframeVideoTab";
 import HorseGreyhound from "../../../components/ui/desktop/events/HorseGreyhound";
 
 const Events = () => {
-  const [tab, setTab] = useState("");
+  // const [tab, setTab] = useState("");
   const dispatch = useDispatch();
   const { placeBetValues, price, stake } = useSelector((state) => state.event);
   const { refetchBalance } = useBalance();
@@ -337,8 +337,8 @@ const Events = () => {
               <ScoreCard score={data?.score} match_odds={match_odds} />
             )}
 
-            <IframeVideoTab tab={tab} setTab={setTab} score={data?.score} />
-            <IFrame betType={tab} score={data?.score} setBetType={setTab} />
+            {/* <IframeVideoTab tab={tab} setTab={setTab} score={data?.score} /> */}
+            {/* <IFrame betType={tab} score={data?.score} setBetType={setTab} /> */}
 
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">

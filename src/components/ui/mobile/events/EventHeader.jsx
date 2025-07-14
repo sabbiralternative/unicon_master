@@ -233,7 +233,7 @@ const EventHeader = ({
               }}
             ></div>
           </button>
-          {score && score?.hasVideo && (
+          {/* {score && score?.hasVideo && (
             <button
               onClick={() => {
                 setBetsType("video");
@@ -258,9 +258,9 @@ const EventHeader = ({
                 }}
               ></div>
             </button>
-          )}
+          )} */}
 
-          {score && score?.tracker && (
+          {/* {score && score?.tracker && (
             <button
               onClick={() => {
                 setBetsType("tracker");
@@ -287,7 +287,7 @@ const EventHeader = ({
                 }}
               ></div>
             </button>
-          )}
+          )} */}
 
           <button
             onClick={() => {

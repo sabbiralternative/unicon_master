@@ -174,11 +174,11 @@ const MatchOdds = ({ match_odds }) => {
 
         return (
           <div key={i} className="py-1.5">
-            <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] mb-1.5">
-              <div className="flex items-center justify-start gap-x-2 md:gap-x-1 col-span-12 md:col-span-5">
-                <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
+            <div className=" text-xs font-[500] mb-1.5 overflow-hidden">
+              <div className="flex items-center justify-start gap-x-3 w-full overflow-auto">
+                <div className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
                   {games?.name}
-                </span>
+                </div>
                 {/* <button
                   type="button"
                   className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-cashout-btn-gradient rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-max max-w-[74%] mr-1 cursor-pointer"
@@ -233,7 +233,7 @@ const MatchOdds = ({ match_odds }) => {
                 </span> */}
                 <button
                   onClick={() => handleEditBookmaker(games)}
-                  className="flex items-center justify-center h-full"
+                  className="flex items-center justify-center h-full shrink-0"
                 >
                   {games?.visible ? (
                     <img src={assets.check} alt="" />
@@ -244,60 +244,60 @@ const MatchOdds = ({ match_odds }) => {
                 <span className="text-xs font-light">
                   Max: {games?.maxLiabilityPerBet}
                 </span>
-                <div className="flex items-center gap-x-1">
+                <div className="flex items-center gap-x-2.5">
                   <div className="flex items-center gap-x-0.5">
-                    <span>1</span>
                     <input
                       onClick={() => changeLimit(games, "1")}
                       checked={games?.maxLiabilityPerBet === "1"}
                       type="radio"
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
+                    <span>1</span>
                   </div>
                   <div className="flex items-center gap-x-0.5">
-                    <span>10k</span>
                     <input
                       onClick={() => changeLimit(games, "10k")}
                       checked={games?.maxLiabilityPerBet === "10k"}
                       type="radio"
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
+                    <span>10k</span>
                   </div>
                   <div className="flex items-center gap-x-0.5">
-                    <span>50k</span>
                     <input
                       onClick={() => changeLimit(games, "50k")}
                       checked={games?.maxLiabilityPerBet === "50k"}
                       type="radio"
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
+                    <span>50k</span>
                   </div>
                   <div className="flex items-center gap-x-0.5">
-                    <span>100k</span>
                     <input
                       onClick={() => changeLimit(games, "100k")}
                       checked={games?.maxLiabilityPerBet === "100k"}
                       type="radio"
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
+                    <span>100k</span>
                   </div>
                   <div className="flex items-center gap-x-0.5">
-                    <span>200k</span>
                     <input
                       onClick={() => changeLimit(games, "200k")}
                       checked={games?.maxLiabilityPerBet === "200k"}
                       type="radio"
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
+                    <span>200k</span>
                   </div>
                   <div className="flex items-center gap-x-0.5">
-                    <span>500k</span>
                     <input
                       onClick={() => changeLimit(games, "500k")}
                       checked={games?.maxLiabilityPerBet === "500k"}
                       type="radio"
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
+                    <span>500k</span>
                   </div>
                 </div>
               </div>
