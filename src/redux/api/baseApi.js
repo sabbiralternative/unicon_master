@@ -42,7 +42,8 @@ const baseQuery = async (args, api, extraOptions) => {
   }
 
   // Add authorization header
-  const headers = args.headers || new Headers();
+  // const headers = args.headers || new Headers();
+  const headers = new Headers(args.headers);
   if (token) {
     headers.set("Authorization", `Bearer ${token}`);
   }

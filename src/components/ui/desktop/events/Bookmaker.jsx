@@ -283,12 +283,39 @@ const Bookmaker = ({ bookmaker }) => {
                   </div>
                   <div className="flex items-center gap-1">
                     <input
+                      onClick={() => changeLimit(games, "1k")}
+                      checked={games?.maxLiabilityPerBet === "1k"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                    <span>1k</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <input
+                      onClick={() => changeLimit(games, "5k")}
+                      checked={games?.maxLiabilityPerBet === "5k"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                    <span>5k</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <input
                       onClick={() => changeLimit(games, "10k")}
                       checked={games?.maxLiabilityPerBet === "10k"}
                       type="radio"
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
                     <span>10k</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <input
+                      onClick={() => changeLimit(games, "25k")}
+                      checked={games?.maxLiabilityPerBet === "25k"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                    <span>25k</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <input
