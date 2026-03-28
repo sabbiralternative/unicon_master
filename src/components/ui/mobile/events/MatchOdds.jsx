@@ -36,7 +36,7 @@ const MatchOdds = ({ match_odds }) => {
       runner,
       exposer,
       dispatch,
-      token
+      token,
     );
   };
 
@@ -45,7 +45,7 @@ const MatchOdds = ({ match_odds }) => {
     exposureB,
     runner1,
     runner2,
-    gameId
+    gameId,
   ) => {
     let runner, largerExposure, layValue, oppositeLayValue, lowerExposure;
 
@@ -111,10 +111,10 @@ const MatchOdds = ({ match_odds }) => {
           const runner1 = runners[0];
           const runner2 = runners[1];
           const pnl1 = pnlBySelection?.find(
-            (pnl) => pnl?.RunnerId === runner1?.id
+            (pnl) => pnl?.RunnerId === runner1?.id,
           )?.pnl;
           const pnl2 = pnlBySelection?.find(
-            (pnl) => pnl?.RunnerId === runner2?.id
+            (pnl) => pnl?.RunnerId === runner2?.id,
           )?.pnl;
 
           if (pnl1 && pnl2 && runner1 && runner2) {
@@ -123,7 +123,7 @@ const MatchOdds = ({ match_odds }) => {
               pnl2,
               runner1,
               runner2,
-              game?.id
+              game?.id,
             );
             results.push(result);
           }
@@ -169,7 +169,7 @@ const MatchOdds = ({ match_odds }) => {
       {match_odds?.map((games, i) => {
         const teamProfitForGame = teamProfit?.find(
           (profit) =>
-            profit?.gameId === games?.id && profit?.isOnePositiveExposure
+            profit?.gameId === games?.id && profit?.isOnePositiveExposure,
         );
 
         return (
@@ -199,7 +199,7 @@ const MatchOdds = ({ match_odds }) => {
                           setRunnerId,
                           pnlBySelection,
                           token,
-                          teamProfitForGame
+                          teamProfitForGame,
                         )
                       }
                       style={{
@@ -292,12 +292,30 @@ const MatchOdds = ({ match_odds }) => {
                   </div>
                   <div className="flex items-center gap-x-0.5">
                     <input
+                      onClick={() => changeLimit(games, "300k")}
+                      checked={games?.maxLiabilityPerBet === "300k"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                    <span>300k</span>
+                  </div>
+                  <div className="flex items-center gap-x-0.5">
+                    <input
                       onClick={() => changeLimit(games, "500k")}
                       checked={games?.maxLiabilityPerBet === "500k"}
                       type="radio"
                       name={`maxLiabilityPerBet${games?.name}`}
                     />
                     <span>500k</span>
+                  </div>
+                  <div className="flex items-center gap-x-0.5">
+                    <input
+                      onClick={() => changeLimit(games, "1000k")}
+                      checked={games?.maxLiabilityPerBet === "1000k"}
+                      type="radio"
+                      name={`maxLiabilityPerBet${games?.name}`}
+                    />
+                    <span>1000k</span>
                   </div>
                 </div>
               </div>
@@ -318,10 +336,10 @@ const MatchOdds = ({ match_odds }) => {
               {games?.runners?.map((runner, idx) => {
                 const pnl =
                   pnlBySelection?.filter(
-                    (pnl) => pnl?.RunnerId === runner?.id
+                    (pnl) => pnl?.RunnerId === runner?.id,
                   ) || [];
                 const predictOddValues = predictOdd?.filter(
-                  (val) => val?.id === runner?.id
+                  (val) => val?.id === runner?.id,
                 );
 
                 return (
@@ -389,7 +407,7 @@ const MatchOdds = ({ match_odds }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.back?.[2]?.price
+                                  runner?.back?.[2]?.price,
                                 )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                               >
                                 <span
@@ -413,7 +431,7 @@ const MatchOdds = ({ match_odds }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.back?.[1]?.price
+                                  runner?.back?.[1]?.price,
                                 )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                               >
                                 <span
@@ -442,7 +460,7 @@ const MatchOdds = ({ match_odds }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.back?.[0]?.price
+                                  runner?.back?.[0]?.price,
                                 )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                               >
                                 <span
@@ -471,7 +489,7 @@ const MatchOdds = ({ match_odds }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.lay?.[0]?.price
+                                  runner?.lay?.[0]?.price,
                                 )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                               >
                                 <span
@@ -495,7 +513,7 @@ const MatchOdds = ({ match_odds }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.lay?.[1]?.price
+                                  runner?.lay?.[1]?.price,
                                 )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                               >
                                 <span
@@ -519,7 +537,7 @@ const MatchOdds = ({ match_odds }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.lay?.[2]?.price
+                                  runner?.lay?.[2]?.price,
                                 )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                               >
                                 <span
