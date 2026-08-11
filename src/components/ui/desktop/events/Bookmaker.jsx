@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import isOddSuspended from // isGameSuspended,
-"../../../../utils/isOddSuspended";
+import isOddSuspended from "../../../../utils/isOddSuspended"; // isGameSuspended,
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import useExposer from "../../../../hooks/useExposure";
@@ -161,6 +160,7 @@ const Bookmaker = ({ bookmaker }) => {
         id: game?.id,
         visible: game?.visible ? 0 : 1,
         type: "changeVisible",
+        event_id: game?.eventId,
       };
       const res = await editFancy(payload).unwrap();
       if (res?.success) {
@@ -179,6 +179,7 @@ const Bookmaker = ({ bookmaker }) => {
         id: game?.id,
         limit,
         type: "changeLimit",
+        event_id: game?.eventId,
       };
       const res = await editFancy(payload).unwrap();
       if (res?.success) {

@@ -3,9 +3,9 @@ import { setShowRightSidebar } from "../../../../redux/features/stateSlice";
 import { useRef, useState } from "react";
 import useCloseModalClickOutside from "../../../../hooks/useCloseModalClickOutside";
 import { logout } from "../../../../redux/features/auth/authSlice";
-import useBalance from "../../../../hooks/useBalance";
+// import useBalance from "../../../../hooks/useBalance";
 // import useBonusBalance from "../../../../hooks/useBonusBalance";
-import { settings } from "../../../../api";
+// import { settings } from "../../../../api";
 // import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 import { useNavigate } from "react-router-dom";
 import Referral from "../../../modal/Referral/Referral";
@@ -20,7 +20,7 @@ const RightDeskSidebar = () => {
   const [showReferral, setShowReferral] = useState(false);
   // const { socialLink } = useGetSocialLink();
   const { user } = useSelector((state) => state.auth);
-  const { balance } = useBalance();
+  // const { balance } = useBalance();
   // const { bonusBalance } = useBonusBalance();
   const rightDeskSidebar = useRef();
   const dispatch = useDispatch();
@@ -39,18 +39,18 @@ const RightDeskSidebar = () => {
   //   }
   // };
 
-  const handleDownloadAPK = (e) => {
-    e.preventDefault();
-    if (settings.apkLink) {
-      const fileUrl = settings.apkLink;
-      const link = document.createElement("a");
-      link.href = fileUrl;
-      link.setAttribute("download", "site.apk");
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode.removeChild(link);
-    }
-  };
+  // const handleDownloadAPK = (e) => {
+  //   e.preventDefault();
+  //   if (settings.apkLink) {
+  //     const fileUrl = settings.apkLink;
+  //     const link = document.createElement("a");
+  //     link.href = fileUrl;
+  //     link.setAttribute("download", "site.apk");
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     link.parentNode.removeChild(link);
+  //   }
+  // };
 
   // const handleOpenSocialLink = (link) => {
   //   if (link) {
@@ -152,7 +152,7 @@ const RightDeskSidebar = () => {
                   </span>
                 </div>
               </li>
-              <li className="px-3 py-2 flex items-start justify-start flex-col gap-2">
+              {/* <li className="px-3 py-2 flex items-start justify-start flex-col gap-2">
                 <div className="flex items-center justify-start gap-2.5">
                   <span>
                     <svg
@@ -190,14 +190,14 @@ const RightDeskSidebar = () => {
                       ₹ {balance?.availBalance}
                     </span>
                   </div>
-                  {/* <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-1">
+                  <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-1">
                   <span className="uppercase font-normal text-xxs">
                     Free Cash
                   </span>
                   <span className="font-lato text-sm font-medium text-text_Ternary">
                     ₹ 0
                   </span>
-                </div> */}
+                </div>
                   <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-2">
                     <span className="uppercase font-normal text-xxs">
                       Net Exposure
@@ -309,7 +309,7 @@ const RightDeskSidebar = () => {
                     )}
                   </div>
                 </div>
-              </li>
+              </li> */}
               {/* <li className="px-3 py-2 flex items-start justify-start flex-col gap-2">
               <div className="flex items-center justify-start gap-x-2.5">
                 <svg
@@ -379,7 +379,7 @@ const RightDeskSidebar = () => {
               </div>
             </li> */}
 
-              <li className="divide-y flex items-start justify-start flex-col">
+              {/* <li className="divide-y flex items-start justify-start flex-col">
                 <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
                   Statements
                 </span>
@@ -417,30 +417,7 @@ const RightDeskSidebar = () => {
                       Deposit Withdraw Report
                     </span>
                   </div>
-                  {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
-                  <span className="w-4 h-auto xs:w-5 text-text_Primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="var(--color-iconsColor)"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M3 8m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z"></path>
-                      <path d="M12 8l0 13"></path>
-                      <path d="M19 12v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7"></path>
-                      <path d="M7.5 8a2.5 2.5 0 0 1 0 -5a4.8 8 0 0 1 4.5 5a4.8 8 0 0 1 4.5 -5a2.5 2.5 0 0 1 0 5"></path>
-                    </svg>
-                  </span>
-                  <span className="font-medium text-sm xs:text-base">
-                    Bonuses
-                  </span>
-                </div> */}
+                
                   <div
                     onClick={() => handleNavigate("/open-bets")}
                     className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
@@ -508,31 +485,6 @@ const RightDeskSidebar = () => {
                     </span>
                   </div>
 
-                  {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
-                  <span className="w-4 h-auto xs:w-5 text-text_Primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="var(--color-iconsColor)"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
-                      <path d="M9 7l1 0"></path>
-                      <path d="M9 13l6 0"></path>
-                      <path d="M13 17l2 0"></path>
-                    </svg>
-                  </span>
-                  <span className="font-medium text-sm xs:text-base">
-                    Account Statement
-                  </span>
-                </div> */}
                   <div
                     onClick={() => handleNavigate("/bonus-statement")}
                     className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
@@ -563,7 +515,7 @@ const RightDeskSidebar = () => {
                     <span className="font-medium text-sm xs:text-base">
                       {languageValue(
                         valueByLanguage,
-                        LanguageKey.BONUS_STATEMENT
+                        LanguageKey.BONUS_STATEMENT,
                       )}
                     </span>
                   </div>
@@ -636,63 +588,15 @@ const RightDeskSidebar = () => {
                     </span>
                   </div>
 
-                  {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
-                  <span className="w-4 h-auto xs:w-5 text-text_Primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="var(--color-iconsColor)"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M4 21v-4a3 3 0 0 1 3 -3h5"></path>
-                      <path d="M9 17l3 -3l-3 -3"></path>
-                      <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                      <path d="M5 11v-6a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-9.5"></path>
-                    </svg>
-                  </span>
-                  <span className="font-medium text-sm xs:text-base">
-                    Transfer Statement
-                  </span>
-                </div> */}
+                 
                 </div>
-              </li>
-              <li className="divide-y flex items-start justify-start flex-col">
+              </li> */}
+              {/* <li className="divide-y flex items-start justify-start flex-col">
                 <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
                   Account Settings
                 </span>
                 <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
-                  {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
-                  <span className="w-4 h-auto xs:w-5 text-text_Primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="var(--color-iconsColor)"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M10.5 21h-4.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3"></path>
-                      <path d="M16 3v4"></path>
-                      <path d="M8 3v4"></path>
-                      <path d="M4 11h10"></path>
-                      <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                      <path d="M18 16.5v1.5l.5 .5"></path>
-                    </svg>
-                  </span>
-                  <span className="font-medium text-sm xs:text-base">
-                    Time Settings
-                  </span>
-                </div> */}
+                  
                   <div
                     onClick={() => handleNavigate("/stake-settings")}
                     className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
@@ -723,35 +627,14 @@ const RightDeskSidebar = () => {
                     </span>
                   </div>
                 </div>
-              </li>
-              {settings?.apkLink && (
+              </li> */}
+              {/* {settings?.apkLink && (
                 <li className="divide-y flex items-start justify-start flex-col">
                   <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
                     Android App
                   </span>
                   <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
-                    {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
-                <span className="w-4 h-auto xs:w-5 text-text_Primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--color-iconsColor)"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M8 9h8"></path>
-                    <path d="M8 13h6"></path>
-                    <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"></path>
-                  </svg>
-                </span>
-                <span className="font-medium text-sm xs:text-base">
-                  Chat With Us
-                </span>
-              </div> */}
+                
                     <div
                       onClick={handleDownloadAPK}
                       className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
@@ -784,8 +667,8 @@ const RightDeskSidebar = () => {
                     </div>
                   </div>
                 </li>
-              )}
-              <li className="divide-y flex items-start justify-start flex-col">
+              )} */}
+              {/* <li className="divide-y flex items-start justify-start flex-col">
                 <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
                   Legal &amp; Compliance
                 </span>
@@ -912,11 +795,12 @@ const RightDeskSidebar = () => {
                     </span>
                   </div>
                 </div>
-              </li>
+              </li> */}
+
               <li className="divide-y flex items-start justify-start flex-col">
-                <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
+                {/* <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
                   Account actions
-                </span>
+                </span> */}
                 <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                   <div
                     onClick={() => handleNavigate("/change-password")}
@@ -947,7 +831,7 @@ const RightDeskSidebar = () => {
                     <span className="font-medium text-sm xs:text-base">
                       {languageValue(
                         valueByLanguage,
-                        LanguageKey.CHANGE_PASSWORD
+                        LanguageKey.CHANGE_PASSWORD,
                       )}
                     </span>
                   </div>
@@ -987,11 +871,11 @@ const RightDeskSidebar = () => {
                   </div>
                 </div>
               </li>
-              <li className="px-3 py-2">
+              {/* <li className="px-3 py-2">
                 <span className="flex text-center text-text_Primary text-sm xs:text-base font-medium">
                   Register online and play online
                 </span>
-              </li>
+              </li> */}
               {/* <li className="p-1">
               <div className="flex flex-col gap-1 p-3 items-center bg-bg_contactUsCard rounded">
                 <span className="text-text_Quaternary font-semibold">

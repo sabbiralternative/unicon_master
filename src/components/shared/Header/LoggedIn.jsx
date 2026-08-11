@@ -7,14 +7,14 @@ import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 
 const LoggedIn = ({
-  balance,
-  bonusBalance,
+  // balance,
+  // bonusBalance,
   setShowMobileSearch,
   showMobileSearch,
 }) => {
   const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
-  const { user, bonusToken } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   return (
@@ -34,7 +34,7 @@ const LoggedIn = ({
           </span>
         </div> */}
       </div>
-      <div
+      {/* <div
         id="loginName"
         className=" text-text_Quaternary text-[10px] lg:text-[12px] lg:flex flex-col px-2 hidden"
       >
@@ -47,7 +47,7 @@ const LoggedIn = ({
               : balance?.availBalance + balance?.deductedExposure}
           </span>
         </div>
-      </div>
+      </div> */}
       <div
         id="deposit_withdraw_btn"
         className=" hidden lg:flex items-center justify-center gap-1"
@@ -240,7 +240,7 @@ cursor-pointer
             </span>
             <span className="shimmer"></span>
           </button>
-          <button
+          {/* <button
             onClick={() => dispatch(setShowRightSidebar(true))}
             title="Balance"
             className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out  rounded-full text-text_Quaternary  pl-3 bg-bg_Secondary flex items-center justify-center pr-1 py-1 xs:py-1 sm:py-2  gap-1 shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
@@ -270,7 +270,7 @@ cursor-pointer
               <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
               <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
             </svg>
-          </button>
+          </button> */}
         </div>
       </div>
     </>

@@ -143,6 +143,7 @@ const MatchOdds = ({ match_odds }) => {
         id: game?.id,
         visible: game?.visible ? 0 : 1,
         type: "changeVisible",
+        event_id: game?.eventId,
       };
       const res = await editFancy(payload).unwrap();
       if (res?.success) {
@@ -161,6 +162,7 @@ const MatchOdds = ({ match_odds }) => {
         id: game?.id,
         limit,
         type: "changeLimit",
+        event_id: game?.eventId,
       };
       const res = await editFancy(payload).unwrap();
       if (res?.success) {

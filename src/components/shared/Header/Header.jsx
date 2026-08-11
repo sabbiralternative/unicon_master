@@ -9,10 +9,10 @@ import {
 import LoggedIn from "./LoggedIn";
 import UnAuthorized from "./UnAuthorized";
 import { userToken } from "../../../redux/features/auth/authSlice";
-import useBalance from "../../../hooks/useBalance";
+// import useBalance from "../../../hooks/useBalance";
 import LeftDeskSidebar from "../mobile/LeftDeskSidebar/LeftDeskSidebar";
 import RightDeskSidebar from "../mobile/RightDeskSidebar/RightDeskSidebar";
-import useBonusBalance from "../../../hooks/useBonusBalance";
+// import useBonusBalance from "../../../hooks/useBonusBalance";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { settings } from "../../../api";
@@ -31,8 +31,8 @@ const Header = () => {
   const location = useLocation();
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [time, setTime] = useState();
-  const { balance } = useBalance();
-  const { bonusBalance } = useBonusBalance();
+  // const { balance } = useBalance();
+  // const { bonusBalance } = useBonusBalance();
   // const { logo } = useContextState();
   const token = useSelector(userToken);
   const navigate = useNavigate();
@@ -230,8 +230,8 @@ cursor-pointer
                   <LoggedIn
                     setShowMobileSearch={setShowMobileSearch}
                     showMobileSearch={showMobileSearch}
-                    balance={balance}
-                    bonusBalance={bonusBalance}
+                    // balance={balance}
+                    // bonusBalance={bonusBalance}
                   />
                 ) : (
                   <UnAuthorized

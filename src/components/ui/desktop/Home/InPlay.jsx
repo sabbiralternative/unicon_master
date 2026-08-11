@@ -20,7 +20,7 @@ const InPlay = ({ data }) => {
   useEffect(() => {
     if (data) {
       const categories = Array.from(
-        new Set(Object.values(data).map((item) => item.eventTypeId))
+        new Set(Object.values(data).map((item) => item.eventTypeId)),
       );
       const sortedCategories = categories.sort((a, b) => {
         const order = { 4: 0, 1: 1, 2: 2 };
@@ -123,10 +123,6 @@ const InPlay = ({ data }) => {
                     Object.keys(filteredData)
                       .sort((keyA, keyB) => data[keyA].sort - data[keyB].sort)
                       .map((keys) => {
-                        if (!data?.[keys]?.visible) {
-                          return null;
-                        }
-
                         return (
                           <>
                             <div
@@ -203,7 +199,7 @@ const InPlay = ({ data }) => {
                                         <div
                                           className={`${isPriceAvailable(
                                             data[keys]?.[0]?.ex
-                                              ?.availableToBack[0]?.price
+                                              ?.availableToBack[0]?.price,
                                           )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                                         >
                                           <span
@@ -234,7 +230,7 @@ const InPlay = ({ data }) => {
                                         <div
                                           className={`${isPriceAvailable(
                                             data[keys]?.[0]?.ex
-                                              ?.availableToLay[0]?.price
+                                              ?.availableToLay[0]?.price,
                                           )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                                         >
                                           <span
@@ -267,7 +263,7 @@ const InPlay = ({ data }) => {
                                         <div
                                           className={`${isPriceAvailable(
                                             data[keys]?.[2]?.ex
-                                              ?.availableToBack[0]?.price
+                                              ?.availableToBack[0]?.price,
                                           )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                                         >
                                           <span
@@ -297,7 +293,7 @@ const InPlay = ({ data }) => {
                                         <div
                                           className={`${isPriceAvailable(
                                             data[keys]?.[2]?.ex
-                                              ?.availableToLay[0]?.price
+                                              ?.availableToLay[0]?.price,
                                           )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                                         >
                                           <span
@@ -328,7 +324,7 @@ const InPlay = ({ data }) => {
                                         <div
                                           className={`${isPriceAvailable(
                                             data[keys]?.[1]?.ex
-                                              ?.availableToBack[0]?.price
+                                              ?.availableToBack[0]?.price,
                                           )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined 
                                       
                                      `}
@@ -360,7 +356,7 @@ const InPlay = ({ data }) => {
                                         <div
                                           className={`${isPriceAvailable(
                                             data?.[keys]?.[1]?.ex
-                                              ?.availableToLay?.[0]?.price
+                                              ?.availableToLay?.[0]?.price,
                                           )}overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                                         >
                                           <span
