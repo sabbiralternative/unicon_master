@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 .site-font {
-  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
+  font-family:
+    Helvetica Neue,
+    sans-serif,
+    BBAlpha Sans;
 }
 .primary-icon-color svg,
 .back-from-iframe svg {
@@ -565,10 +568,10 @@ div:where(.swal2-container).swal2-noanimation {
     "top-start top top-end"
     "center-start center center-end"
     "bottom-start bottom-center bottom-end";
-  grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(
+  grid-template-rows: minmax(min-content, auto) minmax(
       min-content,
       auto
-    );
+    ) minmax(min-content, auto);
   height: 100%;
   padding: 0.625em;
   overflow-x: hidden;
@@ -702,7 +705,10 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 /* App pop up */
 .android-popup {
   width: 100%;
-  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
+  font-family:
+    Helvetica Neue,
+    sans-serif,
+    BBAlpha Sans;
   background: var(--color-bg-secondary);
   padding: 16px;
   display: flex;
@@ -748,7 +754,10 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 }
 
 .android-card {
-  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
+  font-family:
+    Helvetica Neue,
+    sans-serif,
+    BBAlpha Sans;
   display: flex;
   width: 282px;
   align-items: center;
@@ -786,7 +795,10 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 }
 .app-text h2 {
   color: #fff;
-  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
+  font-family:
+    Helvetica Neue,
+    sans-serif,
+    BBAlpha Sans;
   font-size: 11px;
   font-style: normal;
   font-weight: 700;
@@ -796,7 +808,10 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 
 .app-text span {
   color: #fff;
-  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
+  font-family:
+    Helvetica Neue,
+    sans-serif,
+    BBAlpha Sans;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -823,7 +838,10 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 
 .install-btn button {
   color: #fff;
-  font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
+  font-family:
+    Helvetica Neue,
+    sans-serif,
+    BBAlpha Sans;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
@@ -844,7 +862,10 @@ div:where(.swal2-container) div:where(.swal2-actions) {
   background-size: cover !important;
   color: #fff !important;
   z-index: 1 !important;
-  font-family: Helvetica Neue, sans-serif, BBAlpha Sans !important;
+  font-family:
+    Helvetica Neue,
+    sans-serif,
+    BBAlpha Sans !important;
   /* margin-left: 4px !important;
   margin-right: 4px !important; */
 }
@@ -1116,4 +1137,8 @@ p._4 {
   100% {
     transform: translate(100%, 10%);
   }
+}
+
+.bg-bg_Secondary {
+  background: var(--color-bg-secondary);
 }

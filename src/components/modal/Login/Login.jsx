@@ -40,6 +40,7 @@ const Login = () => {
       const game = result?.result?.buttonValue?.game;
       const memberId = result?.result?.memberId;
       dispatch(setUser({ user, token }));
+      localStorage.setItem("token", token);
       localStorage.setItem("memberId", memberId);
       localStorage.setItem("buttonValue", JSON.stringify(game));
       localStorage.setItem("bonusToken", bonusToken);
@@ -69,6 +70,7 @@ const Login = () => {
       const game = result?.result?.buttonValue?.game;
 
       dispatch(setUser({ user, token }));
+      localStorage.setItem("token", token);
       localStorage.setItem("buttonValue", JSON.stringify(game));
 
       localStorage.setItem("bonusToken", bonusToken);
