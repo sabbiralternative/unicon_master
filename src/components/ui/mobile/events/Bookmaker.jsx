@@ -15,6 +15,7 @@ import { handleCashoutBetMobile } from "../../../../utils/handleCashoutBetMobile
 import { useEditFancyMutation } from "../../../../redux/features/events/events";
 import toast from "react-hot-toast";
 import assets from "../../../../assets";
+import { setShowLoginModal } from "../../../../redux/features/stateSlice";
 
 const Bookmaker = ({ bookmaker }) => {
   const [editFancy] = useEditFancyMutation();
@@ -156,30 +157,38 @@ const Bookmaker = ({ bookmaker }) => {
   }, [bookmaker, eventId]);
 
   const handleEditBookmaker = async (game) => {
-    const payload = {
-      id: game?.id,
-      visible: game?.visible ? 0 : 1,
-      type: "changeVisible",
-    };
-    const res = await editFancy(payload).unwrap();
-    if (res?.success) {
-      toast.success(res?.result?.message);
+    if (token) {
+      const payload = {
+        id: game?.id,
+        visible: game?.visible ? 0 : 1,
+        type: "changeVisible",
+      };
+      const res = await editFancy(payload).unwrap();
+      if (res?.success) {
+        toast.success(res?.result?.message);
+      } else {
+        toast.error(res?.error?.errorMessage);
+      }
     } else {
-      toast.error(res?.error?.errorMessage);
+      dispatch(setShowLoginModal(true));
     }
   };
 
   const changeLimit = async (game, limit) => {
-    const payload = {
-      id: game?.id,
-      limit,
-      type: "changeLimit",
-    };
-    const res = await editFancy(payload).unwrap();
-    if (res?.success) {
-      toast.success(res?.result?.message);
+    if (token) {
+      const payload = {
+        id: game?.id,
+        limit,
+        type: "changeLimit",
+      };
+      const res = await editFancy(payload).unwrap();
+      if (res?.success) {
+        toast.success(res?.result?.message);
+      } else {
+        toast.error(res?.error?.errorMessage);
+      }
     } else {
-      toast.error(res?.error?.errorMessage);
+      dispatch(setShowLoginModal(true));
     }
   };
   return (
