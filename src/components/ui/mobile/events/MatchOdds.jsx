@@ -174,7 +174,24 @@ const MatchOdds = ({ match_odds }) => {
       dispatch(setShowLoginModal(true));
     }
   };
-
+  const changeDelay = async (game, second) => {
+    if (token) {
+      const payload = {
+        id: game?.id,
+        second,
+        type: "changeDelay",
+        event_id: game?.eventId,
+      };
+      const res = await editFancy(payload).unwrap();
+      if (res?.success) {
+        toast.success(res?.result?.message);
+      } else {
+        toast.error(res?.error?.errorMessage);
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
   return (
     <>
       {match_odds?.map((games, i) => {
@@ -342,6 +359,19 @@ const MatchOdds = ({ match_odds }) => {
                 <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
                 <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
               </div> */}
+            </div>
+            <div className=" flex items-center gap-5 overflow-auto">
+              {[5, 6, 7, 8, 9, 10, 11, 12].map((second) => (
+                <div key={second} className="flex items-center gap-1">
+                  <input
+                    onClick={() => changeDelay(games, second)}
+                    checked={games?.betDelay === second}
+                    type="radio"
+                    name={`betDelay${games?.name}`}
+                  />
+                  <span>{second}</span>
+                </div>
+              ))}
             </div>
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
               {games?.runners?.map((runner, idx) => {
